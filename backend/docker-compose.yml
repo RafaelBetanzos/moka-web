@@ -1,6 +1,7 @@
 services:
   strapi:
-    image: strapi/strapi
+    build: ./
+    # image: strapi/strapi
     environment:
       DATABASE_CLIENT: postgres
       DATABASE_NAME: strapi
