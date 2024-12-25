@@ -7,19 +7,20 @@ name: Docker
 
 on:
   push:
-    branches: [ "develop" ]
+    branches: [ "main" ]
     tags: [ 'v*.*.*' ]
+  workflow_dispatch:
 
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: ${{ github.repository }}-dev
+  IMAGE_NAME: ${{ github.repository }}
 
 
 jobs:
 
-  build-backend-dev:
+  build-backend:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -92,7 +93,7 @@ jobs:
         # against the sigstore community Fulcio instance.
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
 
-  build-frontend-dev:
+  build-frontend:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -165,10 +166,11 @@ jobs:
         # against the sigstore community Fulcio instance.
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
     
-  deploy-backend-dev:
+  deploy-backend:
     runs-on: ubuntu-latest
     needs:
-      - build-backend-dev
+      - build-backend
+      - build-frontend
 
     steps:
     - name: Deploy backend
@@ -179,15 +181,16 @@ jobs:
         key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
         port: 22
         script: |
-          cd ~/services/moka-backend-dev
+          cd ~/services/moka-backend
           docker compose pull
           docker compose up -d
           docker system prune -f
     
-  deploy-frontend-dev:
+  deploy-frontend:
     runs-on: ubuntu-latest
     needs:
-      - build-frontend-dev
+      - build-backend
+      - build-frontend
 
     steps:
     - name: Deploy frontend
@@ -198,7 +201,7 @@ jobs:
         key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
         port: 22
         script: |
-          cd ~/services/moka-frontend-dev
+          cd ~/services/moka-frontend
           docker compose pull
           docker compose up -d
           docker system prune -f
