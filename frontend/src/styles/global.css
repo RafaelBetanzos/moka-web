@@ -1,0 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap");
+
+:root {
+  --primary-color: #ededed;
+  --secondary-color: #4f7363;
+  --navbar-color: #68b0ab;
+  --gray-color: #8a8a8a;
+  --black-color: #252e2a;
+  --card-color: #8fc0a9;
+  --second-card-color: #c8d5b9;
+  --white-color: #e4e4e4;
+}
