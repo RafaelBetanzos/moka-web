@@ -7,8 +7,7 @@ name: Docker
 
 on:
   push:
-    branches: [ "main", "develop" ]
-    # Publish semver tags as releases.
+    branches: [ "develop" ]
     tags: [ 'v*.*.*' ]
 
 env:
@@ -20,7 +19,7 @@ env:
 
 jobs:
 
-  build-backend:
+  build-backend-dev:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -93,9 +92,9 @@ jobs:
         # against the sigstore community Fulcio instance.
         run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
   
-  deploy-backend:
+  deploy-backend-dev:
     runs-on: ubuntu-latest
-    needs: build-backend
+    needs: build-backend-dev
 
     steps:
     - name: Deploy
@@ -106,7 +105,7 @@ jobs:
         key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
         port: 22
         script: |
-          cd ~/services/moka-backend
+          cd ~/services/moka-backend-dev
           docker compose pull
           docker compose up -d
           docker system prune -f
