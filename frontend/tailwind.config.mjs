@@ -27,7 +27,7 @@ export default {
         "background-brain": "url('/background-brain.svg')",
         leafs: "url('/Leafs.svg')",
         "custom-gradient":
-          "linear-gradient(180deg, #68B0AB 0%, #78B7AA 34%, #86BCA9 54.5%, #8FC0A9 68.5%, #ACCBB1 100%)",
+          "linear-gradient(180deg, rgba(237, 237, 237, 0.16) 0%, rgba(133, 188, 170, 0.36) 33.5%, rgba(143, 192, 169, 0.4) 54%, rgba(172, 203, 177, 0.36) 75%, rgba(237, 237, 237, 0.16) 100%)",
       },
       backgroundSize: {
         auto: "auto",
@@ -38,5 +38,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };

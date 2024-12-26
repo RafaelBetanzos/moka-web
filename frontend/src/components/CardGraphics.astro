@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { Fragment } from "react";
 const { title, content, grayPoint, greenPoint, number, image, altImage } =
   Astro.props;
 ---
@@ -35,9 +36,9 @@ const { title, content, grayPoint, greenPoint, number, image, altImage } =
       {
         content && content.type === "span" ? (
           <span>
-            {content.props.children.map((child, index) => {
+            {content.props.children.map((child: any) => {
               if (child.type === "strong") {
-                return <strong key={index}>{child.props.children}</strong>;
+                return <strong>{child.props.children}</strong>;
               }
               return child;
             })}
