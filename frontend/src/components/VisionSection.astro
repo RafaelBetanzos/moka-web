@@ -1,16 +1,58 @@
-<div class="bg-background-brain bg-cover bg-center h-screen">
-  <div class="flex flex-row items-center justify-between">
-    <div class="ml-36 mr-36 pt-24">
+---
+import InfoBlock from "./InfoSection.astro";
+import CardGraphics from "./CardGraphics.astro";
+import { blocksProblem, blocksGraphics } from "../utils/CardSectionMock";
+---
+
+<div class="bg-background-brain bg-cover bg-center min-h-screen">
+  <div class="flex flex-row justify-between gap-44 ml-24 mr-24 pt-24">
+    <div class="flex flex-col min-h-screen">
       <div>
         <p
-          class="font-roboto text-[20px] font-medium leading-[23.44px] tracking-[4px] text-center underline-from-font decoration-none"
+          class="font-roboto text-[18px] font-medium leading-[23.44px] tracking-[4px]"
         >
           MOKA THERAPEUTICS
         </p>
-        <p>AI Powered Ethnobotanic</p>
-        <p>Drug Discovery Platform</p>
+        <div class="font-inter text-[42px] font-semibold leading-[56.25px]">
+          <p class="text-secondary">AI Powered Ethnobotanic</p>
+          <p>Drug Discovery Platform</p>
+        </div>
+      </div>
+      <div class="font-inter">
+        <p class="text-graycolor mr-52 text-[20px]">
+          Traditional medicine is widely used and increasingly relevant in the
+          world today. We have begun exploring its healing powers to address
+          inflammation.
+        </p>
+      </div>
+      <div class="flex flex-row gap-8 mt-8 w-[90%]">
+        {
+          blocksGraphics.map((graph) => (
+            <CardGraphics
+              image={graph.image}
+              altImage={graph.alt}
+              title={graph.title}
+              content={graph.content}
+              greenPoint={graph.greenPoint}
+              grayPoint={graph.grayPoint}
+              number={graph.number}
+            />
+          ))
+        }
       </div>
     </div>
-    <div></div>
+    <div class="flex flex-col font-inter">
+      {
+        blocksProblem.map((block) => (
+          <InfoBlock
+            image={block.image}
+            altImage={block.alt}
+            title={block.title}
+            content={block.content}
+            chevron={block.chevron}
+          />
+        ))
+      }
+    </div>
   </div>
 </div>
