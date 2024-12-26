@@ -2,4 +2,5 @@ span {
   color: var(--gray-color);
   text-align: center;
   font-size: 13px;
+  font-family: "Inter", sans-serif;
 }
