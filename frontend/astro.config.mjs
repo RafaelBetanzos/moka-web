@@ -10,8 +10,12 @@ import node from "@astrojs/node";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react()],
-
   adapter: node({
     mode: "standalone",
   }),
+  vite: {
+    optimizeDeps: {
+      include: ["react", "react-dom"],
+    },
+  },
 });
