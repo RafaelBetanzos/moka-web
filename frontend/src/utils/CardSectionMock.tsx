@@ -1,4 +1,4 @@
-import Lab from "../assets/icons/lab.svg";
+import Lab from "../assets/icons/Lab.svg";
 import Ia from "../assets/icons/Ia.svg";
 import GraphicDrugs from "../assets/GraphicDrugs.svg";
 import GraphicTraditional from "../assets/GraphicTraditional.svg";
