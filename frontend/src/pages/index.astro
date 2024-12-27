@@ -7,16 +7,29 @@ import DataPlatformSection from "@components/DataPlatformSection.astro";
 import OurVisionSection from "@components/OurVisionSection.astro";
 import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
 import { ArticlesCarrousel } from "@components/Swiper/ArticlesCarrousel";
+import { ContactForm } from "@components/ContactForm/ContactForm";
+import LeafsLayout from "@layouts/LeafsLayout.astro";
+import ContactUs from "@components/ContactUs.astro";
 ---
 
-<Navbar />
-<Hero />
-<DataPlatformSection />
-<OurVisionSection />
-<MarqueeComponent client:only />
-<div
-  class="bg-whitecolor flex flex-col items-center justify-center mt-10 mb-10"
->
-  <ArticlesCarrousel client:only />
+<div class="bg-whitecolor">
+  <Navbar />
+  <Hero />
+  <DataPlatformSection />
+  <OurVisionSection />
+  <MarqueeComponent client:only />
+  <div class="flex flex-col items-center justify-center mt-10 mb-10">
+    <ArticlesCarrousel client:only />
+  </div>
+  <div class="bg-cover min-h-screen w-full mb-3 mt-3">
+    <LeafsLayout>
+      <div
+        class="flex justify-between items-center min-h-screen xl:mx-16 lg:mx-6 md:mx-10"
+      >
+        <ContactUs />
+        <ContactForm client:only />
+      </div>
+    </LeafsLayout>
+  </div>
+  <Footer />
 </div>
-<Footer />

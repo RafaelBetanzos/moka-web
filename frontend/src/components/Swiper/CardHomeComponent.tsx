@@ -3,7 +3,7 @@ import ArrowDiagonal from "@assets/icons/ArrowDiagonal.svg";
 export const CardHomeComponent = ({ article }) => {
   return (
     <div
-      className={`bg-[rgba(143,192,169,0.5)] p-6 rounded-xl relative flex gap-8 shadow-lg mx-[25%] my-[10%]`}
+      className={`bg-[rgba(143,192,169,0.5)] p-6 rounded-xl relative flex gap-8 shadow-lg mx-[25%] mt-[10%]`}
     >
       <div className="flex items-center opacity-100 justify-center gap-8 my-[8%] xl:mx-[10%] lg:mx-[3%]">
         <div className="flex flex-col">

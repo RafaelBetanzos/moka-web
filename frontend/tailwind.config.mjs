@@ -17,6 +17,7 @@ export default {
         secondcard: "var(--second-card-color)",
         whitecolor: "var(--white-color)",
         secondgray: "var(--second-gray)",
+        pills: "var(--pills-color)",
       },
       screens: {
         xl: "1920px",

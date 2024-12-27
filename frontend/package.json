@@ -15,6 +15,7 @@
     "@astrojs/ts-plugin": "^1.10.4",
     "@tailwindcss/forms": "^0.5.9",
     "astro": "^5.1.1",
+    "formik": "^2.4.6",
     "framer-motion": "^11.15.0",
     "moka-frontend": "file:",
     "react": "^19.0.0",
