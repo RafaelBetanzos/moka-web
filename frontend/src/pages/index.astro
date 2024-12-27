@@ -6,6 +6,7 @@ import Footer from "../layouts/Footer.astro";
 import DataPlatformSection from "@components/DataPlatformSection.astro";
 import OurVisionSection from "@components/OurVisionSection.astro";
 import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
+import { ArticlesCarrousel } from "@components/Swiper/ArticlesCarrousel";
 ---
 
 <Navbar />
@@ -13,4 +14,9 @@ import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
 <DataPlatformSection />
 <OurVisionSection />
 <MarqueeComponent client:only />
+<div
+  class="bg-whitecolor flex flex-col items-center justify-center mt-10 mb-10"
+>
+  <ArticlesCarrousel client:only />
+</div>
 <Footer />
