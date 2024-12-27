@@ -15,7 +15,8 @@
       "@components/*": ["components/*"],
       "@layouts/*": ["layouts/*"],
       "@utils/*": ["utils/*"],
-      "@assets/*": ["assets/*"]
+      "@assets/*": ["assets/*"],
+      "@styles/*": ["styles/*"]
     }
   }
 }

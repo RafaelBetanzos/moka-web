@@ -3,13 +3,14 @@ import "../styles/global.css";
 import Navbar from "../layouts/Navbar.astro";
 import Hero from "../components/Hero.astro";
 import Footer from "../layouts/Footer.astro";
-import DataPlatformSection from "../components/DataPlatformSection.astro";
-import OurVisionSection from "../components/OurVisionSection.astro";
+import DataPlatformSection from "@components/DataPlatformSection.astro";
+import OurVisionSection from "@components/OurVisionSection.astro";
+import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
 ---
 
 <Navbar />
 <Hero />
 <DataPlatformSection />
 <OurVisionSection />
-
+<MarqueeComponent client:only />
 <Footer />

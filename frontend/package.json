@@ -15,9 +15,12 @@
     "@astrojs/ts-plugin": "^1.10.4",
     "@tailwindcss/forms": "^0.5.9",
     "astro": "^5.1.1",
+    "framer-motion": "^11.15.0",
     "moka-frontend": "file:",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-fast-marquee": "^1.6.5",
+    "react-use": "^17.6.0",
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
