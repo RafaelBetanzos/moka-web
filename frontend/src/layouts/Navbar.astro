@@ -5,25 +5,29 @@ import LinkedIn from "@assets/LinkedIn.svg";
 ---
 
 <div class="bg-primary">
-  <div class="flex flex-row justify-between items-center ml-12 mr-12">
+  <nav class="flex flex-row justify-between items-center ml-12 mr-12">
     <div class="mb-4 mt-4">
-      <Image src={Logo} alt="Logo" width={130} height={130} loading="eager" />
+      <a href="/">
+        <Image src={Logo} alt="Logo" width={130} height={130} loading="eager" />
+      </a>
     </div>
 
     <div class="flex flex-row gap-16 text-navbar text-[16px] font-semibold">
-      <p>Home</p>
-      <p>Our Technology</p>
-      <p>About Us</p>
-      <p>Articles</p>
+      <a href="/">Home</a>
+      <a href="/our-technology">Our Technology</a>
+      <a href="/about-us">About Us</a>
+      <a href="/articles">Articles</a>
     </div>
 
     <div class="flex flex-row gap-4">
-      <Image src={LinkedIn} alt="Linkedin" class="w-[20%]" loading="eager" />
+      <a href="#">
+        <Image src={LinkedIn} alt="Linkedin" class="w-[20%]" loading="eager" />
+      </a>
       <div
         class="bg-navbar text-white rounded-full pl-4 pr-4 pt-1 pb-1 text-[16px] font-semibold whitespace-nowrap"
       >
-        <p>Contact Us</p>
+        <a href="/contact-us">Contact Us</a>
       </div>
     </div>
-  </div>
+  </nav>
 </div>
