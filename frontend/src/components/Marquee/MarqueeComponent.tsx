@@ -7,7 +7,7 @@ export const MarqueeComponent: React.FC = () => {
   return (
     <div className="relative overflow-hidden bg-white">
       <Marquee gradient={false} speed={50}>
-        <div className="flex gap-24 bg-white">
+        <div className="flex gap-12 bg-white">
           {images.map((image, index) => (
             <MarqueeImages
               key={index}
