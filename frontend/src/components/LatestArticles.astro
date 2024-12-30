@@ -1,0 +1,63 @@
+---
+import { Image } from "astro:assets";
+import GenericImage from "@assets/GenericImage.svg";
+import ArrowRightSecondaryh from "@assets/icons/ArrowRightSecondary.svg";
+---
+
+<div>
+  <div class="flex flex-col items-start justify-start py-24 mx-24">
+    <div>
+      <h1 class="font-roboto font-medium text-black leading-4 tracking-widest">
+        INDUSTRY UDAPTES
+      </h1>
+    </div>
+
+    <div class="xl:text-[48px] lg:text-[32px] md:text-[32px] font-semibold">
+      <h2 class="text-secondary mb-6">Latest news</h2>
+      <p
+        class="text-[#BBBBBBFF] font-inter font-medium xl:text-[18px] lg:text-[16px] md:text-[16px] leading-12 w-[40%]"
+      >
+        Insights, research and opinion articles on ethnobotany, AI-Driven
+        innovations for Human wellness
+      </p>
+    </div>
+  </div>
+  <div class="flex justify-around py-20 gap-8 mx-32">
+    <div class="bg-white rounded-3xl text-[#BBBBBBFF] text-[18px]">
+      <Image src={GenericImage} alt="Generic Image" />
+      <div class="px-6">
+        <p class="font-inter text-[11px]">SEPTEMBER 5, 2025</p>
+        <p class="text-[32px] text-secondary pb-24">Article title</p>
+
+        <div class="flex items-center justify-between pb-8">
+          <p>Read More</p>
+          <Image src={ArrowRightSecondaryh} alt="More" />
+        </div>
+      </div>
+    </div>
+    <div class="bg-white rounded-3xl text-[#BBBBBBFF] text-[18px]">
+      <Image src={GenericImage} alt="Generic Image" />
+      <div class="px-6">
+        <p class="font-inter text-[11px]">SEPTEMBER 5, 2025</p>
+        <p class="text-[32px] text-secondary pb-24">Article title</p>
+
+        <div class="flex items-center justify-between pb-8">
+          <p>Read More</p>
+          <Image src={ArrowRightSecondaryh} alt="More" />
+        </div>
+      </div>
+    </div>
+    <div class="bg-white rounded-3xl text-[#BBBBBBFF] text-[18px]">
+      <Image src={GenericImage} alt="Generic Image" />
+      <div class="px-6">
+        <p class="font-inter text-[11px]">SEPTEMBER 5, 2025</p>
+        <p class="text-[32px] text-secondary pb-24">Article title</p>
+
+        <div class="flex items-center justify-between pb-8">
+          <p>Read More</p>
+          <Image src={ArrowRightSecondaryh} alt="More" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
