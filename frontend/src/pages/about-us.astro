@@ -1,10 +1,24 @@
 ---
+import MapSection from "@components/MapSection.astro";
+import OurTeam from "@components/OurTeam.astro";
+import OurVisionCard from "@components/OurVisionCard.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import LeafsLayout from "@layouts/LeafsLayout.astro";
 ---
 
 <BaseLayout>
   <div class="min-h-screen">
-    <h1>About Us</h1>
-    <p>Our company is the best company.</p>
+    <div class="bg-custom-gradient">
+      <LeafsLayout>
+        <div class="mx-auto flex flex-col justify-center items-center py-32">
+          <OurVisionCard isButtonOn={false} />
+        </div>
+      </LeafsLayout>
+    </div>
+
+    <div class="xl:mx-40 lg:mx-16">
+      <MapSection />
+    </div>
+    <OurTeam />
   </div>
 </BaseLayout>

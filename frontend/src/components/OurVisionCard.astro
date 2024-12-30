@@ -1,0 +1,39 @@
+---
+import ArrowRight from "@assets/icons/ArrowRight.svg";
+import { Image } from "astro:assets";
+const { isButtonOn } = Astro.props;
+---
+
+<div
+  class="bg-secondcard xl:w-[674px] xl:h-[500px] lg:w-[430px] lg:h-[380px] md:w-[400px] md:h-[380px] shadow-lg rounded-3xl flex flex-col items-center text-secondary"
+>
+  <h1
+    class="xl:text-[40px] lg:text-[30px] md:text-[30px] font-bold font-roboto leading-[46px] md:pt-6 md:pb-8 md:pl-8 md:pr-8 xl:pb-12 lg:pb-4 xl:pt-16 lg:pt-6"
+  >
+    OUR VISION
+  </h1>
+  <div class="flex flex-col items-center">
+    <p
+      class="xl:pl-28 lg:pl-12 xl:pr-28 md:pl-8 md:pr-8 lg:pr-12 xl:text-[30px] lg:text-[20px] md:text-[20px] font-inter text-center"
+    >
+      Moka Therapeutics envisions a future where <strong
+        >natural remedies</strong
+      >, rigorously evaluated for safety and efficacy, become a trusted
+      cornerstone of patient care.
+    </p>
+    {
+      isButtonOn && (
+        <div class="mt-6">
+          <button class="flex gap-6 items-center justify-center bg-white text-navbar font-inter font-medium text-[22px] rounded-full max-w-fit mt-4 p-1">
+            <a class="text-center text-[20px] ml-2" href="/about-us">
+              About us
+            </a>
+            <div class="flex items-center justify-center bg-secondary rounded-full w-10 h-10">
+              <Image src={ArrowRight} alt="arrow-right" />
+            </div>
+          </button>
+        </div>
+      )
+    }
+  </div>
+</div>
