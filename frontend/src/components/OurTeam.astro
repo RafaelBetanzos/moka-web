@@ -1,0 +1,19 @@
+---
+import { MembersTeam } from "./Members/MembersTeam";
+import { AdvisorsTeam } from "./Advisors/AdvisorsTeam";
+---
+
+<div class="flex flex-col items-center justify-center py-24 px-8">
+  <div>
+    <h1 class="font-roboto font-medium text-black leading-4 tracking-widest">
+      MEET OUR TEAM
+    </h1>
+  </div>
+
+  <div class="xl:text-[48px] lg:text-[32px] md:text-[32px] font-semibold">
+    <h2 class="text-secondary">Our team combines scientific</h2>
+    <h2>excellence with experience</h2>
+  </div>
+  <MembersTeam client:only />
+  <AdvisorsTeam client:only />
+</div>

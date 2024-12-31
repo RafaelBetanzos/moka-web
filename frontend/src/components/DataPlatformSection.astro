@@ -1,0 +1,76 @@
+---
+import ArrowRight from "@assets/icons/ArrowRight.svg";
+import { blocksGraphics, blocksProblem } from "@utils/CardSectionMock";
+import { Image } from "astro:assets";
+import CardGraphics from "./CardGraphics.astro";
+import InfoBlock from "./InfoSection.astro";
+---
+
+<div class="bg-background-brain bg-cover bg-center relative p-8">
+  <div
+    class="flex flex-col lg:flex-row justify-between max-w-6xl mx-auto pt-24 lg:gap-32"
+  >
+    <div class="flex flex-col">
+      <div>
+        <p
+          class="font-roboto text-[18px] font-medium leading-[23.44px] tracking-[4px]"
+        >
+          MOKA THERAPEUTICS
+        </p>
+        <div class="font-inter text-[42px] font-semibold leading-[56.25px]">
+          <p class="text-secondary">AI Powered Ethnobotanic</p>
+          <p>Drug Discovery Platform</p>
+        </div>
+      </div>
+      <div class="font-inter">
+        <p class="text-graycolor text-[20px]">
+          Traditional medicine is widely used and increasingly relevant in the
+          world today. We have begun exploring its healing powers to address
+          inflammation.
+        </p>
+      </div>
+      <div
+        class="flex flex-col sm:flex-row gap-8 mt-16 lg:mt-8 justify-center lg:justify-start"
+      >
+        {
+          blocksGraphics.map((graph) => (
+            <CardGraphics
+              image={graph.image}
+              altImage={graph.alt}
+              title={graph.title}
+              content={graph.content}
+              greenPoint={graph.greenPoint}
+              grayPoint={graph.grayPoint}
+              number={graph.number}
+            />
+          ))
+        }
+      </div>
+    </div>
+    <div class="flex flex-col font-inter mb-8 justify-center items-center">
+      {
+        blocksProblem.map((block) => (
+          <InfoBlock
+            image={block.image}
+            altImage={block.alt}
+            title={block.title}
+            content={block.content}
+            chevron={block.chevron}
+          />
+        ))
+      }
+      <div class="flex items-center justify-center">
+        <button
+          class="flex gap-3 items-center justify-center bg-secondary text-white font-inter font-medium text-[22px] rounded-full max-w-fit mt-8 p-2"
+        >
+          <p>Our Technology</p>
+          <div
+            class="flex items-center justify-center bg-navbar rounded-full w-10 h-10"
+          >
+            <Image src={ArrowRight} alt="arrow-right" />
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

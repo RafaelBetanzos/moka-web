@@ -1,0 +1,106 @@
+---
+import Ia from "@assets/icons/Ia.svg";
+import IntegrationSecondary from "@assets/icons/IntegrationSecondary.svg";
+import ScalabilitySecondary from "@assets/icons/ScalabilitySecondary.svg";
+import { Image } from "astro:assets";
+---
+
+<div class="flex flex-col gap-8 mt-8 w-full pb-24">
+  <div class="pb-28">
+    <h1
+      class="font-roboto font-medium text-black leading-4 tracking-widest text-center py-8"
+    >
+      OUR SOLUTION
+    </h1>
+    <p
+      class="text-[#4F7363FF] text-[26px] font-semibold text-center font-inter lg:px-96 xl:px-[37%] md:px-[30%]"
+    >
+      Moka platform enables breakthrough insights to identify new EB molecules
+      and their mechanism of action
+    </p>
+  </div>
+  <div class="bg-custom-gradient px-8">
+    <div
+      class="flex flex-col md:flex-row gap-16 md:gap-4 justify-center items-center md:mt-0 mt-16"
+    >
+      <div class="relative">
+        <Image
+          src={IntegrationSecondary}
+          alt="integration"
+          class="w-24 absolute z-10 left-[50%] ml-[-48px] top-[-48px]"
+        />
+        <div
+          class="bg-white rounded-2xl py-16 max-w-sm h-96 flex flex-col justify-between"
+        >
+          <h1
+            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center xl:px-8 lg:px-8 pb-4"
+          >
+            Integrated platform
+          </h1>
+          <div
+            class="px-4 text-graycolor justify-between flex flex-col items-center text-center h-full"
+          >
+            <li>Integrated analytical workflow</li>
+            <li>
+              Analysing varied experimental outcomes and pattern identification
+            </li>
+            <li>High-Throughput testing</li>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <Image
+          src={ScalabilitySecondary}
+          alt="Scalability"
+          class="w-24 absolute z-10 left-[50%] ml-[-48px] top-[-48px]"
+        />
+        <div
+          class="bg-white rounded-2xl py-16 max-w-sm h-96 flex flex-col justify-between"
+        >
+          <h1
+            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center xl:px-8 xl:mb-3 pb-4"
+          >
+            Scalable
+          </h1>
+          <div
+            class="px-4 text-graycolor justify-between flex flex-col items-center text-center h-full"
+          >
+            <li>Large-scale sampling analysis</li>
+            <li>Consistent and reliable data</li>
+            <li>Low complexity of sample preparation</li>
+            <li>
+              Optimize and Maximize Tool Utilization for Accelerated Research
+            </li>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <Image
+          src={Ia}
+          alt="IA"
+          class="w-24 absolute z-10 left-[50%] ml-[-48px] top-[-48px]"
+        />
+        <div
+          class="bg-white rounded-2xl py-16 max-w-sm h-96 flex flex-col justify-between"
+        >
+          <h1
+            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center xl:px-8 pb-4"
+          >
+            AI powered platform
+          </h1>
+          <div
+            class="px-4 text-graycolor justify-between flex flex-col items-center text-center h-full"
+          >
+            <li>Vast Amount of Data Analyzed</li>
+            <li>High Variety Data Types</li>
+            <li>Reliability/Standardization in Training Data</li>
+            <li>Interpretation of Complex Data</li>
+            <li>
+              Pattern analysis for complex/ rare integrations between molecules
+            </li>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

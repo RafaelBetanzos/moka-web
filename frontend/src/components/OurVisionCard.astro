@@ -1,0 +1,33 @@
+---
+import ArrowRight from "@assets/icons/ArrowRight.svg";
+import { Image } from "astro:assets";
+const { isButtonOn } = Astro.props;
+---
+
+<div
+  class="bg-secondcard shadow-md rounded-3xl flex flex-col items-center text-secondary max-w-4xl py-12 px-12 md:px-24"
+>
+  <h1 class="text-4xl font-bold font-roboto pb-12">OUR VISION</h1>
+  <div class="flex flex-col items-center">
+    <p class="text-xl sm:text-4xl font-inter text-center sm:leading-[46px]">
+      Moka Therapeutics envisions a future where <strong
+        >natural remedies</strong
+      >, rigorously evaluated for safety and efficacy, become a trusted
+      cornerstone of patient care.
+    </p>
+    {
+      isButtonOn && (
+        <div class="mt-6">
+          <button class="flex gap-6 items-center justify-center bg-white text-navbar font-inter font-medium text-[22px] rounded-full max-w-fit mt-4 p-1">
+            <a class="text-center text-[20px] ml-2" href="/about-us">
+              About us
+            </a>
+            <div class="flex items-center justify-center bg-secondary rounded-full w-10 h-10">
+              <Image src={ArrowRight} alt="arrow-right" />
+            </div>
+          </button>
+        </div>
+      )
+    }
+  </div>
+</div>

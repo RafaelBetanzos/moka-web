@@ -1,0 +1,26 @@
+---
+import BrainSection from "@components/BrainSection.astro";
+import ProblemSection from "@components/ProblemSection.astro";
+import SolutionSection from "@components/SolutionSection.astro";
+import TargetSection from "@components/TargetSection.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <div class="flex flex-col items-center justify-between w-full">
+    <div
+      class="bg-background-brain flex flex-col items-center justify-center py-20 w-full"
+    >
+      <h1
+        class="text-secondary text-4xl sm:text-8xl font-inter font-semibold px-8"
+      >
+        Our Technology
+      </h1>
+      <BrainSection />
+    </div>
+
+    <ProblemSection />
+    <SolutionSection />
+    <TargetSection />
+  </div>
+</BaseLayout>

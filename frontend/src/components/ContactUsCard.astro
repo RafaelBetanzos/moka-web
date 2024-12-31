@@ -1,0 +1,30 @@
+---
+import LeafPill from "@assets/icons/LeafPill.svg";
+import { Image } from "astro:assets";
+
+const pillsTag = ["Drug Discovery", "IA", "Nature"];
+---
+
+<div
+  class="bg-secondary relative z-10 rounded-[40px] p-12 flex flex-col justify-center text-white font-inter font-bold shadow-lg max-w-xl px-8"
+>
+  <div class="mb-16 flex flex-col gap-6">
+    <p class="text-4xl">CONTACT US!</p>
+    <p class="text-4xl">Let's unlock the potential of nature together.</p>
+  </div>
+  <div class="flex gap-2">
+    {
+      pillsTag.map((tag, index) => (
+        <div
+          key={index}
+          class="flex items-center gap-3 text-white bg-pills rounded-full py-1 px-4"
+        >
+          <Image src={LeafPill} alt="Leaf Pill" class="w-[14px] object-fit" />
+          <span class="text-white text-sm sm:text-lg font-normal pr-2 sm:pr-0">
+            {tag}
+          </span>
+        </div>
+      ))
+    }
+  </div>
+</div>

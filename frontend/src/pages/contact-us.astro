@@ -1,0 +1,16 @@
+---
+import ContactUsCard from "@components/ContactUsCard.astro";
+import { ContactForm } from "@components/ContactForm/ContactForm";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<BaseLayout>
+  <div class="bg-cover w-full mb-3 mt-3">
+    <div
+      class="flex justify-between items-center min-h-screen xl:mx-16 lg:mx-6 md:mx-10"
+    >
+      <ContactUsCard />
+      <ContactForm client:only />
+    </div>
+  </div>
+</BaseLayout>

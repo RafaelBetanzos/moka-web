@@ -1,0 +1,18 @@
+---
+import { Image } from "astro:assets";
+import LeafsDown from "@assets/LeafsDown.svg";
+import LeafsUp from "@assets/LeafsUp.svg";
+
+const { children } = Astro.props;
+---
+
+<div class="relative w-full h-full">
+  <div class="absolute bottom-0 right-0">
+    <Image src={LeafsDown} alt="Leafs Down" class="w-[360px] object-cover" />
+  </div>
+  <slot>{children}</slot>
+
+  <div class="absolute top-10 left-0">
+    <Image src={LeafsUp} alt="Leafs Up" class="w-[360px] object-cover" />
+  </div>
+</div>

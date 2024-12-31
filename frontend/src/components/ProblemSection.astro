@@ -1,0 +1,105 @@
+---
+import BigData from "@assets/icons/BigData.svg";
+import DoubleChevronSecondary from "@assets/icons/DoubleChevronSecondary.svg";
+import Integration from "@assets/icons/Integration.svg";
+import Scalability from "@assets/icons/Scalability.svg";
+import { Image } from "astro:assets";
+---
+
+<div class="flex flex-col gap-8 mt-8 w-full">
+  <div class="py-12">
+    <h1
+      class="font-roboto font-medium text-black leading-4 tracking-widest text-center py-8"
+    >
+      THE PROBLEM
+    </h1>
+    <p
+      class="text-[#4F7363FF] text-[26px] font-semibold text-center font-inter lg:px-96 xl:px-[37%] md:px-[30%]"
+    >
+      The challenge of identifying molecules and synergies hidden in nature
+    </p>
+  </div>
+  <div class="bg-custom-gradient px-8">
+    <div
+      class="flex flex-col md:flex-row gap-16 md:gap-4 justify-center items-center md:mt-0 mt-16"
+    >
+      <div class="relative">
+        <Image
+          src={Integration}
+          alt="integration"
+          class="w-24 absolute z-10 left-[50%] ml-[-48px] top-[-48px]"
+        />
+        <div
+          class="bg-white rounded-2xl py-16 max-w-sm h-96 flex flex-col justify-between"
+        >
+          <h1
+            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center xl:px-8 lg:px-8 pb-4"
+          >
+            Lack of processes integration
+          </h1>
+          <div
+            class="px-4 text-graycolor justify-between flex flex-col items-center text-center h-full"
+          >
+            <li>Labour-intensive</li>
+            <li>Low throughput testing</li>
+            <li>Restricted number of simultaneal Sample Analysis</li>
+            <li>Difficulty in analysing varied experimental outcomes</li>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <Image
+          src={Scalability}
+          alt="scalability"
+          class="w-24 absolute z-10 left-[50%] ml-[-48px] top-[-48px]"
+        />
+        <div
+          class="bg-white rounded-2xl py-16 max-w-sm h-96 flex flex-col justify-between"
+        >
+          <h1
+            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center xl:px-8 xl:mb-3 pb-4"
+          >
+            Low Scalability
+          </h1>
+          <div
+            class="px-4 text-graycolor justify-between flex flex-col items-center text-center h-full"
+          >
+            <li>High volumes of sample and resources needed</li>
+            <li>Lack of consistency</li>
+            <li>Complexity of sample preparation</li>
+            <li>Low efficiency of tools usage</li>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <Image
+          src={BigData}
+          alt="Big Data"
+          class="w-24 absolute z-10 left-[50%] ml-[-48px] top-[-48px]"
+        />
+        <div
+          class="bg-white rounded-2xl py-16 max-w-sm h-96 flex flex-col justify-between"
+        >
+          <h1
+            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center xl:px-8 pb-4"
+          >
+            Big Data
+          </h1>
+          <div
+            class="px-4 text-graycolor justify-between flex flex-col items-center text-center h-full"
+          >
+            <li>Vast amount of data to analyze</li>
+            <li>High variability in source data</li>
+            <li>Lack of reliability/standardization in training data</li>
+            <li>Difficulty in interpreting complex data</li>
+          </div>
+        </div>
+      </div>
+    </div>
+    <Image
+      src={DoubleChevronSecondary}
+      alt="Double Chevron Secondary"
+      class="w-16 mt-16 align-middle mx-auto"
+    />
+  </div>
+</div>
