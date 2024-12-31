@@ -14,23 +14,24 @@ export const MembersTeam = () => {
       <p className="text-secondary font-inter font-semibold xl:text-[18px] lg:text-[16px] md:text-[16px] leading-12 mt-12 text-center mb-16">
         TEAM MEMBERS
       </p>
-      <div className="flex items-center gap-12">
+      <div className="flex justify-center items-center gap-12">
         {sortedMembers?.map((member: any) => (
-          <div>
-            <div>
+          <div
+            className="flex flex-col items-center justify-center"
+            key={member.id}
+          >
+            <img
+              src={`${VITE_BASE_MOKA_URL}${member.avatar.url}`}
+              alt={`${member.avatar.name}`}
+              className="rounded-full max-w-[150px]"
+            />
+            <a href={member.linkedin} target="_blank" rel="noreferrer">
               <img
-                src={`${VITE_BASE_MOKA_URL}${member.avatar.url}`}
-                alt={`${member.avatar.name}`}
-                className="rounded-full w-[50%] self-center"
+                src={LinkedIn.src}
+                alt="Linkedin"
+                className="relative z-10 left-[20%] bottom-5 w-[35px]"
               />
-              <a href={member.linkedin} target="_blank" rel="noreferrer">
-                <img
-                  src={LinkedIn.src}
-                  alt="Linkedin"
-                  className="relative z-10 left-[44%] bottom-4"
-                />
-              </a>
-            </div>
+            </a>
             <div className="flex flex-col items-center">
               <p className="text-card font font-bold text-[20px]">
                 {member.position}
