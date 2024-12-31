@@ -39,6 +39,10 @@
   position: relative;
 }
 
+.swiper {
+  width: 100%;
+}
+
 .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
   position: absolute;
   bottom: 150px;
