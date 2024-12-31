@@ -1,6 +1,6 @@
 import { useMembersQuery } from "@services/getMembers";
 import { VITE_BASE_MOKA_URL } from "astro:env/client";
-import LinkedIn from "@assets/linkedin.svg";
+import LinkedIn from "@assets/LinkedIn.svg";
 import { sortMembersByPosition } from "@utils/SortingNames";
 export const MembersTeam = () => {
   const { dataMembers, isLoading } = useMembersQuery();
@@ -14,7 +14,7 @@ export const MembersTeam = () => {
       <p className="text-secondary font-inter font-semibold xl:text-[18px] lg:text-[16px] md:text-[16px] leading-12 mt-12 text-center mb-16">
         TEAM MEMBERS
       </p>
-      <div className="flex gap-12">
+      <div className="flex items-center gap-12">
         {sortedMembers?.map((member: any) => (
           <div>
             <div>
@@ -41,9 +41,6 @@ export const MembersTeam = () => {
             </div>
           </div>
         ))}
-        {/**
-         *
-         */}
       </div>
     </div>
   );
