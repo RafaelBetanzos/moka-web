@@ -1,18 +1,22 @@
 ---
-import { Image } from "astro:assets";
-import Logo from "@assets/Logo.svg";
 import LinkedIn from "@assets/LinkedIn.svg";
+import Logo from "@assets/Logo.svg";
+import { Image } from "astro:assets";
 ---
 
-<div class="bg-primary">
-  <nav class="flex flex-row justify-between items-center ml-12 mr-12">
+<div class="bg-primary relative">
+  <nav
+    class="flex flex-row justify-between items-center max-w-6xl mx-auto p-8 flex-wrap gap-8"
+  >
     <div class="mb-4 mt-4">
       <a href="/">
-        <Image src={Logo} alt="Logo" width={130} height={130} loading="eager" />
+        <Image src={Logo} alt="Logo" class="w-48" />
       </a>
     </div>
 
-    <div class="flex flex-row gap-16 text-navbar text-[16px] font-semibold">
+    <div
+      class="flex flex-row gap-8 text-navbar text-[16px] font-semibold items-center"
+    >
       <a href="/">Home</a>
       <a href="/our-technology">Our Technology</a>
       <a href="/about-us">About Us</a>
@@ -21,10 +25,10 @@ import LinkedIn from "@assets/LinkedIn.svg";
 
     <div class="flex flex-row gap-4">
       <a href="#">
-        <Image src={LinkedIn} alt="Linkedin" class="w-[20%]" loading="eager" />
+        <Image src={LinkedIn} alt="Linkedin" width={50} loading="lazy" />
       </a>
       <div
-        class="bg-navbar text-white rounded-full pl-4 pr-4 pt-1 pb-1 text-[16px] font-semibold whitespace-nowrap"
+        class="bg-navbar text-white rounded-full pl-4 pr-4 pt-1 pb-1 text-[16px] font-semibold whitespace-nowrap flex items-center justify-center"
       >
         <a href="/contact-us">Contact Us</a>
       </div>
