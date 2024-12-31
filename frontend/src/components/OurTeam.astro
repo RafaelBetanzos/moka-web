@@ -1,5 +1,5 @@
 ---
-import TeamSection from "./TeamSection.astro";
+import { MembersTeam } from "./Members/MembersTeam";
 ---
 
 <div class="flex flex-col items-center justify-center py-24">
@@ -13,5 +13,5 @@ import TeamSection from "./TeamSection.astro";
     <h2 class="text-secondary">Our team combines scientific</h2>
     <h2>excellence with experience</h2>
   </div>
-  <TeamSection />
+  <MembersTeam client:only />
 </div>
