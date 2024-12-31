@@ -1,14 +1,14 @@
 ---
-import { Image } from "astro:assets";
+import Ia from "@assets/icons/Ia.svg";
 import IntegrationSecondary from "@assets/icons/IntegrationSecondary.svg";
 import ScalabilitySecondary from "@assets/icons/ScalabilitySecondary.svg";
-import Ia from "@assets/icons/Ia.svg";
+import { Image } from "astro:assets";
 ---
 
-<div class="min-h-screen flex flex-col gap-8 xl:mt-16 lg:mt-8">
-  <div class="xl:py-28 lg:py-12 md:py-12">
+<div class="min-h-screen flex flex-col gap-8 mt-8 w-full">
+  <div class="pb-28">
     <h1
-      class="font-roboto font-medium text-black leading-4 tracking-widest text-center"
+      class="font-roboto font-medium text-black leading-4 tracking-widest text-center py-8"
     >
       OUR SOLUTION
     </h1>
@@ -19,81 +19,83 @@ import Ia from "@assets/icons/Ia.svg";
       and their mechanism of action
     </p>
   </div>
-  <div class="bg-custom-gradient">
+  <div class="bg-custom-gradient px-8">
     <div
-      class="md:gap-8 flex lg:gap-8 xl:gap-1 xl:mx-64 lg:mx-24 xl:px-16 lg:px-20 md:px-20 md:mx-24"
+      class="flex flex-col md:flex-row gap-16 md:gap-4 justify-center items-center md:mt-0 mt-16"
     >
-      <div class="relative w-[80%]">
+      <div class="relative">
         <Image
           src={IntegrationSecondary}
           alt="integration"
-          class="w-16 absolute z-10 right-[40%] bottom-[90%]"
+          class="w-24 absolute z-10 left-[50%] ml-[-48px] top-[-48px]"
         />
         <div
-          class="bg-white rounded-2xl xl:py-8 lg:pt-6 lg:pb-[42px] md:py-4 xl:mx-12 xl:pb-12"
+          class="bg-white rounded-2xl py-16 max-w-sm h-96 flex flex-col justify-between"
         >
           <h1
-            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center py-6 md:py-8 px-8"
+            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center xl:px-8 lg:px-8 pb-4"
           >
             Integrated platform
           </h1>
           <div
-            class="flex flex-col gap-2 md:gap-6 xl:px-8 px-4 text-graycolor text-center"
+            class="px-4 text-graycolor justify-between flex flex-col items-center text-center h-full"
           >
-            <li class="xl:px-8">Integrated analytical workflow</li>
-            <li class="lg:px-4 md:px-2">
+            <li>Integrated analytical workflow</li>
+            <li>
               Analysing varied experimental outcomes and pattern identification
             </li>
-            <li class="xl:mb-4">High-Throughput testing</li>
+            <li>High-Throughput testing</li>
           </div>
         </div>
       </div>
-      <div class="relative w-[80%]">
+      <div class="relative">
         <Image
           src={ScalabilitySecondary}
           alt="Scalability"
-          class="w-16 absolute z-10 right-[40%] bottom-[90%]"
+          class="w-24 absolute z-10 left-[50%] ml-[-48px] top-[-48px]"
         />
-        <div class="bg-white rounded-2xl xl:py-8 lg:py-6 md:py-[20px] xl:mx-12">
+        <div
+          class="bg-white rounded-2xl py-16 max-w-sm h-96 flex flex-col justify-between"
+        >
           <h1
-            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center py-6 px-8"
+            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center xl:px-8 xl:mb-3 pb-4"
           >
             Scalable
           </h1>
           <div
-            class="flex flex-col xl:gap-4 lg:gap-4 px-2 text-graycolor text-center md:gap-2"
+            class="px-4 text-graycolor justify-between flex flex-col items-center text-center h-full"
           >
-            <li class="md:px-8 xl:px-12">Large-scale sampling analysis</li>
+            <li>Large-scale sampling analysis</li>
             <li>Consistent and reliable data</li>
-            <li class="xl:px-8">Low complexity of sample preparation</li>
-            <li class="md:px-4 xl:px-8">
+            <li>Low complexity of sample preparation</li>
+            <li>
               Optimize and Maximize Tool Utilization for Accelerated Research
             </li>
           </div>
         </div>
       </div>
-      <div class="relative w-[80%]">
+      <div class="relative">
         <Image
           src={Ia}
           alt="IA"
-          class="w-16 absolute z-10 right-[40%] bottom-[90%]"
+          class="w-24 absolute z-10 left-[50%] ml-[-48px] top-[-48px]"
         />
         <div
-          class="bg-white rounded-2xl xl:py-8 lg:py-6 md:py-4 xl:mx-12 px-[10px]"
+          class="bg-white rounded-2xl py-16 max-w-sm h-96 flex flex-col justify-between"
         >
           <h1
-            class="leading-12 font-inter font-semibold text-secondary text-[24px] whitespace-nowrap py-6 text-center"
+            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center xl:px-8 pb-4"
           >
             AI powered platform
           </h1>
-          <div class="flex flex-col gap-2 text-graycolor text-center">
+          <div
+            class="px-4 text-graycolor justify-between flex flex-col items-center text-center h-full"
+          >
             <li>Vast Amount of Data Analyzed</li>
             <li>High Variety Data Types</li>
-            <li class="xl:px-4">
-              Reliability/Standardization in Training Data
-            </li>
-            <li class="whitespace-nowrap">Interpretation of Complex Data</li>
-            <li class="lg:px-2 md:px-2 lg:mb-4 xl:px-8">
+            <li>Reliability/Standardization in Training Data</li>
+            <li>Interpretation of Complex Data</li>
+            <li>
               Pattern analysis for complex/ rare integrations between molecules
             </li>
           </div>

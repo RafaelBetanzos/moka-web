@@ -1,15 +1,15 @@
 ---
-import { Image } from "astro:assets";
-import Integration from "@assets/icons/Integration.svg";
-import Scalability from "@assets/icons/Scalability.svg";
 import BigData from "@assets/icons/BigData.svg";
 import DoubleChevronSecondary from "@assets/icons/DoubleChevronSecondary.svg";
+import Integration from "@assets/icons/Integration.svg";
+import Scalability from "@assets/icons/Scalability.svg";
+import { Image } from "astro:assets";
 ---
 
-<div class="min-h-screen flex flex-col gap-8 xl:mt-16 lg:mt-8">
+<div class="min-h-screen flex flex-col gap-8 mt-8 w-full">
   <div class="xl:py-28 lg:py-12 md:py-12">
     <h1
-      class="font-roboto font-medium text-black leading-4 tracking-widest text-center"
+      class="font-roboto font-medium text-black leading-4 tracking-widest text-center py-8"
     >
       THE PROBLEM
     </h1>
@@ -19,91 +19,87 @@ import DoubleChevronSecondary from "@assets/icons/DoubleChevronSecondary.svg";
       The challenge of identifying molecules and synergies hidden in nature
     </p>
   </div>
-  <div class="bg-custom-gradient">
+  <div class="bg-custom-gradient px-8">
     <div
-      class="lg:px-20 md:px-28 md:gap-8 flex lg:gap-8 xl:gap-4 xl:mx-64 lg:mx-24"
+      class="flex flex-col md:flex-row gap-16 md:gap-4 justify-center items-center md:mt-0 mt-16"
     >
-      <div class="relative w-[40%]">
+      <div class="relative">
         <Image
           src={Integration}
           alt="integration"
-          class="w-16 absolute z-10 right-[40%] bottom-[90%]"
+          class="w-24 absolute z-10 left-[50%] ml-[-48px] top-[-48px]"
         />
-        <div class="bg-white rounded-2xl xl:py-8 lg:py-6 md:py-4 xl:mx-12">
+        <div
+          class="bg-white rounded-2xl py-16 max-w-sm h-96 flex flex-col justify-between"
+        >
           <h1
-            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center py-6 xl:px-8 lg:px-8"
+            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center xl:px-8 lg:px-8 pb-4"
           >
             Lack of processes integration
           </h1>
-          <div class="flex flex-col gap-2 px-4 text-graycolor text-center">
+          <div
+            class="px-4 text-graycolor justify-between flex flex-col items-center text-center h-full"
+          >
             <li>Labour-intensive</li>
             <li>Low throughput testing</li>
-            <li class="xl:px-8 lg:px-8 md:px-8">
-              Restricted number of simultaneal Sample Analysis
-            </li>
-            <li class="xl:px-12 lg:px-8 md:px-12">
-              Difficulty in analysing varied experimental outcomes
-            </li>
+            <li>Restricted number of simultaneal Sample Analysis</li>
+            <li>Difficulty in analysing varied experimental outcomes</li>
           </div>
         </div>
       </div>
-      <div class="relative w-[40%]">
+      <div class="relative">
         <Image
           src={Scalability}
           alt="scalability"
-          class="w-16 absolute z-10 right-[40%] bottom-[90%]"
+          class="w-24 absolute z-10 left-[50%] ml-[-48px] top-[-48px]"
         />
-        <div class="bg-white rounded-2xl xl:py-6 lg:py-6 md:py-4 xl:mx-12">
+        <div
+          class="bg-white rounded-2xl py-16 max-w-sm h-96 flex flex-col justify-between"
+        >
           <h1
-            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center py-6 xl:px-8 xl:mb-3"
+            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center xl:px-8 xl:mb-3 pb-4"
           >
             Low Scalability
           </h1>
           <div
-            class="flex flex-col gap-4 px-4 text-graycolor text-center lg:mb-3 md:mb-3"
+            class="px-4 text-graycolor justify-between flex flex-col items-center text-center h-full"
           >
-            <li class="lg:px-12 xl:px-8">
-              High volumes of sample and resources needed
-            </li>
+            <li>High volumes of sample and resources needed</li>
             <li>Lack of consistency</li>
-            <li class="xl:px-12 lg:px-8 md:px-4">
-              Complexity of sample preparation
-            </li>
-            <li class="xl:px-8 lg:px-12 md:px-8">
-              Low efficiency of tools usage
-            </li>
+            <li>Complexity of sample preparation</li>
+            <li>Low efficiency of tools usage</li>
           </div>
         </div>
       </div>
-      <div class="relative w-[40%]">
+      <div class="relative">
         <Image
           src={BigData}
           alt="Big Data"
-          class="w-16 absolute z-10 right-[40%] bottom-[90%]"
+          class="w-24 absolute z-10 left-[50%] ml-[-48px] top-[-48px]"
         />
-        <div class="bg-white rounded-2xl xl:py-5 lg:py-6 md:py-4 xl:mx-12">
+        <div
+          class="bg-white rounded-2xl py-16 max-w-sm h-96 flex flex-col justify-between"
+        >
           <h1
-            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center py-6 xl:px-8"
+            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center xl:px-8 pb-4"
           >
             Big Data
           </h1>
-          <div class="flex flex-col gap-5 px-4 text-graycolor text-center">
-            <li class="lg:px-12">Vast Amount of Data to Analyze</li>
-            <li>High Variability in Source Data</li>
-            <li class="xl:px-4 lg:px-2 md:px-8">
-              Lack of Reliability/ Standardization in Training Data
-            </li>
-            <li class="xl:px-6 lg:px-6 md:px-8 lg:mb-6">
-              Difficulty in Interpreting Complex Data
-            </li>
+          <div
+            class="px-4 text-graycolor justify-between flex flex-col items-center text-center h-full"
+          >
+            <li>Vast amount of data to analyze</li>
+            <li>High variability in source data</li>
+            <li>Lack of reliability/standardization in training data</li>
+            <li>Difficulty in interpreting complex data</li>
           </div>
         </div>
       </div>
     </div>
+    <Image
+      src={DoubleChevronSecondary}
+      alt="Double Chevron Secondary"
+      class="w-16 mt-16 align-middle mx-auto"
+    />
   </div>
-  <Image
-    src={DoubleChevronSecondary}
-    alt="Double Chevron Secondary"
-    class="w-16 mt-16 align-middle mx-auto"
-  />
 </div>

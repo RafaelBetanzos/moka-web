@@ -1,42 +1,44 @@
 ---
-import { Image } from "astro:assets";
-import LogoNegative from "@assets/Logo-negative.svg";
 import LinkedIn from "@assets/LinkedIn.svg";
+import LogoNegative from "@assets/Logo-negative.svg";
+import { Image } from "astro:assets";
 ---
 
-<footer
-  class="relative bg-secondary flex flex-row justify-between items-center"
->
-  <div class="flex flex-row gap-44 ml-10 items-center">
-    <div>
-      <a href="/">
-        <Image
-          src={LogoNegative}
-          alt="Logo"
-          width={130}
-          height={130}
-          loading="lazy"
-        />
-      </a>
+<footer class="relative bg-secondary flex gap-4 justify-between items-center">
+  <div
+    class="flex md:flex-row flex-col max-w-6xl mx-auto justify-between w-full"
+  >
+    <div class="flex flex-row items-center justify-center gap-8">
+      <div>
+        <a href="/">
+          <Image
+            src={LogoNegative}
+            alt="Logo"
+            width={130}
+            height={130}
+            loading="lazy"
+          />
+        </a>
+      </div>
+
+      <div
+        class="flex flex-col gap-2 text-navbar text-[16px] font-medium text-white mt-8 mb-8 font-roboto"
+      >
+        <a href="/">Home</a>
+        <a href="/our-technology">Our Technology</a>
+        <a href="/about-us">About Us</a>
+        <a href="/articles">Articles</a>
+      </div>
     </div>
 
     <div
-      class="flex flex-col gap-2 text-navbar text-[16px] font-medium text-white mt-8 mb-8 font-roboto"
+      class="flex flex-col gap-2 text-navbar font-roboto text-white text-[16px] font-medium items-center justify-center"
     >
-      <a href="/">Home</a>
-      <a href="/our-technology">Our Technology</a>
-      <a href="/about-us">About Us</a>
-      <a href="/articles">Articles</a>
+      <p>Let's get in touch</p>
+      <a href="#">info@mokatherapeutics.com</a>
+      <a href="#">
+        <Image src={LinkedIn} alt="Linkedin" width={50} loading="lazy" />
+      </a>
     </div>
-  </div>
-
-  <div
-    class="flex flex-col gap-2 text-navbar font-roboto text-white text-[16px] font-medium mr-10"
-  >
-    <p>Let's get in touch</p>
-    <a href="#">info@mokatherapeutics.com</a>
-    <a href="#">
-      <Image src={LinkedIn} alt="Linkedin" width={50} loading="lazy" />
-    </a>
   </div>
 </footer>
