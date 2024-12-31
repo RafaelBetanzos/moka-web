@@ -1,8 +1,8 @@
 import "@styles/MarqueeComponent.style.css";
 import Marquee from "react-fast-marquee";
 import { MarqueeImages } from "./MarqueeImages";
-import { usePartnersQuery } from "services/getPartners";
 import { VITE_BASE_MOKA_URL } from "astro:env/client";
+import { usePartnersQuery } from "@services/getPartners";
 
 export const MarqueeComponent: React.FC = () => {
   const { data, isLoading } = usePartnersQuery();

@@ -19,6 +19,7 @@
       "@styles/*": ["styles/*"],
       "@store/*": ["store/*"],
       "@hooks/*": ["hooks/*"],
+      "@services/*": ["services/*"],
     }
   }
 }
