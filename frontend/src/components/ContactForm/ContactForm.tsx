@@ -1,14 +1,13 @@
-import User from "@assets/icons/User.svg";
 import Email from "@assets/icons/Email.svg";
-import Phone from "@assets/icons/Phone.svg";
 import Message from "@assets/icons/Message.svg";
+import Phone from "@assets/icons/Phone.svg";
+import User from "@assets/icons/User.svg";
 import "@styles/ContactForm.style.css";
 
 export const ContactForm: React.FC = () => {
   return (
-    <div className="w-full xl:mb-16 lg:mb-44 md:mb-52">
       <form
-        className="flex flex-col gap-4 xl:w-[50%] lg:w-[75%] md:w-[60%] h-[594px] mx-auto"
+        className="flex flex-col gap-4 min-w-xl"
         onSubmit={(e) => e.preventDefault()}
       >
         <div className="w-full flex flex-col gap-3">
@@ -16,9 +15,9 @@ export const ContactForm: React.FC = () => {
             Name
           </label>
           <div className="relative">
-            <img src={User.src} alt="User" className="absolute ml-3 mt-2" />
+            <img src={User.src} alt="User" className="absolute ml-5 mt-2" />
             <input
-              className="rounded-full w-full border-none px-12 py-3 text-base md:text-lg md:h-12"
+              className="rounded-full w-full border-none text-base h-16 text-stone-700"
               type="text"
               id="Name"
               placeholder="Enter your name..."
@@ -30,9 +29,9 @@ export const ContactForm: React.FC = () => {
             Email
           </label>
           <div className="relative">
-            <img src={Email.src} alt="Email" className="absolute ml-2 mt-2" />
+            <img src={Email.src} alt="Email" className="absolute ml-4 mt-3" />
             <input
-              className="rounded-full w-full border-none px-12 py-3 text-base md:text-lg md:h-12"
+              className="rounded-full w-full border-none text-base h-16 text-stone-700"
               type="email"
               id="Email"
               placeholder="Enter your email address..."
@@ -44,11 +43,10 @@ export const ContactForm: React.FC = () => {
             Phone Number
           </label>
           <div className="relative">
-            <img src={Phone.src} alt="Phone" className="absolute ml-2 mt-2" />
+            <img src={Phone.src} alt="Phone" className="absolute ml-4 mt-3" />
             <input
-              className="rounded-full w-full border-none px-12 py-3 text-base md:text-lg md:h-12"
+              className="rounded-full w-full border-none text-base h-16 text-stone-700"
               id="Phone"
-              type="number"
               placeholder="Enter your phone number..."
             />
           </div>
@@ -64,13 +62,13 @@ export const ContactForm: React.FC = () => {
             <img
               src={Message.src}
               alt="Message"
-              className="absolute ml-2 mt-2"
+              className="absolute ml-3 mt-3"
             />
             <textarea
               id="Message"
               placeholder="Enter your message..."
               rows={3}
-              className="rounded-lg w-full border-none px-12 py-3 text-base md:text-lg md:h-48 resize-none"
+              className="rounded-lg w-full border-none px-12 py-3 text-base md:text-lg md:h-48 resize-none text-stone-700"
             />
           </div>
         </div>
@@ -83,6 +81,5 @@ export const ContactForm: React.FC = () => {
           </button>
         </div>
       </form>
-    </div>
   );
 };

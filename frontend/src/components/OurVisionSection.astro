@@ -1,13 +1,13 @@
 ---
-import { Image } from "astro:assets";
-import LeafsLayout from "@layouts/LeafsLayout.astro";
 import LeafsDown from "@assets/LeafsDown.svg";
+import LeafsLayout from "@layouts/LeafsLayout.astro";
+import { Image } from "astro:assets";
 import OurVisionCard from "./OurVisionCard.astro";
 ---
 
-<div class="bg-custom-gradient bg-no-repeat bg-cover h-screen w-full">
+<div class="bg-custom-gradient bg-no-repeat bg-cover w-full">
   <LeafsLayout>
-    <div class="flex flex-col justify-center items-center min-h-screen">
+    <div class="flex flex-col justify-center items-center py-32">
       <OurVisionCard isButtonOn={true} />
       <div
         class="absolute lg:bottom-20 xl:bottom-40 left-40 ml-44 overflow-visible w-[200px] h-[50px]"

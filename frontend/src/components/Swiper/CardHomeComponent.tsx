@@ -3,9 +3,9 @@ import ArrowDiagonal from "@assets/icons/ArrowDiagonal.svg";
 export const CardHomeComponent = ({ article }) => {
   return (
     <div
-      className={`bg-[rgba(143,192,169,0.5)] p-6 rounded-xl relative flex gap-8 shadow-lg mx-[25%] mt-[10%]`}
+      className="relative flex"
     >
-      <div className="flex items-center opacity-100 justify-center gap-8 my-[8%] xl:mx-[10%] lg:mx-[3%]">
+      <div className="flex items-center flex-col lg:flex-row opacity-100 justify-center gap-8 max-w-6xl bg-[rgba(143,192,169,0.5)] p-8 lg:p-32 rounded-xl shadow-lg mx-auto">
         <div className="flex flex-col">
           <div className="bg-secondcard rounded-full w-fit py-1 px-2">
             <p className="font-roboto text-lg font-medium text-secondary">

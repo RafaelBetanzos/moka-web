@@ -1,13 +1,13 @@
 ---
-import Hero from "../components/Hero.astro";
-import DataPlatformSection from "@components/DataPlatformSection.astro";
-import OurVisionSection from "@components/OurVisionSection.astro";
-import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
-import { ArticlesCarrousel } from "@components/Swiper/ArticlesCarrousel";
 import { ContactForm } from "@components/ContactForm/ContactForm";
-import LeafsLayout from "@layouts/LeafsLayout.astro";
-import BaseLayout from "@layouts/BaseLayout.astro";
 import ContactUsCard from "@components/ContactUsCard.astro";
+import DataPlatformSection from "@components/DataPlatformSection.astro";
+import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
+import OurVisionSection from "@components/OurVisionSection.astro";
+import { ArticlesCarrousel } from "@components/Swiper/ArticlesCarrousel";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import LeafsLayout from "@layouts/LeafsLayout.astro";
+import Hero from "../components/Hero.astro";
 ---
 
 <BaseLayout>
@@ -22,7 +22,7 @@ import ContactUsCard from "@components/ContactUsCard.astro";
     <div class="bg-cover min-h-screen w-full mb-3 mt-3">
       <LeafsLayout>
         <div
-          class="flex justify-between items-center min-h-screen xl:mx-16 lg:mx-6 md:mx-10"
+          class="flex justify-between flex-col lg:flex-row items-center max-w-6xl gap-8 mx-auto"
         >
           <ContactUsCard />
           <ContactForm client:only />
