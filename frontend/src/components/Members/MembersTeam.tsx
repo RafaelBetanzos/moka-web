@@ -1,9 +1,13 @@
 import { useMembersQuery } from "@services/getMembers";
-
+import { VITE_BASE_MOKA_URL } from "astro:env/client";
+import LinkedIn from "@assets/linkedin.svg";
+import { sortMembersByPosition } from "@utils/SortingNames";
 export const MembersTeam = () => {
   const { dataMembers, isLoading } = useMembersQuery();
 
-  console.log(dataMembers);
+  if (isLoading) return <p>Loading...</p>;
+
+  const sortedMembers = sortMembersByPosition(dataMembers?.data);
 
   return (
     <div className="flex flex-col gap-4">
@@ -11,23 +15,34 @@ export const MembersTeam = () => {
         TEAM MEMBERS
       </p>
       <div className="flex gap-12">
-        {/**
-         * <div>
+        {sortedMembers?.map((member: any) => (
           <div>
-            {}<img src={Rafa} alt="Rafa" className="rounded-full" />
-            <img
-              src={LinkedIn}
-              alt="Linkedin"
-              className="relative z-10 left-[44%] bottom-4"
-            />
+            <div>
+              <img
+                src={`${VITE_BASE_MOKA_URL}${member.avatar.url}`}
+                alt={`${member.avatar.name}`}
+                className="rounded-full w-[50%] self-center"
+              />
+              <a href={member.linkedin} target="_blank" rel="noreferrer">
+                <img
+                  src={LinkedIn.src}
+                  alt="Linkedin"
+                  className="relative z-10 left-[44%] bottom-4"
+                />
+              </a>
+            </div>
+            <div className="flex flex-col items-center">
+              <p className="text-card font font-bold text-[20px]">
+                {member.position}
+              </p>
+              <p className="text-secondary font font-bold text-[20px]">
+                {member.name}
+              </p>
+            </div>
           </div>
-          <div className="flex flex-col items-center">
-            <p className="text-card font font-bold text-[20px]">CEO</p>
-            <p className="text-secondary font font-bold text-[20px]">
-              Rafael Betanzos
-            </p>
-          </div>
-        </div>
+        ))}
+        {/**
+         *
          */}
       </div>
     </div>

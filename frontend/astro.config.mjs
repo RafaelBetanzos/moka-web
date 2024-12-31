@@ -20,27 +20,7 @@ export default defineConfig({
   },
   env: {
     schema: {
-      VITE_MOKA_URL: envField.string({
-        context: "client",
-        access: "public",
-      }),
       VITE_BASE_MOKA_URL: envField.string({
-        context: "client",
-        access: "public",
-      }),
-      VITE_ARTICLES_URL: envField.string({
-        context: "client",
-        access: "public",
-      }),
-      VITE_PARTNERS_URL: envField.string({
-        context: "client",
-        access: "public",
-      }),
-      VITE_MEMBERS_URL: envField.string({
-        context: "client",
-        access: "public",
-      }),
-      VITE_ADVISORS_URL: envField.string({
         context: "client",
         access: "public",
       }),

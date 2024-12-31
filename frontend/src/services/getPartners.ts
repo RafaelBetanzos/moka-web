@@ -1,11 +1,11 @@
 // any-component.tsx
 import { queryClient } from "@store/index";
 import { useQuery } from "@tanstack/react-query";
-import { VITE_MOKA_URL, VITE_PARTNERS_URL } from 'astro:env/client'
+import { VITE_BASE_MOKA_URL } from 'astro:env/client'
 
 
 const getPartners = async () => {
-  const response = await fetch(`${VITE_MOKA_URL}${VITE_PARTNERS_URL}`);
+  const response = await fetch(`${VITE_BASE_MOKA_URL}/api/partners?populate=*`);
   return response.json();
 };
 
