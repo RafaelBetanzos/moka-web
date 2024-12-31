@@ -1,7 +1,5 @@
-import { useMembersQuery } from "@services/getMembers";
 import { VITE_BASE_MOKA_URL } from "astro:env/client";
 import LinkedIn from "@assets/LinkedIn.svg";
-import { sortMembersByPosition } from "@utils/SortingNames";
 import { useAdvisorsQuery } from "@services/getAdvisors";
 
 export const AdvisorsTeam = () => {
