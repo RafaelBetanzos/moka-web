@@ -9,7 +9,7 @@ const Homepage = () => {
           lineHeight: 1.25,
         }}
       >
-        Moka Therapeutics
+        Moka Bio
       </h1>
     )
   }
