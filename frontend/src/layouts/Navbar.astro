@@ -1,34 +1,47 @@
 ---
 import LinkedIn from "@assets/LinkedIn.svg";
-import Logo from "@assets/Logo.svg";
+import Logo from "@assets/icons/isologo.svg";
 import { Image } from "astro:assets";
 ---
 
 <div class="bg-primary relative">
   <nav
-    class="flex flex-row justify-between items-center max-w-6xl mx-auto p-8 flex-wrap gap-8"
+    class="flex flex-row justify-between items-center max-w-6xl mx-auto py-2 flex-wrap gap-8"
   >
     <div class="mb-4 mt-4">
       <a href="/">
-        <Image src={Logo} alt="Logo" class="w-48" />
+        <Image src={Logo} alt="Moka Bio Logo" class="w-24" />
       </a>
     </div>
 
     <div
-      class="flex flex-row gap-8 text-navbar text-sm font-semibold items-center"
+      class="flex flex-row gap-8 text-navbar text-xl font-semibold items-center"
     >
-      <a href="/">Home</a>
-      <a href="/our-technology">Our Technology</a>
-      <a href="/about-us">About Us</a>
-      <a href="/articles">Articles</a>
+      <a href="/" class="hover:text-secondary transition-colors">Home</a>
+      <a href="/our-technology" class="hover:text-secondary transition-colors">Our Technology</a>
+      <a href="/about-us" class="hover:text-secondary transition-colors">About Us</a>
+      <a href="/articles" class="hover:text-secondary transition-colors">Articles</a>
     </div>
 
-    <div class="flex flex-row gap-4">
-      <a href="#">
-        <Image src={LinkedIn} alt="Linkedin" width={50} loading="lazy" />
+    <div class="flex flex-row gap-4 items-center">
+      {/* LINK FIXED: Now points to the company profile */}
+      <a 
+        href="https://www.linkedin.com/company/mokabio" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="hover:scale-110 transition-transform"
+      >
+        <Image 
+          src={LinkedIn} 
+          alt="LinkedIn Profile" 
+          width={50}  {/* RESTORED TO ORIGINAL SIZE */}
+          class="opacity-90 hover:opacity-100"
+          loading="lazy" 
+        />
       </a>
+
       <div
-        class="bg-navbar text-white rounded-full pl-4 pr-4 pt-1 pb-1 text-[16px] font-semibold whitespace-nowrap flex items-center justify-center"
+        class="bg-navbar text-white rounded-full px-6 py-2 text-[16px] font-semibold whitespace-nowrap flex items-center justify-center hover:bg-secondary transition-colors"
       >
         <a href="/contact-us">Contact Us</a>
       </div>

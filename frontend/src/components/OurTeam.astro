@@ -3,17 +3,23 @@ import { MembersTeam } from "./Members/MembersTeam";
 import { AdvisorsTeam } from "./Advisors/AdvisorsTeam";
 ---
 
-<div class="flex flex-col items-center justify-center py-24 px-8">
-  <div>
-    <h1 class="font-roboto font-medium text-black leading-4 tracking-widest">
+<div class="flex flex-col items-center justify-center py-12 px-8 bg-[#E5E7EB]">
+  
+  <div class="mb-4"> <h1 class="font-roboto font-medium text-gray-900 leading-4 tracking-[0.4em] text-center">
       MEET OUR TEAM
     </h1>
   </div>
 
-  <div class="xl:text-[48px] lg:text-[32px] md:text-[32px] font-semibold">
-    <h2 class="text-secondary">Our team combines scientific</h2>
-    <h2>excellence with experience</h2>
+  <div class="xl:text-[48px] lg:text-[36px] text-[28px] font-bold text-center leading-tight mb-4">
+    <h2>
+      <span class="text-secondary">We combine scientific excellence</span> 
+      <span class="text-black"> with international experience</span>
+    </h2>
   </div>
+
   <MembersTeam client:only />
+  
+  <div class="w-full max-w-4xl border-t border-gray-300 my-4"></div>
+  
   <AdvisorsTeam client:only />
 </div>

@@ -1,26 +1,23 @@
-import "@styles/MarqueeComponent.style.css";
+import React from "react";
 import Marquee from "react-fast-marquee";
-import { MarqueeImages } from "./MarqueeImages";
-import { VITE_BASE_MOKA_URL } from "astro:env/client";
-import { usePartnersQuery } from "@services/getPartners";
+import { images } from "../../utils/images"; 
 
 export const MarqueeComponent: React.FC = () => {
-  const { data, isLoading } = usePartnersQuery();
-
-  if (isLoading) return <div>Loading...</div>;
-
   return (
-    <div className="relative overflow-hidden bg-white py-8 mb-32 shadow-sm">
-      <Marquee gradient={false} speed={50}>
-        <div className="flex gap-12 bg-white">
-          {data?.data?.map((image: any) => (
-            <MarqueeImages
-              key={image?.id}
-              src={`${VITE_BASE_MOKA_URL}${image?.logo?.url}`}
-              alt={image?.logo?.name}
+    /* h-16 makes the bar slim. my-0 removes the giant vertical gaps. */
+    <div className="w-full h-16 flex items-center bg-transparent my-0 overflow-hidden">
+      <Marquee gradient={false} speed={40} pauseOnHover={true}>
+        {images.map((logo, index) => (
+          <div key={index} className="mx-8 flex items-center justify-center">
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              /* h-10 fits perfectly in a h-16 container */
+              className="h-10 w-auto object-contain brightness-0 opacity-50 hover:opacity-100 transition-all duration-300"
+              onError={(e) => (e.currentTarget.style.display = 'none')}
             />
-          ))}
-        </div>
+          </div>
+        ))}
       </Marquee>
     </div>
   );

@@ -10,7 +10,7 @@ export const blocksProblem = [
     alt: "lab",
     title: "THE PROBLEM",
     content:
-      "The lack of knowledge in identifying therapeutic molecules and their synergies in ethnobotanics.",
+      "Nature’s chemical diversity is unstructured and offline, making the discovery of predictable, scalable bioactives an artisanal and high-risk process.",
     chevron: true,
   },
   {
@@ -18,39 +18,37 @@ export const blocksProblem = [
     alt: "ia",
     title: "THE SOLUTION",
     content:
-      "Moka platform enables groundbreaking insights to identify new ethnobotanical molecules and their mechanisms of action.",
+      "Moka provides the programmable infrastructure to decode natural bioactivity into standardized, IP-protected molecular assets for global industries.",
     chevron: false,
   },
 ];
 
 export const blocksGraphics = [
   {
-    title: "USE OF TRADICIONAL MEDICINE",
+    title: "GLOBAL BIOACTIVITY",
     content: (
       <span>
-        <strong>80%</strong> of the world population{" "}
-        <strong>uses traditional medicine.</strong>
-        (WHO, 2024)
+        <strong>80%</strong> of the world population utilizes{" "}
+        <strong> natural molecular</strong> solutions.
       </span>
     ),
-    grayPoint: "TRADITIONAL",
-    greenPoint: "MODERN",
+    grayPoint: "SYNTHETIC",
+    greenPoint: "BIO-VALIDATED",
     number: "80%",
     image: GraphicTraditional,
     alt: "Graphic Traditional",
   },
   {
-    title: "APPROVED DRUGS",
+    title: "<1% CHARACTERIZED",
     content: (
       <span>
-        <strong>40% of approved drugs</strong> today came from{" "}
-        <strong>natural substances</strong> like tree barks and plant roots.
-        (WHO, 2024)
+        <strong>Less than 1% of the world’s</strong> originate from{" "}
+        <strong> natural chemistry</strong> has been chemically characterized.
       </span>
     ),
-    grayPoint: "SINTETIC DRUGS",
-    greenPoint: "NATURAL",
-    number: "40%",
+    grayPoint: "INDEXED",
+    greenPoint: "UNINDEXED",
+    number: "1%",
     image: GraphicDrugs,
     alt: "Graphic Drugs",
   },
