@@ -6,39 +6,53 @@ import Venezuela from "@assets/icons/Venezuela.svg";
 import { Image } from "astro:assets";
 ---
 
-<div
-  class="flex flex-shrink-0 items-center justify-between xl:gap-24 lg:gap-12 px-8"
->
-  <div>
-    <Image src={Map} alt="Map" class="object-fit" />
+<div class="flex flex-shrink-0 items-center justify-between xl:gap-24 lg:gap-12 px-8 group overflow-hidden py-10">
+  
+  <div class="relative w-full h-full transition-all duration-1000 ease-out transform group-hover:scale-105 group-hover:-translate-x-2">
+    <Image 
+      src={Map} 
+      alt="Map" 
+      class="object-fit transition-transform duration-700 hover:rotate-1" 
+    />
+    
+    <div class="absolute inset-0 bg-secondary/5 rounded-full blur-3xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
   </div>
+
   <div class="flex flex-col gap-4 xl:w-[40%] lg:w-[60%] md:w-[80%]">
     <div>
-      <h1
-        class="font-roboto font-medium text-black leading-4 tracking-widest text-end"
-      >
-        MOKA THERAPEUTICS
+      <h1 class="font-roboto font-medium text-black leading-4 tracking-widest text-end">
+        MOKA BIO
       </h1>
     </div>
-    <div
-      class="xl:text-[48px] lg:text-[32px] md:text-[32px] font-semibold text-end"
-    >
-      <h2 class="text-secondary">AI Powered Ethnobotanic</h2>
-      <h2>Drug Discovery Platform</h2>
+    
+    <div class="xl:text-[48px] lg:text-[32px] md:text-[32px] font-semibold text-end leading-tight">
+      <h2 class="text-secondary">AI Powered Nature</h2>
+      <h2>The operating system for natural product discovery.</h2>
     </div>
+
     <div class="flex flex-col gap-4 justify-end items-end">
-      <p
-        class="text-neutral-500 font-inter font-medium xl:text-[18px] lg:text-[16px] md:text-[16px] leading-12 text-end xl:pl-[42%] lg:pl-[35%] md:pl-[28%] text-sm sm:text-base"
-      >
-        Traditional medicine is widely used and increasingly relevant in the
-        world today. We have begun exploring its healing powers to address
-        inflammation.
+      <p class="text-neutral-500 font-inter font-medium xl:text-[18px] lg:text-[16px] md:text-[16px] leading-relaxed text-end xl:pl-[42%] lg:pl-[35%] md:pl-[28%] text-sm sm:text-base">
+        Despite the Americas hosting 40% of the world’s plant diversity, it is estimated that over 85% of these species have yet to be scientifically mapped for their molecular activity, representing a massive, untapped reservoir of natural intelligence.
       </p>
+      
       <div class="flex gap-4 justify-end relative z-10">
-        <Image src={Argentina} alt="Argentina" class="w-[20%]" />
-        <Image src={Mexico} alt="Mexico" class="w-[20%]" />
-        <Image src={Venezuela} alt="Venezuela" class="w-[20%]" />
+        <Image src={Argentina} alt="Argentina" class="w-[20%] hover:-translate-y-2 transition-transform duration-300 cursor-pointer" />
+        <Image src={Mexico} alt="Mexico" class="w-[20%] hover:-translate-y-2 transition-transform duration-300 cursor-pointer" />
+        <Image src={Venezuela} alt="Venezuela" class="w-[20%] hover:-translate-y-2 transition-transform duration-300 cursor-pointer" />
       </div>
     </div>
   </div>
 </div>
+
+<style>
+  /* Animación de flotación constante y suave para el mapa */
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .object-fit {
+    animation: float 6s ease-in-out infinite;
+  }
+</style>

@@ -1,8 +1,9 @@
 export const images = [
-  { public: "/partners/locilabs.png", alt: "Loci Labs" },
-  { public: "/partners/ipnite.jpg", alt: "IPnite" },
-  { public: "/partners/ufrj.jpg", alt: "UFRJ" },
-  { public: "/partners/hmt.png", alt: "HMT" },
-  { public: "/partners/ucriverside.png", alt: "UC Riverside" },
-  { public: "/partners/uba.jpg", alt: "UBA" },
+  { src: "/partners/locilabs.svg", alt: "Loci Labs" },
+  { src: "/partners/ipnite.png", alt: "IPnite" },
+  { src: "/partners/ufrj.png", alt: "UFRJ" },
+  { src: "/partners/htm.png", alt: "HMT" },
+  { src: "/partners/ucriverside.svg", alt: "UC Riverside" },
+  { src: "/partners/uba.png", alt: "UBA" },
+  //{ src: "/partners/wsgr.svg", alt: "WSGR" }
 ];

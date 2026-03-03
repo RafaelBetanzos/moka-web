@@ -1,6 +1,6 @@
 import Lab from "../assets/icons/Lab.svg";
 import Ia from "../assets/icons/Ia.svg";
-import GraphicDrugs from "../assets/GraphicDrugs.svg";
+import Graphicsynthetics from "../assets/Graphicsynthetics.svg";
 import GraphicTraditional from "../assets/GraphicTraditional.svg";
 import "../styles/CardSection.style.css";
 
@@ -35,8 +35,8 @@ export const blocksGraphics = [
     grayPoint: "SYNTHETIC",
     greenPoint: "BIO-VALIDATED",
     number: "80%",
-    image: GraphicTraditional,
-    alt: "Graphic Traditional",
+    image: Graphicsynthetics,
+    alt: "Graphic Synthetics",
   },
   {
     title: "<1% CHARACTERIZED",
@@ -46,10 +46,10 @@ export const blocksGraphics = [
         <strong> natural chemistry</strong> has been chemically characterized.
       </span>
     ),
-    grayPoint: "INDEXED",
-    greenPoint: "UNINDEXED",
+    grayPoint: "UNINDEXED",
+    greenPoint: "INDEXED",
     number: "1%",
-    image: GraphicDrugs,
-    alt: "Graphic Drugs",
+    image: GraphicTraditional,
+    alt: "Graphic Traditional",
   },
 ];

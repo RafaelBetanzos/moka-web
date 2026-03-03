@@ -4,27 +4,27 @@ import Logo from "@assets/icons/isologo.svg";
 import { Image } from "astro:assets";
 ---
 
-<div class="bg-primary relative">
+<div class="bg-primary relative w-full">
   <nav
-    class="flex flex-row justify-between items-center max-w-6xl mx-auto py-2 flex-wrap gap-8"
+    class="flex flex-row justify-between items-center max-w-6xl mx-auto py-4 px-4 sm:px-8 flex-nowrap gap-2 sm:gap-8"
   >
-    <div class="mb-4 mt-4">
+    <div class="shrink-0">
       <a href="/">
-        <Image src={Logo} alt="Moka Bio Logo" class="w-24" />
+        <Image src={Logo} alt="Moka Bio Logo" class="w-16 sm:w-24" />
       </a>
     </div>
 
     <div
-      class="flex flex-row gap-8 text-navbar text-xl font-semibold items-center"
+      class="flex flex-row gap-3 sm:gap-8 text-navbar text-[10px] xs:text-xs sm:text-xl font-semibold items-center whitespace-nowrap"
     >
       <a href="/" class="hover:text-secondary transition-colors">Home</a>
-      <a href="/our-technology" class="hover:text-secondary transition-colors">Our Technology</a>
-      <a href="/about-us" class="hover:text-secondary transition-colors">About Us</a>
-      <a href="/articles" class="hover:text-secondary transition-colors">Articles</a>
+      <a href="/our-technology" class="hover:text-secondary transition-colors">Tech</a> 
+      <a href="/about-us" class="hover:text-secondary transition-colors">About</a>
+      
+      {/* <a href="/articles" class="hover:text-secondary transition-colors">Articles</a> */}
     </div>
 
-    <div class="flex flex-row gap-4 items-center">
-      {/* LINK FIXED: Now points to the company profile */}
+    <div class="flex flex-row gap-2 sm:gap-4 items-center shrink-0">
       <a 
         href="https://www.linkedin.com/company/mokabio" 
         target="_blank" 
@@ -34,16 +34,15 @@ import { Image } from "astro:assets";
         <Image 
           src={LinkedIn} 
           alt="LinkedIn Profile" 
-          width={50}  {/* RESTORED TO ORIGINAL SIZE */}
-          class="opacity-90 hover:opacity-100"
+          class="w-6 sm:w-12 opacity-90 hover:opacity-100"
           loading="lazy" 
         />
       </a>
 
       <div
-        class="bg-navbar text-white rounded-full px-6 py-2 text-[16px] font-semibold whitespace-nowrap flex items-center justify-center hover:bg-secondary transition-colors"
+        class="bg-navbar text-white rounded-full px-3 py-1 sm:px-6 sm:py-2 text-[10px] sm:text-[16px] font-semibold whitespace-nowrap hover:bg-secondary transition-colors"
       >
-        <a href="/contact-us">Contact Us</a>
+        <a href="/contact-us">Contact</a>
       </div>
     </div>
   </nav>

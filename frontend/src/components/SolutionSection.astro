@@ -6,101 +6,61 @@ import { Image } from "astro:assets";
 ---
 
 <div class="flex flex-col gap-8 mt-8 w-full pb-24">
-  <div class="pb-28">
-    <h1
-      class="font-roboto font-medium text-black leading-4 tracking-widest text-center py-8"
-    >
-      OUR SOLUTION
+  <div class="pb-16"> 
+    <h1 class="font-roboto font-medium text-black leading-4 tracking-widest text-center py-8 uppercase">
+      Our Solution
     </h1>
-    <p
-      class="text-[#4F7363FF] text-[26px] font-semibold text-center font-inter lg:px-96 xl:px-[37%] md:px-[30%]"
-    >
-      Moka platform enables breakthrough insights to identify new EB molecules
-      and their mechanism of action
+    <p class="text-[#4F7363FF] text-[26px] font-semibold text-center font-inter max-w-4xl mx-auto px-4">
+      Moka platform digitizes the chemical potential of the plant kingdom to identify 
+      novel molecules and their mechanism of action.
     </p>
   </div>
-  <div class="bg-custom-gradient px-8">
-    <div
-      class="flex flex-col md:flex-row gap-16 md:gap-4 justify-center items-center md:mt-0 mt-16"
-    >
-      <div class="relative">
-        <Image
-          src={IntegrationSecondary}
-          alt="integration"
-          class="w-24 absolute z-10 left-[50%] ml-[-48px] top-[-48px]"
-        />
-        <div
-          class="bg-white rounded-2xl py-16 max-w-sm h-96 flex flex-col justify-between"
-        >
-          <h1
-            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center xl:px-8 lg:px-8 pb-4"
-          >
-            Integrated platform
+
+  <div class="bg-custom-gradient px-8 py-20">
+    <div class="flex flex-col md:flex-row gap-16 md:gap-6 justify-center items-stretch max-w-7xl mx-auto">
+      
+      <div class="relative flex-1 max-w-sm mx-auto w-full">
+        <Image src={Ia} alt="AI Discovery" class="w-24 absolute z-10 left-1/2 -translate-x-1/2 -top-12" />
+        <div class="bg-white rounded-2xl pt-16 pb-10 px-6 min-h-[480px] h-full flex flex-col shadow-sm">
+          <h1 class="font-inter font-semibold text-secondary text-[24px] text-center mb-6 leading-tight">
+            IA-Driven Molecular Discovery
           </h1>
-          <div
-            class="px-4 text-graycolor justify-between flex flex-col items-center text-center h-full"
-          >
-            <li>Integrated analytical workflow</li>
-            <li>
-              Analysing varied experimental outcomes and pattern identification
-            </li>
-            <li>High-Throughput testing</li>
-          </div>
+          <ul class="text-graycolor space-y-4 text-center list-none flex-grow flex flex-col justify-center text-[15px]">
+            <li><strong>Digital Translation:</strong> Maps the plant chemome into a searchable digital database.</li>
+            <li><strong>Unprecedented Speed:</strong> Reduces molecular discovery time from years to weeks.</li>
+            <li><strong>AI-Precision:</strong> Identifies bioactive compounds invisible to traditional science.</li>
+          </ul>
         </div>
       </div>
-      <div class="relative">
-        <Image
-          src={ScalabilitySecondary}
-          alt="Scalability"
-          class="w-24 absolute z-10 left-[50%] ml-[-48px] top-[-48px]"
-        />
-        <div
-          class="bg-white rounded-2xl py-16 max-w-sm h-96 flex flex-col justify-between"
-        >
-          <h1
-            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center xl:px-8 xl:mb-3 pb-4"
-          >
-            Scalable
+
+      <div class="relative flex-1 max-w-sm mx-auto w-full">
+        <Image src={IntegrationSecondary} alt="Validation" class="w-24 absolute z-10 left-1/2 -translate-x-1/2 -top-12" />
+        <div class="bg-white rounded-2xl pt-16 pb-10 px-6 min-h-[480px] h-full flex flex-col shadow-sm">
+          <h1 class="font-inter font-semibold text-secondary text-[24px] text-center mb-6 leading-tight">
+            Metabolic Engineering & Validation
           </h1>
-          <div
-            class="px-4 text-graycolor justify-between flex flex-col items-center text-center h-full"
-          >
-            <li>Large-scale sampling analysis</li>
-            <li>Consistent and reliable data</li>
-            <li>Low complexity of sample preparation</li>
-            <li>
-              Optimize and Maximize Tool Utilization for Accelerated Research
-            </li>
-          </div>
+          <ul class="text-graycolor space-y-4 text-center list-none flex-grow flex flex-col justify-center text-[15px]">
+            <li><strong>Metabolic Stability:</strong> Decodes genetic pathways to ensure 100% molecular consistency.</li>
+            <li><strong>Pharma-Grade Rigor:</strong> Scientific validation for FDA and global regulatory approvals.</li>
+            <li><strong>IP Ownership:</strong> Secures high-value patents for every characterized molecule.</li>
+          </ul>
         </div>
       </div>
-      <div class="relative">
-        <Image
-          src={Ia}
-          alt="IA"
-          class="w-24 absolute z-10 left-[50%] ml-[-48px] top-[-48px]"
-        />
-        <div
-          class="bg-white rounded-2xl py-16 max-w-sm h-96 flex flex-col justify-between"
-        >
-          <h1
-            class="leading-12 font-inter font-semibold text-secondary text-[24px] text-center xl:px-8 pb-4"
-          >
-            AI powered platform
+
+      <div class="relative flex-1 max-w-sm mx-auto w-full">
+        <Image src={ScalabilitySecondary} alt="Scalability" class="w-24 absolute z-10 left-1/2 -translate-x-1/2 -top-12" />
+        <div class="bg-white rounded-2xl pt-16 pb-10 px-6 min-h-[480px] h-full flex flex-col shadow-sm">
+          <h1 class="font-inter font-semibold text-secondary text-[24px] text-center mb-6 leading-tight">
+            Industrial Scalability & Biomanufacturing
           </h1>
-          <div
-            class="px-4 text-graycolor justify-between flex flex-col items-center text-center h-full"
-          >
-            <li>Vast Amount of Data Analyzed</li>
-            <li>High Variety Data Types</li>
-            <li>Reliability/Standardization in Training Data</li>
-            <li>Interpretation of Complex Data</li>
-            <li>
-              Pattern analysis for complex/ rare integrations between molecules
-            </li>
-          </div>
+          <ul class="text-graycolor space-y-4 text-center list-none flex-grow flex flex-col justify-center text-[15px]">
+            <li><strong>Cellular Factories:</strong> "Grows" molecules in bio-reactors, bypassing traditional agriculture.</li>
+            <li><strong>Vertical Supply Chain:</strong> Decouples production from land, weather, and geopolitical risks.</li>
+            <li><strong>Infinite Supply:</strong> Enables stable, mass-market pricing for rare chemical compounds.</li>
+          </ul>
         </div>
       </div>
+
     </div>
   </div>
 </div>

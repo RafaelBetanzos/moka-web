@@ -22,12 +22,12 @@ const teamData: TeamMember[] = [
     bio: "Ms.C. & J.D. Deep-tech strategist integrating AI-driven molecular discovery with global IP leadership to digitize the plant kingdom’s chemical potential."
   },
   {
-    id: 4,
-    name: "Leo",
-    position: "COO",
-    linkedin: "https://www.linkedin.com/in/joseleonardoescalona/",
-    fileName: "Leo.jpg",
-    bio: "Ms.C. Protein chemistry expert bridging academic rigor with industrial biomanufacturing to optimize advanced molecular characterization and scaling."
+    id: 2,
+    name: "Facu",
+    position: "CSO",
+    linkedin: "https://www.linkedin.com/in/facugulias/",
+    fileName: "Facu.png",
+    bio: "Ph.D. in Biological Chemistry specializing in plant cell engineering and metabolic signaling for high-precision bioactive validation."
   },
   {
     id: 3,
@@ -38,12 +38,12 @@ const teamData: TeamMember[] = [
     bio: "Ph.D. Bioinformatician leveraging a decade of molecular research to decode plant biodiversity into scalable biotechnological innovation."
   },
   {
-    id: 2,
-    name: "Facu",
-    position: "CSO",
-    linkedin: "https://www.linkedin.com/in/facugulias/",
-    fileName: "Facu.jpg",
-    bio: "Ph.D. in Biological Chemistry specializing in plant cell engineering and metabolic signaling for high-precision bioactive validation."
+    id: 4,
+    name: "Leo",
+    position: "COO",
+    linkedin: "https://www.linkedin.com/in/joseleonardoescalona/",
+    fileName: "Leo.png",
+    bio: "Ms.C. Protein chemistry expert bridging academic rigor with industrial biomanufacturing to optimize advanced molecular characterization and scaling."
   }
 ];
 
