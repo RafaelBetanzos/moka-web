@@ -6,63 +6,123 @@ import Scalability from "@assets/icons/Scalability.svg";
 import { Image } from "astro:assets";
 ---
 
-<div class="flex flex-col gap-8 mt-8 w-full">
-  <div class="py-36">
-    <h1 class="font-roboto font-medium text-black leading-4 tracking-widest text-center py-8">
-      THE PROBLEM
-    </h1>
-    <p class="text-[#4F7363FF] text-[26px] font-semibold text-center font-inter max-w-4xl mx-auto px-4">
-      Almost 99% of plant bioactives are unexplored — a living library waiting to be read. 
-    </p>
+<div class="flex flex-col gap-8 mt-8 w-full overflow-hidden">
+  <div class="py-0 px-6 md:px-12 max-w-7xl mx-auto w-full">
+    <div class="reveal opacity-0" data-animation="slide-in">
+      <h1 class="font-roboto font-medium text-2xl leading-4 tracking-widest text-center py-10 transition-transform duration-300 hover:scale-105 cursor-default uppercase">
+        THE PROBLEM
+      </h1>
+      <p class="text-[#4F7363FF] text-[22px] md:text-[26px] font-semibold text-center font-inter max-w-4xl mx-auto transition-transform duration-300 hover:scale-105 cursor-default">
+        Almost 99% of plant bioactives are unexplored, a living library waiting to be read. 
+      </p>
+    </div>
   </div>
 
-  <div class="bg-custom-gradient px-8 py-20"> 
-    <div class="flex flex-col md:flex-row gap-16 md:gap-6 justify-center items-stretch"> 
+  <div class="bg-custom-gradient px-6 md:px-12 py-20"> 
+    <div class="flex flex-col md:flex-row gap-16 md:gap-8 justify-center items-stretch max-w-7xl mx-auto"> 
       
-      <div class="relative flex-1 max-w-sm mx-auto w-full">
-        <Image src={Integration} alt="integration" class="w-24 absolute z-10 left-1/2 -translate-x-1/2 -top-12" />
-        <div class="bg-white rounded-2xl pt-16 pb-8 px-8 min-h-[420px] h-full flex flex-col shadow-sm">
-          <h1 class="font-inter font-semibold text-secondary text-[22px] text-center mb-6 leading-tight">
+      <div class="reveal opacity-0 relative flex-1 max-w-sm mx-auto w-full group" data-animation="pop-in" style="transition-delay: 0.1s;">
+        <div class="absolute z-20 left-1/2 -translate-x-1/2 -top-12 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
+          <Image src={Integration} alt="integration" class="w-24 drop-shadow-lg" />
+        </div>
+        <div class="bg-white rounded-2xl pt-16 pb-8 px-8 min-h-[420px] h-full flex flex-col shadow-sm border border-transparent transition-all duration-500 group-hover:shadow-2xl group-hover:scale-[1.02]">
+          <h1 class="font-inter font-semibold text-secondary text-[22px] text-center mb-6 leading-tight group-hover:text-black transition-colors duration-300">
             The Invisible Chemistry Gap
           </h1>
-          <ul class="text-graycolor space-y-4 text-center list-none flex-grow flex flex-col justify-center text-[15px]">
-            <li>Less than 1% of the plant kingdom's potential has been explored</li>
-            <li>Slow and manual discovery processes</li>
-            <li>Unmapped chemical diversity</li>
+          <ul class="text-graycolor space-y-4 text-center list-none flex-grow flex flex-col justify-center text-[18px]">
+            <li class="transition-transform duration-300 group-hover:translate-x-1">Less than 1% of the plant kingdom's potential has been explored</li>
+            <li class="transition-transform duration-300 group-hover:translate-x-1">Slow and manual discovery processes</li>
+            <li class="transition-transform duration-300 group-hover:translate-x-1">Unmapped chemical diversity</li>
           </ul>
         </div>
       </div>
 
-      <div class="relative flex-1 max-w-sm mx-auto w-full">
-        <Image src={BigData} alt="Big Data" class="w-24 absolute z-10 left-1/2 -translate-x-1/2 -top-12" />
-        <div class="bg-white rounded-2xl pt-16 pb-8 px-8 min-h-[420px] h-full flex flex-col shadow-sm">
-          <h1 class="font-inter font-semibold text-secondary text-[22px] text-center mb-6 leading-tight">
+      <div class="reveal opacity-0 relative flex-1 max-w-sm mx-auto w-full group" data-animation="pop-in" style="transition-delay: 0.3s;">
+        <div class="absolute z-20 left-1/2 -translate-x-1/2 -top-12 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
+          <Image src={BigData} alt="Big Data" class="w-24 drop-shadow-lg" />
+        </div>
+        <div class="bg-white rounded-2xl pt-16 pb-8 px-8 min-h-[420px] h-full flex flex-col shadow-sm border border-transparent transition-all duration-500 group-hover:shadow-2xl group-hover:scale-[1.02]">
+          <h1 class="font-inter font-semibold text-secondary text-[22px] text-center mb-6 leading-tight group-hover:text-black transition-colors duration-300">
             The Consistency Crisis
           </h1>
-          <ul class="text-graycolor space-y-4 text-center list-none flex-grow flex flex-col justify-center text-[15px]">
-            <li>Natural ingredients vary by soil, weather, and season</li>
-            <li>Instability for pharmaceutical or industrial standards</li>
-            <li>Lack of chemical standardization</li>
+          <ul class="text-graycolor space-y-4 text-center list-none flex-grow flex flex-col justify-center text-[18px]">
+            <li class="transition-transform duration-300 group-hover:translate-x-1">Natural ingredients vary by soil, weather, and season</li>
+            <li class="transition-transform duration-300 group-hover:translate-x-1">Instability for pharmaceutical or industrial standards</li>
+            <li class="transition-transform duration-300 group-hover:translate-x-1">Lack of chemical standardization</li>
           </ul>
         </div>
       </div>
 
-      <div class="relative flex-1 max-w-sm mx-auto w-full">
-        <Image src={Scalability} alt="scalability" class="w-24 absolute z-10 left-1/2 -translate-x-1/2 -top-12" />
-        <div class="bg-white rounded-2xl pt-16 pb-8 px-8 min-h-[420px] h-full flex flex-col shadow-sm">
-          <h1 class="font-inter font-semibold text-secondary text-[22px] text-center mb-6 leading-tight">
+      <div class="reveal opacity-0 relative flex-1 max-w-sm mx-auto w-full group" data-animation="pop-in" style="transition-delay: 0.5s;">
+        <div class="absolute z-20 left-1/2 -translate-x-1/2 -top-12 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
+          <Image src={Scalability} alt="scalability" class="w-24 drop-shadow-lg" />
+        </div>
+        <div class="bg-white rounded-2xl pt-16 pb-8 px-8 min-h-[420px] h-full flex flex-col shadow-sm border border-transparent transition-all duration-500 group-hover:shadow-2xl group-hover:scale-[1.02]">
+          <h1 class="font-inter font-semibold text-secondary text-[22px] text-center mb-6 leading-tight group-hover:text-black transition-colors duration-300">
             The Scalability Bottleneck
           </h1>
-          <ul class="text-graycolor space-y-4 text-center list-none flex-grow flex flex-col justify-center text-[15px]">
-            <li>Extracting rare molecules requires massive land use</li>
-            <li>Environmentally destructive extraction methods</li>
-            <li>Economically impossible to scale manually</li>
+          <ul class="text-graycolor space-y-4 text-center list-none flex-grow flex flex-col justify-center text-[18px]">
+            <li class="transition-transform duration-300 group-hover:translate-x-1">Extracting rare molecules requires massive land use</li>
+            <li class="transition-transform duration-300 group-hover:translate-x-1">Environmentally destructive extraction methods</li>
+            <li class="transition-transform duration-300 group-hover:translate-x-1">Economically impossible to scale manually</li>
           </ul>
         </div>
       </div>
 
     </div>
 
-    <Image src={DoubleChevronSecondary} alt="Double Chevron Secondary" class="w-16 mt-16 align-middle mx-auto" />
+    <div class="reveal opacity-0 flex justify-center mt-16" data-animation="fade-in" style="transition-delay: 1s;">
+      <Image src={DoubleChevronSecondary} alt="Double Chevron Secondary" class="w-16 animate-bounce-slow" />
+    </div>
   </div>
 </div>
+
+<script>
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const animationType = entry.target.getAttribute('data-animation');
+        entry.target.classList.add(`animate-${animationType}`);
+        entry.target.classList.remove('opacity-0');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
+
+<style>
+  .animate-slide-in { animation: slideIn 0.8s ease-out forwards; }
+  .animate-pop-in { animation: popIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .animate-fade-in { animation: fadeIn 1.2s ease-in forwards; }
+  
+  .animate-bounce-slow {
+    animation: bounceSlow 2s infinite;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes popIn {
+    from { opacity: 0; transform: translateY(50px) scale(0.9); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes bounceSlow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(15px); }
+  }
+</style>

@@ -5,58 +5,66 @@ import ScalabilitySecondary from "@assets/icons/ScalabilitySecondary.svg";
 import { Image } from "astro:assets";
 ---
 
-<div class="flex flex-col gap-8 mt-8 w-full pb-24">
-  <div class="pb-16"> 
-    <h1 class="font-roboto font-medium text-black leading-4 tracking-widest text-center py-8 uppercase">
-      Our Solution
-    </h1>
-    <p class="text-[#4F7363FF] text-[26px] font-semibold text-center font-inter max-w-4xl mx-auto px-4">
-      Moka platform digitizes the chemical potential of the plant kingdom to identify 
-      novel molecules and their mechanism of action.
-    </p>
+<div class="flex flex-col gap-8 text-2xl mt-8 w-full pb-24 overflow-hidden">
+  <div class="py-5 px-6 md:px-12 max-w-7xl mx-auto w-full"> 
+    <div class="reveal opacity-0" data-animation="slide-in">
+      <h1 class="font-roboto font-medium text-black leading-4 tracking-widest text-center py-16 uppercase transition-transform duration-300 hover:scale-105 cursor-default">
+        Our Solution
+      </h1>
+      <p class="text-[#4F7363FF] text-[22px] md:text-[26px] font-semibold text-center font-inter max-w-4xl mx-auto transition-transform duration-300 hover:scale-105 cursor-default">
+        Moka platform digitizes the chemical potential of the plant kingdom to identify 
+        novel molecules and their mechanism of action.
+      </p>
+    </div>
   </div>
 
-  <div class="bg-custom-gradient px-8 py-20">
-    <div class="flex flex-col md:flex-row gap-16 md:gap-6 justify-center items-stretch max-w-7xl mx-auto">
+  <div class="bg-custom-gradient px-6 md:px-12 py-20">
+    <div class="flex flex-col md:flex-row gap-16 md:gap-8 justify-center items-stretch max-w-7xl mx-auto">
       
-      <div class="relative flex-1 max-w-sm mx-auto w-full">
-        <Image src={Ia} alt="AI Discovery" class="w-24 absolute z-10 left-1/2 -translate-x-1/2 -top-12" />
-        <div class="bg-white rounded-2xl pt-16 pb-10 px-6 min-h-[480px] h-full flex flex-col shadow-sm">
-          <h1 class="font-inter font-semibold text-secondary text-[24px] text-center mb-6 leading-tight">
+      <div class="reveal opacity-0 relative flex-1 max-w-sm mx-auto w-full group" data-animation="pop-in" style="transition-delay: 0.1s;">
+        <div class="absolute z-20 left-1/2 -translate-x-1/2 -top-12 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
+           <Image src={Ia} alt="AI Discovery" class="w-24 drop-shadow-xl" />
+        </div>
+        <div class="bg-white rounded-2xl pt-16 pb-10 px-8 min-h-[480px] h-full flex flex-col shadow-sm border border-transparent transition-all duration-500 group-hover:shadow-2xl group-hover:border-secondary/10 group-hover:scale-[1.02]">
+          <h1 class="font-inter font-semibold text-secondary text-[24px] text-center mb-6 leading-tight transition-colors duration-300 group-hover:text-black">
             IA-Driven Molecular Discovery
           </h1>
-          <ul class="text-graycolor space-y-4 text-center list-none flex-grow flex flex-col justify-center text-[15px]">
-            <li><strong>Digital Translation:</strong> Maps the plant chemome into a searchable digital database.</li>
-            <li><strong>Unprecedented Speed:</strong> Reduces molecular discovery time from years to weeks.</li>
-            <li><strong>AI-Precision:</strong> Identifies bioactive compounds invisible to traditional science.</li>
+          <ul class="text-graycolor space-y-5 text-center list-none flex-grow flex flex-col justify-center text-[18px]">
+            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Digital Translation:</strong> Maps the plant chemome into a searchable digital database.</li>
+            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Unprecedented Speed:</strong> Reduces molecular discovery time from years to weeks.</li>
+            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>AI-Precision:</strong> Identifies bioactive compounds invisible to traditional science.</li>
           </ul>
         </div>
       </div>
 
-      <div class="relative flex-1 max-w-sm mx-auto w-full">
-        <Image src={IntegrationSecondary} alt="Validation" class="w-24 absolute z-10 left-1/2 -translate-x-1/2 -top-12" />
-        <div class="bg-white rounded-2xl pt-16 pb-10 px-6 min-h-[480px] h-full flex flex-col shadow-sm">
-          <h1 class="font-inter font-semibold text-secondary text-[24px] text-center mb-6 leading-tight">
+      <div class="reveal opacity-0 relative flex-1 max-w-sm mx-auto w-full group" data-animation="pop-in" style="transition-delay: 0.3s;">
+        <div class="absolute z-20 left-1/2 -translate-x-1/2 -top-12 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
+          <Image src={IntegrationSecondary} alt="Validation" class="w-24 drop-shadow-xl" />
+        </div>
+        <div class="bg-white rounded-2xl pt-16 pb-10 px-8 min-h-[480px] h-full flex flex-col shadow-sm border border-transparent transition-all duration-500 group-hover:shadow-2xl group-hover:border-secondary/10 group-hover:scale-[1.02]">
+          <h1 class="font-inter font-semibold text-secondary text-[24px] text-center mb-6 leading-tight transition-colors duration-300 group-hover:text-black">
             Metabolic Engineering & Validation
           </h1>
-          <ul class="text-graycolor space-y-4 text-center list-none flex-grow flex flex-col justify-center text-[15px]">
-            <li><strong>Metabolic Stability:</strong> Decodes genetic pathways to ensure 100% molecular consistency.</li>
-            <li><strong>Pharma-Grade Rigor:</strong> Scientific validation for FDA and global regulatory approvals.</li>
-            <li><strong>IP Ownership:</strong> Secures high-value patents for every characterized molecule.</li>
+          <ul class="text-graycolor space-y-5 text-center list-none flex-grow flex flex-col justify-center text-[18px]">
+            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Metabolic Stability:</strong> Decodes genetic pathways to ensure 100% molecular consistency.</li>
+            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Pharma-Grade Rigor:</strong> Scientific validation for FDA and global regulatory approvals.</li>
+            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>IP Ownership:</strong> Secures high-value patents for every characterized molecule.</li>
           </ul>
         </div>
       </div>
 
-      <div class="relative flex-1 max-w-sm mx-auto w-full">
-        <Image src={ScalabilitySecondary} alt="Scalability" class="w-24 absolute z-10 left-1/2 -translate-x-1/2 -top-12" />
-        <div class="bg-white rounded-2xl pt-16 pb-10 px-6 min-h-[480px] h-full flex flex-col shadow-sm">
-          <h1 class="font-inter font-semibold text-secondary text-[24px] text-center mb-6 leading-tight">
+      <div class="reveal opacity-0 relative flex-1 max-w-sm mx-auto w-full group" data-animation="pop-in" style="transition-delay: 0.5s;">
+        <div class="absolute z-20 left-1/2 -translate-x-1/2 -top-12 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
+          <Image src={ScalabilitySecondary} alt="Scalability" class="w-24 drop-shadow-xl" />
+        </div>
+        <div class="bg-white rounded-2xl pt-16 pb-10 px-8 min-h-[480px] h-full flex flex-col shadow-sm border border-transparent transition-all duration-500 group-hover:shadow-2xl group-hover:border-secondary/10 group-hover:scale-[1.02]">
+          <h1 class="font-inter font-semibold text-secondary text-[24px] text-center mb-6 leading-tight transition-colors duration-300 group-hover:text-black">
             Industrial Scalability & Biomanufacturing
           </h1>
-          <ul class="text-graycolor space-y-4 text-center list-none flex-grow flex flex-col justify-center text-[15px]">
-            <li><strong>Cellular Factories:</strong> "Grows" molecules in bio-reactors, bypassing traditional agriculture.</li>
-            <li><strong>Vertical Supply Chain:</strong> Decouples production from land, weather, and geopolitical risks.</li>
-            <li><strong>Infinite Supply:</strong> Enables stable, mass-market pricing for rare chemical compounds.</li>
+          <ul class="text-graycolor space-y-5 text-center list-none flex-grow flex flex-col justify-center text-[18px]">
+            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Cellular Factories:</strong> "Grows" molecules in bio-reactors, bypassing traditional agriculture.</li>
+            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Vertical Supply Chain:</strong> Decouples production from land, weather, and geopolitical risks.</li>
+            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Infinite Supply:</strong> Enables stable, mass-market pricing for rare chemical compounds.</li>
           </ul>
         </div>
       </div>
@@ -64,3 +72,44 @@ import { Image } from "astro:assets";
     </div>
   </div>
 </div>
+
+<script>
+  const observerOptions = {
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const animationType = entry.target.getAttribute('data-animation');
+        entry.target.classList.add(`animate-${animationType}`);
+        entry.target.classList.remove('opacity-0');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
+
+<style>
+  .animate-slide-in { animation: slideIn 0.8s ease-out forwards; }
+  .animate-pop-in { animation: popIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes popIn {
+    from { 
+      opacity: 0; 
+      transform: translateY(60px) scale(0.9); 
+    }
+    to { 
+      opacity: 1; 
+      transform: translateY(0) scale(1); 
+    }
+  }
+</style>

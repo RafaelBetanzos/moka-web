@@ -6,71 +6,133 @@ import CardGraphics from "./CardGraphics.astro";
 import InfoBlock from "./InfoSection.astro";
 ---
 
-<div class="bg-background-brain bg-cover bg-center relative p-8">
-  <div
-    class="flex flex-col lg:flex-row justify-between max-w-6xl mx-auto pt-24 lg:gap-32"
-  >
+<div class="bg-background-brain bg-cover bg-center relative p-8 overflow-hidden">
+  <div class="flex flex-col lg:flex-row justify-between max-w-6xl mx-auto pt-24 lg:gap-32">
+    
     <div class="flex flex-col">
-      <div>
-        <p
-          class="font-roboto text-[22px] font-medium leading-[23.44px] tracking-[4px]"
-        >
+      <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.1s;">
+        <p class="font-roboto text-[22px] font-medium leading-[23.44px] tracking-[4px] transition-transform duration-300 hover:scale-105 cursor-default inline-block">
           MOKA BIO
         </p>
-        <div class="font-inter text-[42px] font-semibold leading-[56.25px]">
+        <div class="font-inter text-[42px] font-semibold leading-[56.25px] transition-transform duration-300 hover:scale-105 cursor-default">
           <p class="text-secondary">Index. Program. Scale.</p>
           <p>The Biological Intelligence Layer</p>
         </div>
       </div>
-      <div class="font-inter">
-        <p class="text-graycolor text-[20px]">
+
+      <div class="reveal opacity-0 font-inter mt-4" data-animation="slide-in" style="transition-delay: 0.3s;">
+        <p class="text-graycolor text-[20px] transition-transform duration-300 hover:scale-105 cursor-default">
           We transform the planet’s largest validated chemical library
           into a programmable engine for molecular innovation
           across medicine, nutrition, and beyond.
         </p>
       </div>
-      <div
-        class="flex flex-col sm:flex-row gap-8 mt-16 lg:mt-8 justify-center lg:justify-start"
-      >
+
+      <div class="flex flex-col sm:flex-row gap-8 mt-16 lg:mt-8 justify-center lg:justify-start">
         {
-          blocksGraphics.map((graph) => (
-            <CardGraphics
-              image={graph.image}
-              altImage={graph.alt}
-              title={graph.title}
-              content={graph.content}
-              greenPoint={graph.greenPoint}
-              grayPoint={graph.grayPoint}
-              number={graph.number}
-            />
+          blocksGraphics.map((graph, index) => (
+            <div 
+              class="reveal opacity-0 transition-all duration-300 hover:scale-110 cursor-pointer" 
+              data-animation="pop-in"
+              style={`transition-delay: ${0.4 + index * 0.2}s;`}
+            >
+                <CardGraphics
+                image={graph.image}
+                altImage={graph.alt}
+                title={graph.title}
+                content={graph.content}
+                greenPoint={graph.greenPoint}
+                grayPoint={graph.grayPoint}
+                number={graph.number}
+                />
+            </div>
           ))
         }
       </div>
     </div>
+
     <div class="flex flex-col font-inter mb-8 justify-center items-center">
-      {
-        blocksProblem.map((block) => (
-          <InfoBlock
-            image={block.image}
-            altImage={block.alt}
-            title={block.title}
-            content={block.content}
-            chevron={block.chevron}
-          />
-        ))
-      }
-      <div class="flex items-center justify-center">
-        <button
-          class="flex gap-3 items-center justify-center bg-secondary text-white font-inter font-medium text-[22px] rounded-full max-w-fit mt-8 p-2"
-        >
-          <p>Our Technology</p>
-          <div
-            class="flex items-center justify-center bg-navbar rounded-full w-10 h-10"
-          >
-            <Image src={ArrowRight} alt="arrow-right" />
-          </div>
-        </button>
+      <div class="flex flex-col gap-4">
+        {
+            blocksProblem.map((block, index) => (
+              <div 
+                class="reveal opacity-0 transition-all duration-300 hover:scale-105 cursor-pointer" 
+                data-animation="slide-in-right"
+                style={`transition-delay: ${0.2 + index * 0.2}s;`}
+              >
+                <InfoBlock
+                    image={block.image}
+                    altImage={block.alt}
+                    title={block.title}
+                    content={block.content}
+                    chevron={block.chevron}
+                />
+              </div>
+            ))
+        }
       </div>
+
+      <a 
+        href="/our-technology" 
+        class="reveal opacity-0 flex gap-3 items-center justify-center bg-secondary text-white font-inter font-medium text-[22px] rounded-full max-w-fit mt-8 p-2 pr-2 pl-6 shadow-sm transition-all duration-300 hover:scale-110 hover:shadow-xl active:scale-95 no-underline"
+        data-animation="bounce-in"
+        style="transition-delay: 0.8s;"
+      >
+        <p>Our Technology</p>
+        <div class="flex items-center justify-center bg-navbar rounded-full w-10 h-10 shrink-0 group">
+          <Image src={ArrowRight} alt="arrow-right" class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+        </div>
+      </a>
     </div>
+
   </div>
 </div>
+
+<script>
+  // Intersection Observer Logic
+  const observerOptions = {
+    threshold: 0.15 // Trigger when 15% of the element is visible
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const animationType = entry.target.getAttribute('data-animation');
+        entry.target.classList.add(`animate-${animationType}`);
+        entry.target.classList.remove('opacity-0');
+        observer.unobserve(entry.target); // Run only once
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
+
+<style>
+  /* Entrance Animations */
+  .animate-slide-in { animation: slideIn 0.8s ease-out forwards; }
+  .animate-slide-in-right { animation: slideInRight 0.8s ease-out forwards; }
+  .animate-pop-in { animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+  .animate-bounce-in { animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes bounceIn {
+    0% { opacity: 0; transform: scale(0.3); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+</style>

@@ -11,7 +11,7 @@ export const MarqueeImages: React.FC<{ src: string; alt: string }> = ({ src, alt
            - saturate(800%): le da la intensidad necesaria.
            - hue-rotate(113deg): lo posiciona en el verde exacto.
         */
-        className="h-16 w-full object-contain filter brightness-0 invert-[42%] saturate-[0%] hue-rotate-[113deg] brightness-[94%] contrast-[100%] drop-shadow-[0_4px_3px_rgba(0,0,0,0.05)] transition-all duration-300" 
+        className="h-20 w-full object-contain filter brightness-0 invert-[42%] saturate-[0%] hue-rotate-[113deg] brightness-[94%] contrast-[100%] drop-shadow-[0_4px_3px_rgba(0,0,0,0.05)] transition-all duration-300" 
         onError={(e) => (e.currentTarget.style.display = 'none')}
       />
     </div>
