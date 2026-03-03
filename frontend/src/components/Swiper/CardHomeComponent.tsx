@@ -6,14 +6,12 @@ interface Article {
   author: string;
   image: string;
   alt: string;
-  link?: string; // El link es opcional por si acaso
+  link?: string;
 }
 
-// 2. Aplicamos el tipo al prop del componente
 export const CardHomeComponent = ({ article }: { article: Article }) => {
   return (
     <div className="relative flex w-full max-w-6xl mx-auto px-4">
-      {/* Contenedor principal: Mantiene tu color y padding original */}
       <div className="flex flex-col lg:flex-row items-center justify-between gap-8 w-full bg-[rgba(143,192,169,0.5)] p-8 lg:p-16 rounded-3xl shadow-lg">
         
         {/* LADO IZQUIERDO: Textos */}
@@ -42,7 +40,7 @@ export const CardHomeComponent = ({ article }: { article: Article }) => {
               className="rounded-2xl object-cover w-[280px] h-[200px] lg:w-[400px] lg:h-[280px] shadow-md"
             />
             
-            {/* BOTÓN: Posicionado respecto a la imagen */}
+            {/* BOTÓN REPARADO */}
             <div className="absolute -bottom-4 -right-4 bg-white rounded-full shadow-lg transition-transform hover:scale-105 active:scale-95 z-20 border border-gray-100">
               <a 
                 className="flex items-center gap-2 px-5 py-2 whitespace-nowrap" 
@@ -54,7 +52,8 @@ export const CardHomeComponent = ({ article }: { article: Article }) => {
                   Learn more
                 </p>
                 <img
-                  src={ArrowDiagonal.src || ArrowDiagonal}
+                  /* SOLUCIÓN: Usamos .src para obtener el string de la URL */
+                  src={typeof ArrowDiagonal === 'string' ? ArrowDiagonal : ArrowDiagonal.src}
                   alt="Arrow"
                   className="w-4 h-4"
                 />
