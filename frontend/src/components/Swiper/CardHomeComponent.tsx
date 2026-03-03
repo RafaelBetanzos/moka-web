@@ -1,6 +1,16 @@
 import ArrowDiagonal from "@assets/icons/ArrowDiagonal.svg";
 
-export const CardHomeComponent = ({ article }) => {
+// 1. Definimos la interfaz para Article
+interface Article {
+  title: string;
+  author: string;
+  image: string;
+  alt: string;
+  link?: string; // El link es opcional por si acaso
+}
+
+// 2. Aplicamos el tipo al prop del componente
+export const CardHomeComponent = ({ article }: { article: Article }) => {
   return (
     <div className="relative flex w-full max-w-6xl mx-auto px-4">
       {/* Contenedor principal: Mantiene tu color y padding original */}
@@ -25,7 +35,6 @@ export const CardHomeComponent = ({ article }) => {
 
         {/* LADO DERECHO: Imagen + Botón */}
         <div className="relative flex flex-col items-center shrink-0">
-          {/* Contenedor de imagen con tamaño controlado para que no empuje todo */}
           <div className="relative">
             <img
               src={article?.image}
@@ -33,12 +42,13 @@ export const CardHomeComponent = ({ article }) => {
               className="rounded-2xl object-cover w-[280px] h-[200px] lg:w-[400px] lg:h-[280px] shadow-md"
             />
             
-            {/* BOTÓN: Ahora posicionado de forma absoluta respecto a la imagen */}
-            <div className="absolute -bottom-4 -right-4 bg-white rounded-full shadow-lg transition-transform hover:scale-105 active:scale-95 z-20">
+            {/* BOTÓN: Posicionado respecto a la imagen */}
+            <div className="absolute -bottom-4 -right-4 bg-white rounded-full shadow-lg transition-transform hover:scale-105 active:scale-95 z-20 border border-gray-100">
               <a 
                 className="flex items-center gap-2 px-5 py-2 whitespace-nowrap" 
                 href={article?.link || "#"}
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 <p className="text-secondary text-sm lg:text-base font-roboto font-bold">
                   Learn more
