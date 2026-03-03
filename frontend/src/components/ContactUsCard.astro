@@ -6,21 +6,33 @@ const pillsTag = ["Bioprospecting", "Nature", "Computational Biology"];
 ---
 
 <div
-  class="bg-secondary relative z-10 rounded-[40px] p-12 flex flex-col justify-center text-white font-inter font-bold shadow-lg max-w-xl px-8"
+  class="bg-secondary relative z-10 rounded-[40px] p-8 md:p-12 flex flex-col justify-center text-white font-inter font-bold shadow-lg max-w-xl px-8 min-h-[450px] reveal opacity-0"
+  data-animation="fade-in"
 >
-  <div class="mb-16 flex flex-col gap-6">
-    <p class="text-4xl">CONTACT US!</p>
-    <p class="text-4xl">Let's unlock the potential of nature together.</p>
+  <div class="mb-12 flex flex-col gap-4">
+    <p class="text-3xl md:text-4xl tracking-tight reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.2s;">
+      CONTACT US!
+    </p>
+    <p class="text-3xl md:text-4xl leading-tight reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.4s;">
+      Let's unlock the potential of nature together.
+    </p>
   </div>
-  <div class="flex gap-2">
+
+  <div class="flex flex-wrap gap-3">
     {
       pillsTag.map((tag, index) => (
         <div
           key={index}
-          class="flex items-center gap-3 text-white bg-pills rounded-full py-1 px-4"
+          class="reveal opacity-0 flex items-center gap-3 text-white bg-white/10 backdrop-blur-md border border-white/20 rounded-full py-2 px-5 transition-all duration-300 hover:bg-white hover:text-secondary group cursor-default shadow-sm"
+          data-animation="pop-in"
+          style={`transition-delay: ${0.6 + index * 0.1}s;`}
         >
-          <Image src={LeafPill} alt="Leaf Pill" class="w-[14px] object-fit" />
-          <span class="text-white text-sm sm:text-lg font-normal pr-2 sm:pr-0">
+          <Image 
+            src={LeafPill} 
+            alt="Leaf Pill" 
+            class="w-4 h-4 object-contain transition-transform group-hover:rotate-12" 
+          />
+          <span class="text-sm md:text-base font-medium whitespace-nowrap">
             {tag}
           </span>
         </div>
@@ -28,3 +40,44 @@ const pillsTag = ["Bioprospecting", "Nature", "Computational Biology"];
     }
   </div>
 </div>
+
+<style>
+  /* Entrance Animations */
+  .animate-fade-in { animation: fadeIn 1s ease-out forwards; }
+  .animate-slide-up { animation: slideUp 0.8s ease-out forwards; }
+  .animate-pop-in { animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to { opacity: 1; transform: scale(1); }
+  }
+</style>
+
+<script>
+  const observerOptions = {
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const animationType = entry.target.getAttribute('data-animation');
+        entry.target.classList.add(`animate-${animationType}`);
+        entry.target.classList.remove('opacity-0');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>

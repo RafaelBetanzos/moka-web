@@ -6,16 +6,16 @@ import { images } from "../../utils/images";
 export const MarqueeComponent: React.FC = () => {
   return (
     /* h-20 (80px) keeps the banner small. bg-transparent is essential. */
-    <div className="w-full h-20 flex items-center bg-transparent my-2 overflow-hidden">
+    <div className="w-full h-40 flex items-center bg-transparent my-6 overflow-hidden">
       <Marquee 
         gradient={false} 
-        speed={50} 
+        speed={40} 
         pauseOnHover={true}
         /* loop={0} is the default for infinite in this library */
       >
         <div className="flex items-center">
           {images.map((logo, index) => (
-            <div key={index} className="mx-8 lg:mx-12 flex items-center justify-center">
+            <div key={index} className="mx-8 lg:mx-14 flex items-center justify-center">
               <img
                 src={logo.src}
                 alt={logo.alt}

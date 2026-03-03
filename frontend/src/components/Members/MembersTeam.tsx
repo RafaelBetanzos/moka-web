@@ -1,8 +1,11 @@
 import React, { useMemo } from "react";
 import LinkedInIcon from "@assets/LinkedIn.svg";
+// Flags for the founders
+import Mexico from "@assets/icons/Mexico.svg";
+import Argentina from "@assets/icons/Argentina.svg";
+import Venezuela from "@assets/icons/Venezuela.svg";
 import { sortMembersByPosition } from "@utils/SortingNames";
 
-// 1. Define the Interface to stop "any" type warnings
 interface TeamMember {
   id: number;
   name: string;
@@ -48,61 +51,89 @@ const teamData: TeamMember[] = [
 ];
 
 export const MembersTeam = () => {
-  // 2. Move useMemo HERE. Calling it inside the return (JSX) causes warnings/errors.
   const sortedMembers = useMemo(() => sortMembersByPosition(teamData), []);
+
+  // Flag mapping logic
+  const getFlagSrc = (name: string) => {
+    const founder = name.toLowerCase();
+    if (founder.includes("rafa")) return Mexico.src;
+    if (founder.includes("facu") || founder.includes("flor")) return Argentina.src;
+    if (founder.includes("leo")) return Venezuela.src;
+    return null;
+  };
 
   return (
     <section className="flex flex-col items-center gap-12 pb-10 pt-2 bg-transparent w-full">
       <div className="text-center px-4">
-        <h2 className="text-secondary font-bold tracking-[0.3em] text-xl">
-          FOUNDER TEAM
+        <h2 className="text-secondary font-bold tracking-[0.3em] text-xl uppercase">
+          Founder Team
         </h2>
       </div>
 
       <div className="flex justify-center gap-12 flex-wrap max-w-6xl px-8">
-        {sortedMembers.map((member: TeamMember) => (
-          <div className="group flex flex-col items-center w-64" key={member.id}>
-            
-            <div className="relative mb-6">
-              <div className="overflow-hidden rounded-full bg-gray-200 border border-gray-300 aspect-square w-48 shadow-xl">
-                <img
-                  src={`/teampics/${member.fileName}`} 
-                  alt={member.name}
-                  loading="lazy"
-                  className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-105 group-hover:scale-100"
-                  onError={(e) => { (e.target as HTMLImageElement).src = '/teampics/placeholder.jpg' }}
-                />
+        {sortedMembers.map((member: TeamMember) => {
+          const flagImg = getFlagSrc(member.name);
+          
+          return (
+            <div className="group flex flex-col items-center w-64" key={member.id}>
+              
+              {/* Image Frame Effect - Matched with Advisors */}
+              <div className="relative mb-6">
+                <div className="overflow-hidden rounded-full bg-gray-200 aspect-square w-44 shadow-md border-2 border-transparent group-hover:border-secondary transition-all duration-500">
+                  <img
+                    src={`/teampics/${member.fileName}`} 
+                    alt={member.name}
+                    loading="lazy"
+                    className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out scale-105 group-hover:scale-100"
+                    onError={(e) => { (e.target as HTMLImageElement).src = '/teampics/placeholder.jpg' }}
+                  />
+                </div>
+                
+                {/* LinkedIn Icon + Flag Badge */}
+                <div className="absolute bottom-2 right-2">
+                  <a 
+                    href={member.linkedin} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="relative block hover:scale-125 transition-transform duration-300"
+                  >
+                    <img 
+                      src={typeof LinkedInIcon === 'string' ? LinkedInIcon : LinkedInIcon.src} 
+                      alt="Linkedin" 
+                      className="w-7 h-7 opacity-80 group-hover:opacity-100 drop-shadow-sm" 
+                    />
+                    
+                    {/* Flag badge pinned over LinkedIn */}
+                    {flagImg && (
+                      <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border border-white shadow-sm overflow-hidden bg-white">
+                        <img 
+                          src={flagImg} 
+                          alt="Origin Flag" 
+                          className="w-full h-full object-cover" 
+                        />
+                      </div>
+                    )}
+                  </a>
+                </div>
               </div>
-              
-              <a 
-                href={member.linkedin} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="absolute bottom-1 right-1 hover:scale-125 transition-transform duration-300"
-              >
-                <img 
-                  src={LinkedInIcon.src || LinkedInIcon} 
-                  alt="Linkedin" 
-                  className="w-7 h-7 opacity-80 group-hover:opacity-100" 
-                />
-              </a>
-            </div>
 
-            <div className="flex flex-col items-center text-center">
-              <p className="text-secondary font-bold text-2xl">
-                {member.name}
-              </p>
+              {/* Text Info */}
+              <div className="flex flex-col items-center text-center">
+                <p className="text-secondary font-bold text-2xl leading-tight">
+                  {member.name}
+                </p>
 
-              <span className="text-black font-semibold text-sm tracking-[0.1em] uppercase mt-1 mb-3">
-                {member.position}
-              </span>
-              
-              <p className="text-black text-[13px] leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity duration-500">
-                {member.bio}
-              </p>
+                <span className="text-black font-semibold text-sm tracking-[0.1em] uppercase mt-1 mb-3">
+                  {member.position}
+                </span>
+                
+                <p className="text-black text-[13px] leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                  {member.bio}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

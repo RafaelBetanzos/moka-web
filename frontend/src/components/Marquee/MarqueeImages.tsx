@@ -1,6 +1,6 @@
 export const MarqueeImages: React.FC<{ src: string; alt: string }> = ({ src, alt }) => {
   return (
-    <div className="flex flex-shrink-0 items-center justify-center w-64 sm:w-80 h-full"> 
+    <div className="flex flex-shrink-0 items-center justify-center w-64 sm:w-160 h-full"> 
       <img 
         src={src} 
         alt={alt} 
