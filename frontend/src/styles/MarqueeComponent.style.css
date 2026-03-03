@@ -1,34 +1,36 @@
-import React from "react";
-import Marquee from "react-fast-marquee";
-// Import your images array from wherever you decided to keep it
-import { images } from "../../utils/images"; 
+/* Marquee Component Styles */
+.marquee-container {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  margin: 24px 0;
+  overflow: hidden;
+}
 
-export const MarqueeComponent: React.FC = () => {
-  return (
-    /* h-20 (80px) keeps the banner small. bg-transparent is essential. */
-    <div className="w-full h-40 flex items-center bg-transparent my-6 overflow-hidden">
-      <Marquee 
-        gradient={false} 
-        speed={40} 
-        pauseOnHover={true}
-        /* loop={0} is the default for infinite in this library */
-      >
-        <div className="flex items-center">
-          {images.map((logo, index) => (
-            <div key={index} className="mx-8 lg:mx-14 flex items-center justify-center">
-              <img
-                src={logo.src}
-                alt={logo.alt}
-                /* h-10 keeps logos small. brightness-0 ensures they are visible black. */
-                className="h-10 w-auto object-contain brightness-0 opacity-50 hover:opacity-100 transition-all duration-300"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).style.display = 'none';
-                }}
-              />
-            </div>
-          ))}
-        </div>
-      </Marquee>
-    </div>
-  );
-};
+.marquee-item {
+  margin: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.marquee-item img {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(0);
+  opacity: 0.5;
+  transition: opacity 300ms;
+}
+
+.marquee-item img:hover {
+  opacity: 1;
+}
+
+@media (min-width: 1024px) {
+  .marquee-item {
+    margin: 0 56px;
+  }
+}
