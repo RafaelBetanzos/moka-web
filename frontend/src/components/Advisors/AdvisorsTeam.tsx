@@ -25,21 +25,21 @@ export const AdvisorsTeam = () => {
       name: "Alejandrina Vendrell",
       title: "Advisor",
       linkedin: "https://www.linkedin.com/in/alejandrina-vendrell/", 
-      localImg: "/advisorspics/Alejandrina.jpeg"
+      localImg: "/advisorspics/AleVendrell.jpg"
     },
     {
       id: "local-2",
       name: "Claudia Benjamin",
       title: "Advisor",
       linkedin: "https://www.linkedin.com/in/claudia-benjamim-25643139/",
-      localImg: "/advisorspics/placeholder.png"
+      localImg: "/advisorspics/ClaudiaBenjamim.png"
     },
     {
       id: "local-3",
       name: "Adam Joswiak",
       title: "Advisor",
       linkedin: "https://www.linkedin.com/in/adam-jozwiak-470135153/",
-      localImg: "/advisorspics/placeholder.png"
+      localImg: "/advisorspics/Adam Jozwiak.jng"
     }
   ];
 
