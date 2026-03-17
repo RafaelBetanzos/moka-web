@@ -3,7 +3,6 @@ import LinkedInIcon from "@assets/LinkedIn.svg";
 // Flags for the founders
 import Mexico from "@assets/icons/Mexico.svg";
 import Argentina from "@assets/icons/Argentina.svg";
-import Venezuela from "@assets/icons/Venezuela.svg";
 import { sortMembersByPosition } from "@utils/SortingNames";
 
 interface TeamMember {
@@ -40,14 +39,6 @@ const teamData: TeamMember[] = [
     fileName: "Flor.jpg",
     bio: "Ph.D. Bioinformatician leveraging a decade of molecular research to decode plant biodiversity into scalable biotechnological innovation."
   },
-  {
-    id: 4,
-    name: "Leo",
-    position: "COO",
-    linkedin: "https://www.linkedin.com/in/joseleonardoescalona/",
-    fileName: "Leo.png",
-    bio: "Ms.C. Protein chemistry expert bridging academic rigor with industrial biomanufacturing to optimize advanced molecular characterization and scaling."
-  }
 ];
 
 export const MembersTeam = () => {
@@ -58,7 +49,6 @@ export const MembersTeam = () => {
     const founder = name.toLowerCase();
     if (founder.includes("rafa")) return Mexico.src;
     if (founder.includes("facu") || founder.includes("flor")) return Argentina.src;
-    if (founder.includes("leo")) return Venezuela.src;
     return null;
   };
 
