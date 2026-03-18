@@ -39,7 +39,14 @@ export const AdvisorsTeam = () => {
       name: "Adam Joswiak",
       title: "Advisor",
       linkedin: "https://www.linkedin.com/in/adam-jozwiak-470135153/",
-      localImg: "/advisorspics/placeholder.png"
+      localImg: "/advisorspics/AdamJozwiak.jpg"
+    },
+    {
+      id: "local-4",
+      name: "Leonardo Escalona",
+      title: "Advisor",
+      linkedin: "https://www.linkedin.com/in/joseleonardoescalona/",
+      localImg: "/advisorspics/Leo.png"
     }
   ];
 

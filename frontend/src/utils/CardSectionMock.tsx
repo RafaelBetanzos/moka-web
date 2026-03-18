@@ -39,16 +39,16 @@ export const blocksGraphics = [
     alt: "Graphic Synthetics",
   },
   {
-    title: "<1% CHARACTERIZED",
+    title: "<9% CHARACTERIZED",
     content: (
       <span>
-        <strong>Less than 1% of the world’s</strong> originate from{" "}
+        Less than <strong> 9% </strong> of the world’s
         <strong> natural chemistry</strong> has been chemically characterized.
       </span>
     ),
     grayPoint: "UNINDEXED",
     greenPoint: "INDEXED",
-    number: "1%",
+    number: "9%",
     image: GraphicTraditional,
     alt: "Graphic Traditional",
   },
