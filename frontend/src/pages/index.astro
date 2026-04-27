@@ -9,7 +9,15 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import LeafsLayout from "@layouts/LeafsLayout.astro";
 import Hero from "../components/Hero.astro";
 ---
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEXX4CR4HW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-MEXX4CR4HW');
+</script>
 <BaseLayout>
   <div class="bg-whitecolor">
     <Hero />
