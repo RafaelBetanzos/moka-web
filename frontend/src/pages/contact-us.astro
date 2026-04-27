@@ -3,9 +3,8 @@ import ContactUsCard from "@components/ContactUsCard.astro";
 import { ContactForm } from "@components/ContactForm/ContactForm";
 import BaseLayout from "@layouts/BaseLayout.astro";
 ---
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MEXX4CR4HW"></script>
-<script>
+<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-MEXX4CR4HW"></script>
+<script is:inline>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
