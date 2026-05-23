@@ -13,9 +13,11 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 </script>
 
 <BaseLayout>
-  <div class="bg-transparent w-full py-16 md:py-10 overflow-hidden">
+  <div class="relative bg-charcoal w-full py-16 md:py-20 overflow-hidden">
+    <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/40 to-transparent"></div>
+    <div class="absolute right-0 top-20 h-[520px] w-[520px] rounded-full bg-deepforest/35 blur-3xl"></div>
     <div 
-      class="flex flex-col lg:flex-row items-center justify-center max-w-6xl mx-auto px-6 md:px-12 gap-12 lg:gap-24"
+      class="relative flex flex-col lg:flex-row items-center justify-center max-w-6xl mx-auto px-6 md:px-12 gap-12 lg:gap-24"
     >
       <div 
         class="reveal opacity-0 w-full lg:w-1/2 flex justify-center lg:justify-start" 

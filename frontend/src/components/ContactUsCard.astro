@@ -6,24 +6,25 @@ const pillsTag = ["Bioprospecting", "Nature", "Computational Biology"];
 ---
 
 <div
-  class="bg-secondary relative z-10 rounded-[40px] p-8 md:p-12 flex flex-col justify-center text-white font-inter font-bold shadow-lg max-w-xl px-8 min-h-[450px] reveal opacity-0"
+  class="relative z-10 overflow-hidden rounded-[2rem] border border-sage/30 bg-deepforest/80 p-8 md:p-12 flex flex-col justify-center text-pure font-inter font-bold shadow-2xl shadow-black/25 max-w-xl px-8 min-h-[450px] reveal opacity-0"
   data-animation="fade-in"
 >
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(110,191,126,0.18),transparent_34%),linear-gradient(135deg,rgba(18,18,18,0.1),rgba(19,45,37,0.48))]"></div>
   <div class="mb-12 flex flex-col gap-4">
-    <p class="text-3xl md:text-4xl tracking-tight reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.2s;">
+    <p class="relative text-sm tracking-[0.45em] text-freshgreen reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.2s;">
       CONTACT US!
     </p>
-    <p class="text-3xl md:text-4xl leading-tight reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.4s;">
+    <p class="relative text-3xl md:text-4xl leading-tight reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.4s;">
       Let's unlock the potential of nature together.
     </p>
   </div>
 
-  <div class="flex flex-wrap gap-3">
+  <div class="relative flex flex-wrap gap-3">
     {
       pillsTag.map((tag, index) => (
         <div
           key={index}
-          class="reveal opacity-0 flex items-center gap-3 text-white bg-white/10 backdrop-blur-md border border-white/20 rounded-full py-2 px-5 transition-all duration-300 hover:bg-white hover:text-secondary group cursor-default shadow-sm"
+          class="reveal opacity-0 flex items-center gap-3 text-birch bg-charcoal/50 backdrop-blur-md border border-sage/30 rounded-full py-2 px-5 transition-all duration-300 hover:bg-freshgreen hover:text-charcoal group cursor-default shadow-sm"
           data-animation="pop-in"
           style={`transition-delay: ${0.6 + index * 0.1}s;`}
         >

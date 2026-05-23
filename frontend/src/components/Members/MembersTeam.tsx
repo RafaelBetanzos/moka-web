@@ -113,11 +113,11 @@ export const MembersTeam = () => {
                   {member.name}
                 </p>
 
-                <span className="text-black font-semibold text-sm tracking-[0.1em] uppercase mt-1 mb-3">
+                <span className="text-birch font-semibold text-sm tracking-[0.1em] uppercase mt-1 mb-3">
                   {member.position}
                 </span>
                 
-                <p className="text-black text-[13px] leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                <p className="text-birch text-[13px] leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity duration-500">
                   {member.bio}
                 </p>
               </div>

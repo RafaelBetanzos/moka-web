@@ -4,38 +4,37 @@ import LogoNegative from "@assets/icons/Logo_Moka_White.png";
 import { Image } from "astro:assets";
 ---
 
-<footer class="relative bg-secondary flex gap-4 justify-between items-center">
+<footer class="relative bg-charcoal flex gap-4 justify-between items-center">
   <div
-    class="flex md:flex-row flex-col max-w-6xl mx-auto justify-between w-full"
+    class="flex md:flex-row flex-col justify-between w-full px-4 sm:px-8 py-4 gap-4"
   >
-    <div class="flex flex-row items-center justify-center gap-8">
+    <div class="flex flex-row items-center justify-center md:justify-start gap-8">
       <div>
         <a href="/">
           <Image
             src={LogoNegative}
             alt="Logo"
-            width={130}
-            height={100}
+            class="w-9 sm:w-12"
             loading="lazy"
           />
         </a>
       </div>
 
       <div
-        class="flex flex-col gap-2 text-navbar text-[16px] font-medium text-white mt-8 mb-8 font-roboto"
+        class="flex flex-col gap-2 text-pure text-[10px] sm:text-[16px] font-semibold font-roboto"
       >
-        <a href="/">Home</a>
-        <a href="/our-technology">Our Technology</a>
-        <a href="/about-us">About Us</a>
+        <a class="hover:text-freshgreen transition-colors" href="/">Home</a>
+        <a class="hover:text-freshgreen transition-colors" href="/our-technology">Our Technology</a>
+        <a class="hover:text-freshgreen transition-colors" href="/about-us">About Us</a>
       </div>
     </div>
 
     <div
-      class="flex flex-col gap-2 text-navbar font-roboto text-white text-[16px] font-medium items-center justify-center"
+      class="flex flex-col gap-2 font-roboto text-pure text-[10px] sm:text-[16px] font-semibold items-center justify-center"
     >
       <p>Let's get in touch</p>
       <a href="https://www.linkedin.com/company/mokabio">
-        <Image src={LinkedIn} alt="Linkedin" width={50} loading="lazy" />
+        <Image src={LinkedIn} alt="Linkedin" class="w-5 sm:w-10" loading="lazy" />
       </a>
     </div>
   </div>

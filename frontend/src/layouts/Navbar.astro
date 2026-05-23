@@ -1,30 +1,30 @@
 ---
 import LinkedIn from "@assets/LinkedIn.svg";
-import Logo from "@assets/icons/Logo_Moka_DarkGreen.png";
+import Logo from "@assets/icons/Logo_Moka_White.png";
 import { Image } from "astro:assets";
 ---
 
-<div class="bg-primary relative w-full">
+<div class="bg-charcoal relative w-full">
   <nav
-    class="flex flex-row justify-between items-center max-w-6xl mx-auto py-4 px-4 sm:px-8 flex-nowrap gap-2 sm:gap-8"
+    class="flex flex-row justify-between items-center w-full py-4 px-4 sm:px-8 flex-nowrap gap-4"
   >
     <div class="shrink-0">
       <a href="/">
-        <Image src={Logo} alt="Moka Bio Logo" class="w-16 sm:w-24" />
+        <Image src={Logo} alt="Moka Bio Logo" class="w-9 sm:w-12" />
       </a>
     </div>
 
-    <div
-      class="flex flex-row gap-3 sm:gap-8 text-navbar text-[10px] xs:text-xs sm:text-3xl font-semibold items-center whitespace-nowrap"
-    >
-      <a href="/" class="hover:text-secondary transition-colors">Home</a>
-      <a href="/our-technology" class="hover:text-secondary transition-colors">Tech</a> 
-      <a href="/about-us" class="hover:text-secondary transition-colors">About</a>
-      
-      {/* <a href="/articles" class="hover:text-secondary transition-colors">Articles</a> */}
-    </div>
+    <div class="flex flex-row gap-3 sm:gap-8 items-center justify-end shrink-0">
+      <div
+        class="flex flex-row gap-3 sm:gap-8 text-pure text-[10px] xs:text-xs sm:text-2xl font-semibold items-center whitespace-nowrap"
+      >
+        <a href="/" class="hover:text-freshgreen transition-colors">Home</a>
+        <a href="/our-technology" class="hover:text-freshgreen transition-colors">Tech</a> 
+        <a href="/about-us" class="hover:text-freshgreen transition-colors">About</a>
+        
+        {/* <a href="/articles" class="hover:text-secondary transition-colors">Articles</a> */}
+      </div>
 
-    <div class="flex flex-row gap-2 sm:gap-4 items-center shrink-0">
       <a 
         href="https://www.linkedin.com/company/mokabio" 
         target="_blank" 
@@ -34,13 +34,13 @@ import { Image } from "astro:assets";
         <Image 
           src={LinkedIn} 
           alt="LinkedIn Profile" 
-          class="w-6 sm:w-12 opacity-90 hover:opacity-100"
+          class="w-5 sm:w-10 opacity-90 hover:opacity-100"
           loading="lazy" 
         />
       </a>
 
       <div
-        class="bg-navbar text-white rounded-full px-3 py-1 sm:px-6 sm:py-2 text-[10px] sm:text-[16px] font-semibold whitespace-nowrap hover:bg-secondary transition-colors"
+        class="bg-pure text-charcoal rounded-full px-3 py-1 sm:px-6 sm:py-2 text-[10px] sm:text-[16px] font-semibold whitespace-nowrap hover:bg-freshgreen transition-colors"
       >
         <a href="/contact-us">Contact</a>
       </div>

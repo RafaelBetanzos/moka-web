@@ -1,12 +1,47 @@
-<div class="bg-hero-pattern bg-cover min-h-screen bg-center w-full flex items-center overflow-hidden">
-  <div class="flex flex-row items-center justify-end ml-[40%] md:ml-[50%] xl:ml-[60%] font-medium animate-moka-reveal">
-    <p class="font-inter text-secondary sm:text-7xl text-4xl leading-tight xl:pr-[40%]">
+<div class="hero-xray relative min-h-screen w-full flex items-center overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/35 to-charcoal/75"></div>
+  <div class="absolute inset-0 bg-freshgreen/10 mix-blend-screen"></div>
+  <div class="absolute inset-0 hero-scan opacity-30"></div>
+  <div class="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-b from-transparent via-charcoal/80 to-charcoal"></div>
+  <div class="relative z-10 flex flex-row items-center justify-end ml-[40%] md:ml-[50%] xl:ml-[60%] font-medium animate-moka-reveal">
+    <p class="font-inter text-pure sm:text-7xl text-4xl leading-tight xl:pr-[40%] drop-shadow-2xl">
       The operating system for <strong class="font-bold">natural</strong> product discovery
     </p>
   </div>
 </div>
 
 <style>
+  .hero-xray::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("/Plants.jpeg");
+    background-position: center;
+    background-size: cover;
+    filter: grayscale(1) contrast(1.55) brightness(0.72) invert(0.08);
+    opacity: 0.72;
+    transform: scale(1.02);
+  }
+
+  .hero-xray::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 64% 42%, rgba(110, 191, 126, 0.24), transparent 32%),
+      radial-gradient(circle at 35% 58%, rgba(86, 114, 99, 0.18), transparent 28%),
+      linear-gradient(90deg, rgba(18, 18, 18, 0.78), rgba(18, 18, 18, 0.08) 52%, rgba(18, 18, 18, 0.7));
+    mix-blend-mode: screen;
+    opacity: 0.62;
+  }
+
+  .hero-scan {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(110, 191, 126, 0.08) 1px, transparent 1px);
+    background-size: 100% 7px, 48px 100%;
+  }
+
   /* Animación sutil de aparición desde la derecha */
   .animate-moka-reveal {
     animation: mokaReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;

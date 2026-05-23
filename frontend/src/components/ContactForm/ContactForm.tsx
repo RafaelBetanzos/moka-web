@@ -30,13 +30,13 @@ export const ContactForm: React.FC = () => {
     >
       {/* Name Field */}
       <div className="w-full flex flex-col gap-3">
-        <label htmlFor="Name" className="font-medium text-[20px] md:text-[24px] font-inter text-secondary">
+        <label htmlFor="Name" className="font-medium text-[18px] md:text-[20px] font-inter text-freshgreen">
           Name
         </label>
         <div className="relative group">
-          <img src={User.src} alt="User" className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 opacity-60 group-focus-within:opacity-100 transition-opacity" />
+          <img src={User.src} alt="User" className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 opacity-70 group-focus-within:opacity-100 transition-opacity" />
           <input
-            className="rounded-full w-full border-2 border-neutral-100 bg-white pl-14 pr-6 text-base h-16 text-stone-700 outline-none focus:border-secondary transition-all"
+            className="rounded-full w-full border border-sage/30 bg-deepforest/75 pl-14 pr-6 text-base h-16 text-pure placeholder:text-birch/45 outline-none focus:border-freshgreen focus:bg-deepforest transition-all"
             type="text"
             name="user_name" // Added name attribute
             id="Name"
@@ -48,13 +48,13 @@ export const ContactForm: React.FC = () => {
 
       {/* Email Field */}
       <div className="w-full flex flex-col gap-3">
-        <label htmlFor="Email" className="font-medium text-[20px] md:text-[24px] font-inter text-secondary">
+        <label htmlFor="Email" className="font-medium text-[18px] md:text-[20px] font-inter text-freshgreen">
           Email
         </label>
         <div className="relative group">
           <img src={Email.src} alt="Email" className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 opacity-60 group-focus-within:opacity-100 transition-opacity" />
           <input
-            className="rounded-full w-full border-2 border-neutral-100 bg-white pl-14 pr-6 text-base h-16 text-stone-700 outline-none focus:border-secondary transition-all"
+            className="rounded-full w-full border border-sage/30 bg-deepforest/75 pl-14 pr-6 text-base h-16 text-pure placeholder:text-birch/45 outline-none focus:border-freshgreen focus:bg-deepforest transition-all"
             type="email"
             name="user_email" // Added name attribute
             id="Email"
@@ -66,13 +66,13 @@ export const ContactForm: React.FC = () => {
 
       {/* Phone Field */}
       <div className="w-full flex flex-col gap-3">
-        <label htmlFor="Phone" className="font-medium text-[20px] md:text-[24px] font-inter text-secondary">
+        <label htmlFor="Phone" className="font-medium text-[18px] md:text-[20px] font-inter text-freshgreen">
           Phone Number
         </label>
         <div className="relative group">
           <img src={Phone.src} alt="Phone" className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 opacity-60 group-focus-within:opacity-100 transition-opacity" />
           <input
-            className="rounded-full w-full border-2 border-neutral-100 bg-white pl-14 pr-6 text-base h-16 text-stone-700 outline-none focus:border-secondary transition-all"
+            className="rounded-full w-full border border-sage/30 bg-deepforest/75 pl-14 pr-6 text-base h-16 text-pure placeholder:text-birch/45 outline-none focus:border-freshgreen focus:bg-deepforest transition-all"
             type="tel"
             name="user_phone" // Added name attribute
             id="Phone"
@@ -83,7 +83,7 @@ export const ContactForm: React.FC = () => {
 
       {/* Message Field */}
       <div className="w-full flex flex-col gap-3">
-        <label htmlFor="Message" className="font-medium text-[20px] md:text-[24px] font-inter text-secondary">
+        <label htmlFor="Message" className="font-medium text-[18px] md:text-[20px] font-inter text-freshgreen">
           Message
         </label>
         <div className="relative group">
@@ -93,7 +93,7 @@ export const ContactForm: React.FC = () => {
             name="user_message" // Added name attribute
             placeholder="Enter your message..."
             rows={4}
-            className="rounded-[2rem] w-full border-2 border-neutral-100 bg-white pl-14 pr-6 py-5 text-base md:text-lg resize-none text-stone-700 outline-none focus:border-secondary transition-all"
+            className="rounded-[2rem] w-full border border-sage/30 bg-deepforest/75 pl-14 pr-6 py-5 text-base md:text-lg resize-none text-pure placeholder:text-birch/45 outline-none focus:border-freshgreen focus:bg-deepforest transition-all"
             required
           />
         </div>
@@ -101,7 +101,7 @@ export const ContactForm: React.FC = () => {
 
       <div className="flex justify-end mt-2">
         <button
-          className="font-roboto text-[20px] md:text-[24px] font-bold bg-secondary px-12 py-4 rounded-full text-white hover:bg-black hover:scale-105 transition-all shadow-lg active:scale-95"
+          className="font-roboto text-[18px] md:text-[20px] font-bold bg-pure px-10 py-3 rounded-full text-charcoal hover:bg-freshgreen hover:scale-105 transition-all shadow-lg active:scale-95"
           type="submit"
         >
           Send

@@ -8,6 +8,12 @@ export default {
         roboto: ["Roboto", "sans-serif"],
       },
       colors: {
+        pure: "var(--pure-color)",
+        birch: "var(--birch-color)",
+        sage: "var(--sage-color)",
+        deepforest: "var(--deep-forest-color)",
+        freshgreen: "var(--fresh-green-color)",
+        charcoal: "var(--charcoal-color)",
         primary: "var(--primary-color)",
         secondary: "var(--secondary-color)",
         navbar: "var(--navbar-color)",
@@ -28,7 +34,7 @@ export default {
         "background-brain": "url('/background-brain.svg')",
         leafs: "url('/Leafs.svg')",
         "custom-gradient":
-          "linear-gradient(180deg, rgba(237, 237, 237, 0.16) 0%, rgba(133, 188, 170, 0.36) 33.5%, rgba(143, 192, 169, 0.4) 54%, rgba(172, 203, 177, 0.36) 75%, rgba(237, 237, 237, 0.16) 100%)",
+          "linear-gradient(180deg, rgba(18, 18, 18, 0.96) 0%, rgba(19, 45, 37, 0.92) 33.5%, rgba(86, 114, 99, 0.72) 54%, rgba(110, 191, 126, 0.28) 75%, rgba(18, 18, 18, 0.96) 100%)",
       },
       backgroundSize: {
         auto: "auto",

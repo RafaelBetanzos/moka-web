@@ -1,92 +1,102 @@
 ---
 import ArrowRight from "@assets/icons/ArrowRight.svg";
-import { blocksGraphics, blocksProblem } from "@utils/CardSectionMock";
 import { Image } from "astro:assets";
-import CardGraphics from "./CardGraphics.astro";
-import InfoBlock from "./InfoSection.astro";
 ---
 
-<div class="bg-background-brain bg-cover bg-center relative p-8 overflow-hidden">
-  <div class="flex flex-col lg:flex-row justify-between max-w-6xl mx-auto pt-24 lg:gap-32">
-    
+<section class="relative -mt-1 overflow-hidden bg-charcoal px-5 py-20 sm:px-8 lg:py-28">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/40 to-transparent"></div>
+  <div class="absolute left-1/2 top-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-deepforest/40 blur-3xl"></div>
+
+  <div class="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
     <div class="flex flex-col">
       <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.1s;">
-        <p class="font-roboto text-[22px] font-medium leading-[23.44px] tracking-[4px] transition-transform duration-300 hover:scale-105 cursor-default inline-block">
+        <p class="font-roboto text-[13px] font-medium leading-none tracking-[0.45em] text-freshgreen uppercase">
           MOKA BIO
         </p>
-        <div class="font-inter text-[42px] font-semibold leading-[56.25px] transition-transform duration-300 hover:scale-105 cursor-default">
-          <p class="text-secondary">Index. Program. Scale.</p>
-          <p>The Biological Intelligence Layer</p>
+        <div class="mt-5 font-inter text-[40px] font-semibold leading-[1.05] text-pure sm:text-[56px] lg:text-[64px]">
+          <p>Index. Program. Scale.</p>
+          <p class="mt-3 text-birch">The Biological Intelligence Layer</p>
         </div>
       </div>
 
       <div class="reveal opacity-0 font-inter mt-4" data-animation="slide-in" style="transition-delay: 0.3s;">
-        <p class="text-graycolor text-[20px] transition-transform duration-300 hover:scale-105 cursor-default">
+        <p class="max-w-xl text-[18px] leading-relaxed text-birch/75 sm:text-[20px]">
           We transform the planet’s largest validated chemical library
           into a programmable engine for molecular innovation
           across medicine, nutrition, and beyond.
         </p>
       </div>
 
-      <div class="flex flex-col sm:flex-row gap-8 mt-16 lg:mt-8 justify-center lg:justify-start">
-        {
-          blocksGraphics.map((graph, index) => (
-            <div 
-              class="reveal opacity-0 transition-all duration-300 hover:scale-110 cursor-pointer" 
-              data-animation="pop-in"
-              style={`transition-delay: ${0.4 + index * 0.2}s;`}
-            >
-                <CardGraphics
-                image={graph.image}
-                altImage={graph.alt}
-                title={graph.title}
-                content={graph.content}
-                greenPoint={graph.greenPoint}
-                grayPoint={graph.grayPoint}
-                number={graph.number}
-                />
-            </div>
-          ))
-        }
-      </div>
-    </div>
-
-    <div class="flex flex-col font-inter mb-8 justify-center items-center">
-      <div class="flex flex-col gap-4">
-        {
-            blocksProblem.map((block, index) => (
-              <div 
-                class="reveal opacity-0 transition-all duration-300 hover:scale-105 cursor-pointer" 
-                data-animation="slide-in-right"
-                style={`transition-delay: ${0.2 + index * 0.2}s;`}
-              >
-                <InfoBlock
-                    image={block.image}
-                    altImage={block.alt}
-                    title={block.title}
-                    content={block.content}
-                    chevron={block.chevron}
-                />
-              </div>
-            ))
-        }
+      <div class="reveal opacity-0 mt-8 flex flex-wrap gap-3" data-animation="slide-in" style="transition-delay: 0.45s;">
+        <span class="rounded-full border border-sage/40 bg-deepforest/70 px-4 py-2 text-sm font-medium text-birch">Validated bioactivity</span>
+        <span class="rounded-full border border-sage/40 bg-deepforest/70 px-4 py-2 text-sm font-medium text-birch">Molecular indexing</span>
+        <span class="rounded-full border border-sage/40 bg-deepforest/70 px-4 py-2 text-sm font-medium text-birch">IP-ready assets</span>
       </div>
 
       <a 
         href="/our-technology" 
-        class="reveal opacity-0 flex gap-3 items-center justify-center bg-secondary text-white font-inter font-medium text-[22px] rounded-full max-w-fit mt-8 p-2 pr-2 pl-6 shadow-sm transition-all duration-300 hover:scale-110 hover:shadow-xl active:scale-95 no-underline"
+        class="reveal opacity-0 mt-10 flex w-fit items-center gap-3 rounded-full bg-pure py-2 pl-6 pr-2 font-inter text-[16px] font-semibold text-charcoal shadow-sm transition-all duration-300 hover:bg-freshgreen hover:shadow-freshgreen/20 active:scale-95 no-underline"
         data-animation="bounce-in"
-        style="transition-delay: 0.8s;"
+        style="transition-delay: 0.75s;"
       >
-        <p>Our Technology</p>
-        <div class="flex items-center justify-center bg-navbar rounded-full w-10 h-10 shrink-0 group">
-          <Image src={ArrowRight} alt="arrow-right" class="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
-        </div>
+        <span>Our Technology</span>
+        <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-charcoal">
+          <Image src={ArrowRight} alt="arrow-right" class="h-5 w-5" />
+        </span>
       </a>
     </div>
 
+    <div class="grid gap-4 font-inter">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <article class="reveal opacity-0 rounded-[1.5rem] border border-sage/25 bg-deepforest/80 p-6 shadow-2xl shadow-black/20" data-animation="pop-in" style="transition-delay: 0.25s;">
+          <p class="text-xs font-semibold uppercase tracking-[0.32em] text-birch/70">Global Bioactivity</p>
+          <div class="mt-6 flex flex-wrap items-end gap-3">
+            <p class="text-[56px] font-semibold leading-none text-freshgreen sm:text-[64px]">80%</p>
+            <span class="mb-2 rounded-full border border-freshgreen/30 px-3 py-1 text-[11px] font-semibold text-freshgreen">VALIDATED</span>
+          </div>
+          <p class="mt-5 text-[15px] leading-relaxed text-birch/75">
+            Of the world population utilizes natural molecular solutions.
+          </p>
+          <p class="mt-6 text-xs font-semibold uppercase tracking-[0.28em] text-sage">Synthetic signal mapped</p>
+        </article>
+
+        <article class="reveal opacity-0 rounded-[1.5rem] border border-sage/25 bg-deepforest/80 p-6 shadow-2xl shadow-black/20" data-animation="pop-in" style="transition-delay: 0.4s;">
+          <p class="text-xs font-semibold uppercase tracking-[0.32em] text-birch/70">Natural Chemistry</p>
+          <div class="mt-6 flex flex-wrap items-end gap-3">
+            <p class="text-[56px] font-semibold leading-none text-freshgreen sm:text-[64px]">&lt;9%</p>
+            <span class="mb-2 rounded-full border border-freshgreen/30 px-3 py-1 text-[11px] font-semibold text-freshgreen">INDEXED</span>
+          </div>
+          <p class="mt-5 text-[15px] leading-relaxed text-birch/75">
+            Of the world’s natural chemistry has been chemically characterized.
+          </p>
+          <p class="mt-6 text-xs font-semibold uppercase tracking-[0.28em] text-sage">Unindexed opportunity</p>
+        </article>
+      </div>
+
+      <div class="grid gap-4">
+        <article class="reveal opacity-0 rounded-[1.25rem] border border-sage/25 bg-charcoal/80 p-6" data-animation="slide-in-right" style="transition-delay: 0.55s;">
+          <div class="flex items-center gap-3">
+            <span class="h-2.5 w-2.5 rounded-full bg-sage"></span>
+            <p class="text-xs font-semibold uppercase tracking-[0.32em] text-sage">The Problem</p>
+          </div>
+          <p class="mt-4 text-[17px] leading-relaxed text-birch">
+            Nature’s chemical diversity is unstructured and offline, making the discovery of predictable, scalable bioactives an artisanal and high-risk process.
+          </p>
+        </article>
+
+        <article class="reveal opacity-0 rounded-[1.25rem] border border-freshgreen/30 bg-gradient-to-br from-deepforest to-charcoal p-6" data-animation="slide-in-right" style="transition-delay: 0.7s;">
+          <div class="flex items-center gap-3">
+            <span class="h-2.5 w-2.5 rounded-full bg-freshgreen"></span>
+            <p class="text-xs font-semibold uppercase tracking-[0.32em] text-freshgreen">The Solution</p>
+          </div>
+          <p class="mt-4 text-[17px] leading-relaxed text-birch">
+            Moka provides the programmable infrastructure to decode natural bioactivity into standardized, IP-protected molecular assets for global industries.
+          </p>
+        </article>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
 <script>
   // Intersection Observer Logic
@@ -112,8 +122,8 @@ import InfoBlock from "./InfoSection.astro";
   /* Entrance Animations */
   .animate-slide-in { animation: slideIn 0.8s ease-out forwards; }
   .animate-slide-in-right { animation: slideInRight 0.8s ease-out forwards; }
-  .animate-pop-in { animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
-  .animate-bounce-in { animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; }
+  .animate-pop-in { animation: popIn 0.7s ease-out forwards; }
+  .animate-bounce-in { animation: bounceIn 0.7s ease-out forwards; }
 
   @keyframes slideIn {
     from { opacity: 0; transform: translateY(30px); }
@@ -126,13 +136,12 @@ import InfoBlock from "./InfoSection.astro";
   }
 
   @keyframes popIn {
-    from { opacity: 0; transform: scale(0.8); }
+    from { opacity: 0; transform: scale(0.96) translateY(16px); }
     to { opacity: 1; transform: scale(1); }
   }
 
   @keyframes bounceIn {
-    0% { opacity: 0; transform: scale(0.3); }
-    50% { opacity: 1; transform: scale(1.05); }
+    0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: scale(1); }
   }
 </style>

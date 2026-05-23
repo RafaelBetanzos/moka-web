@@ -3,9 +3,11 @@ import LeafsLayout from "@layouts/LeafsLayout.astro";
 import OurVisionCard from "./OurVisionCard.astro";
 ---
 
-<div class="bg-custom-gradient bg-no-repeat bg-cover w-full px-8">
+<div class="relative overflow-hidden bg-charcoal w-full px-5 sm:px-8 py-20">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sage/40 to-transparent"></div>
+  <div class="absolute right-0 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-sage/15 blur-3xl"></div>
   <LeafsLayout>
-    <div class="flex flex-col justify-center items-center py-7">
+    <div class="relative flex flex-col justify-center items-center">
       <OurVisionCard isButtonOn={true} />
     </div>
   </LeafsLayout>
