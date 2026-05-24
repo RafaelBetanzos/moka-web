@@ -3,12 +3,21 @@ import LeafsLayout from "@layouts/LeafsLayout.astro";
 import OurVisionCard from "./OurVisionCard.astro";
 ---
 
-<div class="relative overflow-hidden bg-charcoal w-full px-5 sm:px-8 py-20">
-  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sage/40 to-transparent"></div>
-  <div class="absolute right-0 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-sage/15 blur-3xl"></div>
+<div class="home-vision-section relative overflow-hidden w-full px-5 sm:px-8 py-20">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sage/20 to-transparent"></div>
+  <div class="absolute right-0 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-sage/10 blur-3xl"></div>
+  <div class="absolute left-[-12%] bottom-[-30%] h-[520px] w-[520px] rounded-full bg-freshgreen/7 blur-3xl"></div>
   <LeafsLayout>
     <div class="relative flex flex-col justify-center items-center">
       <OurVisionCard isButtonOn={true} />
     </div>
   </LeafsLayout>
 </div>
+
+<style>
+  .home-vision-section {
+    background:
+      linear-gradient(180deg, rgba(18, 18, 18, 1), rgba(19, 45, 37, 0.5) 46%, rgba(18, 18, 18, 0.98)),
+      radial-gradient(circle at 78% 40%, rgba(86, 114, 99, 0.14), transparent 32%);
+  }
+</style>

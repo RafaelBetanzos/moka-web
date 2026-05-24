@@ -1,14 +1,56 @@
-<div class="hero-xray relative min-h-screen w-full flex items-center overflow-hidden">
-  <div class="absolute inset-0 bg-gradient-to-r from-charcoal/90 via-charcoal/35 to-charcoal/75"></div>
-  <div class="absolute inset-0 bg-freshgreen/10 mix-blend-screen"></div>
-  <div class="absolute inset-0 hero-scan opacity-30"></div>
-  <div class="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-b from-transparent via-charcoal/80 to-charcoal"></div>
-  <div class="relative z-10 flex flex-row items-center justify-end ml-[40%] md:ml-[50%] xl:ml-[60%] font-medium animate-moka-reveal">
-    <p class="font-inter text-pure sm:text-7xl text-4xl leading-tight xl:pr-[40%] drop-shadow-2xl">
-      The operating system for <strong class="font-bold">natural</strong> product discovery
-    </p>
+<section class="hero-xray relative min-h-screen w-full overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-r from-charcoal/98 via-charcoal/58 to-charcoal/86"></div>
+  <div class="absolute inset-0 bg-deepforest/20 mix-blend-multiply"></div>
+  <div class="absolute inset-0 bg-freshgreen/5"></div>
+  <div class="absolute inset-0 hero-scan opacity-20"></div>
+  <div class="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-charcoal/88 to-charcoal"></div>
+
+  <div class="hero-botanical botanical-line-a" aria-hidden="true"></div>
+  <div class="hero-botanical botanical-line-b" aria-hidden="true"></div>
+
+  <div class="absolute inset-0 z-[3] hidden md:block" aria-hidden="true">
+    <div class="molecule-node node-a"></div>
+    <div class="molecule-node node-b"></div>
+    <div class="molecule-node node-c"></div>
+    <div class="molecule-node node-d"></div>
+    <svg class="hero-network" viewBox="0 0 1000 720" preserveAspectRatio="none">
+      <path d="M640 165 C710 225 744 302 810 364 S900 500 854 590" />
+      <path d="M550 425 C630 390 700 390 810 364" />
+      <path d="M698 270 C646 330 605 365 550 425" />
+    </svg>
   </div>
-</div>
+
+  <div class="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 py-28 sm:px-8 lg:px-12">
+    <div class="grid w-full items-center gap-12 lg:grid-cols-[1fr_0.84fr]">
+      <div class="hero-copy max-w-3xl animate-moka-reveal">
+        <p class="font-roboto text-[12px] font-semibold uppercase tracking-[0.48em] text-freshgreen">
+          MOKA BIO
+        </p>
+        <h1 class="mt-5 font-inter text-[44px] font-semibold leading-[0.98] text-pure drop-shadow-2xl sm:text-[72px] lg:text-[92px]">
+          The operating system for <span class="text-freshgreen">natural</span> product discovery
+        </h1>
+        <p class="mt-7 max-w-2xl font-inter text-[17px] leading-relaxed text-birch/78 sm:text-[20px]">
+          Moka turns natural knowledge into programmable bioactive intelligence for molecular innovation.
+        </p>
+        <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <a href="/our-technology" class="hero-primary-cta no-underline">Explore the platform</a>
+          <a href="/contact-us" class="hero-secondary-cta no-underline">Contact us</a>
+        </div>
+      </div>
+
+      <div class="hero-instrument relative mx-auto hidden min-h-[520px] w-full max-w-[520px] lg:block" aria-hidden="true">
+        <div class="absolute inset-8 rounded-full border border-freshgreen/12 bg-charcoal/28 shadow-[inset_0_0_80px_rgba(110,191,126,0.08)] backdrop-blur-sm"></div>
+        <div class="absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-sage/20"></div>
+        <div class="absolute left-[17%] top-[14%] h-24 w-24 rounded-full border border-freshgreen/22 bg-deepforest/42 blur-[1px]"></div>
+        <div class="absolute right-[12%] top-[28%] h-14 w-14 rounded-full border border-birch/14 bg-charcoal/60"></div>
+        <div class="absolute bottom-[18%] left-[20%] h-16 w-16 rounded-full border border-sage/24 bg-charcoal/64"></div>
+        <img src="/assets/about-botanicals/botanical-line-03.png" alt="" class="absolute left-[18%] top-[9%] w-[340px] opacity-[0.16] invert" loading="eager" />
+        <div class="absolute inset-x-12 top-1/2 h-px bg-gradient-to-r from-transparent via-freshgreen/35 to-transparent"></div>
+        <div class="absolute inset-y-12 left-1/2 w-px bg-gradient-to-b from-transparent via-sage/28 to-transparent"></div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <style>
   .hero-xray::before {
@@ -18,9 +60,10 @@
     background-image: url("/Plants.jpeg");
     background-position: center;
     background-size: cover;
-    filter: grayscale(1) contrast(1.55) brightness(0.72) invert(0.08);
-    opacity: 0.72;
+    filter: grayscale(1) contrast(1.34) brightness(0.48) invert(0.05) saturate(0.8);
+    opacity: 0.62;
     transform: scale(1.02);
+    animation: heroDrift 24s ease-in-out infinite alternate;
   }
 
   .hero-xray::after {
@@ -28,18 +71,118 @@
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 64% 42%, rgba(110, 191, 126, 0.24), transparent 32%),
-      radial-gradient(circle at 35% 58%, rgba(86, 114, 99, 0.18), transparent 28%),
-      linear-gradient(90deg, rgba(18, 18, 18, 0.78), rgba(18, 18, 18, 0.08) 52%, rgba(18, 18, 18, 0.7));
-    mix-blend-mode: screen;
-    opacity: 0.62;
+      radial-gradient(circle at 68% 38%, rgba(110, 191, 126, 0.1), transparent 30%),
+      radial-gradient(circle at 42% 62%, rgba(86, 114, 99, 0.12), transparent 30%),
+      linear-gradient(90deg, rgba(18, 18, 18, 0.96), rgba(18, 18, 18, 0.62) 54%, rgba(18, 18, 18, 0.92));
+    mix-blend-mode: normal;
+    opacity: 0.88;
   }
 
   .hero-scan {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(110, 191, 126, 0.08) 1px, transparent 1px);
-    background-size: 100% 7px, 48px 100%;
+      linear-gradient(rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(110, 191, 126, 0.055) 1px, transparent 1px);
+    background-size: 100% 8px, 56px 100%;
+  }
+
+  .hero-copy {
+    text-wrap: balance;
+  }
+
+  .hero-primary-cta,
+  .hero-secondary-cta {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    padding: 0.85rem 1.35rem;
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    transition: transform 280ms ease, border-color 280ms ease, background 280ms ease, color 280ms ease, box-shadow 280ms ease;
+  }
+
+  .hero-primary-cta {
+    background: var(--pure-color);
+    color: var(--charcoal-color);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
+  }
+
+  .hero-secondary-cta {
+    border: 1px solid rgba(110, 191, 126, 0.28);
+    background: rgba(18, 18, 18, 0.42);
+    color: rgba(222, 222, 222, 0.9);
+    backdrop-filter: blur(14px);
+  }
+
+  .hero-primary-cta:hover,
+  .hero-secondary-cta:hover {
+    transform: translateY(-2px);
+    border-color: rgba(110, 191, 126, 0.5);
+    background: var(--fresh-green-color);
+    color: var(--charcoal-color);
+    box-shadow: 0 18px 60px rgba(110, 191, 126, 0.16);
+  }
+
+  .hero-botanical {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: contain;
+    filter: invert(1);
+    opacity: 0.08;
+  }
+
+  .botanical-line-a {
+    left: -3rem;
+    bottom: 5rem;
+    width: min(34vw, 420px);
+    height: min(45vw, 560px);
+    background-image: url("/assets/about-botanicals/botanical-line-01.png");
+    animation: botanicalFloat 18s ease-in-out infinite;
+  }
+
+  .botanical-line-b {
+    right: -5rem;
+    top: 5rem;
+    width: min(30vw, 380px);
+    height: min(42vw, 520px);
+    background-image: url("/assets/about-botanicals/botanical-line-05.png");
+    transform: rotate(8deg);
+    animation: botanicalFloat 22s ease-in-out infinite reverse;
+  }
+
+  .molecule-node {
+    position: absolute;
+    z-index: 4;
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: rgba(110, 191, 126, 0.82);
+    box-shadow: 0 0 22px rgba(110, 191, 126, 0.42);
+    animation: nodePulse 5s ease-in-out infinite;
+  }
+
+  .node-a { right: 23%; top: 22%; }
+  .node-b { right: 14%; top: 48%; animation-delay: 0.9s; }
+  .node-c { right: 35%; top: 58%; animation-delay: 1.5s; }
+  .node-d { right: 18%; bottom: 17%; animation-delay: 2.2s; }
+
+  .hero-network {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    opacity: 0.4;
+  }
+
+  .hero-network path {
+    fill: none;
+    stroke: rgba(110, 191, 126, 0.32);
+    stroke-width: 1;
+    stroke-dasharray: 9 13;
+    animation: networkFlow 16s linear infinite;
   }
 
   /* Animación sutil de aparición desde la derecha */
@@ -57,6 +200,54 @@
     to {
       opacity: 1;
       transform: translateX(0);
+    }
+  }
+
+  @keyframes heroDrift {
+    from { transform: scale(1.02) translate3d(0, 0, 0); }
+    to { transform: scale(1.06) translate3d(-1.2%, 0.8%, 0); }
+  }
+
+  @keyframes botanicalFloat {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    50% { transform: translate3d(0, -18px, 0) rotate(2deg); }
+  }
+
+  @keyframes nodePulse {
+    0%, 100% { opacity: 0.42; transform: scale(0.86); }
+    50% { opacity: 1; transform: scale(1.22); }
+  }
+
+  @keyframes networkFlow {
+    to { stroke-dashoffset: -220; }
+  }
+
+  @media (max-width: 767px) {
+    .hero-xray::after {
+      background:
+        radial-gradient(circle at 68% 38%, rgba(110, 191, 126, 0.1), transparent 36%),
+        linear-gradient(90deg, rgba(18, 18, 18, 0.96), rgba(18, 18, 18, 0.74));
+    }
+
+    .botanical-line-a {
+      width: 260px;
+      height: 340px;
+      opacity: 0.07;
+    }
+
+    .botanical-line-b {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-xray::before,
+    .botanical-line-a,
+    .botanical-line-b,
+    .molecule-node,
+    .hero-network path,
+    .animate-moka-reveal {
+      animation: none;
     }
   }
 </style>

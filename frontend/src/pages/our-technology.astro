@@ -15,7 +15,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 </script>
 
 <BaseLayout>
-  <div class="tech-page relative flex flex-col items-center justify-between w-full bg-charcoal overflow-hidden">
+  <div class="tech-page moka-page-skin relative flex flex-col items-center justify-between w-full bg-charcoal overflow-hidden">
     <div class="tech-biofield pointer-events-none fixed inset-0 z-0" aria-hidden="true">
       <svg class="h-full w-full" viewBox="0 0 1440 2200" preserveAspectRatio="xMidYMid slice">
         <defs>
@@ -184,7 +184,14 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 
 <style>
   .tech-biofield {
-    opacity: 0.78;
+    opacity: 0.88;
+  }
+
+  .tech-page {
+    background:
+      radial-gradient(circle at 10% 12%, rgba(110, 191, 126, 0.08), transparent 28%),
+      radial-gradient(circle at 84% 46%, rgba(86, 114, 99, 0.16), transparent 34%),
+      linear-gradient(180deg, rgba(18, 18, 18, 1), rgba(19, 45, 37, 0.5) 48%, rgba(18, 18, 18, 1));
   }
 
   .tech-path {
@@ -194,7 +201,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
   }
 
   .tech-path.trunk {
-    stroke: rgba(110, 191, 126, 0.42);
+    stroke: rgba(110, 191, 126, 0.5);
     stroke-width: 3;
     stroke-dashoffset: calc(1 - var(--tech-progress, 0));
     filter: drop-shadow(0 0 12px rgba(110, 191, 126, 0.22));
@@ -202,23 +209,23 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 
   .tech-path.primary,
   .tech-path.branch {
-    stroke: rgba(110, 191, 126, 0.42);
+    stroke: rgba(110, 191, 126, 0.46);
     stroke-width: 3;
     filter: drop-shadow(0 0 12px rgba(110, 191, 126, 0.22));
   }
 
   .tech-path.secondary {
-    stroke: rgba(86, 114, 99, 0.36);
+    stroke: rgba(86, 114, 99, 0.42);
     stroke-width: 2;
   }
 
   .tech-path.tertiary {
-    stroke: rgba(222, 222, 222, 0.1);
+    stroke: rgba(222, 222, 222, 0.13);
     stroke-width: 1.2;
   }
 
   .tech-path.twig {
-    stroke: rgba(86, 114, 99, 0.28);
+    stroke: rgba(86, 114, 99, 0.34);
     stroke-width: 1.4;
   }
 

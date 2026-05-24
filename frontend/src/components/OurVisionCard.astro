@@ -5,10 +5,11 @@ const { isButtonOn } = Astro.props;
 ---
 
 <div
-  class="rounded-[1.75rem] border border-sage/30 bg-deepforest/70 shadow-2xl shadow-black/30 flex flex-col items-center text-pure max-w-4xl py-12 px-8 md:px-20 reveal-card transition-all duration-700 hover:border-freshgreen/40"
+  class="relative overflow-hidden rounded-[1.75rem] border border-birch/10 bg-deepforest/64 shadow-2xl shadow-black/28 flex flex-col items-center text-pure max-w-4xl py-12 px-8 md:px-20 reveal-card transition-all duration-700 hover:border-freshgreen/34 backdrop-blur-xl"
 >
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(110,191,126,0.12),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.035),rgba(18,18,18,0.18))]"></div>
   <h1 class="text-sm font-bold font-roboto pb-8 opacity-0 reveal-item-1 tracking-[0.45em] text-freshgreen">OUR VISION</h1>
-  <div class="flex flex-col items-center">
+  <div class="relative flex flex-col items-center">
     <p class="text-xl sm:text-4xl font-inter text-center sm:leading-[46px] opacity-0 reveal-item-2 text-pure">
       Moka Bio envisions a future where <strong class="text-freshgreen">natural products</strong>, 
       rigorously evaluated for safety and efficacy, become a trusted
@@ -17,7 +18,7 @@ const { isButtonOn } = Astro.props;
     {
       isButtonOn && (
         <div class="mt-8 opacity-0 reveal-item-3">
-          <a href="/about-us" class="group flex gap-6 items-center justify-center bg-pure text-charcoal font-inter font-semibold text-[16px] rounded-full max-w-fit p-1 pl-5 transition-all duration-300 hover:pr-4 hover:bg-freshgreen no-underline">
+          <a href="/about-us" class="group flex gap-6 items-center justify-center bg-pure text-charcoal font-inter font-semibold text-[16px] rounded-full max-w-fit p-1 pl-5 shadow-lg shadow-black/20 ring-1 ring-pure/10 transition-all duration-300 hover:pr-4 hover:bg-freshgreen hover:shadow-freshgreen/20 no-underline">
             <span class="text-center text-[16px]">
               About us
             </span>

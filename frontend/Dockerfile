@@ -1,7 +1,7 @@
 FROM node:lts AS runtime
 
-ARG VITE_BASE_MOKA_URL=https://cms.mokatherapeutics.com
-ENV VITE_BASE_MOKA_URL=https://cms.mokatherapeutics.com
+ARG VITE_BASE_MOKA_URL=https://cms.moka.bio
+ENV VITE_BASE_MOKA_URL=https://cms.moka.bio
 
 WORKDIR /app
 

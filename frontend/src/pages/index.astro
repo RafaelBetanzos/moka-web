@@ -4,9 +4,10 @@ import ContactUsCard from "@components/ContactUsCard.astro";
 import DataPlatformSection from "@components/DataPlatformSection.astro";
 import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
 import OurVisionSection from "@components/OurVisionSection.astro";
+import ProblemSection from "@components/ProblemSection.astro";
+import SolutionSection from "@components/SolutionSection.astro";
 import { ArticlesCarrousel } from "@components/Swiper/ArticlesCarrousel";
 import BaseLayout from "@layouts/BaseLayout.astro";
-import LeafsLayout from "@layouts/LeafsLayout.astro";
 import Hero from "../components/Hero.astro";
 ---
 <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-MEXX4CR4HW"></script>
@@ -18,19 +19,501 @@ import Hero from "../components/Hero.astro";
   gtag('config', 'G-MEXX4CR4HW');
 </script>
 <BaseLayout>
-  <div class="bg-charcoal">
+  <div class="home-color-system bg-charcoal">
     <Hero />
     <DataPlatformSection />
+
+    <section class="home-flow-section relative overflow-hidden px-5 py-20 sm:px-8 lg:py-28">
+      <div class="home-section-shell">
+        <div class="home-section-kicker">HOW MOKA WORKS</div>
+        <div class="grid items-end gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+          <h2 class="home-section-title">A living knowledge system for natural discovery.</h2>
+          <p class="home-section-copy">
+            Moka connects natural knowledge, bioactive potential, and molecular intelligence into a workflow that can support product discovery.
+          </p>
+        </div>
+
+        <div class="flow-track mt-14 grid gap-5 lg:grid-cols-3">
+          <article class="flow-step">
+            <span>01</span>
+            <h3>Explore natural knowledge</h3>
+            <p>Organize botanical and scientific knowledge into a searchable discovery foundation.</p>
+          </article>
+          <article class="flow-step">
+            <span>02</span>
+            <h3>Identify bioactive potential</h3>
+            <p>Map biological signals, mechanisms, and chemical patterns across natural molecular space.</p>
+          </article>
+          <article class="flow-step">
+            <span>03</span>
+            <h3>Transform findings</h3>
+            <p>Turn discoveries into usable molecular, product, IP, and regulatory intelligence.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-layers-section relative overflow-hidden px-5 py-20 sm:px-8 lg:py-28">
+      <div class="absolute left-[-8%] top-8 h-[520px] w-[520px] rounded-full bg-freshgreen/6 blur-3xl"></div>
+      <div class="absolute right-[-10%] bottom-0 h-[560px] w-[560px] rounded-full bg-sage/10 blur-3xl"></div>
+      <div class="home-section-shell relative">
+        <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <div class="home-section-kicker">PLATFORM LAYERS</div>
+            <h2 class="home-section-title mt-4">From botanical complexity to bioactive intelligence.</h2>
+            <p class="home-section-copy mt-5">
+              The platform acts as a layered system that structures data, AI interpretation, bioactivity, and product-facing intelligence.
+            </p>
+          </div>
+
+          <div class="layer-stack">
+            <div class="layer-card"><span>01</span><p>Botanical and scientific data layer</p></div>
+            <div class="layer-card"><span>02</span><p>AI / knowledge graph layer</p></div>
+            <div class="layer-card"><span>03</span><p>Bioactivity intelligence layer</p></div>
+            <div class="layer-card"><span>04</span><p>Product, IP, and regulatory intelligence layer</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="plant-to-bioactives relative overflow-hidden px-5 py-20 sm:px-8 lg:py-32">
+      <div class="home-section-shell relative">
+        <div class="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div class="bioactive-visual" aria-hidden="true">
+            <img src="/assets/about-botanicals/botanical-line-02.png" alt="" class="bioactive-plant plant-one" loading="lazy" />
+            <img src="/assets/about-botanicals/botanical-line-04.png" alt="" class="bioactive-plant plant-two" loading="lazy" />
+            <div class="bioactive-path"></div>
+            <div class="bioactive-orb orb-one"></div>
+            <div class="bioactive-orb orb-two"></div>
+            <div class="bioactive-orb orb-three"></div>
+            <div class="bioactive-panel">
+              <span>MOLECULAR SIGNAL</span>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <div>
+            <div class="home-section-kicker">FROM PLANTS TO BIOACTIVES</div>
+            <h2 class="home-section-title mt-4">Plant silhouettes, molecular signals, and data nodes become one discovery interface.</h2>
+            <p class="home-section-copy mt-5">
+              Moka is built around the idea that natural chemistry can be indexed, interpreted, and transformed into actionable bioactive intelligence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-applications relative overflow-hidden px-5 py-20 sm:px-8 lg:py-24">
+      <div class="home-section-shell">
+        <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+          <div>
+            <div class="home-section-kicker">APPLICATIONS</div>
+            <h2 class="home-section-title mt-4">Natural product intelligence for global industries.</h2>
+          </div>
+          <div class="application-grid">
+            {["Nutraceuticals", "Cosmetics", "Pharma", "Food", "Agriculture"].map((item) => (
+              <div class="application-pill">{item}</div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-why-section relative overflow-hidden px-5 py-20 sm:px-8 lg:py-28">
+      <div class="home-section-shell">
+        <div class="home-section-kicker">WHY MOKA</div>
+        <div class="why-panel">
+          <h2 class="home-section-title">Natural chemistry is under-characterized. Discovery is fragmented and slow.</h2>
+          <div class="why-grid">
+            <p>AI can organize biological complexity.</p>
+            <p>Moka turns natural knowledge into actionable bioactive intelligence.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="home-problem-solution relative overflow-hidden py-10">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/20 to-transparent"></div>
+      <ProblemSection />
+      <SolutionSection />
+    </div>
     
     <OurVisionSection />
+
+    <section class="home-contact-section relative overflow-hidden px-5 py-20 sm:px-8 lg:py-28">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/28 to-transparent"></div>
+      <div class="home-section-shell grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
+        <ContactUsCard />
+        <div class="contact-form-shell">
+          <ContactForm client:only="react" />
+        </div>
+      </div>
+    </section>
 
     <div class="relative -mt-4 py-2 bg-transparent">
       <MarqueeComponent client:only="react" />
     </div>
 
-    <div class="flex flex-col items-center justify-center mt-4 mb-10">
+    <div class="home-articles-band flex flex-col items-center justify-center mt-4 mb-10">
       <ArticlesCarrousel client:only="react" />
     </div>
     
   </div>
 </BaseLayout>
+
+<style>
+  .home-color-system {
+    background:
+      radial-gradient(circle at 8% 18%, rgba(110, 191, 126, 0.08), transparent 26%),
+      radial-gradient(circle at 92% 62%, rgba(86, 114, 99, 0.12), transparent 30%),
+      var(--charcoal-color);
+  }
+
+  .home-section-shell {
+    width: min(100%, 1180px);
+    margin: 0 auto;
+  }
+
+  .home-section-kicker {
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.42em;
+    color: var(--fresh-green-color);
+    text-transform: uppercase;
+  }
+
+  .home-section-title {
+    max-width: 820px;
+    font-family: Inter, sans-serif;
+    font-size: clamp(2.2rem, 5vw, 4.7rem);
+    font-weight: 650;
+    line-height: 1.02;
+    color: var(--pure-color);
+    text-wrap: balance;
+  }
+
+  .home-section-copy {
+    max-width: 620px;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1rem, 1.6vw, 1.22rem);
+    line-height: 1.75;
+    color: var(--moka-text-muted);
+  }
+
+  .home-flow-section {
+    background:
+      radial-gradient(circle at 82% 22%, rgba(110, 191, 126, 0.08), transparent 28%),
+      linear-gradient(180deg, rgba(18, 18, 18, 1), rgba(18, 18, 18, 0.94));
+  }
+
+  .flow-track {
+    position: relative;
+  }
+
+  .flow-track::before {
+    content: "";
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(110, 191, 126, 0.42), transparent);
+    opacity: 0.65;
+  }
+
+  .flow-step,
+  .layer-card,
+  .application-pill,
+  .why-panel,
+  .contact-form-shell {
+    border: 1px solid var(--moka-border-muted);
+    background: linear-gradient(145deg, rgba(18, 18, 18, 0.68), rgba(19, 45, 37, 0.46));
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(18px);
+  }
+
+  .flow-step {
+    position: relative;
+    min-height: 260px;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    transition: transform 320ms ease, border-color 320ms ease, background 320ms ease;
+  }
+
+  .flow-step:hover,
+  .layer-card:hover,
+  .application-pill:hover {
+    transform: translateY(-4px);
+    border-color: var(--moka-border-accent);
+    background: linear-gradient(145deg, rgba(19, 45, 37, 0.82), rgba(18, 18, 18, 0.58));
+  }
+
+  .flow-step span,
+  .layer-card span {
+    color: var(--fresh-green-color);
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+  }
+
+  .flow-step h3 {
+    margin-top: 3rem;
+    font-family: Inter, sans-serif;
+    font-size: 1.45rem;
+    font-weight: 650;
+    line-height: 1.14;
+    color: var(--pure-color);
+  }
+
+  .flow-step p {
+    margin-top: 1rem;
+    color: rgba(222, 222, 222, 0.72);
+    line-height: 1.65;
+  }
+
+  .home-layers-section {
+    background:
+      linear-gradient(180deg, rgba(18, 18, 18, 0.98), rgba(19, 45, 37, 0.54) 48%, rgba(18, 18, 18, 0.98)),
+      radial-gradient(circle at 16% 64%, rgba(86, 114, 99, 0.14), transparent 34%);
+  }
+
+  .layer-stack {
+    display: grid;
+    gap: 1rem;
+    perspective: 1000px;
+  }
+
+  .layer-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: center;
+    border-radius: 1.25rem;
+    padding: 1.35rem 1.5rem;
+    transform: translateX(calc(var(--offset, 0) * 1rem));
+    transition: transform 320ms ease, border-color 320ms ease, background 320ms ease;
+  }
+
+  .layer-card:nth-child(2) { --offset: 1; }
+  .layer-card:nth-child(3) { --offset: 2; }
+  .layer-card:nth-child(4) { --offset: 3; }
+
+  .layer-card p {
+    color: var(--birch-color);
+    font-family: Inter, sans-serif;
+    font-size: clamp(1rem, 1.6vw, 1.22rem);
+    font-weight: 600;
+  }
+
+  .plant-to-bioactives {
+    background:
+      radial-gradient(circle at 34% 48%, rgba(110, 191, 126, 0.08), transparent 34%),
+      linear-gradient(180deg, rgba(18, 18, 18, 1), rgba(18, 18, 18, 0.9) 44%, rgba(19, 45, 37, 0.46) 100%);
+  }
+
+  .bioactive-visual {
+    position: relative;
+    min-height: 520px;
+    border-radius: 2rem;
+    overflow: hidden;
+    border: 1px solid rgba(110, 191, 126, 0.18);
+    background:
+      linear-gradient(135deg, rgba(19, 45, 37, 0.7), rgba(18, 18, 18, 0.72)),
+      radial-gradient(circle at 28% 24%, rgba(110, 191, 126, 0.16), transparent 38%);
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.34), inset 0 0 90px rgba(110, 191, 126, 0.06);
+  }
+
+  .bioactive-plant {
+    position: absolute;
+    width: 300px;
+    filter: invert(1);
+    opacity: 0.16;
+  }
+
+  .plant-one {
+    left: 1rem;
+    bottom: -2rem;
+    animation: slowPlant 18s ease-in-out infinite;
+  }
+
+  .plant-two {
+    right: -2rem;
+    top: -1rem;
+    animation: slowPlant 22s ease-in-out infinite reverse;
+  }
+
+  .bioactive-path {
+    position: absolute;
+    inset: 20%;
+    border: 1px solid rgba(110, 191, 126, 0.2);
+    border-radius: 999px;
+    box-shadow: 0 0 60px rgba(110, 191, 126, 0.08);
+  }
+
+  .bioactive-orb {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    background: var(--fresh-green-color);
+    box-shadow: 0 0 24px rgba(110, 191, 126, 0.5);
+  }
+
+  .orb-one { left: 24%; top: 30%; }
+  .orb-two { right: 24%; top: 48%; }
+  .orb-three { left: 44%; bottom: 26%; }
+
+  .bioactive-panel {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(70%, 320px);
+    transform: translate(-50%, -50%);
+    border: 1px solid rgba(222, 222, 222, 0.12);
+    border-radius: 1.25rem;
+    background: rgba(18, 18, 18, 0.72);
+    padding: 1.4rem;
+    backdrop-filter: blur(18px);
+  }
+
+  .bioactive-panel span {
+    color: var(--fresh-green-color);
+    font: 700 11px/1 Roboto, sans-serif;
+    letter-spacing: 0.3em;
+  }
+
+  .bioactive-panel div {
+    height: 10px;
+    margin-top: 1rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(110, 191, 126, 0.7), rgba(222, 222, 222, 0.1));
+  }
+
+  .bioactive-panel div:nth-child(3) { width: 74%; }
+  .bioactive-panel div:nth-child(4) { width: 52%; }
+
+  .home-applications {
+    background:
+      linear-gradient(180deg, rgba(19, 45, 37, 0.42), rgba(18, 18, 18, 1)),
+      radial-gradient(circle at 84% 18%, rgba(110, 191, 126, 0.08), transparent 28%);
+  }
+
+  .application-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .application-pill {
+    display: flex;
+    min-height: 112px;
+    align-items: end;
+    border-radius: 1.2rem;
+    padding: 1rem;
+    color: var(--birch-color);
+    font-family: Inter, sans-serif;
+    font-weight: 650;
+    transition: transform 320ms ease, border-color 320ms ease, background 320ms ease;
+  }
+
+  .home-why-section {
+    background:
+      radial-gradient(circle at 20% 28%, rgba(86, 114, 99, 0.16), transparent 34%),
+      linear-gradient(180deg, rgba(18, 18, 18, 1), rgba(19, 45, 37, 0.38), rgba(18, 18, 18, 1));
+  }
+
+  .why-panel {
+    margin-top: 1.5rem;
+    border-radius: 2rem;
+    padding: clamp(1.5rem, 4vw, 3.5rem);
+  }
+
+  .why-grid {
+    margin-top: 2.5rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .why-grid p {
+    border-left: 1px solid rgba(110, 191, 126, 0.34);
+    padding-left: 1.25rem;
+    color: rgba(222, 222, 222, 0.78);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .home-problem-solution {
+    background:
+      linear-gradient(180deg, rgba(18, 18, 18, 1), rgba(19, 45, 37, 0.54) 46%, rgba(18, 18, 18, 1));
+  }
+
+  .home-contact-section {
+    background:
+      radial-gradient(circle at 12% 20%, rgba(110, 191, 126, 0.08), transparent 28%),
+      radial-gradient(circle at 88% 70%, rgba(86, 114, 99, 0.16), transparent 30%),
+      linear-gradient(180deg, rgba(18, 18, 18, 1), rgba(19, 45, 37, 0.5), rgba(18, 18, 18, 1));
+  }
+
+  .contact-form-shell {
+    border-radius: 2rem;
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+  }
+
+  .home-articles-band {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .home-articles-band::before {
+    content: "";
+    position: absolute;
+    inset: -42px 0 -56px;
+    z-index: -1;
+    background:
+      linear-gradient(180deg, rgba(18, 18, 18, 0), rgba(19, 45, 37, 0.42) 42%, rgba(18, 18, 18, 0)),
+      radial-gradient(circle at 50% 40%, rgba(110, 191, 126, 0.08), transparent 34%);
+    pointer-events: none;
+  }
+
+  @keyframes slowPlant {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    50% { transform: translate3d(0, -14px, 0) rotate(1.5deg); }
+  }
+
+  @media (max-width: 1023px) {
+    .flow-track::before {
+      display: none;
+    }
+
+    .application-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .layer-card,
+    .layer-card:nth-child(n) {
+      transform: none;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .application-grid,
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .bioactive-visual {
+      min-height: 430px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .plant-one,
+    .plant-two {
+      animation: none;
+    }
+  }
+</style>

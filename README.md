@@ -4,7 +4,7 @@ Website and headless CMS for **Moka Therapeutics**. A two-service monorepo: an A
 
 | Service   | Live                                    |
 | --------- | --------------------------------------- |
-| CMS API   | https://cms.mokatherapeutics.com        |
+| CMS API   | https://cms.moka.bio                   |
 | Contact   | info@moka.bio                           |
 
 ## Repository layout
@@ -89,7 +89,7 @@ npm run dev                 # http://localhost:4321
 
 ### Environment
 
-Set `VITE_BASE_MOKA_URL` to the Strapi backend URL (e.g. `https://cms.mokatherapeutics.com` for prod, `http://localhost:1337` for local dev). See `frontend/astro.config.mjs`.
+Set `VITE_BASE_MOKA_URL` to the Strapi backend URL (e.g. `https://cms.moka.bio` for prod, `http://localhost:1337` for local dev). See `frontend/astro.config.mjs`.
 
 ## Deployment
 

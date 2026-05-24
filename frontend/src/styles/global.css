@@ -20,6 +20,23 @@
   --background-color: var(--charcoal-color);
   --pills-color: var(--fresh-green-color);
 
+  --moka-surface-charcoal: rgba(18, 18, 18, 0.94);
+  --moka-surface-forest: rgba(19, 45, 37, 0.82);
+  --moka-surface-sage: rgba(86, 114, 99, 0.14);
+  --moka-border-muted: rgba(222, 222, 222, 0.12);
+  --moka-border-accent: rgba(110, 191, 126, 0.28);
+  --moka-glow-soft: rgba(110, 191, 126, 0.14);
+  --moka-text-muted: rgba(222, 222, 222, 0.72);
+  --moka-section-quiet: linear-gradient(
+    180deg,
+    rgba(18, 18, 18, 1) 0%,
+    rgba(19, 45, 37, 0.86) 46%,
+    rgba(18, 18, 18, 1) 100%
+  );
+  --moka-section-lift: radial-gradient(circle at 18% 12%, rgba(110, 191, 126, 0.12), transparent 34%),
+    radial-gradient(circle at 86% 52%, rgba(86, 114, 99, 0.18), transparent 32%),
+    linear-gradient(180deg, rgba(18, 18, 18, 1), rgba(19, 45, 37, 0.72) 58%, rgba(18, 18, 18, 1));
+
   --swiper-pagination-color: var(--swiper-theme-color);
   --swiper-pagination-left: auto;
   --swiper-pagination-right: 8px;
@@ -43,6 +60,47 @@
 html,
 body {
   background-color: var(--background-color);
+}
+
+.moka-page-skin {
+  position: relative;
+  isolation: isolate;
+  background:
+    radial-gradient(circle at 8% 18%, rgba(110, 191, 126, 0.08), transparent 26%),
+    radial-gradient(circle at 92% 62%, rgba(86, 114, 99, 0.12), transparent 30%),
+    linear-gradient(180deg, rgba(18, 18, 18, 1), rgba(19, 45, 37, 0.42) 46%, rgba(18, 18, 18, 1));
+}
+
+.moka-page-skin::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(222, 222, 222, 0.024) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110, 191, 126, 0.026) 1px, transparent 1px);
+  background-size: 88px 88px;
+  mask-image: radial-gradient(circle at 62% 28%, black, transparent 68%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.moka-page-skin::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(110, 191, 126, 0.1), transparent 30%),
+    linear-gradient(180deg, rgba(18, 18, 18, 0), rgba(18, 18, 18, 0.55) 100%);
+  pointer-events: none;
+}
+
+.moka-page-panel {
+  border: 1px solid var(--moka-border-muted);
+  background: linear-gradient(145deg, rgba(18, 18, 18, 0.68), rgba(19, 45, 37, 0.46));
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(18px);
 }
 
 .mySwiper {
