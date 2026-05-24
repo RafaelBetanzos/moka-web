@@ -15,7 +15,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 </script>
 
 <BaseLayout>
-  <div class="tech-page moka-page-skin relative flex flex-col items-center justify-between w-full bg-charcoal overflow-hidden">
+  <div class="tech-page relative flex flex-col items-center justify-between w-full bg-charcoal overflow-hidden">
     <div class="tech-biofield pointer-events-none fixed inset-0 z-0" aria-hidden="true">
       <svg class="h-full w-full" viewBox="0 0 1440 2200" preserveAspectRatio="xMidYMid slice">
         <defs>
@@ -184,14 +184,35 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 
 <style>
   .tech-biofield {
-    opacity: 0.88;
+    opacity: 0.42;
   }
 
   .tech-page {
-    background:
-      radial-gradient(circle at 10% 12%, rgba(110, 191, 126, 0.08), transparent 28%),
-      radial-gradient(circle at 84% 46%, rgba(86, 114, 99, 0.16), transparent 34%),
-      linear-gradient(180deg, rgba(18, 18, 18, 1), rgba(19, 45, 37, 0.5) 48%, rgba(18, 18, 18, 1));
+    isolation: isolate;
+    background: var(--charcoal-color);
+  }
+
+  .tech-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(222, 222, 222, 0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(222, 222, 222, 0.014) 1px, transparent 1px);
+    background-size: 88px 88px;
+    mask-image: radial-gradient(circle at 62% 28%, black, transparent 68%);
+    opacity: 0.26;
+    pointer-events: none;
+  }
+
+  .tech-page::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(180deg, rgba(18, 18, 18, 0.18), rgba(18, 18, 18, 0.72) 100%);
+    pointer-events: none;
   }
 
   .tech-path {

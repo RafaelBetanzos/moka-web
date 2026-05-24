@@ -8,19 +8,7 @@
   <div class="hero-botanical botanical-line-a" aria-hidden="true"></div>
   <div class="hero-botanical botanical-line-b" aria-hidden="true"></div>
 
-  <div class="absolute inset-0 z-[3] hidden md:block" aria-hidden="true">
-    <div class="molecule-node node-a"></div>
-    <div class="molecule-node node-b"></div>
-    <div class="molecule-node node-c"></div>
-    <div class="molecule-node node-d"></div>
-    <svg class="hero-network" viewBox="0 0 1000 720" preserveAspectRatio="none">
-      <path d="M640 165 C710 225 744 302 810 364 S900 500 854 590" />
-      <path d="M550 425 C630 390 700 390 810 364" />
-      <path d="M698 270 C646 330 605 365 550 425" />
-    </svg>
-  </div>
-
-  <div class="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 py-28 sm:px-8 lg:px-12">
+  <div class="relative z-10 mx-auto flex min-h-screen max-w-7xl items-start px-6 pt-16 pb-24 sm:px-8 sm:pt-20 lg:px-12 lg:pt-24 lg:pb-28">
     <div class="grid w-full items-center gap-12 lg:grid-cols-[1fr_0.84fr]">
       <div class="hero-copy max-w-3xl animate-moka-reveal">
         <p class="font-roboto text-[12px] font-semibold uppercase tracking-[0.48em] text-freshgreen">
@@ -37,17 +25,6 @@
           <a href="/contact-us" class="hero-secondary-cta no-underline">Contact us</a>
         </div>
       </div>
-
-      <div class="hero-instrument relative mx-auto hidden min-h-[520px] w-full max-w-[520px] lg:block" aria-hidden="true">
-        <div class="absolute inset-8 rounded-full border border-freshgreen/12 bg-charcoal/28 shadow-[inset_0_0_80px_rgba(110,191,126,0.08)] backdrop-blur-sm"></div>
-        <div class="absolute left-1/2 top-1/2 h-[340px] w-[340px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-sage/20"></div>
-        <div class="absolute left-[17%] top-[14%] h-24 w-24 rounded-full border border-freshgreen/22 bg-deepforest/42 blur-[1px]"></div>
-        <div class="absolute right-[12%] top-[28%] h-14 w-14 rounded-full border border-birch/14 bg-charcoal/60"></div>
-        <div class="absolute bottom-[18%] left-[20%] h-16 w-16 rounded-full border border-sage/24 bg-charcoal/64"></div>
-        <img src="/assets/about-botanicals/botanical-line-03.png" alt="" class="absolute left-[18%] top-[9%] w-[340px] opacity-[0.16] invert" loading="eager" />
-        <div class="absolute inset-x-12 top-1/2 h-px bg-gradient-to-r from-transparent via-freshgreen/35 to-transparent"></div>
-        <div class="absolute inset-y-12 left-1/2 w-px bg-gradient-to-b from-transparent via-sage/28 to-transparent"></div>
-      </div>
     </div>
   </div>
 </section>
@@ -57,11 +34,11 @@
     content: "";
     position: absolute;
     inset: 0;
-    background-image: url("/Plants.jpeg");
+    background-image: url("/hero.png");
     background-position: center;
     background-size: cover;
-    filter: grayscale(1) contrast(1.34) brightness(0.48) invert(0.05) saturate(0.8);
-    opacity: 0.62;
+    filter: grayscale(1) contrast(1.24) brightness(0.74) invert(0.03) saturate(0.9);
+    opacity: 0.82;
     transform: scale(1.02);
     animation: heroDrift 24s ease-in-out infinite alternate;
   }
@@ -154,37 +131,6 @@
     animation: botanicalFloat 22s ease-in-out infinite reverse;
   }
 
-  .molecule-node {
-    position: absolute;
-    z-index: 4;
-    width: 9px;
-    height: 9px;
-    border-radius: 999px;
-    background: rgba(110, 191, 126, 0.82);
-    box-shadow: 0 0 22px rgba(110, 191, 126, 0.42);
-    animation: nodePulse 5s ease-in-out infinite;
-  }
-
-  .node-a { right: 23%; top: 22%; }
-  .node-b { right: 14%; top: 48%; animation-delay: 0.9s; }
-  .node-c { right: 35%; top: 58%; animation-delay: 1.5s; }
-  .node-d { right: 18%; bottom: 17%; animation-delay: 2.2s; }
-
-  .hero-network {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    opacity: 0.4;
-  }
-
-  .hero-network path {
-    fill: none;
-    stroke: rgba(110, 191, 126, 0.32);
-    stroke-width: 1;
-    stroke-dasharray: 9 13;
-    animation: networkFlow 16s linear infinite;
-  }
-
   /* Animación sutil de aparición desde la derecha */
   .animate-moka-reveal {
     animation: mokaReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -213,15 +159,6 @@
     50% { transform: translate3d(0, -18px, 0) rotate(2deg); }
   }
 
-  @keyframes nodePulse {
-    0%, 100% { opacity: 0.42; transform: scale(0.86); }
-    50% { opacity: 1; transform: scale(1.22); }
-  }
-
-  @keyframes networkFlow {
-    to { stroke-dashoffset: -220; }
-  }
-
   @media (max-width: 767px) {
     .hero-xray::after {
       background:
@@ -244,8 +181,6 @@
     .hero-xray::before,
     .botanical-line-a,
     .botanical-line-b,
-    .molecule-node,
-    .hero-network path,
     .animate-moka-reveal {
       animation: none;
     }

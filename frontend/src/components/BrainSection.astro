@@ -8,11 +8,11 @@ import { Image } from "astro:assets";
   <div class="w-full">
     {/* Versión Mobile */}
     <div class="reveal opacity-0 sm:hidden mb-12 text-center" data-animation="pop-in">
-      <Image src={Brain} alt="Brain" class="w-56 h-auto mx-auto" />
+      <Image src={Brain} alt="Brain" class="w-56 h-auto mx-auto" loading="lazy" />
     </div>
 
     {/* Desktop Grid */}
-    <div class="hidden sm:grid grid-cols-3 w-full items-center gap-8 lg:gap-12 mb-24">
+    <div class="hidden sm:grid grid-cols-[minmax(0,0.72fr)_minmax(420px,1.56fr)_minmax(0,0.72fr)] w-full items-center gap-6 lg:gap-8 mb-24">
       
       {/* 1. Lado Izquierdo: Analytical Thinking */}
       <div 

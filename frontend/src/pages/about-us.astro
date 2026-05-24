@@ -14,7 +14,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 </script>
 
 <BaseLayout>
-  <div class="about-page moka-page-skin min-h-screen bg-charcoal relative overflow-hidden">
+  <div class="about-page min-h-screen bg-charcoal relative overflow-hidden">
     <div class="about-botanical-field pointer-events-none fixed inset-0 z-0" aria-hidden="true">
       <svg class="h-full w-full" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
         <defs>
@@ -218,14 +218,10 @@ import BaseLayout from "@layouts/BaseLayout.astro";
     --reveal-center: 0;
     --reveal-d: 0;
     --reveal-e: 0;
-    background:
-      radial-gradient(circle at 12% 12%, rgba(110, 191, 126, 0.1), transparent 28%),
-      radial-gradient(circle at 88% 58%, rgba(86, 114, 99, 0.16), transparent 34%),
-      linear-gradient(180deg, rgba(18, 18, 18, 1), rgba(19, 45, 37, 0.46) 44%, rgba(18, 18, 18, 1));
   }
 
   .about-botanical-field {
-    opacity: 0.76;
+    opacity: 0.64;
   }
 
   .about-plant {
@@ -267,7 +263,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 
   .about-constellation {
     fill: none;
-    stroke: rgba(110, 191, 126, 0.16);
+    stroke: rgba(110, 191, 126, 0.1);
     stroke-width: 1;
     stroke-linecap: round;
     stroke-dasharray: 3 18;
@@ -275,7 +271,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
   }
 
   .about-constellation circle {
-    fill: rgba(110, 191, 126, 0.3);
+    fill: rgba(110, 191, 126, 0.2);
     stroke: none;
   }
 
@@ -287,10 +283,6 @@ import BaseLayout from "@layouts/BaseLayout.astro";
     filter:
       drop-shadow(0 0 12px rgba(255, 255, 255, 0.08))
       drop-shadow(0 0 28px rgba(110, 191, 126, 0.16));
-    filter:
-      invert(1)
-      drop-shadow(0 0 12px rgba(255, 255, 255, 0.06))
-      drop-shadow(0 0 28px rgba(110, 191, 126, 0.14));
   }
 
   .botanical-a {
