@@ -5,6 +5,52 @@ import LogoNegative from "@assets/icons/Logo_Moka_White.png";
 import { Image } from "astro:assets";
 
 const year = new Date().getFullYear();
+const path = Astro.url.pathname;
+const isSpanish = path === "/es" || path.startsWith("/es/");
+const isPortuguese = path === "/pt" || path.startsWith("/pt/");
+const currentLocale = isSpanish ? "es" : isPortuguese ? "pt" : "en";
+const localizedHref = (href: string) => currentLocale === "en" ? href : href === "/" ? `/${currentLocale}` : `/${currentLocale}${href}`;
+const copy = {
+  en: {
+    home: "Home",
+    tech: "Our Technology",
+    about: "About Us",
+    insights: "Insights",
+    contact: "Contact",
+    getInTouch: "Get in touch",
+    rights: "All rights reserved.",
+    privacy: "Privacy Policy",
+    terms: "Terms of Service",
+    navLabel: "Footer navigation",
+    homeLabel: "Moka Bio home",
+  },
+  es: {
+    home: "Inicio",
+    tech: "Nuestra tecnología",
+    about: "Sobre nosotros",
+    insights: "Insights",
+    contact: "Contacto",
+    getInTouch: "Contacto",
+    rights: "Todos los derechos reservados.",
+    privacy: "Política de privacidad",
+    terms: "Términos de servicio",
+    navLabel: "Navegación del footer",
+    homeLabel: "Inicio de Moka Bio",
+  },
+  pt: {
+    home: "Início",
+    tech: "Nossa tecnologia",
+    about: "Sobre nós",
+    insights: "Insights",
+    contact: "Contato",
+    getInTouch: "Contato",
+    rights: "Todos os direitos reservados.",
+    privacy: "Política de privacidade",
+    terms: "Termos de serviço",
+    navLabel: "Navegação do rodapé",
+    homeLabel: "Início da Moka Bio",
+  },
+}[currentLocale];
 ---
 
 <footer class="bg-charcoal relative w-full overflow-hidden">
@@ -16,21 +62,21 @@ const year = new Date().getFullYear();
 
     <!-- Brand + nav -->
     <div class="flex items-start gap-10 sm:gap-14">
-      <a href="/" aria-label="Moka Bio home">
+      <a href={localizedHref("/")} aria-label={copy.homeLabel}>
         <Image src={LogoNegative} alt="Moka Bio" class="w-10 sm:w-14 mt-1" loading="lazy" />
       </a>
-      <nav class="flex flex-col gap-4" aria-label="Footer navigation">
-        <a class="footer-link" href="/">Home</a>
-        <a class="footer-link" href="/our-technology">Our Technology</a>
-        <a class="footer-link" href="/about-us">About Us</a>
-        <a class="footer-link" href="/insights">Insights</a>
-        <a class="footer-link" href="/contact-us">Contact</a>
+      <nav class="flex flex-col gap-4" aria-label={copy.navLabel}>
+        <a class="footer-link" href={localizedHref("/")}>{copy.home}</a>
+        <a class="footer-link" href={localizedHref("/our-technology")}>{copy.tech}</a>
+        <a class="footer-link" href={localizedHref("/about-us")}>{copy.about}</a>
+        <a class="footer-link" href={localizedHref("/insights")}>{copy.insights}</a>
+        <a class="footer-link" href={localizedHref("/contact-us")}>{copy.contact}</a>
       </nav>
     </div>
 
     <!-- Contact -->
     <div class="flex flex-col gap-4 md:items-end">
-      <p class="footer-label">Get in touch</p>
+      <p class="footer-label">{copy.getInTouch}</p>
       <a href="mailto:info@moka.bio" class="footer-email">info@moka.bio</a>
       <div class="flex gap-4 items-center">
         <a
@@ -60,10 +106,10 @@ const year = new Date().getFullYear();
 
   <!-- Copyright bar — full width, same px as navbar -->
   <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full px-4 sm:px-8 py-5 gap-2 border-t border-white/5">
-    <span class="footer-copy">© {year} Moka Bio. All rights reserved.</span>
+    <span class="footer-copy">© {year} Moka Bio. {copy.rights}</span>
     <div class="flex items-center gap-5">
-      <a href="/privacy" class="footer-legal">Privacy Policy</a>
-      <a href="/terms" class="footer-legal">Terms of Service</a>
+      <a href={localizedHref("/privacy")} class="footer-legal">{copy.privacy}</a>
+      <a href={localizedHref("/terms")} class="footer-legal">{copy.terms}</a>
     </div>
   </div>
 </footer>

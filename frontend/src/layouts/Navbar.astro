@@ -8,6 +8,19 @@ const isSpanish = path === "/es" || path.startsWith("/es/");
 const isPortuguese = path === "/pt" || path.startsWith("/pt/");
 const currentLang = isSpanish ? "ES" : isPortuguese ? "PT" : "EN";
 const isHome = path === "/" || path === "" || path === "/es" || path === "/es/" || path === "/pt" || path === "/pt/";
+const normalizedPath = path.replace(/\/$/, "") || "/";
+const pathWithoutLocale = normalizedPath.replace(/^\/(es|pt)(?=\/|$)/, "") || "/";
+const localizedPath = (locale: "en" | "es" | "pt") => {
+  if (locale === "en") return pathWithoutLocale;
+  return pathWithoutLocale === "/" ? `/${locale}` : `/${locale}${pathWithoutLocale}`;
+};
+const currentLocale = isSpanish ? "es" : isPortuguese ? "pt" : "en";
+const navHref = (href: string) => currentLocale === "en" ? href : href === "/" ? `/${currentLocale}` : `/${currentLocale}${href}`;
+const navCopy = {
+  en: { home: "Home", tech: "Tech", about: "About", insights: "Insights", bookDemo: "Book a Demo" },
+  es: { home: "Inicio", tech: "Tech", about: "Nosotros", insights: "Insights", bookDemo: "Agendar demo" },
+  pt: { home: "Início", tech: "Tech", about: "Sobre", insights: "Insights", bookDemo: "Agendar demo" },
+}[currentLocale];
 ---
 
 <div
@@ -18,19 +31,19 @@ const isHome = path === "/" || path === "" || path === "/es" || path === "/es/" 
     class="flex flex-row justify-between items-center w-full py-5 sm:py-7 px-4 sm:px-8 flex-nowrap gap-4"
   >
     <div class="flex items-center gap-4 sm:gap-7 shrink-0">
-      <a href="/">
+      <a href={navHref("/")}>
         <Image src={Logo} alt="Moka Bio Logo" class="w-10 sm:w-14" />
       </a>
-      <a href="/" class="nav-link hover:text-freshgreen transition-colors text-pure text-[16px] font-semibold whitespace-nowrap">Home</a>
+      <a href={navHref("/")} class="nav-link hover:text-freshgreen transition-colors text-pure text-[16px] font-semibold whitespace-nowrap">{navCopy.home}</a>
     </div>
 
     <div class="flex flex-row gap-4 sm:gap-8 items-center justify-end shrink-0">
       <div
         class="flex flex-row gap-4 sm:gap-8 text-pure text-[16px] font-semibold items-center whitespace-nowrap"
       >
-        <a href="/our-technology" class="nav-link hover:text-freshgreen transition-colors">Tech</a>
-        <a href="/about-us" class="nav-link hover:text-freshgreen transition-colors">About</a>
-        <a href="/insights" class="nav-link hover:text-freshgreen transition-colors">Insights</a>
+        <a href={navHref("/our-technology")} class="nav-link hover:text-freshgreen transition-colors">{navCopy.tech}</a>
+        <a href={navHref("/about-us")} class="nav-link hover:text-freshgreen transition-colors">{navCopy.about}</a>
+        <a href={navHref("/insights")} class="nav-link hover:text-freshgreen transition-colors">{navCopy.insights}</a>
       </div>
 
       <a
@@ -48,10 +61,10 @@ const isHome = path === "/" || path === "" || path === "/es" || path === "/es/" 
       </a>
 
       <a
-        href="/contact-us"
+        href={navHref("/contact-us")}
         class="bg-freshgreen text-charcoal rounded-full px-4 py-2 sm:px-6 sm:py-2.5 text-[16px] font-semibold whitespace-nowrap transition-all duration-200 hover:bg-pure hover:shadow-lg hover:shadow-freshgreen/20 no-underline"
       >
-        Book a Demo
+        {navCopy.bookDemo}
       </a>
 
       <details class="language-menu relative">
@@ -60,9 +73,9 @@ const isHome = path === "/" || path === "" || path === "/es" || path === "/es/" 
           <span aria-hidden="true">▾</span>
         </summary>
         <div class="language-options">
-          <a href="/" class:list={["language-option", currentLang === "EN" && "language-option--active"]}>English</a>
-          <a href="/es" class:list={["language-option", currentLang === "ES" && "language-option--active"]}>Español</a>
-          <a href="/pt" class:list={["language-option", currentLang === "PT" && "language-option--active"]}>Português</a>
+          <a href={localizedPath("en")} class:list={["language-option", currentLang === "EN" && "language-option--active"]}>English</a>
+          <a href={localizedPath("es")} class:list={["language-option", currentLang === "ES" && "language-option--active"]}>Español</a>
+          <a href={localizedPath("pt")} class:list={["language-option", currentLang === "PT" && "language-option--active"]}>Português</a>
         </div>
       </details>
     </div>
@@ -193,7 +206,8 @@ const isHome = path === "/" || path === "" || path === "/es" || path === "/es/" 
 
   links.forEach((link) => {
     const href = link.getAttribute('href')?.replace(/\/$/, '') || '';
-    const isActive = href === '/' ? path === '/' : path.startsWith(href);
+    const isLocalizedHome = href === '/' || href === '/es' || href === '/pt';
+    const isActive = isLocalizedHome ? path === href : path.startsWith(href);
     if (isActive) link.classList.add('nav-link--active');
   });
 </script>

@@ -1,6 +1,53 @@
 ---
 import Brain from "@assets/Brain.svg";
 import { Image } from "astro:assets";
+
+interface Props {
+  locale?: "en" | "es" | "pt";
+}
+
+const { locale = "en" } = Astro.props;
+const copy = {
+  en: {
+    analytical: "Analytical thinking",
+    experimental: "Experimental lobe",
+    experimentalText: "AI model trained on in-house experimental data",
+    creative: "Creative thinking",
+    silico: "In silico lobe",
+    silicoText: "AI model trained on public experimental data",
+    kicker: "HOW IT WORKS",
+    titleStart: "MokaDex integrates nature’s knowledge with",
+    titleHighlight: "cutting edge technology",
+    body: "MokaDex is our proprietary AI engine that serves as the digital architect for Moka’s Operating System. It identifies novel bioactive molecules and their mechanisms of action with unprecedented speed.",
+    connector: "THE PROBLEM",
+  },
+  es: {
+    analytical: "Pensamiento analítico",
+    experimental: "Lóbulo experimental",
+    experimentalText: "Modelo de IA entrenado con datos experimentales propios",
+    creative: "Pensamiento creativo",
+    silico: "Lóbulo in silico",
+    silicoText: "Modelo de IA entrenado con datos experimentales públicos",
+    kicker: "CÓMO FUNCIONA",
+    titleStart: "MokaDex integra el conocimiento de la naturaleza con",
+    titleHighlight: "tecnología de vanguardia",
+    body: "MokaDex es nuestro motor propietario de IA y funciona como el arquitecto digital del sistema operativo de Moka. Identifica moléculas bioactivas novedosas y sus mecanismos de acción con velocidad sin precedentes.",
+    connector: "EL PROBLEMA",
+  },
+  pt: {
+    analytical: "Pensamento analítico",
+    experimental: "Lobo experimental",
+    experimentalText: "Modelo de IA treinado com dados experimentais próprios",
+    creative: "Pensamento criativo",
+    silico: "Lobo in silico",
+    silicoText: "Modelo de IA treinado com dados experimentais públicos",
+    kicker: "COMO FUNCIONA",
+    titleStart: "MokaDex integra o conhecimento da natureza com",
+    titleHighlight: "tecnologia de ponta",
+    body: "MokaDex é nosso motor proprietário de IA e atua como o arquiteto digital do sistema operacional da Moka. Ele identifica moléculas bioativas novas e seus mecanismos de ação com velocidade sem precedentes.",
+    connector: "O PROBLEMA",
+  },
+}[locale];
 ---
 
 <div class="flex flex-col justify-center items-center w-full max-w-7xl mx-auto px-6 py-16 overflow-hidden bg-transparent">
@@ -21,12 +68,12 @@ import { Image } from "astro:assets";
         style="transition-delay: 0.1s;"
       >
         <h3 class="brain-side-title group-hover:text-pure transition-colors duration-300">
-          Analytical thinking
+          {copy.analytical}
         </h3>
         <div class="brain-side-rule ml-auto transition-all duration-300 group-hover:w-20 group-hover:bg-secondary"></div>
-        <p class="text-birch font-semibold text-lg">Experimental lobe</p>
+        <p class="text-birch font-semibold text-lg">{copy.experimental}</p>
         <p class="text-birch/75 text-sm md:text-base leading-relaxed max-w-[260px]">
-          AI model trained on in-house experimental data
+          {copy.experimentalText}
         </p>
       </div>
 
@@ -50,12 +97,12 @@ import { Image } from "astro:assets";
         style="transition-delay: 0.5s;"
       >
         <h3 class="brain-side-title group-hover:text-pure transition-colors duration-300">
-          Creative thinking
+          {copy.creative}
         </h3>
         <div class="brain-side-rule mr-auto transition-all duration-300 group-hover:w-20 group-hover:bg-secondary"></div>
-        <p class="text-birch font-semibold text-lg">In silico lobe</p>
+        <p class="text-birch font-semibold text-lg">{copy.silico}</p>
         <p class="text-birch/75 text-sm md:text-base leading-relaxed max-w-[260px]">
-          AI model trained on public experimental data
+          {copy.silicoText}
         </p>
       </div>
     </div>
@@ -65,18 +112,17 @@ import { Image } from "astro:assets";
   <div class="flex flex-col w-full gap-10 text-center items-center py-4 mt-12">
     <div class="reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.1s;">
       <p class="font-roboto font-medium text-xs leading-none tracking-[0.48em] uppercase text-freshgreen">
-        HOW IT WORKS
+        {copy.kicker}
       </p>
     </div>
     <div class="reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.3s;">
       <h2 class="text-pure text-[28px] md:text-[36px] font-inter tracking-wide font-semibold max-w-3xl mx-auto text-wrap-balance">
-        MokaDex integrates nature’s knowledge with <span class="text-freshgreen">cutting edge technology</span>
+        {copy.titleStart} <span class="text-freshgreen">{copy.titleHighlight}</span>
       </h2>
     </div>
     <div class="reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.5s;">
       <p class="text-birch/75 text-[18px] md:text-[20px] font-inter font-medium leading-relaxed max-w-3xl">
-        MokaDex is our proprietary AI engine that serves as the digital architect for Moka’s Operating System.
-        It identifies novel bioactive molecules and their mechanisms of action with unprecedented speed.
+        {copy.body}
       </p>
     </div>
   </div>
@@ -85,7 +131,7 @@ import { Image } from "astro:assets";
   <div class="brain-connector" aria-hidden="true">
     <div class="brain-connector-line"></div>
     <div class="brain-connector-dot"></div>
-    <p class="brain-connector-label">THE PROBLEM</p>
+    <p class="brain-connector-label">{copy.connector}</p>
   </div>
 </div>
 

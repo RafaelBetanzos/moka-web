@@ -2,23 +2,51 @@
 import GenericImage from "@assets/GenericImage.svg";
 import ArrowRightSecondaryh from "@assets/icons/ArrowRightSecondary.svg";
 import { Image } from "astro:assets";
+
+interface Props {
+  locale?: "en" | "es" | "pt";
+}
+
+const { locale = "en" } = Astro.props;
+const copy = {
+  en: {
+    kicker: "INDUSTRY UPDATES",
+    title: "Latest news",
+    body: "Insights, research and opinion articles on ethnobotany, AI-Driven innovations for Human wellness",
+    articleTitle: "Article title",
+    readMore: "Read More",
+  },
+  es: {
+    kicker: "ACTUALIDAD DE LA INDUSTRIA",
+    title: "Últimas noticias",
+    body: "Insights, investigación y artículos de opinión sobre etnobotánica e innovaciones impulsadas por IA para el bienestar humano",
+    articleTitle: "Título del artículo",
+    readMore: "Leer más",
+  },
+  pt: {
+    kicker: "ATUALIZAÇÕES DA INDÚSTRIA",
+    title: "Últimas notícias",
+    body: "Insights, pesquisa e artigos de opinião sobre etnobotânica e inovações impulsionadas por IA para o bem-estar humano",
+    articleTitle: "Título do artigo",
+    readMore: "Ler mais",
+  },
+}[locale];
 ---
 
 <div class="relative z-10 overflow-hidden">
   <div class="flex flex-col items-start justify-start py-24 px-8 max-w-6xl mx-auto">
     <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.1s;">
       <h1 class="font-roboto font-medium text-birch leading-4 tracking-widest mb-4">
-        INDUSTRY UPDATES
+        {copy.kicker}
       </h1>
     </div>
 
     <div class="xl:text-[48px] lg:text-[32px] md:text-[32px] font-semibold">
       <h2 class="reveal opacity-0 text-pure mb-6 text-6xl" data-animation="slide-in" style="transition-delay: 0.2s;">
-        Latest news
+        {copy.title}
       </h2>
       <p class="reveal opacity-0 text-birch/75 font-inter font-thin text-lg leading-relaxed max-w-96" data-animation="slide-in" style="transition-delay: 0.3s;">
-        Insights, research and opinion articles on ethnobotany, AI-Driven
-        innovations for Human wellness
+        {copy.body}
       </p>
     </div>
   </div>
@@ -41,11 +69,11 @@ import { Image } from "astro:assets";
         <div class="px-6 flex flex-col flex-grow">
           <p class="font-inter text-[11px] mt-6 text-birch/58 tracking-[0.24em]">SEPTEMBER 5, 2025</p>
           <p class="text-[32px] text-pure pb-12 leading-tight mt-2 group-hover:text-freshgreen transition-colors duration-300">
-            Article title
+            {copy.articleTitle}
           </p>
 
           <div class="mt-auto flex items-center justify-between pb-8">
-            <p class="text-freshgreen font-medium transition-all duration-300 group-hover:tracking-wider">Read More</p>
+            <p class="text-freshgreen font-medium transition-all duration-300 group-hover:tracking-wider">{copy.readMore}</p>
             <div class="transition-transform duration-300 group-hover:translate-x-2">
               <Image src={ArrowRightSecondaryh} alt="More" />
             </div>

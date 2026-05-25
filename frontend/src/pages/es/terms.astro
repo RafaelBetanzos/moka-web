@@ -1,0 +1,264 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+const lastUpdated = "Mayo 2026";
+---
+
+<BaseLayout
+  lang="es"
+  title="Términos de servicio | Moka Bio"
+  description="Términos y condiciones que rigen el acceso y uso del sitio web y los servicios de Moka Bio."
+>
+  <div class="legal-page">
+    <div class="legal-header">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/25 to-transparent"></div>
+      <p class="legal-kicker">LEGAL</p>
+      <h1 class="legal-title">Términos de servicio</h1>
+      <p class="legal-updated">Última actualización: {lastUpdated}</p>
+    </div>
+
+    <div class="legal-body">
+      <div class="legal-intro">
+        <p>
+          Please read these Terms of Service ("Terms") carefully before using
+          <strong>moka.bio</strong> (the "Site") operated by Moka Bio ("we", "us", "our").
+          By accessing or using the Site, you agree to be bound by these Terms.
+          If you disagree with any part of the Terms, you may not access the Site.
+        </p>
+      </div>
+
+      <section class="legal-section">
+        <h2>1. Use of the Site</h2>
+        <p>
+          The Site is provided for informational and business communication purposes only.
+          You agree to use it only for lawful purposes and in a manner consistent with
+          these Terms and all applicable laws and regulations.
+        </p>
+        <p>You agree not to:</p>
+        <ul>
+          <li>Use the Site in any way that violates applicable local, national, or international law</li>
+          <li>Transmit any unsolicited or unauthorized advertising or promotional material</li>
+          <li>Attempt to gain unauthorized access to any part of the Site or its related systems</li>
+          <li>Reproduce, duplicate, copy, or resell any part of the Site in violation of these Terms</li>
+          <li>Introduce viruses, malware, or other technologically harmful material</li>
+        </ul>
+      </section>
+
+      <section class="legal-section">
+        <h2>2. Intellectual property</h2>
+        <p>
+          All content on the Site — including text, graphics, logos, images, data, software,
+          and its selection and arrangement — is the property of Moka Bio or its licensors
+          and is protected by applicable intellectual property laws.
+        </p>
+        <p>
+          You may not reproduce, distribute, modify, create derivative works of, publicly
+          display, or otherwise exploit any content from the Site without our prior written
+          consent, except as permitted by law.
+        </p>
+        <p>
+          The Moka Bio name, logo, and all related names, logos, product and service names,
+          designs, and slogans are trademarks of Moka Bio. You may not use them without
+          our prior written permission.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>3. Disclaimer of warranties</h2>
+        <p>
+          The Site and all information, content, and services provided through it are offered
+          on an <strong>"as is"</strong> and <strong>"as available"</strong> basis without warranties
+          of any kind, either express or implied, including but not limited to implied warranties
+          of merchantability, fitness for a particular purpose, or non-infringement.
+        </p>
+        <p>
+          We do not warrant that the Site will be uninterrupted, error-free, or free of viruses
+          or other harmful components. We make no representation that information on the Site is
+          complete, accurate, reliable, current, or suitable for any particular purpose.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>4. Limitation of liability</h2>
+        <p>
+          To the fullest extent permitted by applicable law, Moka Bio and its officers, directors,
+          employees, and agents shall not be liable for any indirect, incidental, special,
+          consequential, or punitive damages arising out of or related to your use of — or inability
+          to use — the Site, even if we have been advised of the possibility of such damages.
+        </p>
+        <p>
+          Our total liability to you for any direct damages shall not exceed the amount you paid us,
+          if any, to access or use the Site in the twelve (12) months prior to the claim.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>5. Third-party links</h2>
+        <p>
+          The Site may contain links to third-party websites or services that are not owned or
+          controlled by Moka Bio. We have no control over, and assume no responsibility for,
+          the content, privacy policies, or practices of any third-party sites.
+        </p>
+        <p>
+          We encourage you to review the terms and privacy policies of any third-party sites
+          you visit. Inclusion of a link does not imply endorsement by Moka Bio.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>6. Privacy</h2>
+        <p>
+          Your use of the Site is also governed by our
+          <a href="/privacy">Privacy Policy</a>, which is incorporated into these Terms by reference.
+          Please review the Privacy Policy to understand our practices regarding the collection
+          and use of your personal information.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>7. Governing law</h2>
+        <p>
+          These Terms shall be governed by and construed in accordance with applicable law,
+          without regard to its conflict of law provisions. Any disputes arising under these
+          Terms shall be subject to the exclusive jurisdiction of the competent courts
+          in the jurisdiction where Moka Bio is registered.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>8. Changes to these Terms</h2>
+        <p>
+          We reserve the right to update these Terms at any time. When we do, we will revise
+          the "last updated" date at the top of this page. Continued use of the Site after
+          any changes constitutes your acceptance of the new Terms.
+        </p>
+        <p>
+          We encourage you to review these Terms periodically to stay informed of any updates.
+        </p>
+      </section>
+
+      <section class="legal-section">
+        <h2>9. Contact</h2>
+        <p>Questions about these Terms? Reach us at:</p>
+        <p>
+          <strong>Moka Bio</strong><br />
+          <a href="mailto:info@moka.bio">info@moka.bio</a>
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .legal-page {
+    background: var(--charcoal-color);
+    min-height: 100vh;
+  }
+
+  .legal-header {
+    position: relative;
+    text-align: center;
+    padding: 5rem 1.5rem 3rem;
+    border-bottom: 1px solid rgba(222, 222, 222, 0.06);
+  }
+
+  .legal-kicker {
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.46em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+    margin-bottom: 1rem;
+  }
+
+  .legal-title {
+    font-family: Inter, sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--pure-color);
+    line-height: 1.1;
+  }
+
+  .legal-updated {
+    margin-top: 0.75rem;
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    color: rgba(222, 222, 222, 0.35);
+  }
+
+  /* ── Body ─────────────────────────────────────── */
+  .legal-body {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  .legal-intro {
+    font-family: Inter, sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: rgba(222, 222, 222, 0.72);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(110, 191, 126, 0.14);
+    background: rgba(19, 45, 37, 0.28);
+    margin-bottom: 2.5rem;
+  }
+
+  .legal-section {
+    margin-bottom: 2.75rem;
+    padding-bottom: 2.75rem;
+    border-bottom: 1px solid rgba(222, 222, 222, 0.06);
+  }
+
+  .legal-section:last-child {
+    border-bottom: none;
+  }
+
+  .legal-section h2 {
+    font-family: Inter, sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--pure-color);
+    margin-bottom: 1rem;
+  }
+
+  .legal-section p {
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(222, 222, 222, 0.62);
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-section ul {
+    margin: 0.5rem 0 0.75rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .legal-section li {
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(222, 222, 222, 0.62);
+    list-style: disc;
+  }
+
+  .legal-section a {
+    color: var(--fresh-green-color);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(110, 191, 126, 0.3);
+    transition: border-color 200ms;
+  }
+
+  .legal-section a:hover {
+    border-color: var(--fresh-green-color);
+  }
+
+  .legal-section strong {
+    color: rgba(222, 222, 222, 0.85);
+    font-weight: 600;
+  }
+</style>

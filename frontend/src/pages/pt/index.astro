@@ -47,7 +47,7 @@ const industries = [
   },
 ];
 ---
-<BaseLayout title={seo.title} description={seo.description}>
+<BaseLayout lang="pt" title={seo.title} description={seo.description}>
   <div class="home-color-system">
     <Hero locale="pt" />
 
@@ -490,7 +490,7 @@ const industries = [
       <div class="home-section-shell grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
         <ContactUsCard locale="pt" />
         <div class="contact-form-shell">
-          <ContactForm client:only="react" />
+          <ContactForm locale="pt" client:only="react" />
         </div>
       </div>
     </section>

@@ -8,6 +8,7 @@ interface Props {
   description?: string;
   ogImage?: string;
   canonicalUrl?: string;
+  lang?: "en" | "es" | "pt";
 }
 
 const {
@@ -15,14 +16,22 @@ const {
   description = "Moka turns natural knowledge into programmable bioactive intelligence. Unlock natural product discovery across pharma, nutraceuticals, cosmetics, food, and agriculture.",
   ogImage = "/hero.png",
   canonicalUrl,
+  lang,
 } = Astro.props;
 
 const siteUrl = "https://moka.bio";
 const canonical = canonicalUrl ?? `${siteUrl}${Astro.url.pathname}`;
 const ogImageAbsolute = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`;
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+const currentLang = lang ?? (path === "/es" || path.startsWith("/es/") ? "es" : path === "/pt" || path.startsWith("/pt/") ? "pt" : "en");
+const pathWithoutLocale = path.replace(/^\/(es|pt)(?=\/|$)/, "") || "/";
+const localizedPath = (locale: "en" | "es" | "pt") => {
+  if (locale === "en") return pathWithoutLocale;
+  return pathWithoutLocale === "/" ? `/${locale}` : `/${locale}${pathWithoutLocale}`;
+};
 ---
 
-<html lang="en">
+<html lang={currentLang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,10 +40,10 @@ const ogImageAbsolute = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogIm
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang="en" href={`${siteUrl}/`} />
-    <link rel="alternate" hreflang="es" href={`${siteUrl}/es`} />
-    <link rel="alternate" hreflang="pt" href={`${siteUrl}/pt`} />
-    <link rel="alternate" hreflang="x-default" href={`${siteUrl}/`} />
+    <link rel="alternate" hreflang="en" href={`${siteUrl}${localizedPath("en")}`} />
+    <link rel="alternate" hreflang="es" href={`${siteUrl}${localizedPath("es")}`} />
+    <link rel="alternate" hreflang="pt" href={`${siteUrl}${localizedPath("pt")}`} />
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}${localizedPath("en")}`} />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

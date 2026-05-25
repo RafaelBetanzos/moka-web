@@ -4,6 +4,47 @@ import Argentina from "@assets/icons/Argentina.svg";
 import Mexico from "@assets/icons/Mexico.svg";
 import Venezuela from "@assets/icons/Venezuela.svg";
 import { Image } from "astro:assets";
+
+interface Props {
+  locale?: "en" | "es" | "pt";
+}
+
+const { locale = "en" } = Astro.props;
+const copy = {
+  en: {
+    titleA: "AI Powered Nature",
+    titleB: "The operating system for natural product discovery.",
+    body: "Despite the Americas hosting 40% of the world’s plant diversity, it is estimated that over 85% of these species have yet to be scientifically mapped for their molecular activity.",
+    mexico: "Mexico hosts over 23,000 plant species, but only",
+    mexicoEnd: "are currently utilized in scientific discovery.",
+    argentina: "Argentina preserves 10,000+ species, yet less than",
+    argentinaEnd: "have been mapped for their molecular potential.",
+    venezuela: "With 30,000+ species, Venezuela is a megadiverse giant with over",
+    venezuelaEnd: "of its chemical library unexplored.",
+  },
+  es: {
+    titleA: "Naturaleza impulsada por IA",
+    titleB: "El sistema operativo para el descubrimiento de productos naturales.",
+    body: "Aunque América concentra el 40% de la diversidad vegetal del mundo, se estima que más del 85% de estas especies aún no han sido mapeadas científicamente por su actividad molecular.",
+    mexico: "México alberga más de 23,000 especies vegetales, pero solo",
+    mexicoEnd: "se utiliza actualmente en descubrimiento científico.",
+    argentina: "Argentina preserva más de 10,000 especies, pero menos del",
+    argentinaEnd: "ha sido mapeado por su potencial molecular.",
+    venezuela: "Con más de 30,000 especies, Venezuela es un gigante megadiverso con más del",
+    venezuelaEnd: "de su biblioteca química sin explorar.",
+  },
+  pt: {
+    titleA: "Natureza impulsionada por IA",
+    titleB: "O sistema operacional para a descoberta de produtos naturais.",
+    body: "Embora as Américas concentrem 40% da diversidade vegetal do mundo, estima-se que mais de 85% dessas espécies ainda não tenham sido mapeadas cientificamente por sua atividade molecular.",
+    mexico: "O México abriga mais de 23.000 espécies vegetais, mas apenas",
+    mexicoEnd: "é usado atualmente em descoberta científica.",
+    argentina: "A Argentina preserva mais de 10.000 espécies, mas menos de",
+    argentinaEnd: "foi mapeado por seu potencial molecular.",
+    venezuela: "Com mais de 30.000 espécies, a Venezuela é um gigante megadiverso com mais de",
+    venezuelaEnd: "de sua biblioteca química inexplorada.",
+  },
+}[locale];
 ---
 
 <div class="bg-transparent overflow-hidden py-10 md:py-20">
@@ -30,13 +71,13 @@ import { Image } from "astro:assets";
       </div>
       
       <div class="reveal opacity-0 xl:text-[48px] lg:text-[38px] text-[28px] md:text-[32px] font-semibold leading-tight" data-animation="slide-in" style="transition-delay: 0.3s;">
-        <h2 class="text-freshgreen transition-transform duration-300 hover:scale-105 lg:origin-right cursor-default">AI Powered Nature</h2>
-        <h2 class="transition-transform duration-300 hover:scale-105 lg:origin-right cursor-default text-pure">The operating system for natural product discovery.</h2>
+        <h2 class="text-freshgreen transition-transform duration-300 hover:scale-105 lg:origin-right cursor-default">{copy.titleA}</h2>
+        <h2 class="transition-transform duration-300 hover:scale-105 lg:origin-right cursor-default text-pure">{copy.titleB}</h2>
       </div>
 
       <div class="reveal opacity-0 flex flex-col gap-8 items-center lg:items-end" data-animation="slide-in" style="transition-delay: 0.5s;">
         <p class="text-birch/75 font-inter font-medium text-base md:text-lg leading-relaxed lg:pl-20">
-          Despite the Americas hosting 40% of the world’s plant diversity, it is estimated that over 85% of these species have yet to be scientifically mapped for their molecular activity.
+          {copy.body}
         </p>
         
         <div class="flex flex-col items-center lg:items-end gap-6 w-full">
@@ -47,7 +88,7 @@ import { Image } from "astro:assets";
               <div class="absolute right-1/2 translate-x-1/2 lg:translate-x-0 lg:right-0 top-full mt-4 w-[260px] md:w-[300px] opacity-0 pointer-events-none group-hover/mx:opacity-100 transition-all duration-500 translate-y-2 group-hover/mx:translate-y-0 z-20">
                 <p class="text-freshgreen font-bold text-xs md:text-sm uppercase tracking-widest mb-1">Mexico</p>
                 <p class="text-birch text-xs md:text-sm bg-deepforest/95 backdrop-blur-md p-3 rounded-xl shadow-lg border border-sage/30">
-                  Mexico hosts over 23,000 plant species, but only <span class="text-freshgreen font-bold">10%</span> are currently utilized in scientific discovery.
+                  {copy.mexico} <span class="text-freshgreen font-bold">10%</span> {copy.mexicoEnd}
                 </p>
               </div>
             </div>
@@ -57,7 +98,7 @@ import { Image } from "astro:assets";
               <div class="absolute right-1/2 translate-x-1/2 lg:translate-x-0 lg:right-0 top-full mt-4 w-[260px] md:w-[300px] opacity-0 pointer-events-none group-hover/ar:opacity-100 transition-all duration-500 translate-y-2 group-hover/ar:translate-y-0 z-20">
                 <p class="text-freshgreen font-bold text-xs md:text-sm uppercase tracking-widest mb-1">Argentina</p>
                 <p class="text-birch text-xs md:text-sm bg-deepforest/95 backdrop-blur-md p-3 rounded-xl shadow-lg border border-sage/30">
-                  Argentina preserves 10,000+ species, yet less than <span class="text-freshgreen font-bold">5%</span> have been mapped for their molecular potential.
+                  {copy.argentina} <span class="text-freshgreen font-bold">5%</span> {copy.argentinaEnd}
                 </p>
               </div>
             </div>
@@ -67,7 +108,7 @@ import { Image } from "astro:assets";
               <div class="absolute right-1/2 translate-x-1/2 lg:translate-x-0 lg:right-0 top-full mt-4 w-[260px] md:w-[300px] opacity-0 pointer-events-none group-hover/ve:opacity-100 transition-all duration-500 translate-y-2 group-hover/ve:translate-y-0 z-20">
                 <p class="text-freshgreen font-bold text-xs md:text-sm uppercase tracking-widest mb-1">Venezuela</p>
                 <p class="text-birch text-xs md:text-sm bg-deepforest/95 backdrop-blur-md p-3 rounded-xl shadow-lg border border-sage/30">
-                  With 30,000+ species, Venezuela is a megadiverse giant with over <span class="text-freshgreen font-bold">90%</span> of its chemical library unexplored.
+                  {copy.venezuela} <span class="text-freshgreen font-bold">90%</span> {copy.venezuelaEnd}
                 </p>
               </div>
             </div>

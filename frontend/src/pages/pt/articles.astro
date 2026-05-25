@@ -1,0 +1,19 @@
+---
+import LatestArticles from "@components/LatestArticles.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+---
+
+<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-MEXX4CR4HW"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MEXX4CR4HW');
+</script>
+
+<BaseLayout lang="pt" title="Artigos | Moka Bio" description="Notícias, pesquisa e artigos da Moka Bio.">
+  <div class="moka-page-skin min-h-screen overflow-hidden">
+    <LatestArticles locale="pt" />
+  </div>
+</BaseLayout>

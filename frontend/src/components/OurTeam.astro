@@ -1,19 +1,42 @@
 ---
 import { MembersTeam } from "./Members/MembersTeam";
 import { AdvisorsTeam } from "./Advisors/AdvisorsTeam";
+
+interface Props {
+  locale?: "en" | "es" | "pt";
+}
+
+const { locale = "en" } = Astro.props;
+const copy = {
+  en: {
+    kicker: "MEET OUR TEAM",
+    titleA: "We combine scientific excellence",
+    titleB: " with international experience",
+  },
+  es: {
+    kicker: "CONOCE AL EQUIPO",
+    titleA: "Combinamos excelencia científica",
+    titleB: " con experiencia internacional",
+  },
+  pt: {
+    kicker: "CONHEÇA A EQUIPE",
+    titleA: "Combinamos excelência científica",
+    titleB: " com experiência internacional",
+  },
+}[locale];
 ---
 
 <div class="flex flex-col items-center justify-center py-20 px-8 bg-charcoal text-[28px]">
   
   <div class="mb-8"> <h1 class="font-roboto font-medium text-birch leading-4 tracking-[0.4em] text-center">
-      MEET OUR TEAM
+      {copy.kicker}
     </h1>
   </div>
 
   <div class="xl:text-[48px] lg:text-[36px] text-[28px] font-bold text-center leading-tight mb-8">
     <h2>
-      <span class="text-freshgreen">We combine scientific excellence</span> 
-      <span class="text-pure"> with international experience</span>
+      <span class="text-freshgreen">{copy.titleA}</span> 
+      <span class="text-pure">{copy.titleB}</span>
     </h2>
   </div>
 

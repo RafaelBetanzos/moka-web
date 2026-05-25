@@ -1,0 +1,359 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { mockcarrousel } from "@utils/CarrouselMock";
+---
+
+<BaseLayout
+  lang="pt"
+  title="Insights | Moka Bio"
+  description="Ciência, pesquisa e perspectivas da equipe da Moka Bio sobre descoberta de produtos naturais e inteligência bioativa."
+>
+  <div class="insights-page relative min-h-screen bg-charcoal overflow-hidden">
+    <!-- Ambient glows -->
+    <div class="absolute left-1/2 top-0 h-[560px] w-[560px] -translate-x-1/2 rounded-full bg-deepforest/30 blur-3xl pointer-events-none"></div>
+    <div class="absolute right-[-10%] bottom-[20%] h-[480px] w-[480px] rounded-full bg-sage/8 blur-3xl pointer-events-none"></div>
+
+    <!-- Grid background texture -->
+    <div class="insights-grid-bg pointer-events-none absolute inset-0" aria-hidden="true"></div>
+
+    <!-- Page header -->
+    <div class="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 pt-20 pb-16">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/30 to-transparent"></div>
+      <p class="insights-kicker">DESDE O CAMPO</p>
+      <h1 class="insights-title mt-5">Insights</h1>
+      <p class="insights-tagline mt-5">
+        Ciência, pesquisa e perspectivas sobre descoberta de produtos naturais,<br class="hidden sm:block">
+        inteligência bioativa e o futuro da inovação molecular.
+      </p>
+      <div class="insights-rule mt-6" aria-hidden="true"></div>
+    </div>
+
+    <!-- Articles grid -->
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-8 pb-24">
+      <div class="articles-grid">
+        {mockcarrousel.map((article, i) => (
+          <a
+            href={article.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="article-card reveal opacity-0 no-underline"
+            data-animation="pop-in"
+            style={`transition-delay: ${0.1 + i * 0.12}s;`}
+          >
+            <div class="article-card-img">
+              <img src={article.image} alt={article.alt} loading="lazy" />
+              <div class="article-card-img-overlay"></div>
+            </div>
+            <div class="article-card-body">
+              <div class="article-card-meta">
+                <span class="article-card-date">{article.date}</span>
+                <span class="article-card-tag">Pesquisa</span>
+              </div>
+              <h2 class="article-card-title">{article.title}</h2>
+              <p class="article-card-summary">{article.summary}</p>
+              <div class="article-card-author">
+                <span class="article-card-author-label">Por</span>
+                <span class="article-card-author-name">{article.author}</span>
+              </div>
+              <div class="article-card-cta">
+                Ler artigo <span aria-hidden="true">→</span>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- Coming soon note -->
+      <div class="coming-soon-note reveal opacity-0" data-animation="fade-in" style="transition-delay: 0.4s;">
+        <span class="coming-soon-dot"></span>
+        <p>Mais insights em breve. Siga-nos no <a href="https://www.linkedin.com/company/mokabio" target="_blank" rel="noopener noreferrer">LinkedIn</a> for updates.</p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const anim = entry.target.getAttribute('data-animation');
+          if (anim) entry.target.classList.add(`animate-${anim}`);
+          entry.target.classList.remove('opacity-0');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
+
+<style>
+  .insights-page {
+    background:
+      radial-gradient(circle at 12% 8%, rgba(110, 191, 126, 0.07), transparent 28%),
+      radial-gradient(circle at 82% 52%, rgba(86, 114, 99, 0.07), transparent 30%),
+      var(--charcoal-color);
+  }
+
+  .insights-grid-bg {
+    background-image:
+      linear-gradient(rgba(222, 222, 222, 0.022) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(110, 191, 126, 0.028) 1px, transparent 1px);
+    background-size: 88px 88px;
+    mask-image: radial-gradient(ellipse at 50% 30%, black, transparent 72%);
+    opacity: 0.38;
+  }
+
+  /* ── Page header ─────────────────────────────── */
+  .insights-kicker {
+    font-family: Roboto, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.48em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+    animation: insightsReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .insights-title {
+    font-family: Inter, sans-serif;
+    font-size: clamp(2.8rem, 9vw, 7rem);
+    font-weight: 650;
+    line-height: 1;
+    color: var(--pure-color);
+    animation: insightsReveal 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  }
+
+  .insights-tagline {
+    max-width: 560px;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    line-height: 1.7;
+    color: rgba(222, 222, 222, 0.58);
+    animation: insightsReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+  }
+
+  .insights-rule {
+    width: min(280px, 60%);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(110, 191, 126, 0.38), transparent);
+    animation: insightsReveal 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.34s both;
+  }
+
+  @keyframes insightsReveal {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Articles grid ───────────────────────────── */
+  .articles-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .articles-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (min-width: 1024px) {
+    .articles-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ── Article card ────────────────────────────── */
+  .article-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(110, 191, 126, 0.12);
+    background: linear-gradient(145deg, rgba(18, 18, 18, 0.72), rgba(19, 45, 37, 0.44));
+    backdrop-filter: blur(18px);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    overflow: hidden;
+    transition: transform 320ms ease, border-color 320ms ease, box-shadow 320ms ease;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .article-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(110, 191, 126, 0.32);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.28), 0 0 40px rgba(110, 191, 126, 0.06);
+  }
+
+  /* ── Card image ──────────────────────────────── */
+  .article-card-img {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .article-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 600ms ease;
+    filter: grayscale(0.3) brightness(0.85);
+  }
+
+  .article-card:hover .article-card-img img {
+    transform: scale(1.04);
+    filter: grayscale(0) brightness(0.9);
+  }
+
+  .article-card-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(18, 18, 18, 0.6));
+  }
+
+  /* ── Card body ───────────────────────────────── */
+  .article-card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 1.75rem;
+    gap: 0.75rem;
+  }
+
+  .article-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .article-card-date {
+    font-family: Roboto, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(222, 222, 222, 0.42);
+  }
+
+  .article-card-tag {
+    padding: 0.2rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(110, 191, 126, 0.24);
+    background: rgba(19, 45, 37, 0.5);
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+  }
+
+  .article-card-title {
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+    font-weight: 650;
+    line-height: 1.3;
+    color: var(--pure-color);
+    margin: 0;
+  }
+
+  .article-card-summary {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(222, 222, 222, 0.62);
+    flex: 1;
+  }
+
+  .article-card-author {
+    display: flex;
+    gap: 0.4rem;
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(222, 222, 222, 0.06);
+  }
+
+  .article-card-author-label {
+    color: rgba(222, 222, 222, 0.32);
+  }
+
+  .article-card-author-name {
+    color: rgba(222, 222, 222, 0.58);
+    font-weight: 500;
+  }
+
+  .article-card-cta {
+    margin-top: 0.5rem;
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--fresh-green-color);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 240ms ease, transform 240ms ease;
+  }
+
+  .article-card:hover .article-card-cta {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* ── Coming soon ─────────────────────────────── */
+  .coming-soon-note {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 3rem;
+    padding: 1.25rem 1.75rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(110, 191, 126, 0.12);
+    background: rgba(19, 45, 37, 0.28);
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    color: rgba(222, 222, 222, 0.5);
+  }
+
+  .coming-soon-note a {
+    color: var(--fresh-green-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 200ms;
+  }
+
+  .coming-soon-note a:hover { opacity: 0.8; }
+
+  .coming-soon-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--fresh-green-color);
+    flex-shrink: 0;
+    box-shadow: 0 0 12px rgba(110, 191, 126, 0.5);
+    animation: dotPulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes dotPulse {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.4); }
+  }
+
+  /* ── Entrance animations ─────────────────────── */
+  .animate-pop-in { animation: popIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.97) translateY(16px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .insights-kicker, .insights-title, .insights-tagline, .insights-rule,
+    .animate-pop-in, .animate-fade-in { animation-duration: 1ms; }
+  }
+</style>
