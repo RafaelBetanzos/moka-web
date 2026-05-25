@@ -4,6 +4,8 @@ interface Props {
   alt?: string;
   side?: "right" | "left";
   tone?: "strong" | "soft";
+  revealStart?: number;
+  revealRange?: number;
   class?: string;
 }
 
@@ -12,6 +14,8 @@ const {
   alt = "",
   side = "right",
   tone = "soft",
+  revealStart = 0.08,
+  revealRange = 0.48,
   class: className = "",
 } = Astro.props;
 ---
@@ -24,6 +28,8 @@ const {
     className,
   ]}
   aria-hidden={alt ? undefined : "true"}
+  data-reveal-start={revealStart}
+  data-reveal-range={revealRange}
 >
   <img src={src} alt={alt} loading="lazy" decoding="async" />
 </div>
@@ -37,13 +43,9 @@ const {
     const viewport = window.innerHeight || 1;
 
     botanicalReveals.forEach((reveal) => {
-      const parent = reveal.parentElement;
-      if (!parent) return;
-
-      const rect = parent.getBoundingClientRect();
-      const start = viewport * 0.92;
-      const end = -rect.height * 0.18;
-      const progress = clamp((start - rect.top) / (start - end));
+      const start = Number(reveal.dataset.revealStart ?? "0.08");
+      const range = Number(reveal.dataset.revealRange ?? "0.48");
+      const progress = clamp((window.scrollY - viewport * start) / (viewport * range));
 
       reveal.style.setProperty("--botanical-progress", progress.toFixed(4));
     });
@@ -58,9 +60,9 @@ const {
   .botanical-scroll-reveal {
     --botanical-progress: 0;
     pointer-events: none;
-    position: absolute;
+    position: fixed;
     right: clamp(-13rem, -10vw, -4rem);
-    top: clamp(4rem, 12vh, 9rem);
+    top: clamp(5rem, 13vh, 9rem);
     z-index: 1;
     width: clamp(26rem, 48vw, 48rem);
     opacity: calc(0.08 + (var(--botanical-progress) * 0.38));
@@ -83,7 +85,7 @@ const {
   }
 
   .home-botanical {
-    top: clamp(32rem, 72vh, 48rem);
+    top: clamp(8rem, 19vh, 14rem);
     right: clamp(-16rem, -13vw, -6rem);
     width: clamp(28rem, 52vw, 54rem);
   }
@@ -101,9 +103,15 @@ const {
   }
 
   .insights-botanical-focus {
-    top: clamp(5rem, 11vh, 8rem);
+    top: clamp(3.5rem, 8vh, 6rem);
     right: clamp(-17rem, -14vw, -7rem);
     width: clamp(28rem, 48vw, 48rem);
+  }
+
+  .privacy-botanical-focus {
+    top: clamp(4.5rem, 10vh, 7rem);
+    right: clamp(-15rem, -12vw, -5rem);
+    width: clamp(28rem, 50vw, 52rem);
   }
 
   .botanical-scroll-reveal img {
@@ -138,7 +146,8 @@ const {
     .home-botanical,
     .about-botanical-focus,
     .tech-botanical-focus,
-    .insights-botanical-focus {
+    .insights-botanical-focus,
+    .privacy-botanical-focus {
       top: 7rem;
     }
   }
