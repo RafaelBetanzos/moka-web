@@ -1,43 +1,163 @@
 ---
 import LinkedIn from "@assets/LinkedIn.svg";
+import Instagram from "@assets/Instagram.svg";
 import LogoNegative from "@assets/icons/Logo_Moka_White.png";
 import { Image } from "astro:assets";
+
+const year = new Date().getFullYear();
 ---
 
-<footer class="relative bg-charcoal flex gap-4 justify-between items-center overflow-hidden">
+<footer class="bg-charcoal relative w-full overflow-hidden">
   <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-birch/10 to-transparent"></div>
-  <div class="absolute right-[-10%] top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-sage/8 blur-3xl"></div>
-  <div
-    class="relative flex md:flex-row flex-col justify-between w-full px-4 sm:px-8 py-4 gap-4"
-  >
-    <div class="flex flex-row items-center justify-center md:justify-start gap-8">
-      <div>
-        <a href="/">
-          <Image
-            src={LogoNegative}
-            alt="Logo"
-            class="w-9 sm:w-12"
-            loading="lazy"
-          />
-        </a>
-      </div>
+  <div class="absolute right-[-8%] top-0 h-72 w-72 rounded-full bg-sage/8 blur-3xl pointer-events-none"></div>
 
-      <div
-        class="flex flex-col gap-2 text-pure text-[10px] sm:text-[16px] font-semibold font-roboto"
-      >
-        <a class="hover:text-freshgreen transition-colors" href="/">Home</a>
-        <a class="hover:text-freshgreen transition-colors" href="/our-technology">Our Technology</a>
-        <a class="hover:text-freshgreen transition-colors" href="/about-us">About Us</a>
+  <!-- Main content — full width, same padding as navbar -->
+  <div class="relative flex flex-col md:flex-row justify-between items-start w-full px-4 sm:px-8 py-12 sm:py-16 gap-10">
+
+    <!-- Brand + nav -->
+    <div class="flex items-start gap-10 sm:gap-14">
+      <a href="/" aria-label="Moka Bio home">
+        <Image src={LogoNegative} alt="Moka Bio" class="w-10 sm:w-14 mt-1" loading="lazy" />
+      </a>
+      <nav class="flex flex-col gap-4" aria-label="Footer navigation">
+        <a class="footer-link" href="/">Home</a>
+        <a class="footer-link" href="/our-technology">Our Technology</a>
+        <a class="footer-link" href="/about-us">About Us</a>
+        <a class="footer-link" href="/insights">Insights</a>
+        <a class="footer-link" href="/contact-us">Contact</a>
+      </nav>
+    </div>
+
+    <!-- Contact -->
+    <div class="flex flex-col gap-4 md:items-end">
+      <p class="footer-label">Get in touch</p>
+      <a href="mailto:info@moka.bio" class="footer-email">info@moka.bio</a>
+      <div class="flex gap-4 items-center">
+        <a
+          href="https://www.linkedin.com/company/mokabio"
+          class="footer-social"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Moka Bio on LinkedIn"
+        >
+          <Image src={LinkedIn} alt="" class="footer-social-icon" loading="lazy" />
+          <span>LinkedIn</span>
+        </a>
+        <a
+          href="https://www.instagram.com/mokabio"
+          class="footer-social"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Moka Bio on Instagram"
+        >
+          <Image src={Instagram} alt="" class="footer-social-icon footer-social-icon--ig" loading="lazy" />
+          <span>Instagram</span>
+        </a>
       </div>
     </div>
 
-    <div
-      class="flex flex-col gap-2 font-roboto text-pure text-[10px] sm:text-[16px] font-semibold items-center justify-center"
-    >
-      <p>Let's get in touch</p>
-      <a href="https://www.linkedin.com/company/mokabio">
-        <Image src={LinkedIn} alt="Linkedin" class="w-5 sm:w-10" loading="lazy" />
-      </a>
+  </div>
+
+  <!-- Copyright bar — full width, same px as navbar -->
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full px-4 sm:px-8 py-5 gap-2 border-t border-white/5">
+    <span class="footer-copy">© {year} Moka Bio. All rights reserved.</span>
+    <div class="flex items-center gap-5">
+      <a href="/privacy" class="footer-legal">Privacy Policy</a>
+      <a href="/terms" class="footer-legal">Terms of Service</a>
     </div>
   </div>
 </footer>
+
+<style>
+  .footer-link {
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: rgba(222, 222, 222, 0.7);
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+
+  .footer-link:hover {
+    color: var(--fresh-green-color);
+  }
+
+  .footer-label {
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.44em;
+    text-transform: uppercase;
+    color: rgba(222, 222, 222, 0.32);
+  }
+
+  .footer-email {
+    font-family: Inter, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--pure-color);
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+
+  .footer-email:hover {
+    color: var(--fresh-green-color);
+  }
+
+  .footer-social {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: rgba(222, 222, 222, 0.5);
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 200ms ease;
+  }
+
+  .footer-social:hover {
+    color: var(--fresh-green-color);
+  }
+
+  .footer-social-icon {
+    width: 16px;
+    opacity: 0.55;
+    transition: opacity 200ms ease;
+  }
+
+  .footer-social-icon--ig {
+    /* Instagram SVG uses stroke="currentColor" — tinted via filter */
+    filter: invert(1);
+  }
+
+  .footer-social:hover .footer-social-icon {
+    opacity: 0.9;
+  }
+
+  .footer-copy {
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    color: rgba(222, 222, 222, 0.3);
+  }
+
+  .footer-tagline {
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-style: italic;
+    color: rgba(222, 222, 222, 0.18);
+  }
+
+  .footer-legal {
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(222, 222, 222, 0.28);
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+
+  .footer-legal:hover {
+    color: var(--fresh-green-color);
+  }
+</style>

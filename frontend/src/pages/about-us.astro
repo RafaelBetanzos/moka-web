@@ -4,16 +4,11 @@ import OurTeam from "@components/OurTeam.astro";
 import OurVisionCard from "@components/OurVisionCard.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 ---
-<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-MEXX4CR4HW"></script>
-<script is:inline>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-MEXX4CR4HW');
-</script>
-
-<BaseLayout>
+<BaseLayout
+  title="About Us | Moka Bio"
+  description="Meet the Moka Bio team. We are building the operating system for natural product discovery — decoding the world's natural chemistry into scalable bioactive intelligence."
+>
   <div class="about-page min-h-screen bg-charcoal relative overflow-hidden">
     <div class="about-botanical-field pointer-events-none fixed inset-0 z-0" aria-hidden="true">
       <svg class="h-full w-full" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
@@ -170,9 +165,19 @@ import BaseLayout from "@layouts/BaseLayout.astro";
         </g>
       </svg>
     </div>
+    <!-- Page header -->
+    <div class="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 pt-20 pb-12">
+      <p class="about-kicker">MOKA BIO</p>
+      <h1 class="about-title mt-5">About Us</h1>
+      <p class="about-tagline mt-5">
+        Building the operating system<br class="hidden sm:block"> for natural product discovery.
+      </p>
+      <div class="about-rule mt-6" aria-hidden="true"></div>
+    </div>
+
     <div class="relative z-10 overflow-hidden bg-transparent">
       <div class="absolute left-1/2 top-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-deepforest/35 blur-3xl"></div>
-      <div class="mx-auto flex flex-col justify-center items-center py-32 px-5 sm:px-8">
+      <div class="mx-auto flex flex-col justify-center items-center py-16 px-5 sm:px-8">
         <OurVisionCard isButtonOn={false} />
       </div>
     </div>
@@ -332,6 +337,48 @@ import BaseLayout from "@layouts/BaseLayout.astro";
   @keyframes botanicalDriftC {
     0%, 100% { transform: translate3d(0, 0, 0) rotate(-1deg) scale(1); }
     50% { transform: translate3d(12px, 22px, 0) rotate(4deg) scale(1.02); }
+  }
+
+  /* ── Page header ─────────────────────────────── */
+  .about-kicker {
+    font-family: Roboto, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.48em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+    animation: aboutReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .about-title {
+    font-family: Inter, sans-serif;
+    font-size: clamp(2.8rem, 9vw, 7rem);
+    font-weight: 650;
+    line-height: 1;
+    color: var(--pure-color);
+    text-wrap: balance;
+    animation: aboutReveal 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  }
+
+  .about-tagline {
+    max-width: 480px;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    line-height: 1.7;
+    color: rgba(222, 222, 222, 0.62);
+    animation: aboutReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+  }
+
+  .about-rule {
+    width: min(280px, 60%);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(110, 191, 126, 0.38), transparent);
+    animation: aboutReveal 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.34s both;
+  }
+
+  @keyframes aboutReveal {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .float-a { animation: aboutFloatA 12s ease-in-out infinite; }

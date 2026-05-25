@@ -8,13 +8,13 @@ import { Image } from "astro:assets";
 <div class="relative z-10 flex flex-col gap-8 text-2xl w-full pb-12 overflow-hidden bg-transparent">
   <div class="py-1 px-6 md:px-12 max-w-7xl mx-auto w-full"> 
     <div class="reveal opacity-0" data-animation="slide-in">
-      <h1 class="font-roboto font-medium text-birch leading-4 tracking-widest text-center py-16 uppercase transition-transform duration-300 hover:scale-105 cursor-default">
-        Our Solution
-      </h1>
-      <p class="text-freshgreen text-[22px] md:text-[26px] font-semibold text-center font-inter max-w-4xl mx-auto transition-transform duration-300 hover:scale-105 cursor-default">
-        Moka platform digitizes the chemical potential of the plant kingdom to identify 
-        novel molecules and their mechanism of action.
+      <p class="font-roboto font-bold text-xs leading-none tracking-[0.48em] text-center py-10 text-freshgreen uppercase">
+        OUR SOLUTION
       </p>
+      <h2 class="text-pure text-[22px] md:text-[26px] font-semibold text-center font-inter max-w-4xl mx-auto">
+        Moka platform digitizes the chemical potential of the plant kingdom to identify
+        <span class="text-freshgreen"> novel molecules</span> and their mechanism of action.
+      </h2>
     </div>
   </div>
 
@@ -26,10 +26,10 @@ import { Image } from "astro:assets";
         <div class="absolute z-20 left-1/2 -translate-x-1/2 -top-12 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
            <Image src={Ia} alt="AI Discovery" class="xray-icon w-24 drop-shadow-xl" />
         </div>
-        <div class="bg-deepforest/75 rounded-2xl pt-16 pb-10 px-8 min-h-[480px] h-full flex flex-col shadow-2xl shadow-black/20 border border-sage/25 transition-all duration-500 group-hover:border-freshgreen/40 group-hover:scale-[1.02]">
-          <h1 class="font-inter font-semibold text-freshgreen text-[24px] text-center mb-6 leading-tight transition-colors duration-300 group-hover:text-pure">
-            IA-Driven Molecular Discovery
-          </h1>
+        <div class="solution-card rounded-2xl pt-16 pb-10 px-8 min-h-[480px] h-full flex flex-col transition-all duration-500 group-hover:scale-[1.02]">
+          <h3 class="font-inter font-semibold text-freshgreen text-[24px] text-center mb-6 leading-tight transition-colors duration-300 group-hover:text-pure">
+            AI-Driven Molecular Discovery
+          </h3>
           <ul class="text-birch/80 space-y-5 text-center list-none flex-grow flex flex-col justify-center text-[18px]">
             <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Digital Translation:</strong> Maps the plant chemome into a searchable digital database.</li>
             <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Unprecedented Speed:</strong> Reduces molecular discovery time from years to weeks.</li>
@@ -42,10 +42,10 @@ import { Image } from "astro:assets";
         <div class="absolute z-20 left-1/2 -translate-x-1/2 -top-12 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
           <Image src={IntegrationSecondary} alt="Validation" class="xray-icon w-24 drop-shadow-xl" />
         </div>
-        <div class="bg-deepforest/75 rounded-2xl pt-16 pb-10 px-8 min-h-[480px] h-full flex flex-col shadow-2xl shadow-black/20 border border-sage/25 transition-all duration-500 group-hover:border-freshgreen/40 group-hover:scale-[1.02]">
-          <h1 class="font-inter font-semibold text-freshgreen text-[24px] text-center mb-6 leading-tight transition-colors duration-300 group-hover:text-pure">
+        <div class="solution-card rounded-2xl pt-16 pb-10 px-8 min-h-[480px] h-full flex flex-col transition-all duration-500 group-hover:scale-[1.02]">
+          <h3 class="font-inter font-semibold text-freshgreen text-[24px] text-center mb-6 leading-tight transition-colors duration-300 group-hover:text-pure">
             Metabolic Engineering & Validation
-          </h1>
+          </h3>
           <ul class="text-birch/80 space-y-5 text-center list-none flex-grow flex flex-col justify-center text-[18px]">
             <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Metabolic Stability:</strong> Decodes genetic pathways to ensure 100% molecular consistency.</li>
             <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Pharma-Grade Rigor:</strong> Scientific validation for FDA and global regulatory approvals.</li>
@@ -58,10 +58,10 @@ import { Image } from "astro:assets";
         <div class="absolute z-20 left-1/2 -translate-x-1/2 -top-12 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
           <Image src={ScalabilitySecondary} alt="Scalability" class="xray-icon w-24 drop-shadow-xl" />
         </div>
-        <div class="bg-deepforest/75 rounded-2xl pt-16 pb-10 px-8 min-h-[480px] h-full flex flex-col shadow-2xl shadow-black/20 border border-sage/25 transition-all duration-500 group-hover:border-freshgreen/40 group-hover:scale-[1.02]">
-          <h1 class="font-inter font-semibold text-freshgreen text-[24px] text-center mb-6 leading-tight transition-colors duration-300 group-hover:text-pure">
+        <div class="solution-card rounded-2xl pt-16 pb-10 px-8 min-h-[480px] h-full flex flex-col transition-all duration-500 group-hover:scale-[1.02]">
+          <h3 class="font-inter font-semibold text-freshgreen text-[24px] text-center mb-6 leading-tight transition-colors duration-300 group-hover:text-pure">
             Industrial Scalability & Biomanufacturing
-          </h1>
+          </h3>
           <ul class="text-birch/80 space-y-5 text-center list-none flex-grow flex flex-col justify-center text-[18px]">
             <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Cellular Factories:</strong> "Grow" plant in bio-reactors, bypassing traditional agriculture.</li>
             <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Vertical Supply Chain:</strong> Decouples production from land, weather, and geopolitical risks.</li>
@@ -74,48 +74,29 @@ import { Image } from "astro:assets";
   </div>
 </div>
 
-<script>
-  const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const animationType = entry.target.getAttribute('data-animation');
-        entry.target.classList.add(`animate-${animationType}`);
-        entry.target.classList.remove('opacity-0');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-</script>
-
 <style>
-  .animate-slide-in { animation: slideIn 0.8s ease-out forwards; }
-  .animate-pop-in { animation: popIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  /* ── Solution cards ──────────────────────────── */
+  .solution-card {
+    background: linear-gradient(145deg, rgba(19, 45, 37, 0.82), rgba(18, 18, 18, 0.62));
+    border: 1px solid rgba(110, 191, 126, 0.28);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24), 0 0 48px rgba(110, 191, 126, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+
+  .group:hover .solution-card {
+    border-color: rgba(110, 191, 126, 0.52);
+    box-shadow: 0 28px 90px rgba(0, 0, 0, 0.28), 0 0 64px rgba(110, 191, 126, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  }
+
   .xray-icon {
     filter: grayscale(1) contrast(1.45) brightness(0.82);
     opacity: 0.88;
     mix-blend-mode: screen;
   }
 
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  /* ── Entrance animations ─────────────────────── */
+  .animate-slide-in { animation: slideIn 0.8s ease-out forwards; }
+  .animate-pop-in   { animation: popIn   0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
-  @keyframes popIn {
-    from { 
-      opacity: 0; 
-      transform: translateY(60px) scale(0.9); 
-    }
-    to { 
-      opacity: 1; 
-      transform: translateY(0) scale(1); 
-    }
-  }
+  @keyframes slideIn { from { opacity: 0; transform: translateY(30px);           } to { opacity: 1; transform: translateY(0);         } }
+  @keyframes popIn   { from { opacity: 0; transform: translateY(60px) scale(0.9);} to { opacity: 1; transform: translateY(0) scale(1); } }
 </style>

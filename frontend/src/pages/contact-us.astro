@@ -3,16 +3,11 @@ import ContactUsCard from "@components/ContactUsCard.astro";
 import { ContactForm } from "@components/ContactForm/ContactForm";
 import BaseLayout from "@layouts/BaseLayout.astro";
 ---
-<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-MEXX4CR4HW"></script>
-<script is:inline>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-MEXX4CR4HW');
-</script>
-
-<BaseLayout>
+<BaseLayout
+  title="Contact Us | Moka Bio"
+  description="Get in touch with the Moka Bio team. Partner with us to unlock natural bioactive intelligence for pharma, nutraceuticals, cosmetics, food, and agriculture."
+>
   <div class="moka-page-skin relative bg-charcoal w-full py-16 md:py-20 overflow-hidden">
     <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/28 to-transparent"></div>
     <div class="absolute left-[-12%] bottom-[-20%] h-[520px] w-[520px] rounded-full bg-freshgreen/7 blur-3xl"></div>

@@ -5,16 +5,11 @@ import SolutionSection from "@components/SolutionSection.astro";
 import TargetSection from "@components/TargetSection.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 ---
-<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-MEXX4CR4HW"></script>
-<script is:inline>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-MEXX4CR4HW');
-</script>
-
-<BaseLayout>
+<BaseLayout
+  title="Our Technology | Moka Bio"
+  description="Explore the Moka platform — from botanical complexity to programmable molecular intelligence. MokaDex indexes natural bioactivity into standardized, IP-ready molecular assets."
+>
   <div class="tech-page relative flex flex-col items-center justify-between w-full bg-charcoal overflow-hidden">
     <div class="tech-biofield pointer-events-none fixed inset-0 z-0" aria-hidden="true">
       <svg class="h-full w-full" viewBox="0 0 1440 2200" preserveAspectRatio="xMidYMid slice">
@@ -148,15 +143,29 @@ import BaseLayout from "@layouts/BaseLayout.astro";
           </svg>
         </div>
       </div>
-      <h1
-        class="relative z-10 text-pure text-4xl sm:text-8xl font-inter font-semibold px-8"
-      >
-        Our Technology
-      </h1>
+      <div class="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 gap-5">
+        <p class="tech-page-kicker">
+          MOKA PLATFORM
+        </p>
+        <h1 class="tech-page-title">
+          Our Technology
+        </h1>
+        <p class="tech-page-tagline">
+          From botanical complexity to programmable molecular intelligence.
+        </p>
+        <div class="tech-page-rule" aria-hidden="true"></div>
+      </div>
       <BrainSection />
     </div>
 
     <ProblemSection />
+
+    <div class="answer-bridge" aria-hidden="true">
+      <div class="answer-bridge-line"></div>
+      <div class="answer-bridge-pill">OUR ANSWER</div>
+      <div class="answer-bridge-line"></div>
+    </div>
+
     <SolutionSection />
     <TargetSection />
   </div>
@@ -180,9 +189,115 @@ import BaseLayout from "@layouts/BaseLayout.astro";
   updateTechProgress();
   window.addEventListener('scroll', updateTechProgress, { passive: true });
   window.addEventListener('resize', updateTechProgress);
+
+  // ── Consolidated IntersectionObserver for all .reveal elements ──
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const animation = entry.target.getAttribute('data-animation');
+          if (animation) entry.target.classList.add(`animate-${animation}`);
+          entry.target.classList.remove('opacity-0');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+  );
+
+  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
 </script>
 
 <style>
+  /* ── Page Header ─────────────────────────────── */
+  .tech-page-kicker {
+    font-family: Roboto, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.48em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+    animation: mokaReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .tech-page-title {
+    font-family: Inter, sans-serif;
+    font-size: clamp(2.8rem, 9vw, 7rem);
+    font-weight: 650;
+    line-height: 1;
+    color: var(--pure-color);
+    text-wrap: balance;
+    animation: mokaReveal 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  }
+
+  .tech-page-tagline {
+    max-width: 540px;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    line-height: 1.7;
+    color: rgba(222, 222, 222, 0.62);
+    text-wrap: balance;
+    animation: mokaReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+  }
+
+  .tech-page-rule {
+    width: min(280px, 60%);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(110, 191, 126, 0.38), transparent);
+    margin-top: 0.5rem;
+    animation: mokaReveal 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.34s both;
+  }
+
+  @keyframes mokaReveal {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tech-page-kicker,
+    .tech-page-title,
+    .tech-page-tagline,
+    .tech-page-rule {
+      animation-duration: 1ms;
+    }
+  }
+
+  /* ── Problem → Solution bridge ──────────────── */
+  .answer-bridge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 2rem;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .answer-bridge-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(110, 191, 126, 0.30));
+  }
+
+  .answer-bridge-line:last-child {
+    background: linear-gradient(90deg, rgba(110, 191, 126, 0.30), transparent);
+  }
+
+  .answer-bridge-pill {
+    flex-shrink: 0;
+    padding: 0.35rem 1.1rem;
+    border: 1px solid rgba(110, 191, 126, 0.30);
+    border-radius: 999px;
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: rgba(110, 191, 126, 0.70);
+    background: rgba(19, 45, 37, 0.40);
+    backdrop-filter: blur(8px);
+  }
+
+  /* ── Existing styles ─────────────────────────── */
   .tech-biofield {
     opacity: 0.42;
   }

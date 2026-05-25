@@ -2,31 +2,55 @@
 import { ContactForm } from "@components/ContactForm/ContactForm";
 import ContactUsCard from "@components/ContactUsCard.astro";
 import DataPlatformSection from "@components/DataPlatformSection.astro";
-import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
 import OurVisionSection from "@components/OurVisionSection.astro";
 import ProblemSection from "@components/ProblemSection.astro";
 import SolutionSection from "@components/SolutionSection.astro";
 import { ArticlesCarrousel } from "@components/Swiper/ArticlesCarrousel";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
----
-<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-MEXX4CR4HW"></script>
-<script is:inline>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-MEXX4CR4HW');
-</script>
-<BaseLayout>
-  <div class="home-color-system bg-charcoal">
+const seo = {
+  title: "Moka Bio — The OS for Natural Product Discovery",
+  description: "Moka turns the world's natural chemical diversity into programmable bioactive intelligence. Accelerating molecular innovation across pharma, nutraceuticals, cosmetics, food, and agriculture.",
+};
+
+const industries = [
+  {
+    name: "Nutraceuticals",
+    market: "$620B",
+    growth: "+7.5% CAGR",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="4"/><line x1="12" y1="8" x2="12" y2="16"/></svg>`,
+  },
+  {
+    name: "Cosmetics",
+    market: "$430B",
+    growth: "+5.3% CAGR",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C12 2 5 11 5 15a7 7 0 0 0 14 0c0-4-7-13-7-13z"/></svg>`,
+  },
+  {
+    name: "Pharma",
+    market: "$1.6T",
+    growth: "+6.1% CAGR",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5L6 16a2 2 0 0 0 1.73 3h8.54A2 2 0 0 0 18 16l-4-8V3"/></svg>`,
+  },
+  {
+    name: "Food & Bev",
+    market: "$8.9T",
+    growth: "+4.8% CAGR",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="22" x2="12" y2="8"/><path d="M8 11a4 4 0 0 1 8 0"/><path d="M8 15a4 4 0 0 1 8 0"/><path d="M8 19a4 4 0 0 1 8 0"/></svg>`,
+  },
+  {
+    name: "Agriculture",
+    market: "$2.7T",
+    growth: "+4.1% CAGR",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C7 12 4 8 4 4c4 0 8 3 8 8z"/><path d="M12 12c5 0 8-4 8-8-4 0-8 3-8 8z"/></svg>`,
+  },
+];
+---
+<BaseLayout title={seo.title} description={seo.description}>
+  <div class="home-color-system">
     <Hero />
 
-    <section class="home-proof-motion relative overflow-hidden py-6">
-      <div class="relative py-2 bg-transparent">
-        <MarqueeComponent client:only="react" />
-      </div>
-    </section>
 
     <DataPlatformSection />
 
@@ -111,31 +135,153 @@ import Hero from "../components/Hero.astro";
       </div>
     </section>
 
-    <section class="home-applications relative overflow-hidden px-5 py-20 sm:px-8 lg:py-24">
+    <section class="home-applications relative overflow-hidden px-5 py-20 sm:px-8 lg:py-28">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/18 to-transparent"></div>
       <div class="home-section-shell">
-        <div class="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-          <div>
-            <div class="home-section-kicker">APPLICATIONS</div>
-            <h2 class="home-section-title mt-4">Natural product intelligence for global industries.</h2>
-          </div>
-          <div class="application-grid">
-            {["Nutraceuticals", "Cosmetics", "Pharma", "Food", "Agriculture"].map((item) => (
-              <div class="application-pill">{item}</div>
-            ))}
-          </div>
+        <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.1s;">
+          <div class="home-section-kicker">APPLICATIONS</div>
+          <h2 class="home-section-title mt-4">Natural product intelligence<br class="hidden sm:block"> for global industries.</h2>
+          <p class="home-section-copy mt-4">Five high-value sectors where programmable bioactive intelligence unlocks measurable opportunity.</p>
+        </div>
+        <div class="app-grid mt-12">
+          {industries.map((ind, i) => (
+            <article class="app-card reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${0.2 + i * 0.12}s;`}>
+              <div class="app-icon-wrap">
+                <Fragment set:html={ind.icon} />
+              </div>
+              <p class="app-name">{ind.name}</p>
+              <div class="app-meta">
+                <span class="app-market">{ind.market}</span>
+                <span class="app-growth">{ind.growth}</span>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
 
-    <section class="home-why-section relative overflow-hidden px-5 py-20 sm:px-8 lg:py-28">
+    <section class="home-traction relative overflow-hidden px-5 py-20 sm:px-8 lg:py-28">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/20 to-transparent"></div>
+      <div class="absolute left-1/2 top-0 h-[480px] w-[480px] -translate-x-1/2 rounded-full bg-freshgreen/5 blur-3xl pointer-events-none"></div>
       <div class="home-section-shell">
-        <div class="home-section-kicker">WHY MOKA</div>
-        <div class="why-panel">
-          <h2 class="home-section-title">Natural chemistry is under-characterized. Discovery is fragmented and slow.</h2>
-          <div class="why-grid">
-            <p>AI can organize biological complexity.</p>
-            <p>Moka turns natural knowledge into actionable bioactive intelligence.</p>
-          </div>
+        <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
+          <div class="home-section-kicker">TRACTION</div>
+          <h2 class="home-section-title mt-4">Real science.<br class="hidden sm:block"> Real progress.</h2>
+        </div>
+        <div class="traction-grid mt-12">
+
+          <article class="traction-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.15s;">
+            <div class="traction-card-inner">
+              <p class="traction-number">130<span class="traction-unit">K+</span></p>
+              <div class="traction-divider"></div>
+              <p class="traction-label">Species Indexed</p>
+              <p class="traction-desc">Natural species catalogued and structured inside MokaDex — the world's largest validated natural chemical library.</p>
+            </div>
+            <div class="traction-card-glow"></div>
+          </article>
+
+          <article class="traction-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.27s;">
+            <div class="traction-card-inner">
+              <p class="traction-number">1<span class="traction-unit"> patent</span></p>
+              <div class="traction-divider"></div>
+              <p class="traction-label">Provisional Patent Filed</p>
+              <p class="traction-desc">An immunomodulator candidate identified and protected through Moka's bioactivity intelligence pipeline. IP-ready from day one.</p>
+            </div>
+            <div class="traction-card-glow"></div>
+          </article>
+
+          <article class="traction-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.39s;">
+            <div class="traction-card-inner">
+              <p class="traction-number">3<span class="traction-unit"> active</span></p>
+              <div class="traction-divider"></div>
+              <p class="traction-label">Research Partners</p>
+              <p class="traction-desc">Collaborating with institutions and industry partners to validate and deploy natural bioactive intelligence at scale.</p>
+            </div>
+            <div class="traction-card-glow"></div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="home-delta-section relative overflow-hidden px-5 py-20 sm:px-8 lg:py-28">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/22 to-transparent"></div>
+      <div class="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-deepforest/18 blur-3xl pointer-events-none"></div>
+      <div class="home-section-shell">
+
+        <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
+          <div class="home-section-kicker">WHY MOKA</div>
+          <h2 class="home-section-title mt-4">What changes<br class="hidden sm:block"> with Moka Bio?</h2>
+        </div>
+
+        <div class="delta-grid mt-14">
+
+          <!-- COST -->
+          <article class="delta-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.15s;">
+            <div class="delta-before">
+              <span class="delta-tag delta-tag--before">BEFORE</span>
+              <p class="delta-metric delta-metric--before">$1<span class="delta-metric-unit">M</span></p>
+              <p class="delta-sublabel">Per bioactive compound</p>
+            </div>
+            <div class="delta-bridge">
+              <div class="delta-bridge-line"></div>
+              <div class="delta-bridge-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                94% cost reduction
+              </div>
+              <div class="delta-bridge-line"></div>
+            </div>
+            <div class="delta-after">
+              <span class="delta-tag delta-tag--after">WITH MOKA</span>
+              <p class="delta-metric delta-metric--after">$60<span class="delta-metric-unit">K</span></p>
+              <p class="delta-sublabel delta-sublabel--after">For as many compounds as you want</p>
+            </div>
+          </article>
+
+          <!-- SPEED -->
+          <article class="delta-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.27s;">
+            <div class="delta-before">
+              <span class="delta-tag delta-tag--before">BEFORE</span>
+              <p class="delta-metric delta-metric--before">2–7<span class="delta-metric-unit"> yr</span></p>
+              <p class="delta-sublabel">From research to candidate</p>
+            </div>
+            <div class="delta-bridge">
+              <div class="delta-bridge-line"></div>
+              <div class="delta-bridge-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                From years to weeks
+              </div>
+              <div class="delta-bridge-line"></div>
+            </div>
+            <div class="delta-after">
+              <span class="delta-tag delta-tag--after">WITH MOKA</span>
+              <p class="delta-metric delta-metric--after">Weeks</p>
+              <p class="delta-sublabel delta-sublabel--after">To your first validated candidates</p>
+            </div>
+          </article>
+
+          <!-- IP -->
+          <article class="delta-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.39s;">
+            <div class="delta-before">
+              <span class="delta-tag delta-tag--before">BEFORE</span>
+              <p class="delta-metric delta-metric--before" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.1;">No clear path</p>
+              <p class="delta-sublabel">Fragmented IP landscape</p>
+            </div>
+            <div class="delta-bridge">
+              <div class="delta-bridge-line"></div>
+              <div class="delta-bridge-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                Full visibility, day one
+              </div>
+              <div class="delta-bridge-line"></div>
+            </div>
+            <div class="delta-after">
+              <span class="delta-tag delta-tag--after">WITH MOKA</span>
+              <p class="delta-metric delta-metric--after" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.1;">Patent-ready</p>
+              <p class="delta-sublabel delta-sublabel--after">Complete patent landscape mapping included</p>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
@@ -148,7 +294,20 @@ import Hero from "../components/Hero.astro";
     
     <OurVisionSection />
 
-    <div class="home-articles-band flex flex-col items-center justify-center mt-4 mb-10">
+    <div class="home-articles-band mt-4 mb-10">
+      <div class="home-section-shell mb-8">
+        <div class="flex items-end justify-between gap-6 flex-wrap">
+          <div>
+            <div class="home-section-kicker">FROM THE FIELD</div>
+            <h2 class="home-section-title mt-3" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem);">
+              Science that moves us forward.
+            </h2>
+          </div>
+          <a href="/insights" class="articles-see-all no-underline">
+            View all insights →
+          </a>
+        </div>
+      </div>
       <ArticlesCarrousel client:only="react" />
     </div>
 
@@ -165,9 +324,50 @@ import Hero from "../components/Hero.astro";
   </div>
 </BaseLayout>
 
+<script>
+  // ── Consolidated IntersectionObserver for all .reveal elements on home ──
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const animation = entry.target.getAttribute('data-animation');
+          if (animation) entry.target.classList.add(`animate-${animation}`);
+          entry.target.classList.remove('opacity-0');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+  );
+
+  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+</script>
+
 <style>
+  /* ── Page-level fixed background ─────────────── */
   .home-color-system {
-    background: var(--charcoal-color);
+    position: relative;
+    background: transparent;
+  }
+
+  .home-color-system::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url("/hero.png");
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(1) contrast(1.24) brightness(0.38);
+  }
+
+  /* dark overlay for readability across all sections */
+  .home-color-system::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: rgba(8, 12, 10, 0.52);
   }
 
   .home-section-shell {
@@ -203,11 +403,11 @@ import Hero from "../components/Hero.astro";
   }
 
   .home-flow-section {
-    background: var(--charcoal-color);
+    background: transparent;
   }
 
   .home-proof-motion {
-    background: var(--charcoal-color);
+    background: transparent;
   }
 
   .flow-track {
@@ -227,7 +427,6 @@ import Hero from "../components/Hero.astro";
 
   .flow-step,
   .layer-card,
-  .application-pill,
   .why-panel,
   .contact-form-shell {
     border: 1px solid var(--moka-border-muted);
@@ -244,10 +443,15 @@ import Hero from "../components/Hero.astro";
     transition: transform 320ms ease, border-color 320ms ease, background 320ms ease;
   }
 
-  .flow-step:hover,
-  .layer-card:hover,
-  .application-pill:hover {
+  .flow-step:hover {
     transform: translateY(-4px);
+    border-color: var(--moka-border-accent);
+    background: linear-gradient(145deg, rgba(19, 45, 37, 0.82), rgba(18, 18, 18, 0.58));
+  }
+
+  /* Keep staircase offset intact while lifting on hover */
+  .layer-card:hover {
+    transform: translateX(calc(var(--offset, 0) * 1rem)) translateY(-4px);
     border-color: var(--moka-border-accent);
     background: linear-gradient(145deg, rgba(19, 45, 37, 0.82), rgba(18, 18, 18, 0.58));
   }
@@ -277,7 +481,7 @@ import Hero from "../components/Hero.astro";
   }
 
   .home-layers-section {
-    background: var(--charcoal-color);
+    background: transparent;
   }
 
   .layer-stack {
@@ -309,7 +513,7 @@ import Hero from "../components/Hero.astro";
   }
 
   .plant-to-bioactives {
-    background: var(--charcoal-color);
+    background: transparent;
   }
 
   .bioactive-visual {
@@ -394,58 +598,337 @@ import Hero from "../components/Hero.astro";
   .bioactive-panel div:nth-child(4) { width: 52%; }
 
   .home-applications {
-    background: var(--charcoal-color);
+    background: transparent;
   }
 
-  .application-grid {
+  .app-grid {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 0.75rem;
-  }
-
-  .application-pill {
-    display: flex;
-    min-height: 112px;
-    align-items: end;
-    border-radius: 1.2rem;
-    padding: 1rem;
-    color: var(--birch-color);
-    font-family: Inter, sans-serif;
-    font-weight: 650;
-    transition: transform 320ms ease, border-color 320ms ease, background 320ms ease;
-  }
-
-  .home-why-section {
-    background: var(--charcoal-color);
-  }
-
-  .why-panel {
-    margin-top: 1.5rem;
-    border-radius: 2rem;
-    padding: clamp(1.5rem, 4vw, 3.5rem);
-  }
-
-  .why-grid {
-    margin-top: 2.5rem;
-    display: grid;
     gap: 1rem;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .why-grid p {
-    border-left: 1px solid rgba(110, 191, 126, 0.34);
-    padding-left: 1.25rem;
-    color: rgba(222, 222, 222, 0.78);
+  .app-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 210px;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(110, 191, 126, 0.15);
+    background: linear-gradient(145deg, rgba(18, 18, 18, 0.68), rgba(19, 45, 37, 0.46));
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(18px);
+    transition: transform 320ms ease, border-color 320ms ease, background 320ms ease, box-shadow 320ms ease;
+    overflow: hidden;
+  }
+
+  .app-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 0%, rgba(110, 191, 126, 0.1), transparent 42%);
+    opacity: 0;
+    transition: opacity 320ms ease;
+    pointer-events: none;
+  }
+
+  .app-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(110, 191, 126, 0.38);
+    background: linear-gradient(145deg, rgba(19, 45, 37, 0.82), rgba(18, 18, 18, 0.56));
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3), 0 0 40px rgba(110, 191, 126, 0.07);
+  }
+
+  .app-card:hover::after {
+    opacity: 1;
+  }
+
+  .app-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(110, 191, 126, 0.12);
+    border: 1px solid rgba(110, 191, 126, 0.22);
+    color: var(--fresh-green-color);
+    flex-shrink: 0;
+  }
+
+  .app-name {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    margin-top: 1rem;
+    font-family: Inter, sans-serif;
+    font-size: clamp(0.88rem, 1.1vw, 1rem);
+    font-weight: 650;
+    color: var(--pure-color);
+    line-height: 1.2;
+    padding-bottom: 0.2rem;
+  }
+
+  .app-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-top: 1rem;
+    padding-top: 0.875rem;
+    border-top: 1px solid rgba(110, 191, 126, 0.14);
+  }
+
+  .app-market {
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.35rem, 1.8vw, 1.65rem);
+    font-weight: 700;
+    color: var(--fresh-green-color);
+    line-height: 1;
+  }
+
+  .app-growth {
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: rgba(222, 222, 222, 0.48);
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+  }
+
+  /* ── Traction ────────────────────────────────── */
+  .home-traction {
+    background: transparent;
+  }
+
+  .traction-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .traction-card {
+    position: relative;
+    border-radius: 1.75rem;
+    border: 1px solid rgba(110, 191, 126, 0.18);
+    background: linear-gradient(145deg, rgba(19, 45, 37, 0.62), rgba(18, 18, 18, 0.58));
+    backdrop-filter: blur(20px);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(110, 191, 126, 0.08);
+    overflow: hidden;
+    transition: transform 320ms ease, border-color 320ms ease;
+  }
+
+  .traction-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(110, 191, 126, 0.4);
+  }
+
+  .traction-card:hover .traction-card-glow {
+    opacity: 1;
+  }
+
+  .traction-card-inner {
+    position: relative;
+    z-index: 1;
+    padding: 2.25rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    height: 100%;
+  }
+
+  .traction-card-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 0%, rgba(110, 191, 126, 0.12), transparent 50%);
+    opacity: 0;
+    transition: opacity 320ms ease;
+    pointer-events: none;
+  }
+
+  .traction-number {
+    font-family: Inter, sans-serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 750;
+    line-height: 1;
+    color: var(--fresh-green-color);
+    letter-spacing: -0.02em;
+  }
+
+  .traction-unit {
+    font-size: 0.42em;
+    font-weight: 600;
+    color: rgba(110, 191, 126, 0.7);
+    letter-spacing: 0.04em;
+  }
+
+  .traction-divider {
+    width: 2.5rem;
+    height: 2px;
+    background: linear-gradient(90deg, var(--fresh-green-color), transparent);
+    border-radius: 999px;
+    margin: 1.25rem 0 1rem;
+    opacity: 0.5;
+  }
+
+  .traction-label {
+    font-family: Inter, sans-serif;
     font-size: 1.05rem;
-    line-height: 1.6;
+    font-weight: 700;
+    color: var(--pure-color);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  .traction-desc {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(222, 222, 222, 0.55);
+    flex: 1;
+  }
+
+  /* ── Delta / What Changes section ───────────── */
+  .home-delta-section {
+    background: transparent;
+  }
+
+  .delta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+
+  .delta-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.75rem;
+    overflow: hidden;
+    border: 1px solid rgba(110, 191, 126, 0.14);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.26);
+    transition: transform 320ms ease, border-color 320ms ease;
+  }
+
+  .delta-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(110, 191, 126, 0.32);
+  }
+
+  /* Before block */
+  .delta-before {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.75rem 1.75rem 1.5rem;
+    background: linear-gradient(145deg, rgba(22, 22, 22, 0.92), rgba(18, 18, 18, 0.72));
+    border-bottom: 1px solid rgba(222, 222, 222, 0.07);
+  }
+
+  /* Bridge / arrow */
+  .delta-bridge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0 1.75rem;
+    background: rgba(12, 12, 12, 0.72);
+    backdrop-filter: blur(12px);
+  }
+
+  .delta-bridge-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(110, 191, 126, 0.22), transparent);
+  }
+
+  .delta-bridge-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(110, 191, 126, 0.22);
+    background: rgba(19, 45, 37, 0.5);
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+    white-space: nowrap;
+  }
+
+  /* After block */
+  .delta-after {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1.75rem 1.75rem;
+    background: linear-gradient(145deg, rgba(19, 45, 37, 0.78), rgba(12, 28, 20, 0.68));
+  }
+
+  /* Tags */
+  .delta-tag {
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    margin-bottom: 0.875rem;
+    display: block;
+  }
+
+  .delta-tag--before {
+    color: rgba(222, 222, 222, 0.42);
+  }
+
+  .delta-tag--after {
+    color: rgba(110, 191, 126, 0.7);
+  }
+
+  /* Metrics */
+  .delta-metric {
+    font-family: Inter, sans-serif;
+    font-size: clamp(2.4rem, 4.5vw, 4rem);
+    font-weight: 750;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .delta-metric--before {
+    color: rgba(222, 222, 222, 0.68);
+  }
+
+  .delta-metric--after {
+    color: var(--fresh-green-color);
+  }
+
+  .delta-metric-unit {
+    font-size: 0.5em;
+    font-weight: 600;
+    opacity: 0.75;
+    letter-spacing: 0;
+  }
+
+  /* Sub-labels */
+  .delta-sublabel {
+    margin-top: 0.625rem;
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(222, 222, 222, 0.38);
+  }
+
+  .delta-sublabel--after {
+    color: rgba(222, 222, 222, 0.58);
   }
 
   .home-problem-solution {
-    background: var(--charcoal-color);
+    background: transparent;
   }
 
   .home-contact-section {
-    background: var(--charcoal-color);
+    background: transparent;
   }
 
   .contact-form-shell {
@@ -456,6 +939,11 @@ import Hero from "../components/Hero.astro";
   .home-articles-band {
     position: relative;
     isolation: isolate;
+    padding: 0 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .home-articles-band { padding: 0 2rem; }
   }
 
   .home-articles-band::before {
@@ -465,6 +953,21 @@ import Hero from "../components/Hero.astro";
     z-index: -1;
     background: var(--charcoal-color);
     pointer-events: none;
+  }
+
+  .articles-see-all {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fresh-green-color);
+    opacity: 0.8;
+    transition: opacity 200ms ease;
+    white-space: nowrap;
+    margin-bottom: 0.35rem;
+  }
+
+  .articles-see-all:hover {
+    opacity: 1;
   }
 
   @keyframes slowPlant {
@@ -477,7 +980,7 @@ import Hero from "../components/Hero.astro";
       display: none;
     }
 
-    .application-grid {
+    .app-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -485,11 +988,26 @@ import Hero from "../components/Hero.astro";
     .layer-card:nth-child(n) {
       transform: none;
     }
+
+    .traction-grid,
+    .delta-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .traction-grid,
+    .delta-grid {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 100%;
+    }
   }
 
   @media (max-width: 640px) {
-    .application-grid,
-    .why-grid {
+    .app-grid {
       grid-template-columns: 1fr;
     }
 

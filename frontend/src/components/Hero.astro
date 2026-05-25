@@ -1,15 +1,30 @@
-<section class="hero-xray relative min-h-screen w-full overflow-hidden">
+---
+import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
+---
+
+<section class="hero-xray relative w-full overflow-hidden">
   <div class="absolute inset-0 bg-gradient-to-r from-charcoal/98 via-charcoal/58 to-charcoal/86"></div>
   <div class="absolute inset-0 bg-deepforest/20 mix-blend-multiply"></div>
   <div class="absolute inset-0 bg-freshgreen/5"></div>
   <div class="absolute inset-0 hero-scan opacity-20"></div>
-  <div class="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent via-charcoal/88 to-charcoal"></div>
+  <!-- fade inferior para que fluya con las secciones de abajo -->
+  <div class="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent to-black/30"></div>
 
   <div class="hero-botanical botanical-line-a" aria-hidden="true"></div>
   <div class="hero-botanical botanical-line-b" aria-hidden="true"></div>
 
-  <div class="relative z-10 mx-auto flex min-h-screen max-w-7xl items-start px-6 pt-16 pb-24 sm:px-8 sm:pt-20 lg:px-12 lg:pt-24 lg:pb-28">
-    <div class="grid w-full items-center gap-12 lg:grid-cols-[1fr_0.84fr]">
+  <!-- Efectos decorativos sobre el fondo -->
+  <div class="hero-fx" aria-hidden="true">
+    <div class="hero-fx-glow"></div>
+    <div class="hero-fx-orbit"></div>
+    <div class="hero-node hero-node--a"></div>
+    <div class="hero-node hero-node--b"></div>
+    <div class="hero-node hero-node--c"></div>
+  </div>
+
+  <div class="relative z-10 flex flex-col min-h-screen">
+    <!-- Copy + Marquee juntos en el bloque superior -->
+    <div class="px-8 pt-10 pb-8 sm:px-12 sm:pt-14 lg:px-16 lg:pt-16">
       <div class="hero-copy max-w-3xl animate-moka-reveal">
         <p class="font-roboto text-[12px] font-semibold uppercase tracking-[0.48em] text-freshgreen">
           MOKA BIO
@@ -22,10 +37,22 @@
         </p>
         <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
           <a href="/our-technology" class="hero-primary-cta no-underline">Explore the platform</a>
-          <a href="/contact-us" class="hero-secondary-cta no-underline">Contact us</a>
+          <a href="/contact-us" class="hero-demo-cta no-underline">Book a Demo</a>
         </div>
       </div>
+
+      <!-- Marquee justo debajo de los botones -->
+      <div class="mt-10 sm:mt-12">
+        <div class="flex items-center gap-6 mb-5">
+          <span class="hero-partners-label">BACKED BY</span>
+          <div class="flex-1 h-px bg-gradient-to-r from-birch/15 to-transparent"></div>
+        </div>
+        <MarqueeComponent client:only="react" />
+      </div>
     </div>
+
+    <!-- Espacio restante para llenar la pantalla -->
+    <div class="flex-1"></div>
   </div>
 </section>
 
@@ -41,6 +68,11 @@
     opacity: 0.82;
     transform: scale(1.02);
     animation: heroDrift 24s ease-in-out infinite alternate;
+  }
+
+  @keyframes heroDrift {
+    from { transform: scale(1.02) translate3d(0, 0, 0); }
+    to   { transform: scale(1.06) translate3d(-1.2%, 0.8%, 0); }
   }
 
   .hero-xray::after {
@@ -86,20 +118,27 @@
     box-shadow: 0 18px 60px rgba(0, 0, 0, 0.28);
   }
 
-  .hero-secondary-cta {
-    border: 1px solid rgba(110, 191, 126, 0.28);
-    background: rgba(18, 18, 18, 0.42);
-    color: rgba(222, 222, 222, 0.9);
+  .hero-demo-cta {
+    border: 1.5px solid rgba(110, 191, 126, 0.55);
+    background: rgba(19, 45, 37, 0.52);
+    color: var(--fresh-green-color);
     backdrop-filter: blur(14px);
+    box-shadow: 0 0 28px rgba(110, 191, 126, 0.08);
   }
 
-  .hero-primary-cta:hover,
-  .hero-secondary-cta:hover {
+  .hero-primary-cta:hover {
     transform: translateY(-2px);
-    border-color: rgba(110, 191, 126, 0.5);
     background: var(--fresh-green-color);
     color: var(--charcoal-color);
-    box-shadow: 0 18px 60px rgba(110, 191, 126, 0.16);
+    box-shadow: 0 18px 60px rgba(110, 191, 126, 0.22);
+  }
+
+  .hero-demo-cta:hover {
+    transform: translateY(-2px);
+    border-color: rgba(110, 191, 126, 0.9);
+    background: var(--fresh-green-color);
+    color: var(--charcoal-color);
+    box-shadow: 0 18px 60px rgba(110, 191, 126, 0.22);
   }
 
   .hero-botanical {
@@ -131,7 +170,7 @@
     animation: botanicalFloat 22s ease-in-out infinite reverse;
   }
 
-  /* Animación sutil de aparición desde la derecha */
+  /* ── Hero copy reveal ───────────────────────── */
   .animate-moka-reveal {
     animation: mokaReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     opacity: 0;
@@ -139,20 +178,82 @@
   }
 
   @keyframes mokaReveal {
-    from {
-      opacity: 0;
-      transform: translateX(40px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
   }
 
-  @keyframes heroDrift {
-    from { transform: scale(1.02) translate3d(0, 0, 0); }
-    to { transform: scale(1.06) translate3d(-1.2%, 0.8%, 0); }
+  /* ── Efectos decorativos sobre hero.png ─────── */
+  .hero-partners-label {
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.44em;
+    text-transform: uppercase;
+    color: rgba(222, 222, 222, 0.35);
+    white-space: nowrap;
   }
+
+  .hero-fx {
+    position: absolute;
+    top: 50%;
+    right: -6%;
+    transform: translateY(-50%);
+    width: 1260px;
+    height: 1260px;
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  .hero-fx-glow {
+    position: absolute;
+    inset: -10%;
+    border-radius: 999px;
+    background: radial-gradient(circle,
+      rgba(110, 191, 126, 0.18) 0%,
+      rgba(19,  45,  37, 0.12) 45%,
+      transparent 70%
+    );
+    filter: blur(40px);
+    animation: glowPulse 5s ease-in-out infinite;
+  }
+
+  .hero-fx-orbit {
+    position: absolute;
+    inset: 6%;
+    border-radius: 999px;
+    border: 1px solid rgba(110, 191, 126, 0.18);
+    animation: orbitSpin 32s linear infinite;
+  }
+
+  .hero-node {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--fresh-green-color);
+    box-shadow: 0 0 20px rgba(110, 191, 126, 0.7);
+    animation: nodePulse 3s ease-in-out infinite;
+  }
+
+  .hero-node--a { top: 18%;    left: 12%;  animation-delay: 0s;   }
+  .hero-node--b { top: 55%;    right: 8%;  animation-delay: 0.9s; }
+  .hero-node--c { bottom: 20%; left: 40%;  animation-delay: 1.8s; }
+
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.7; transform: scale(1);    }
+    50%       { opacity: 1;   transform: scale(1.08); }
+  }
+
+  @keyframes orbitSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+
+  @keyframes nodePulse {
+    0%, 100% { transform: scale(1);   opacity: 0.6; }
+    50%       { transform: scale(1.7); opacity: 1;   }
+  }
+
 
   @keyframes botanicalFloat {
     0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); }
@@ -181,8 +282,12 @@
     .hero-xray::before,
     .botanical-line-a,
     .botanical-line-b,
-    .animate-moka-reveal {
-      animation: none;
+    .animate-moka-reveal,
+    .hero-fx-glow,
+    .hero-fx-orbit,
+    .hero-node {
+      animation: none !important;
+      opacity: 1;
     }
   }
 </style>

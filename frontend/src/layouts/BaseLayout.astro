@@ -2,19 +2,78 @@
 import "../styles/global.css";
 import Footer from "./Footer.astro";
 import Navbar from "./Navbar.astro";
-const { children } = Astro.props;
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title = "Moka Bio — The Operating System for Natural Product Discovery",
+  description = "Moka turns natural knowledge into programmable bioactive intelligence. Unlock natural product discovery across pharma, nutraceuticals, cosmetics, food, and agriculture.",
+  ogImage = "/hero.png",
+  canonicalUrl,
+} = Astro.props;
+
+const siteUrl = "https://moka.bio";
+const canonical = canonicalUrl ?? `${siteUrl}${Astro.url.pathname}`;
+const ogImageAbsolute = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`;
 ---
 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg" href="src/assets/icons/Logo_Moka_DarkGreen.png" />
-    <title>Moka Bio</title>
+
+    <!-- Primary meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/Logo_Moka__Square_White.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImageAbsolute} />
+    <meta property="og:site_name" content="Moka Bio" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageAbsolute} />
+
+    <!-- JSON-LD Organization -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Moka Bio",
+      "url": siteUrl,
+      "logo": `${siteUrl}/Logo_Moka_White.png`,
+      "description": description,
+      "email": "info@moka.bio",
+      "sameAs": ["https://www.linkedin.com/company/mokabio"]
+    })} />
+
+    <!-- Google Analytics (centralizado) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-MEXX4CR4HW"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MEXX4CR4HW');
+    </script>
   </head>
   <body class="bg-charcoal text-birch">
     <Navbar />
-    <main><slot>{children}</slot></main>
+    <main><slot /></main>
     <Footer />
   </body>
 </html>

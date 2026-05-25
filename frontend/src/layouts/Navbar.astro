@@ -2,48 +2,121 @@
 import LinkedIn from "@assets/LinkedIn.svg";
 import Logo from "@assets/icons/Logo_Moka_White.png";
 import { Image } from "astro:assets";
+
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
 ---
 
-<div class="bg-charcoal relative w-full">
+<div
+  class="nav-root sticky top-0 z-50 w-full"
+  data-home={isHome ? "" : undefined}
+>
   <nav
-    class="flex flex-row justify-between items-center w-full py-4 px-4 sm:px-8 flex-nowrap gap-4"
+    class="flex flex-row justify-between items-center w-full py-5 sm:py-7 px-4 sm:px-8 flex-nowrap gap-4"
   >
     <div class="shrink-0">
       <a href="/">
-        <Image src={Logo} alt="Moka Bio Logo" class="w-9 sm:w-12" />
+        <Image src={Logo} alt="Moka Bio Logo" class="w-10 sm:w-14" />
       </a>
     </div>
 
-    <div class="flex flex-row gap-3 sm:gap-8 items-center justify-end shrink-0">
+    <div class="flex flex-row gap-4 sm:gap-10 items-center justify-end shrink-0">
       <div
-        class="flex flex-row gap-3 sm:gap-8 text-pure text-[10px] xs:text-xs sm:text-2xl font-semibold items-center whitespace-nowrap"
+        class="flex flex-row gap-4 sm:gap-10 text-pure text-[16px] font-semibold items-center whitespace-nowrap"
       >
-        <a href="/" class="hover:text-freshgreen transition-colors">Home</a>
-        <a href="/our-technology" class="hover:text-freshgreen transition-colors">Tech</a> 
-        <a href="/about-us" class="hover:text-freshgreen transition-colors">About</a>
-        
-        {/* <a href="/articles" class="hover:text-secondary transition-colors">Articles</a> */}
+        <a href="/" class="nav-link hover:text-freshgreen transition-colors">Home</a>
+        <a href="/our-technology" class="nav-link hover:text-freshgreen transition-colors">Tech</a>
+        <a href="/about-us" class="nav-link hover:text-freshgreen transition-colors">About</a>
+        <a href="/insights" class="nav-link hover:text-freshgreen transition-colors">Insights</a>
       </div>
 
-      <a 
-        href="https://www.linkedin.com/company/mokabio" 
-        target="_blank" 
+      <a
+        href="https://www.linkedin.com/company/mokabio"
+        target="_blank"
         rel="noopener noreferrer"
         class="hover:scale-110 transition-transform"
       >
-        <Image 
-          src={LinkedIn} 
-          alt="LinkedIn Profile" 
-          class="w-5 sm:w-10 opacity-90 hover:opacity-100"
-          loading="lazy" 
+        <Image
+          src={LinkedIn}
+          alt="LinkedIn Profile"
+          class="w-5 sm:w-7 opacity-90 hover:opacity-100"
+          loading="lazy"
         />
       </a>
 
-      <div
-        class="bg-pure text-charcoal rounded-full px-3 py-1 sm:px-6 sm:py-2 text-[10px] sm:text-[16px] font-semibold whitespace-nowrap hover:bg-freshgreen transition-colors"
+      <a
+        href="/contact-us"
+        class="bg-freshgreen text-charcoal rounded-full px-4 py-2 sm:px-6 sm:py-2.5 text-[16px] font-semibold whitespace-nowrap transition-all duration-200 hover:bg-pure hover:shadow-lg hover:shadow-freshgreen/20 no-underline"
       >
-        <a href="/contact-us">Contact</a>
-      </div>
+        Book a Demo
+      </a>
     </div>
   </nav>
 </div>
+
+<script>
+  const nav = document.querySelector('.nav-root') as HTMLElement | null;
+  if (nav && nav.hasAttribute('data-home')) {
+    const update = () => nav.classList.toggle('nav-scrolled', window.scrollY > 72);
+    window.addEventListener('scroll', update, { passive: true });
+    update();
+  }
+</script>
+
+<style>
+  /* ── Scroll-aware background ──────────────────── */
+  .nav-root {
+    transition: background 280ms ease, backdrop-filter 280ms ease, border-color 280ms ease;
+  }
+
+  /* Interior pages: always opaque */
+  .nav-root:not([data-home]) {
+    background: rgba(18, 18, 18, 0.94);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Home: opaque only after scrolling past the hero intro */
+  .nav-root[data-home].nav-scrolled {
+    background: rgba(18, 18, 18, 0.94);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* ── Nav links ────────────────────────────────── */
+  .nav-link {
+    position: relative;
+    padding-bottom: 2px;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1.5px;
+    background: var(--fresh-green-color);
+    border-radius: 999px;
+    transition: width 260ms ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link--active::after {
+    width: 100%;
+  }
+
+  .nav-link--active {
+    color: var(--fresh-green-color);
+  }
+</style>
+
+<script>
+  const links = document.querySelectorAll('.nav-link');
+  const path  = window.location.pathname.replace(/\/$/, '') || '/';
+
+  links.forEach((link) => {
+    const href = link.getAttribute('href')?.replace(/\/$/, '') || '';
+    const isActive = href === '/' ? path === '/' : path.startsWith(href);
+    if (isActive) link.classList.add('nav-link--active');
+  });
+</script>

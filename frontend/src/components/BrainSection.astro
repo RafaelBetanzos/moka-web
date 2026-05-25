@@ -12,19 +12,18 @@ import { Image } from "astro:assets";
     </div>
 
     {/* Desktop Grid */}
-    <div class="hidden sm:grid grid-cols-[minmax(0,0.72fr)_minmax(420px,1.56fr)_minmax(0,0.72fr)] w-full items-center gap-6 lg:gap-8 mb-24">
-      
+    <div class="brain-grid hidden sm:grid w-full mb-24">
+
       {/* 1. Lado Izquierdo: Analytical Thinking */}
-      <div 
-        class="reveal opacity-0 flex flex-col items-end text-right self-center transition-transform duration-500 hover:scale-105 cursor-default group"
+      <div
+        class="reveal opacity-0 brain-side brain-side--left group"
         data-animation="slide-left"
         style="transition-delay: 0.1s;"
       >
-        {/* Forzamos que el título ocupe un espacio fijo para que la línea y el párrafo empiecen donde mismo */}
-        <h3 class="text-xl md:text-3xl text-freshgreen font-bold leading-tight group-hover:text-pure transition-colors duration-300 min-h-[3rem] flex items-end justify-end">
+        <h3 class="brain-side-title group-hover:text-pure transition-colors duration-300">
           Analytical thinking
         </h3>
-        <div class="w-12 h-1 bg-secondary/30 my-4 rounded-full transition-all duration-300 group-hover:w-20 group-hover:bg-secondary ml-auto"></div>
+        <div class="brain-side-rule ml-auto transition-all duration-300 group-hover:w-20 group-hover:bg-secondary"></div>
         <p class="text-birch font-semibold text-lg">Experimental lobe</p>
         <p class="text-birch/75 text-sm md:text-base leading-relaxed max-w-[260px]">
           AI model trained on in-house experimental data
@@ -32,9 +31,9 @@ import { Image } from "astro:assets";
       </div>
 
       {/* 2. Centro: Cerebro */}
-      <div 
-        class="reveal opacity-0 flex justify-center items-center" 
-        data-animation="pop-in" 
+      <div
+        class="reveal opacity-0 flex justify-center items-center"
+        data-animation="pop-in"
         style="transition-delay: 0.3s;"
       >
         <Image
@@ -45,16 +44,15 @@ import { Image } from "astro:assets";
       </div>
 
       {/* 3. Lado Derecho: Creative Thinking */}
-      <div 
-        class="reveal opacity-0 flex flex-col items-start text-left self-center transition-transform duration-500 hover:scale-105 cursor-default group"
+      <div
+        class="reveal opacity-0 brain-side brain-side--right group"
         data-animation="slide-right"
         style="transition-delay: 0.5s;"
       >
-        {/* Misma altura mínima que el de la izquierda para nivelar */}
-        <h3 class="text-xl md:text-3xl text-freshgreen font-bold leading-tight group-hover:text-pure transition-colors duration-300 min-h-[2rem] flex items-end justify-start">
+        <h3 class="brain-side-title group-hover:text-pure transition-colors duration-300">
           Creative thinking
         </h3>
-        <div class="w-12 h-1 bg-secondary/30 my-4 rounded-full transition-all duration-300 group-hover:w-20 group-hover:bg-secondary mr-auto"></div>
+        <div class="brain-side-rule mr-auto transition-all duration-300 group-hover:w-20 group-hover:bg-secondary"></div>
         <p class="text-birch font-semibold text-lg">In silico lobe</p>
         <p class="text-birch/75 text-sm md:text-base leading-relaxed max-w-[260px]">
           AI model trained on public experimental data
@@ -66,21 +64,28 @@ import { Image } from "astro:assets";
   {/* Sección Inferior */}
   <div class="flex flex-col w-full gap-10 text-center items-center py-4 mt-12">
     <div class="reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.1s;">
-      <h1 class="font-roboto font-medium text-4xl leading-normal tracking-widest uppercase transition-transform duration-300 hover:scale-105 cursor-default inline-block">
+      <p class="font-roboto font-medium text-xs leading-none tracking-[0.48em] uppercase text-freshgreen">
         HOW IT WORKS
-      </h1>
+      </p>
     </div>
     <div class="reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.3s;">
-      <h2 class="text-freshgreen text-[32px] md:text-[36px] font-inter tracking-wider font-semibold">
-        MokaDex integrates nature's knowledge with cutting edge technology
+      <h2 class="text-pure text-[28px] md:text-[36px] font-inter tracking-wide font-semibold max-w-3xl mx-auto text-wrap-balance">
+        MokaDex integrates nature’s knowledge with <span class="text-freshgreen">cutting edge technology</span>
       </h2>
     </div>
     <div class="reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.5s;">
-      <p class="text-birch/75 text-[20px] md:text-[22px] font-inter font-medium leading-relaxed max-w-4xl">
-        MokaDex is our proprietary AI engine that serves as the digital architect for Moka’s Operating System. 
+      <p class="text-birch/75 text-[18px] md:text-[20px] font-inter font-medium leading-relaxed max-w-3xl">
+        MokaDex is our proprietary AI engine that serves as the digital architect for Moka’s Operating System.
         It identifies novel bioactive molecules and their mechanisms of action with unprecedented speed.
       </p>
     </div>
+  </div>
+
+  {/* Conector visual → ProblemSection */}
+  <div class="brain-connector" aria-hidden="true">
+    <div class="brain-connector-line"></div>
+    <div class="brain-connector-dot"></div>
+    <p class="brain-connector-label">THE PROBLEM</p>
   </div>
 </div>
 
@@ -100,13 +105,107 @@ import { Image } from "astro:assets";
 </script>
 
 <style>
-  .animate-slide-left { animation: slideLeft 0.8s ease-out forwards; }
-  .animate-slide-right { animation: slideRight 0.8s ease-out forwards; }
-  .animate-slide-up { animation: slideUp 0.8s ease-out forwards; }
-  .animate-pop-in { animation: popIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  /* ── Brain desktop grid ───────────────────────── */
+  .brain-grid {
+    grid-template-columns: minmax(0, 0.72fr) minmax(360px, 1.56fr) minmax(0, 0.72fr);
+    align-items: center;
+    gap: 1.5rem;
+  }
 
-  @keyframes slideLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
-  @keyframes slideRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
-  @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes popIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+  @media (min-width: 1024px) {
+    .brain-grid { gap: 2rem; }
+  }
+
+  .brain-side {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    cursor: default;
+    transition: transform 500ms ease;
+  }
+
+  .brain-side:hover { transform: scale(1.03); }
+
+  .brain-side--left { align-items: flex-end; text-align: right; }
+  .brain-side--right { align-items: flex-start; text-align: left; }
+
+  .brain-side-title {
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.1rem, 2.4vw, 1.75rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--fresh-green-color);
+  }
+
+  .brain-side-rule {
+    width: 3rem;
+    height: 4px;
+    background: rgba(86, 114, 99, 0.3);
+    border-radius: 999px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  /* ── Brain → Problem connector ───────────────── */
+  .brain-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding-top: 2.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .brain-connector-line {
+    width: 1px;
+    height: 56px;
+    background: linear-gradient(180deg, rgba(110, 191, 126, 0.0), rgba(110, 191, 126, 0.42));
+  }
+
+  .brain-connector-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--fresh-green-color);
+    box-shadow: 0 0 16px rgba(110, 191, 126, 0.55);
+    animation: dotPulse 2.4s ease-in-out infinite;
+  }
+
+  .brain-connector-label {
+    margin-top: 0.75rem;
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: rgba(110, 191, 126, 0.55);
+  }
+
+  @keyframes dotPulse {
+    0%, 100% { transform: scale(1);    opacity: 0.7; }
+    50%       { transform: scale(1.5); opacity: 1;   }
+  }
+
+  /* ── Entrance animations ─────────────────────── */
+  .animate-slide-left  { animation: slideLeft  0.8s ease-out forwards; }
+  .animate-slide-right { animation: slideRight 0.8s ease-out forwards; }
+  .animate-slide-up    { animation: slideUp    0.8s ease-out forwards; }
+  .animate-pop-in      { animation: popIn      1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+  @keyframes slideLeft  { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes slideRight { from { opacity: 0; transform: translateX( 40px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes slideUp    { from { opacity: 0; transform: translateY( 30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes popIn      { from { opacity: 0; transform: scale(0.95);       } to { opacity: 1; transform: scale(1);      } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-slide-left,
+    .animate-slide-right,
+    .animate-slide-up,
+    .animate-pop-in {
+      animation-duration: 1ms;
+    }
+    .brain-connector-dot {
+      animation: none;
+    }
+  }
 </style>

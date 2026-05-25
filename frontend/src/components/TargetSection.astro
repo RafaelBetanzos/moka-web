@@ -3,72 +3,109 @@
     
     <div class="flex-1 flex flex-col justify-center">
       <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.1s;">
-        <h1 class="font-roboto font-medium text-birch leading-4 tracking-widest uppercase mb-6 transition-transform duration-300 hover:scale-105 cursor-default origin-left inline-block">
+        <p class="font-roboto font-bold text-xs leading-none tracking-[0.48em] text-freshgreen uppercase mb-6">
           Moka Targets
-        </h1>
+        </p>
       </div>
 
-      <div class="reveal opacity-0 text-[36px] md:text-[48px] font-semibold font-inter pb-8 leading-tight" data-animation="slide-in" style="transition-delay: 0.3s;">
-        <h2 class="text-freshgreen transition-transform duration-300 hover:scale-105 cursor-default origin-left">Same technology,</h2>
-        <h2 class="text-pure transition-transform duration-300 hover:scale-105 cursor-default origin-left">different products and business models</h2>
+      <div class="reveal opacity-0 pb-8 leading-tight" data-animation="slide-in" style="transition-delay: 0.3s;">
+        <h2 class="text-[36px] md:text-[48px] font-semibold font-inter">
+          <span class="text-freshgreen">Same technology,</span><br/>
+          <span class="text-pure">different products and business models</span>
+        </h2>
       </div>
 
-      <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.5s;">
-        <p class="text-birch/75 font-inter font-medium text-[18px] leading-relaxed xl:pr-10 transition-transform duration-300 hover:scale-105 cursor-default origin-left">
-        Our primary focus is to refine MokaDex in less regulated and fast-commercializing environments. 
-        We are building the evidence needed for future expansions.
-        <p class="text-birch/75 font-inter font-medium text-[18px] leading-relaxed xl:pr-10 transition-transform duration-300 hover:scale-105 cursor-default origin-left">
-        Today we are aiming the nutraceutical industry. 
-        <p class="text-birch/75 font-inter font-medium text-[18px] leading-relaxed xl:pr-10 transition-transform duration-300 hover:scale-105 cursor-default origin-left">
-        Tomorrow we will scale through cosmetics, functional ingredients, and beyond.
+      <div class="reveal opacity-0 flex flex-col gap-4" data-animation="slide-in" style="transition-delay: 0.5s;">
+        <p class="text-birch/75 font-inter font-medium text-[18px] leading-relaxed xl:pr-10">
+          Our primary focus is to refine MokaDex in less regulated and fast-commercializing environments.
+          We are building the evidence needed for future expansions.
+        </p>
+        <p class="text-birch/75 font-inter font-medium text-[18px] leading-relaxed xl:pr-10">
+          <span class="text-freshgreen font-semibold">Today</span> we are targeting the nutraceutical industry.
+          <span class="text-birch/50 font-semibold"> Tomorrow</span> we will scale through cosmetics, functional ingredients, and beyond.
+        </p>
       </div>
     </div>
 
     <div class="flex flex-col gap-8 flex-1 w-full">
       
-      <div 
-        class="reveal opacity-0 group bg-deepforest/75 p-8 rounded-[2rem] shadow-2xl shadow-black/20 border border-sage/25 transition-all duration-500 hover:border-freshgreen/40 hover:-translate-y-2 cursor-default" 
-        data-animation="slide-up" 
+      <!-- Card: Nutraceuticals & Cosmetics — NOW (verde) -->
+      <div
+        class="reveal opacity-0 target-card target-card--now group cursor-default"
+        data-animation="slide-up"
         style="transition-delay: 0.6s;"
       >
-        <h3 class="text-freshgreen text-[24px] pb-4 font-bold border-b border-sage/30 mb-6 transition-colors duration-300 group-hover:text-pure">
-          Nutraceuticals & Cosmetics
-        </h3>
-        <ul class="space-y-4 list-none text-birch/80">
+        <div class="target-card-header">
+          <div class="target-card-icon">
+            <!-- Leaf / plant icon -->
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 28 C16 16 6 10 4 4 C12 4 22 10 16 28Z"/>
+              <path d="M16 28 C16 18 24 13 28 8 C22 8 14 14 16 28Z"/>
+              <path d="M16 14 L16 28"/>
+            </svg>
+          </div>
+          <div>
+            <p class="target-card-phase target-card-phase--now">NOW</p>
+            <h3 class="target-card-title group-hover:text-pure transition-colors duration-300">
+              Nutraceuticals & Cosmetics
+            </h3>
+          </div>
+        </div>
+        <div class="target-card-divider target-card-divider--now"></div>
+        <ul class="space-y-4 list-none text-birch/80 text-[17px]">
           <li class="flex items-start gap-3 transition-transform duration-300 group-hover:translate-x-2">
-            <span class="text-secondary font-bold">•</span> 
+            <span class="target-bullet target-bullet--now">▸</span>
             Discovery of novel bioactive molecules
           </li>
           <li class="flex items-start gap-3 transition-transform duration-300 group-hover:translate-x-2">
-            <span class="text-secondary font-bold">•</span> 
+            <span class="target-bullet target-bullet--now">▸</span>
             Direct formulation services & SaaS
           </li>
           <li class="flex items-start gap-3 transition-transform duration-300 group-hover:translate-x-2">
-            <span class="text-secondary font-bold">•</span> 
+            <span class="target-bullet target-bullet--now">▸</span>
             High-value Intellectual Property (IP) Assets
           </li>
         </ul>
       </div>
 
-      <div 
-        class="reveal opacity-0 group bg-deepforest/75 p-8 rounded-[2rem] shadow-2xl shadow-black/20 border border-sage/25 transition-all duration-500 hover:border-freshgreen/40 hover:-translate-y-2 cursor-default" 
-        data-animation="slide-up" 
+      <!-- Card: Pharma & Drug Discovery — NEXT (azul-sage frío) -->
+      <div
+        class="reveal opacity-0 target-card target-card--next group cursor-default"
+        data-animation="slide-up"
         style="transition-delay: 0.8s;"
       >
-        <h3 class="text-freshgreen text-[24px] pb-4 font-bold border-b border-sage/30 mb-6 transition-colors duration-300 group-hover:text-pure">
-          Pharma & Drug Discovery
-        </h3>
-        <ul class="space-y-4 list-none text-birch/80">
+        <div class="target-card-header">
+          <div class="target-card-icon target-card-icon--next">
+            <!-- Molecule / graph icon -->
+            <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="8"  cy="16" r="3"/>
+              <circle cx="24" cy="8"  r="3"/>
+              <circle cx="24" cy="24" r="3"/>
+              <circle cx="16" cy="16" r="2.5"/>
+              <line x1="11" y1="16" x2="13.5" y2="16"/>
+              <line x1="18.5" y1="16" x2="21.5" y2="9.5"/>
+              <line x1="18.5" y1="16" x2="21.5" y2="22.5"/>
+            </svg>
+          </div>
+          <div>
+            <p class="target-card-phase target-card-phase--next">NEXT</p>
+            <h3 class="target-card-title group-hover:text-pure transition-colors duration-300">
+              Pharma & Drug Discovery
+            </h3>
+          </div>
+        </div>
+        <div class="target-card-divider target-card-divider--next"></div>
+        <ul class="space-y-4 list-none text-birch/80 text-[17px]">
           <li class="flex items-start gap-3 transition-transform duration-300 group-hover:translate-x-2">
-            <span class="text-secondary font-bold">•</span> 
+            <span class="target-bullet target-bullet--next">▸</span>
             R&D for novel drug candidates
           </li>
           <li class="flex items-start gap-3 transition-transform duration-300 group-hover:translate-x-2">
-            <span class="text-secondary font-bold">•</span> 
+            <span class="target-bullet target-bullet--next">▸</span>
             Licensing & Co-development contracts
           </li>
           <li class="flex items-start gap-3 transition-transform duration-300 group-hover:translate-x-2">
-            <span class="text-secondary font-bold">•</span> 
+            <span class="target-bullet target-bullet--next">▸</span>
             Complex molecular pattern analysis (AI)
           </li>
         </ul>
@@ -78,37 +115,122 @@
   </div>
 </div>
 
-<script>
-  const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const animationType = entry.target.getAttribute('data-animation');
-        entry.target.classList.add(`animate-${animationType}`);
-        entry.target.classList.remove('opacity-0');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
-</script>
-
 <style>
+  /* ── Target cards shared ─────────────────────── */
+  .target-card {
+    padding: 2rem;
+    border-radius: 2rem;
+    shadow: 0 24px 80px rgba(0,0,0,0.24);
+    transition: transform 500ms ease, border-color 500ms ease, box-shadow 500ms ease;
+  }
+
+  .target-card:hover { transform: translateY(-6px); }
+
+  /* NOW — verde fresco */
+  .target-card--now {
+    background: linear-gradient(145deg, rgba(19, 45, 37, 0.82), rgba(18, 18, 18, 0.62));
+    border: 1px solid rgba(110, 191, 126, 0.30);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.22), 0 0 40px rgba(110,191,126,0.06);
+  }
+
+  .target-card--now:hover {
+    border-color: rgba(110, 191, 126, 0.55);
+    box-shadow: 0 28px 90px rgba(0,0,0,0.28), 0 0 60px rgba(110,191,126,0.12);
+  }
+
+  /* NEXT — azul-sage frío */
+  .target-card--next {
+    background: linear-gradient(145deg, rgba(14, 22, 38, 0.82), rgba(18, 18, 18, 0.62));
+    border: 1px solid rgba(86, 114, 148, 0.24);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.22), 0 0 40px rgba(70,100,160,0.05);
+  }
+
+  .target-card--next:hover {
+    border-color: rgba(100, 140, 200, 0.44);
+    box-shadow: 0 28px 90px rgba(0,0,0,0.28), 0 0 60px rgba(80,120,180,0.10);
+  }
+
+  /* ── Card header ─────────────────────────────── */
+  .target-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .target-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: 0.875rem;
+    background: rgba(110, 191, 126, 0.10);
+    color: var(--fresh-green-color);
+  }
+
+  .target-card-icon--next {
+    background: rgba(80, 120, 180, 0.12);
+    color: #7aaddc;
+  }
+
+  .target-card-icon svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .target-card-phase {
+    font-family: Roboto, sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.44em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+
+  .target-card-phase--now  { color: rgba(110, 191, 126, 0.75); }
+  .target-card-phase--next { color: rgba(122, 173, 220, 0.65); }
+
+  .target-card-title {
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--pure-color);
+  }
+
+  /* ── Dividers ────────────────────────────────── */
+  .target-card-divider {
+    height: 1px;
+    margin-bottom: 1.5rem;
+    border-radius: 999px;
+  }
+
+  .target-card-divider--now  { background: linear-gradient(90deg, rgba(110,191,126,0.35), transparent); }
+  .target-card-divider--next { background: linear-gradient(90deg, rgba(100,140,200,0.28), transparent); }
+
+  /* ── Bullets ─────────────────────────────────── */
+  .target-bullet {
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    margin-top: 0.25rem;
+  }
+
+  .target-bullet--now  { color: var(--fresh-green-color); }
+  .target-bullet--next { color: #7aaddc; }
+
+  /* ── Entrance animations ─────────────────────── */
   .animate-slide-in { animation: slideIn 0.8s ease-out forwards; }
   .animate-slide-up { animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
-  @keyframes slideIn {
-    from { opacity: 0; transform: translateX(-40px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
+  @keyframes slideIn { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(50px);  } to { opacity: 1; transform: translateY(0); } }
 
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-slide-in,
+    .animate-slide-up {
+      animation-duration: 1ms;
+    }
   }
 </style>
