@@ -1,5 +1,41 @@
 ---
 import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
+
+const copy = {
+  en: {
+    titleBefore: "The operating system for",
+    titleHighlight: "natural",
+    titleAfter: "product discovery",
+    description: "Moka turns natural knowledge into programmable bioactive intelligence for molecular innovation.",
+    platformCta: "Explore the platform",
+    demoCta: "Book a Demo",
+    analyticsLabel: "Hero Book a Demo",
+    backedBy: "BACKED BY",
+  },
+  es: {
+    titleBefore: "El sistema operativo para el descubrimiento de productos",
+    titleHighlight: "naturales",
+    titleAfter: "",
+    description: "Moka convierte el conocimiento natural en inteligencia bioactiva programable para la innovación molecular.",
+    platformCta: "Explorar la plataforma",
+    demoCta: "Agendar demo",
+    analyticsLabel: "Hero Agendar Demo",
+    backedBy: "RESPALDADO POR",
+  },
+  pt: {
+    titleBefore: "O sistema operacional para a descoberta de produtos",
+    titleHighlight: "naturais",
+    titleAfter: "",
+    description: "A Moka transforma conhecimento natural em inteligência bioativa programável para inovação molecular.",
+    platformCta: "Explorar a plataforma",
+    demoCta: "Agendar demo",
+    analyticsLabel: "Hero Agendar Demo PT",
+    backedBy: "APOIADO POR",
+  },
+};
+
+const { locale = "en" } = Astro.props;
+const t = copy[locale] ?? copy.en;
 ---
 
 <section class="hero-xray relative w-full overflow-hidden">
@@ -30,21 +66,21 @@ import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
           MOKA BIO
         </p>
         <h1 class="mt-5 font-inter text-[44px] font-semibold leading-[0.98] text-pure drop-shadow-2xl sm:text-[72px] lg:text-[92px]">
-          The operating system for <span class="text-freshgreen">natural</span> product discovery
+          {t.titleBefore} <span class="text-freshgreen">{t.titleHighlight}</span>{t.titleAfter ? ` ${t.titleAfter}` : ""}
         </h1>
         <p class="mt-7 max-w-2xl font-inter text-[17px] leading-relaxed text-birch/78 sm:text-[20px]">
-          Moka turns natural knowledge into programmable bioactive intelligence for molecular innovation.
+          {t.description}
         </p>
         <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <a href="/our-technology" class="hero-primary-cta no-underline">Explore the platform</a>
+          <a href="/our-technology" class="hero-primary-cta no-underline">{t.platformCta}</a>
           <a
             href="/contact-us"
             class="hero-demo-cta no-underline"
             data-analytics-event="book_demo_click"
             data-analytics-category="cta"
-            data-analytics-label="Hero Book a Demo"
+            data-analytics-label={t.analyticsLabel}
           >
-            Book a Demo
+            {t.demoCta}
           </a>
         </div>
       </div>
@@ -52,7 +88,7 @@ import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
       <!-- Marquee justo debajo de los botones -->
       <div class="mt-10 sm:mt-12">
         <div class="flex items-center gap-6 mb-5">
-          <span class="hero-partners-label">BACKED BY</span>
+          <span class="hero-partners-label">{t.backedBy}</span>
           <div class="flex-1 h-px bg-gradient-to-r from-birch/15 to-transparent"></div>
         </div>
         <MarqueeComponent client:only="react" />

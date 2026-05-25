@@ -1,7 +1,36 @@
 ---
 import ArrowRight from "@assets/icons/ArrowRight.svg";
 import { Image } from "astro:assets";
-const { isButtonOn } = Astro.props;
+
+const visionCopy = {
+  en: {
+    kicker: "OUR VISION",
+    before: "Moka Bio envisions a future where",
+    highlight: "natural products",
+    after: "rigorously evaluated for safety and efficacy, become a trusted",
+    end: "cornerstone of human health.",
+    cta: "About us",
+  },
+  es: {
+    kicker: "NUESTRA VISIÓN",
+    before: "Moka Bio imagina un futuro donde los",
+    highlight: "productos naturales",
+    after: "evaluados rigurosamente en seguridad y eficacia, se conviertan en una base confiable",
+    end: "para la salud humana.",
+    cta: "Sobre nosotros",
+  },
+  pt: {
+    kicker: "NOSSA VISÃO",
+    before: "A Moka Bio imagina um futuro em que os",
+    highlight: "produtos naturais",
+    after: "avaliados rigorosamente em segurança e eficácia, se tornem uma base confiável",
+    end: "para a saúde humana.",
+    cta: "Sobre nós",
+  },
+};
+
+const { isButtonOn, locale = "en" } = Astro.props;
+const t = visionCopy[locale] ?? visionCopy.en;
 ---
 
 <div
@@ -10,21 +39,21 @@ const { isButtonOn } = Astro.props;
   <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(110,191,126,0.12),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.035),rgba(18,18,18,0.18))]"></div>
 
   <p class="reveal opacity-0 relative text-xs font-bold font-roboto pb-8 tracking-[0.45em] text-freshgreen uppercase" data-animation="slide-up" style="transition-delay: 0.05s;">
-    OUR VISION
+    {t.kicker}
   </p>
 
   <div class="relative flex flex-col items-center">
     <p class="reveal opacity-0 text-xl sm:text-4xl font-inter text-center sm:leading-[46px] text-pure" data-animation="slide-up" style="transition-delay: 0.2s;">
-      Moka Bio envisions a future where <strong class="text-freshgreen">natural products</strong>,
-      rigorously evaluated for safety and efficacy, become a trusted
-      <span class="text-birch">cornerstone of human health.</span>
+      {t.before} <strong class="text-freshgreen">{t.highlight}</strong>,
+      {t.after}
+      <span class="text-birch">{t.end}</span>
     </p>
 
     {
       isButtonOn && (
         <div class="reveal opacity-0 mt-8" data-animation="slide-up" style="transition-delay: 0.35s;">
           <a href="/about-us" class="group flex gap-6 items-center justify-center bg-pure text-charcoal font-inter font-semibold text-[16px] rounded-full max-w-fit p-1 pl-5 shadow-lg shadow-black/20 ring-1 ring-pure/10 transition-all duration-300 hover:pr-4 hover:bg-freshgreen hover:shadow-freshgreen/20 no-underline">
-            <span class="text-center text-[16px]">About us</span>
+            <span class="text-center text-[16px]">{t.cta}</span>
             <div class="flex items-center justify-center bg-charcoal rounded-full w-10 h-10 transition-transform duration-300 group-hover:rotate-[-45deg] group-hover:scale-110">
               <Image src={ArrowRight} alt="arrow-right" class="w-5 h-5" />
             </div>

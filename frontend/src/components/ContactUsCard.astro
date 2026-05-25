@@ -2,7 +2,26 @@
 import LeafPill from "@assets/icons/LeafPill.svg";
 import { Image } from "astro:assets";
 
-const pillsTag = ["Bioprospecting", "Nature", "Computational Biology"];
+const contactCopy = {
+  en: {
+    kicker: "CONTACT US!",
+    headline: "Let's unlock the potential of nature together.",
+    pills: ["Bioprospecting", "Nature", "Computational Biology"],
+  },
+  es: {
+    kicker: "CONTACTO",
+    headline: "Desbloqueemos juntos el potencial de la naturaleza.",
+    pills: ["Bioprospección", "Naturaleza", "Biología computacional"],
+  },
+  pt: {
+    kicker: "CONTATO",
+    headline: "Vamos desbloquear juntos o potencial da natureza.",
+    pills: ["Bioprospecção", "Natureza", "Biologia computacional"],
+  },
+};
+
+const { locale = "en" } = Astro.props;
+const t = contactCopy[locale] ?? contactCopy.en;
 ---
 
 <div
@@ -12,16 +31,16 @@ const pillsTag = ["Bioprospecting", "Nature", "Computational Biology"];
   <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(110,191,126,0.18),transparent_34%),linear-gradient(135deg,rgba(18,18,18,0.1),rgba(19,45,37,0.48))]"></div>
   <div class="mb-12 flex flex-col gap-4">
     <p class="relative text-sm tracking-[0.45em] text-freshgreen reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.2s;">
-      CONTACT US!
+      {t.kicker}
     </p>
     <p class="relative text-3xl md:text-4xl leading-tight reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.4s;">
-      Let's unlock the potential of nature together.
+      {t.headline}
     </p>
   </div>
 
   <div class="relative flex flex-wrap gap-3">
     {
-      pillsTag.map((tag, index) => (
+      t.pills.map((tag, index) => (
         <div
           key={index}
           class="reveal opacity-0 flex items-center gap-3 text-birch bg-charcoal/50 backdrop-blur-md border border-sage/30 rounded-full py-2 px-5 transition-all duration-300 hover:bg-freshgreen hover:text-charcoal group cursor-default shadow-sm"
@@ -63,4 +82,3 @@ const pillsTag = ["Bioprospecting", "Nature", "Computational Biology"];
     to { opacity: 1; transform: scale(1); }
   }
 </style>
-

@@ -3,17 +3,58 @@ import Ia from "@assets/icons/Ia.svg";
 import IntegrationSecondary from "@assets/icons/IntegrationSecondary.svg";
 import ScalabilitySecondary from "@assets/icons/ScalabilitySecondary.svg";
 import { Image } from "astro:assets";
+
+const solutionCopy = {
+  en: {
+    kicker: "OUR SOLUTION",
+    headlineBefore: "Moka platform digitizes the chemical potential of the plant kingdom to identify",
+    headlineHighlight: "novel molecules",
+    headlineAfter: "and their mechanism of action.",
+    cards: [
+      ["AI-Driven Molecular Discovery", ["Digital Translation:", "Maps the plant chemome into a searchable digital database."], ["Unprecedented Speed:", "Reduces molecular discovery time from years to weeks."], ["AI-Precision:", "Identifies bioactive compounds invisible to traditional science."]],
+      ["Metabolic Engineering & Validation", ["Metabolic Stability:", "Decodes genetic pathways to ensure 100% molecular consistency."], ["Pharma-Grade Rigor:", "Scientific validation for FDA and global regulatory approvals."], ["IP Ownership:", "Secures high-value patents for every characterized molecule."]],
+      ["Industrial Scalability & Biomanufacturing", ["Cellular Factories:", "\"Grow\" plant in bio-reactors, bypassing traditional agriculture."], ["Vertical Supply Chain:", "Decouples production from land, weather, and geopolitical risks."], ["Infinite Supply:", "Enables stable, mass-market pricing for rare chemical compounds."]],
+    ],
+  },
+  es: {
+    kicker: "NUESTRA SOLUCIÓN",
+    headlineBefore: "La plataforma Moka digitaliza el potencial químico del reino vegetal para identificar",
+    headlineHighlight: "moléculas novedosas",
+    headlineAfter: "y sus mecanismos de acción.",
+    cards: [
+      ["Descubrimiento molecular impulsado por IA", ["Traducción digital:", "Mapea el quimioma vegetal en una base de datos digital consultable."], ["Velocidad sin precedentes:", "Reduce el tiempo de descubrimiento molecular de años a semanas."], ["Precisión con IA:", "Identifica compuestos bioactivos invisibles para la ciencia tradicional."]],
+      ["Ingeniería metabólica y validación", ["Estabilidad metabólica:", "Decodifica rutas genéticas para asegurar consistencia molecular."], ["Rigor farmacéutico:", "Validación científica para aprobaciones regulatorias globales."], ["Propiedad intelectual:", "Protege patentes de alto valor para cada molécula caracterizada."]],
+      ["Escalabilidad industrial y biomanufactura", ["Fábricas celulares:", "Produce moléculas en biorreactores, evitando agricultura tradicional."], ["Cadena de suministro vertical:", "Desacopla producción de tierra, clima y riesgos geopolíticos."], ["Suministro estable:", "Permite precios escalables para compuestos químicos raros."]],
+    ],
+  },
+  pt: {
+    kicker: "NOSSA SOLUÇÃO",
+    headlineBefore: "A plataforma Moka digitaliza o potencial químico do reino vegetal para identificar",
+    headlineHighlight: "moléculas inovadoras",
+    headlineAfter: "e seus mecanismos de ação.",
+    cards: [
+      ["Descoberta molecular impulsionada por IA", ["Tradução digital:", "Mapeia o quimioma vegetal em uma base de dados digital pesquisável."], ["Velocidade sem precedentes:", "Reduz o tempo de descoberta molecular de anos para semanas."], ["Precisão com IA:", "Identifica compostos bioativos invisíveis à ciência tradicional."]],
+      ["Engenharia metabólica e validação", ["Estabilidade metabólica:", "Decodifica vias genéticas para garantir consistência molecular."], ["Rigor farmacêutico:", "Validação científica para aprovações regulatórias globais."], ["Propriedade intelectual:", "Protege patentes de alto valor para cada molécula caracterizada."]],
+      ["Escalabilidade industrial e biomanufatura", ["Fábricas celulares:", "Produz moléculas em biorreatores, evitando a agricultura tradicional."], ["Cadeia vertical:", "Desacopla produção de terra, clima e riscos geopolíticos."], ["Fornecimento estável:", "Permite preços escaláveis para compostos químicos raros."]],
+    ],
+  },
+};
+
+const { locale = "en" } = Astro.props;
+const t = solutionCopy[locale] ?? solutionCopy.en;
+const icons = [Ia, IntegrationSecondary, ScalabilitySecondary];
+const alts = ["AI Discovery", "Validation", "Scalability"];
 ---
 
 <div class="relative z-10 flex flex-col gap-8 text-2xl w-full pb-12 overflow-hidden bg-transparent">
   <div class="py-1 px-6 md:px-12 max-w-7xl mx-auto w-full"> 
     <div class="reveal opacity-0" data-animation="slide-in">
       <p class="font-roboto font-bold text-xs leading-none tracking-[0.48em] text-center py-10 text-freshgreen uppercase">
-        OUR SOLUTION
+        {t.kicker}
       </p>
       <h2 class="text-pure text-[22px] md:text-[26px] font-semibold text-center font-inter max-w-4xl mx-auto">
-        Moka platform digitizes the chemical potential of the plant kingdom to identify
-        <span class="text-freshgreen"> novel molecules</span> and their mechanism of action.
+        {t.headlineBefore}
+        <span class="text-freshgreen"> {t.headlineHighlight}</span> {t.headlineAfter}
       </h2>
     </div>
   </div>
@@ -22,53 +63,23 @@ import { Image } from "astro:assets";
     <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/30 to-transparent"></div>
     <div class="flex flex-col md:flex-row gap-16 md:gap-8 justify-center items-stretch max-w-7xl mx-auto">
       
-      <div class="reveal opacity-0 relative flex-1 max-w-sm mx-auto w-full group" data-animation="pop-in" style="transition-delay: 0.1s;">
+      {t.cards.map((card, index) => (
+      <div class="reveal opacity-0 relative flex-1 max-w-sm mx-auto w-full group" data-animation="pop-in" style={`transition-delay: ${0.1 + index * 0.2}s;`}>
         <div class="absolute z-20 left-1/2 -translate-x-1/2 -top-12 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
-           <Image src={Ia} alt="AI Discovery" class="xray-icon w-24 drop-shadow-xl" />
+           <Image src={icons[index]} alt={alts[index]} class="xray-icon w-24 drop-shadow-xl" />
         </div>
         <div class="solution-card rounded-2xl pt-16 pb-10 px-8 min-h-[480px] h-full flex flex-col transition-all duration-500 group-hover:scale-[1.02]">
           <h3 class="font-inter font-semibold text-freshgreen text-[24px] text-center mb-6 leading-tight transition-colors duration-300 group-hover:text-pure">
-            AI-Driven Molecular Discovery
+            {card[0]}
           </h3>
           <ul class="text-birch/80 space-y-5 text-center list-none flex-grow flex flex-col justify-center text-[18px]">
-            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Digital Translation:</strong> Maps the plant chemome into a searchable digital database.</li>
-            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Unprecedented Speed:</strong> Reduces molecular discovery time from years to weeks.</li>
-            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>AI-Precision:</strong> Identifies bioactive compounds invisible to traditional science.</li>
+            {card.slice(1).map((item) => (
+              <li class="transition-all duration-300 group-hover:translate-x-1"><strong>{item[0]}</strong> {item[1]}</li>
+            ))}
           </ul>
         </div>
       </div>
-
-      <div class="reveal opacity-0 relative flex-1 max-w-sm mx-auto w-full group" data-animation="pop-in" style="transition-delay: 0.3s;">
-        <div class="absolute z-20 left-1/2 -translate-x-1/2 -top-12 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
-          <Image src={IntegrationSecondary} alt="Validation" class="xray-icon w-24 drop-shadow-xl" />
-        </div>
-        <div class="solution-card rounded-2xl pt-16 pb-10 px-8 min-h-[480px] h-full flex flex-col transition-all duration-500 group-hover:scale-[1.02]">
-          <h3 class="font-inter font-semibold text-freshgreen text-[24px] text-center mb-6 leading-tight transition-colors duration-300 group-hover:text-pure">
-            Metabolic Engineering & Validation
-          </h3>
-          <ul class="text-birch/80 space-y-5 text-center list-none flex-grow flex flex-col justify-center text-[18px]">
-            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Metabolic Stability:</strong> Decodes genetic pathways to ensure 100% molecular consistency.</li>
-            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Pharma-Grade Rigor:</strong> Scientific validation for FDA and global regulatory approvals.</li>
-            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>IP Ownership:</strong> Secures high-value patents for every characterized molecule.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="reveal opacity-0 relative flex-1 max-w-sm mx-auto w-full group" data-animation="pop-in" style="transition-delay: 0.5s;">
-        <div class="absolute z-20 left-1/2 -translate-x-1/2 -top-12 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
-          <Image src={ScalabilitySecondary} alt="Scalability" class="xray-icon w-24 drop-shadow-xl" />
-        </div>
-        <div class="solution-card rounded-2xl pt-16 pb-10 px-8 min-h-[480px] h-full flex flex-col transition-all duration-500 group-hover:scale-[1.02]">
-          <h3 class="font-inter font-semibold text-freshgreen text-[24px] text-center mb-6 leading-tight transition-colors duration-300 group-hover:text-pure">
-            Industrial Scalability & Biomanufacturing
-          </h3>
-          <ul class="text-birch/80 space-y-5 text-center list-none flex-grow flex flex-col justify-center text-[18px]">
-            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Cellular Factories:</strong> "Grow" plant in bio-reactors, bypassing traditional agriculture.</li>
-            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Vertical Supply Chain:</strong> Decouples production from land, weather, and geopolitical risks.</li>
-            <li class="transition-all duration-300 group-hover:translate-x-1"><strong>Infinite Supply:</strong> Enables stable, mass-market pricing for rare chemical compounds.</li>
-          </ul>
-        </div>
-      </div>
+      ))}
 
     </div>
   </div>

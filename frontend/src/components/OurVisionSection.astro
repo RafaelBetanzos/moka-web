@@ -1,6 +1,8 @@
 ---
 import LeafsLayout from "@layouts/LeafsLayout.astro";
 import OurVisionCard from "./OurVisionCard.astro";
+
+const { locale = "en" } = Astro.props;
 ---
 
 <div class="home-vision-section relative overflow-hidden w-full px-5 sm:px-8 py-20">
@@ -9,7 +11,7 @@ import OurVisionCard from "./OurVisionCard.astro";
   <div class="absolute left-[-12%] bottom-[-30%] h-[520px] w-[520px] rounded-full bg-freshgreen/7 blur-3xl"></div>
   <LeafsLayout>
     <div class="relative flex flex-col justify-center items-center">
-      <OurVisionCard isButtonOn={true} />
+      <OurVisionCard isButtonOn={true} locale={locale} />
     </div>
   </LeafsLayout>
 </div>

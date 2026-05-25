@@ -3,7 +3,11 @@ import LinkedIn from "@assets/LinkedIn.svg";
 import Logo from "@assets/icons/Logo_Moka_White.png";
 import { Image } from "astro:assets";
 
-const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
+const path = Astro.url.pathname;
+const isSpanish = path === "/es" || path.startsWith("/es/");
+const isPortuguese = path === "/pt" || path.startsWith("/pt/");
+const currentLang = isSpanish ? "ES" : isPortuguese ? "PT" : "EN";
+const isHome = path === "/" || path === "" || path === "/es" || path === "/es/" || path === "/pt" || path === "/pt/";
 ---
 
 <div
@@ -13,17 +17,17 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
   <nav
     class="flex flex-row justify-between items-center w-full py-5 sm:py-7 px-4 sm:px-8 flex-nowrap gap-4"
   >
-    <div class="shrink-0">
+    <div class="flex items-center gap-4 sm:gap-7 shrink-0">
       <a href="/">
         <Image src={Logo} alt="Moka Bio Logo" class="w-10 sm:w-14" />
       </a>
+      <a href="/" class="nav-link hover:text-freshgreen transition-colors text-pure text-[16px] font-semibold whitespace-nowrap">Home</a>
     </div>
 
-    <div class="flex flex-row gap-4 sm:gap-10 items-center justify-end shrink-0">
+    <div class="flex flex-row gap-4 sm:gap-8 items-center justify-end shrink-0">
       <div
-        class="flex flex-row gap-4 sm:gap-10 text-pure text-[16px] font-semibold items-center whitespace-nowrap"
+        class="flex flex-row gap-4 sm:gap-8 text-pure text-[16px] font-semibold items-center whitespace-nowrap"
       >
-        <a href="/" class="nav-link hover:text-freshgreen transition-colors">Home</a>
         <a href="/our-technology" class="nav-link hover:text-freshgreen transition-colors">Tech</a>
         <a href="/about-us" class="nav-link hover:text-freshgreen transition-colors">About</a>
         <a href="/insights" class="nav-link hover:text-freshgreen transition-colors">Insights</a>
@@ -49,6 +53,18 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
       >
         Book a Demo
       </a>
+
+      <details class="language-menu relative">
+        <summary class="language-trigger">
+          {currentLang}
+          <span aria-hidden="true">▾</span>
+        </summary>
+        <div class="language-options">
+          <a href="/" class:list={["language-option", currentLang === "EN" && "language-option--active"]}>English</a>
+          <a href="/es" class:list={["language-option", currentLang === "ES" && "language-option--active"]}>Español</a>
+          <a href="/pt" class:list={["language-option", currentLang === "PT" && "language-option--active"]}>Português</a>
+        </div>
+      </details>
     </div>
   </nav>
 </div>
@@ -106,6 +122,67 @@ const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
   }
 
   .nav-link--active {
+    color: var(--fresh-green-color);
+  }
+
+  .language-menu {
+    font-family: Inter, sans-serif;
+  }
+
+  .language-menu[open] .language-trigger {
+    border-color: rgba(110, 191, 126, 0.5);
+    color: var(--fresh-green-color);
+  }
+
+  .language-trigger {
+    display: inline-flex;
+    min-height: 38px;
+    align-items: center;
+    gap: 0.35rem;
+    border: 1px solid rgba(222, 222, 222, 0.14);
+    border-radius: 999px;
+    background: rgba(18, 18, 18, 0.46);
+    color: var(--birch-color);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    list-style: none;
+    padding: 0.45rem 0.7rem;
+    transition: border-color 220ms ease, color 220ms ease, background 220ms ease;
+  }
+
+  .language-trigger::-webkit-details-marker {
+    display: none;
+  }
+
+  .language-options {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.55rem);
+    z-index: 60;
+    display: grid;
+    min-width: 150px;
+    gap: 0.15rem;
+    border: 1px solid rgba(110, 191, 126, 0.18);
+    border-radius: 0.85rem;
+    background: rgba(18, 18, 18, 0.96);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.34);
+    padding: 0.45rem;
+  }
+
+  .language-option {
+    border-radius: 0.55rem;
+    color: var(--birch-color);
+    font-size: 13px;
+    font-weight: 650;
+    padding: 0.55rem 0.7rem;
+    text-decoration: none;
+    transition: background 180ms ease, color 180ms ease;
+  }
+
+  .language-option:hover,
+  .language-option--active {
+    background: rgba(110, 191, 126, 0.12);
     color: var(--fresh-green-color);
   }
 </style>

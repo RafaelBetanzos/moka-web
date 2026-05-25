@@ -1,0 +1,1479 @@
+---
+import { ContactForm } from "@components/ContactForm/ContactForm";
+import ContactUsCard from "@components/ContactUsCard.astro";
+import DataPlatformSection from "@components/DataPlatformSection.astro";
+import OurVisionSection from "@components/OurVisionSection.astro";
+import ProblemSection from "@components/ProblemSection.astro";
+import SolutionSection from "@components/SolutionSection.astro";
+import { ArticlesCarrousel } from "@components/Swiper/ArticlesCarrousel";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+
+const seo = {
+  title: "Moka Bio — O sistema operacional para descobrir produtos naturais",
+  description: "A Moka transforma a diversidade química natural do mundo em inteligência bioativa programável para acelerar a inovação molecular em farma, nutracêuticos, cosméticos, alimentos e agricultura.",
+};
+
+const industries = [
+  {
+    name: "Nutracêuticos",
+    market: "$620B",
+    growth: "+7.5% CAGR",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="4"/><line x1="12" y1="8" x2="12" y2="16"/></svg>`,
+  },
+  {
+    name: "Cosméticos",
+    market: "$430B",
+    growth: "+5.3% CAGR",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C12 2 5 11 5 15a7 7 0 0 0 14 0c0-4-7-13-7-13z"/></svg>`,
+  },
+  {
+    name: "Farma",
+    market: "$1.6T",
+    growth: "+6.1% CAGR",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5L6 16a2 2 0 0 0 1.73 3h8.54A2 2 0 0 0 18 16l-4-8V3"/></svg>`,
+  },
+  {
+    name: "Alimentos e bebidas",
+    market: "$8.9T",
+    growth: "+4.8% CAGR",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="22" x2="12" y2="8"/><path d="M8 11a4 4 0 0 1 8 0"/><path d="M8 15a4 4 0 0 1 8 0"/><path d="M8 19a4 4 0 0 1 8 0"/></svg>`,
+  },
+  {
+    name: "Agricultura",
+    market: "$2.7T",
+    growth: "+4.1% CAGR",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C7 12 4 8 4 4c4 0 8 3 8 8z"/><path d="M12 12c5 0 8-4 8-8-4 0-8 3-8 8z"/></svg>`,
+  },
+];
+---
+<BaseLayout title={seo.title} description={seo.description}>
+  <div class="home-color-system">
+    <Hero locale="pt" />
+
+
+    <DataPlatformSection locale="pt" />
+
+    <section class="home-flow-section relative overflow-hidden px-5 py-10 sm:px-8 lg:py-14">
+      <div class="home-section-shell">
+        <div class="home-section-kicker">COMO A MOKA FUNCIONA</div>
+        <div class="grid items-end gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+          <h2 class="home-section-title">Um sistema vivo de conhecimento para descoberta natural.</h2>
+          <p class="home-section-copy">
+            A Moka conecta conhecimento natural, potencial bioativo e inteligência molecular em um fluxo de trabalho que apoia a descoberta de produtos.
+          </p>
+        </div>
+
+        <div class="flow-track mt-14 grid gap-5 lg:grid-cols-3">
+          <article class="flow-step">
+            <span>01</span>
+            <h3>Explorar conhecimento natural</h3>
+            <p>Organiza conhecimento botânico e científico em uma base de descoberta pesquisável.</p>
+          </article>
+          <article class="flow-step">
+            <span>02</span>
+            <h3>Identificar potencial bioativo</h3>
+            <p>Mapeia sinais biológicos, mecanismos e padrões químicos no espaço molecular natural.</p>
+          </article>
+          <article class="flow-step">
+            <span>03</span>
+            <h3>Transformar descobertas</h3>
+            <p>Transforma descobertas em inteligência molecular, de produto, propriedade intelectual e regulatória.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-layers-section relative overflow-hidden px-5 py-10 sm:px-8 lg:py-14">
+      <div class="absolute left-[-8%] top-8 h-[520px] w-[520px] rounded-full bg-freshgreen/6 blur-3xl"></div>
+      <div class="absolute right-[-10%] bottom-0 h-[560px] w-[560px] rounded-full bg-sage/10 blur-3xl"></div>
+      <div class="home-section-shell relative">
+        <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div>
+            <div class="home-section-kicker">CAMADAS DA PLATAFORMA</div>
+            <h2 class="home-section-title mt-4">Da complexidade botânica à inteligência bioativa.</h2>
+            <p class="home-section-copy mt-5">
+              A plataforma funciona como um sistema em camadas que estrutura dados, interpretação por IA, bioatividade e inteligência orientada a produto.
+            </p>
+          </div>
+
+          <div class="arch-stack reveal opacity-0" data-animation="fade-up">
+
+            <!-- Layer 04 — top / most refined -->
+            <div class="arch-layer arch-layer--04">
+              <div class="arch-layer-left">
+                <span class="arch-num">04</span>
+                <div class="arch-accent arch-accent--04"></div>
+              </div>
+              <div class="arch-layer-body">
+                <div class="arch-layer-head">
+                  <svg class="arch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/><circle cx="12" cy="12" r="3" stroke-width="1.2"/></svg>
+                  <p class="arch-name">Produto, PI e regulatório</p>
+                  <span class="arch-badge arch-badge--04">PRONTO PARA O MERCADO</span>
+                </div>
+                <p class="arch-desc">Ativos moleculares prontos para patente, dossiês regulatórios e pacotes de formulação de produto.</p>
+              </div>
+            </div>
+
+            <!-- Connector 03→04 -->
+            <div class="arch-connector" aria-hidden="true">
+              <div class="arch-connector-line"></div>
+              <div class="arch-flow-dots">
+                <span class="arch-dot arch-dot--1"></span>
+                <span class="arch-dot arch-dot--2"></span>
+                <span class="arch-dot arch-dot--3"></span>
+              </div>
+              <div class="arch-connector-line"></div>
+            </div>
+
+            <!-- Layer 03 -->
+            <div class="arch-layer arch-layer--03">
+              <div class="arch-layer-left">
+                <span class="arch-num">03</span>
+                <div class="arch-accent arch-accent--03"></div>
+              </div>
+              <div class="arch-layer-body">
+                <div class="arch-layer-head">
+                  <svg class="arch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/><line x1="6" y1="7" x2="10" y2="10.5"/><line x1="18" y1="7" x2="14" y2="10.5"/><line x1="6" y1="17" x2="10" y2="13.5"/><line x1="18" y1="17" x2="14" y2="13.5"/></svg>
+                  <p class="arch-name">Inteligência bioativa</p>
+                  <span class="arch-badge arch-badge--03">VALIDADO</span>
+                </div>
+                <p class="arch-desc">Mapeamento de mecanismos de ação, predição de alvos biológicos e pontuação de sinais de eficácia.</p>
+              </div>
+            </div>
+
+            <!-- Connector 02→03 -->
+            <div class="arch-connector" aria-hidden="true">
+              <div class="arch-connector-line"></div>
+              <div class="arch-flow-dots">
+                <span class="arch-dot arch-dot--1"></span>
+                <span class="arch-dot arch-dot--2"></span>
+                <span class="arch-dot arch-dot--3"></span>
+              </div>
+              <div class="arch-connector-line"></div>
+            </div>
+
+            <!-- Layer 02 -->
+            <div class="arch-layer arch-layer--02">
+              <div class="arch-layer-left">
+                <span class="arch-num">02</span>
+                <div class="arch-accent arch-accent--02"></div>
+              </div>
+              <div class="arch-layer-body">
+                <div class="arch-layer-head">
+                  <svg class="arch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="5" height="5" rx="1"/><rect x="17" y="8" width="5" height="5" rx="1"/><rect x="9.5" y="3" width="5" height="5" rx="1"/><rect x="9.5" y="16" width="5" height="5" rx="1"/><line x1="7" y1="10.5" x2="9.5" y2="10.5"/><line x1="14.5" y1="10.5" x2="17" y2="10.5"/><line x1="12" y1="8" x2="12" y2="10.5"/><line x1="12" y1="13.5" x2="12" y2="16"/></svg>
+                  <p class="arch-name">IA / grafo de conhecimento</p>
+                  <span class="arch-badge arch-badge--02">INTELIGÊNCIA</span>
+                </div>
+                <p class="arch-desc">MokaDex — nosso motor proprietário de IA que cruza mais de 130K espécies usando raciocínio baseado em grafos.</p>
+              </div>
+            </div>
+
+            <!-- Connector 01→02 -->
+            <div class="arch-connector" aria-hidden="true">
+              <div class="arch-connector-line"></div>
+              <div class="arch-flow-dots">
+                <span class="arch-dot arch-dot--1"></span>
+                <span class="arch-dot arch-dot--2"></span>
+                <span class="arch-dot arch-dot--3"></span>
+              </div>
+              <div class="arch-connector-line"></div>
+            </div>
+
+            <!-- Layer 01 — bottom / raw -->
+            <div class="arch-layer arch-layer--01">
+              <div class="arch-layer-left">
+                <span class="arch-num">01</span>
+                <div class="arch-accent arch-accent--01"></div>
+              </div>
+              <div class="arch-layer-body">
+                <div class="arch-layer-head">
+                  <svg class="arch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C12 12 5 8 4 4c4 0 8 4 8 8z"/><path d="M12 22C12 13 19 8 20 4c-4 0-8 4-8 8z"/><line x1="12" y1="12" x2="12" y2="22"/></svg>
+                  <p class="arch-name">Dados botânicos e científicos</p>
+                  <span class="arch-badge arch-badge--01">DADOS BRUTOS</span>
+                </div>
+                <p class="arch-desc">Literatura botânica indexada, registros etnobotânicos, bases de fitoquímica e datasets experimentais.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="plant-to-bioactives relative overflow-hidden px-5 py-10 sm:px-8 lg:py-16">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/14 to-transparent"></div>
+      <div class="absolute left-1/2 top-1/3 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-deepforest/20 blur-3xl pointer-events-none"></div>
+
+      <div class="home-section-shell relative">
+
+        <!-- Header -->
+        <div class="reveal opacity-0 flex flex-col items-center text-center mb-14" data-animation="slide-in">
+          <div class="home-section-kicker">O PIPELINE DE DESCOBERTA</div>
+          <h2 class="home-section-title mt-4 max-w-2xl mx-auto">
+            De uma espécie na natureza a uma<br class="hidden sm:block"> molécula pronta para patente. Em semanas.
+          </h2>
+          <p class="home-section-copy mt-5 max-w-xl mx-auto">
+            O que antes custava milhões e levava anos, a Moka comprime em um pipeline repetível orientado por IA que entrega ativos moleculares validados prontos para licenciamento ou formulação.
+          </p>
+        </div>
+
+        <!-- Pipeline flow -->
+        <div class="pipeline-flow reveal opacity-0" data-animation="fade-in" style="transition-delay: 0.2s;">
+
+          <!-- Step 1 -->
+          <div class="pipeline-step">
+            <div class="pipeline-step-icon pipeline-step-icon--01">
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 28C16 16 7 10 5 4c5 0 11 5 11 10z"/>
+                <path d="M16 28C16 17 25 11 27 5c-5 0-11 5-11 11z"/>
+                <line x1="16" y1="14" x2="16" y2="28"/>
+              </svg>
+            </div>
+            <p class="pipeline-step-num">01</p>
+            <p class="pipeline-step-label">Espécies naturais</p>
+            <p class="pipeline-step-stat">130K+ indexadas</p>
+            <p class="pipeline-step-desc">Literatura botânica, bases fitoquímicas e registros experimentais, tudo estruturado.</p>
+          </div>
+
+          <!-- Arrow 1 -->
+          <div class="pipeline-arrow" aria-hidden="true">
+            <div class="pipeline-arrow-track">
+              <div class="pipeline-arrow-pulse"></div>
+            </div>
+            <svg class="pipeline-arrow-head" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="pipeline-step pipeline-step--center">
+            <div class="pipeline-step-icon pipeline-step-icon--02">
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="10" y="10" width="12" height="12" rx="2"/>
+                <circle cx="7" cy="7" r="2.5"/>
+                <circle cx="25" cy="7" r="2.5"/>
+                <circle cx="7" cy="25" r="2.5"/>
+                <circle cx="25" cy="25" r="2.5"/>
+                <line x1="9.2" y1="8.8" x2="11" y2="10.5"/>
+                <line x1="22.8" y1="8.8" x2="21" y2="10.5"/>
+                <line x1="9.2" y1="23.2" x2="11" y2="21.5"/>
+                <line x1="22.8" y1="23.2" x2="21" y2="21.5"/>
+              </svg>
+            </div>
+            <p class="pipeline-step-num">02</p>
+            <p class="pipeline-step-label">IA MokaDex</p>
+            <p class="pipeline-step-stat">Semanas, não anos</p>
+            <p class="pipeline-step-desc">A IA baseada em grafos mapeia o espaço químico, prediz mecanismos de ação e pontua candidatos bioativos.</p>
+          </div>
+
+          <!-- Arrow 2 -->
+          <div class="pipeline-arrow" aria-hidden="true">
+            <div class="pipeline-arrow-track">
+              <div class="pipeline-arrow-pulse"></div>
+            </div>
+            <svg class="pipeline-arrow-head" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="pipeline-step">
+            <div class="pipeline-step-icon pipeline-step-icon--03">
+              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 4h8l6 6v18H8V4z"/>
+                <path d="M18 4v6h6"/>
+                <line x1="12" y1="16" x2="20" y2="16"/>
+                <line x1="12" y1="20" x2="18" y2="20"/>
+                <path d="M12 12h3"/>
+                <circle cx="22" cy="22" r="5" fill="rgba(110,191,126,0.12)" stroke-width="1.5"/>
+                <path d="M20 22l1.5 1.5L24 20" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <p class="pipeline-step-num">03</p>
+            <p class="pipeline-step-label">Ativo pronto para PI</p>
+            <p class="pipeline-step-stat">1 patente depositada</p>
+            <p class="pipeline-step-desc">Candidatos moleculares validados empacotados como ativos prontos para patente com documentação regulatória completa.</p>
+          </div>
+
+        </div>
+
+        <!-- Proof point -->
+        <div class="pipeline-proof reveal opacity-0" data-animation="fade-in" style="transition-delay: 0.4s;">
+          <div class="pipeline-proof-dot"></div>
+          <p>
+            Já comprovado: um novo <strong>imunomodulador</strong> identificado pelo MokaDex está protegido por uma patente provisória.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="home-applications relative overflow-hidden px-5 py-10 sm:px-8 lg:py-14">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/18 to-transparent"></div>
+      <div class="home-section-shell">
+        <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.1s;">
+          <div class="home-section-kicker">APLICAÇÕES</div>
+          <h2 class="home-section-title mt-4">Inteligência de produtos naturais<br class="hidden sm:block"> para indústrias globais.</h2>
+          <p class="home-section-copy mt-4">Cinco setores de alto valor onde a inteligência bioativa programável abre oportunidades mensuráveis.</p>
+        </div>
+        <div class="app-grid mt-12">
+          {industries.map((ind, i) => (
+            <article class="app-card reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${0.2 + i * 0.12}s;`}>
+              <div class="app-icon-wrap">
+                <Fragment set:html={ind.icon} />
+              </div>
+              <p class="app-name">{ind.name}</p>
+              <div class="app-meta">
+                <span class="app-market">{ind.market}</span>
+                <span class="app-growth">{ind.growth}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="home-traction relative overflow-hidden px-5 py-10 sm:px-8 lg:py-14">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/20 to-transparent"></div>
+      <div class="absolute left-1/2 top-0 h-[480px] w-[480px] -translate-x-1/2 rounded-full bg-freshgreen/5 blur-3xl pointer-events-none"></div>
+      <div class="home-section-shell">
+        <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
+          <div class="home-section-kicker">TRAÇÃO</div>
+          <h2 class="home-section-title mt-4">Ciência real.<br class="hidden sm:block"> Progresso real.</h2>
+        </div>
+        <div class="traction-grid mt-12">
+
+          <article class="traction-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.15s;">
+            <div class="traction-card-inner">
+              <p class="traction-number">130<span class="traction-unit">K+</span></p>
+              <div class="traction-divider"></div>
+              <p class="traction-label">Espécies indexadas</p>
+              <p class="traction-desc">Espécies naturais catalogadas e estruturadas dentro do MokaDex: a maior biblioteca química natural validada do mundo.</p>
+            </div>
+            <div class="traction-card-glow"></div>
+          </article>
+
+          <article class="traction-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.27s;">
+            <div class="traction-card-inner">
+              <p class="traction-number">1<span class="traction-unit"> patent</span></p>
+              <div class="traction-divider"></div>
+              <p class="traction-label">Patente provisória depositada</p>
+              <p class="traction-desc">Um candidato imunomodulador identificado e protegido pelo pipeline de inteligência bioativa da Moka. Pronto para PI desde o primeiro dia.</p>
+            </div>
+            <div class="traction-card-glow"></div>
+          </article>
+
+          <article class="traction-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.39s;">
+            <div class="traction-card-inner">
+              <p class="traction-number">3<span class="traction-unit"> active</span></p>
+              <div class="traction-divider"></div>
+              <p class="traction-label">Parceiros de pesquisa</p>
+              <p class="traction-desc">Colaboramos com instituições e parceiros industriais para validar e implantar inteligência bioativa natural em escala.</p>
+            </div>
+            <div class="traction-card-glow"></div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="home-delta-section relative overflow-hidden px-5 py-10 sm:px-8 lg:py-14">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/22 to-transparent"></div>
+      <div class="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-deepforest/18 blur-3xl pointer-events-none"></div>
+      <div class="home-section-shell">
+
+        <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
+          <div class="home-section-kicker">POR QUE MOKA</div>
+          <h2 class="home-section-title mt-4">O que muda<br class="hidden sm:block"> com a Moka Bio?</h2>
+        </div>
+
+        <div class="delta-grid mt-14">
+
+          <!-- COST -->
+          <article class="delta-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.15s;">
+            <div class="delta-before">
+              <span class="delta-tag delta-tag--before">ANTES</span>
+              <p class="delta-metric delta-metric--before">$1<span class="delta-metric-unit">M</span></p>
+              <p class="delta-sublabel">Por composto bioativo</p>
+            </div>
+            <div class="delta-bridge">
+              <div class="delta-bridge-line"></div>
+              <div class="delta-bridge-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                94% de redução de custo
+              </div>
+              <div class="delta-bridge-line"></div>
+            </div>
+            <div class="delta-after">
+              <span class="delta-tag delta-tag--after">COM A MOKA</span>
+              <p class="delta-metric delta-metric--after">$60<span class="delta-metric-unit">K</span></p>
+              <p class="delta-sublabel delta-sublabel--after">Para quantos compostos você quiser</p>
+            </div>
+          </article>
+
+          <!-- SPEED -->
+          <article class="delta-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.27s;">
+            <div class="delta-before">
+              <span class="delta-tag delta-tag--before">ANTES</span>
+              <p class="delta-metric delta-metric--before">2–7<span class="delta-metric-unit"> yr</span></p>
+              <p class="delta-sublabel">Da pesquisa ao candidato</p>
+            </div>
+            <div class="delta-bridge">
+              <div class="delta-bridge-line"></div>
+              <div class="delta-bridge-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                De anos para semanas
+              </div>
+              <div class="delta-bridge-line"></div>
+            </div>
+            <div class="delta-after">
+              <span class="delta-tag delta-tag--after">COM A MOKA</span>
+              <p class="delta-metric delta-metric--after">Semanas</p>
+              <p class="delta-sublabel delta-sublabel--after">Aos seus primeiros candidatos validados</p>
+            </div>
+          </article>
+
+          <!-- IP -->
+          <article class="delta-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.39s;">
+            <div class="delta-before">
+              <span class="delta-tag delta-tag--before">ANTES</span>
+              <p class="delta-metric delta-metric--before" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.1;">Sem caminho claro</p>
+              <p class="delta-sublabel">Panorama de PI fragmentado</p>
+            </div>
+            <div class="delta-bridge">
+              <div class="delta-bridge-line"></div>
+              <div class="delta-bridge-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+                Visibilidade total desde o primeiro dia
+              </div>
+              <div class="delta-bridge-line"></div>
+            </div>
+            <div class="delta-after">
+              <span class="delta-tag delta-tag--after">COM A MOKA</span>
+              <p class="delta-metric delta-metric--after" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.1;">Pronto para patente</p>
+              <p class="delta-sublabel delta-sublabel--after">Mapeamento completo do panorama de patentes incluído</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="home-problem-solution relative overflow-hidden py-5">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/20 to-transparent"></div>
+      <ProblemSection locale="pt" />
+      <SolutionSection locale="pt" />
+    </div>
+    
+    <OurVisionSection locale="pt" />
+
+    <div class="home-articles-band mt-4 mb-10">
+      <div class="home-section-shell mb-8">
+        <div class="flex items-end justify-between gap-6 flex-wrap">
+          <div>
+            <div class="home-section-kicker">DO CAMPO</div>
+            <h2 class="home-section-title mt-3" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem);">
+              Ciência que nos impulsiona.
+            </h2>
+          </div>
+          <a href="/insights" class="articles-see-all no-underline">
+            Ver todos os insights →
+          </a>
+        </div>
+      </div>
+      <ArticlesCarrousel client:only="react" />
+    </div>
+
+    <section class="home-contact-section relative overflow-hidden px-5 py-10 sm:px-8 lg:py-14">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/28 to-transparent"></div>
+      <div class="home-section-shell grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
+        <ContactUsCard locale="pt" />
+        <div class="contact-form-shell">
+          <ContactForm client:only="react" />
+        </div>
+      </div>
+    </section>
+    
+  </div>
+</BaseLayout>
+
+<script>
+  // ── Consolidated IntersectionObserver for all .reveal elements on home ──
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const animation = entry.target.getAttribute('data-animation');
+          if (animation) entry.target.classList.add(`animate-${animation}`);
+          entry.target.classList.remove('opacity-0');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+  );
+
+  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+</script>
+
+<style>
+  /* ── Page-level fixed background ─────────────── */
+  .home-color-system {
+    position: relative;
+    background: transparent;
+  }
+
+  .home-color-system::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-image: url("/hero.png");
+    background-size: cover;
+    background-position: center;
+    filter: grayscale(1) contrast(1.24) brightness(0.38);
+  }
+
+  /* dark overlay for readability across all sections */
+  .home-color-system::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background: rgba(8, 12, 10, 0.52);
+  }
+
+  .home-section-shell {
+    width: min(100%, 1180px);
+    margin: 0 auto;
+  }
+
+  .home-section-kicker {
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.42em;
+    color: var(--fresh-green-color);
+    text-transform: uppercase;
+  }
+
+  .home-section-title {
+    max-width: 820px;
+    font-family: Inter, sans-serif;
+    font-size: clamp(2.2rem, 5vw, 4.7rem);
+    font-weight: 650;
+    line-height: 1.02;
+    color: var(--pure-color);
+    text-wrap: balance;
+  }
+
+  .home-section-copy {
+    max-width: 620px;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1rem, 1.6vw, 1.22rem);
+    line-height: 1.75;
+    color: var(--moka-text-muted);
+  }
+
+  .home-flow-section {
+    background: transparent;
+  }
+
+  .home-proof-motion {
+    background: transparent;
+  }
+
+  .flow-track {
+    position: relative;
+  }
+
+  .flow-track::before {
+    content: "";
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 50%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(110, 191, 126, 0.42), transparent);
+    opacity: 0.65;
+  }
+
+  .flow-step,
+  .why-panel,
+  .contact-form-shell {
+    border: 1px solid var(--moka-border-muted);
+    background: linear-gradient(145deg, rgba(18, 18, 18, 0.68), rgba(19, 45, 37, 0.46));
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(18px);
+  }
+
+  .flow-step {
+    position: relative;
+    min-height: 260px;
+    border-radius: 1.5rem;
+    padding: 2rem;
+    transition: transform 320ms ease, border-color 320ms ease, background 320ms ease;
+  }
+
+  .flow-step:hover {
+    transform: translateY(-4px);
+    border-color: var(--moka-border-accent);
+    background: linear-gradient(145deg, rgba(19, 45, 37, 0.82), rgba(18, 18, 18, 0.58));
+  }
+
+  .flow-step span {
+    color: var(--fresh-green-color);
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+  }
+
+  .flow-step h3 {
+    margin-top: 3rem;
+    font-family: Inter, sans-serif;
+    font-size: 1.45rem;
+    font-weight: 650;
+    line-height: 1.14;
+    color: var(--pure-color);
+  }
+
+  .flow-step p {
+    margin-top: 1rem;
+    color: rgba(222, 222, 222, 0.72);
+    line-height: 1.65;
+  }
+
+  .home-layers-section {
+    background: transparent;
+  }
+
+  /* ── Architecture Stack ──────────────────────── */
+  .arch-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  /* Individual layer card */
+  .arch-layer {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 0;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    border: 1px solid rgba(110, 191, 126, 0.10);
+    transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+    cursor: default;
+  }
+
+  .arch-layer:hover {
+    transform: translateX(6px);
+    border-color: rgba(110, 191, 126, 0.28);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.28), 0 0 32px rgba(110, 191, 126, 0.07);
+  }
+
+  /* Left rail with number + accent bar */
+  .arch-layer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.25rem 0 1.25rem;
+    gap: 0.6rem;
+    background: rgba(12, 12, 12, 0.6);
+  }
+
+  .arch-num {
+    font-family: Roboto, sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: rgba(110, 191, 126, 0.50);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  .arch-accent {
+    flex: 1;
+    width: 2px;
+    border-radius: 999px;
+    min-height: 20px;
+  }
+
+  /* Layer body */
+  .arch-layer-body {
+    padding: 1.1rem 1.4rem;
+  }
+
+  .arch-layer-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .arch-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--fresh-green-color);
+    opacity: 0.82;
+    transition: opacity 280ms ease, transform 280ms ease;
+  }
+
+  .arch-layer:hover .arch-icon {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  .arch-name {
+    font-family: Inter, sans-serif;
+    font-size: clamp(0.85rem, 1.3vw, 1rem);
+    font-weight: 650;
+    color: var(--pure-color);
+    flex: 1;
+  }
+
+  .arch-badge {
+    font-family: Roboto, sans-serif;
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+  }
+
+  .arch-desc {
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: rgba(222, 222, 222, 0.52);
+    transition: color 280ms ease;
+  }
+
+  .arch-layer:hover .arch-desc {
+    color: rgba(222, 222, 222, 0.72);
+  }
+
+  /* Layer-specific theming — darkest (raw) to brightest (refined) */
+  .arch-layer--01 {
+    background: linear-gradient(135deg, rgba(16, 16, 16, 0.92), rgba(18, 20, 18, 0.82));
+  }
+  .arch-accent--01 { background: rgba(110, 191, 126, 0.20); }
+  .arch-badge--01 {
+    background: rgba(30, 30, 30, 0.9);
+    color: rgba(222, 222, 222, 0.40);
+    border: 1px solid rgba(222, 222, 222, 0.10);
+  }
+
+  .arch-layer--02 {
+    background: linear-gradient(135deg, rgba(16, 18, 16, 0.90), rgba(18, 28, 20, 0.78));
+  }
+  .arch-accent--02 { background: rgba(110, 191, 126, 0.35); }
+  .arch-badge--02 {
+    background: rgba(19, 38, 28, 0.85);
+    color: rgba(110, 191, 126, 0.68);
+    border: 1px solid rgba(110, 191, 126, 0.18);
+  }
+
+  .arch-layer--03 {
+    background: linear-gradient(135deg, rgba(16, 22, 18, 0.88), rgba(18, 36, 26, 0.76));
+  }
+  .arch-accent--03 { background: rgba(110, 191, 126, 0.55); }
+  .arch-badge--03 {
+    background: rgba(19, 45, 30, 0.85);
+    color: rgba(110, 191, 126, 0.82);
+    border: 1px solid rgba(110, 191, 126, 0.28);
+  }
+
+  .arch-layer--04 {
+    background: linear-gradient(135deg, rgba(16, 28, 20, 0.88), rgba(19, 45, 37, 0.78));
+  }
+  .arch-accent--04 { background: var(--fresh-green-color); }
+  .arch-badge--04 {
+    background: rgba(110, 191, 126, 0.15);
+    color: var(--fresh-green-color);
+    border: 1px solid rgba(110, 191, 126, 0.38);
+  }
+
+  /* ── Connectors between layers ───────────────── */
+  .arch-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    padding: 0 0 0 1.25rem; /* align with layer body */
+    height: 36px;
+    position: relative;
+  }
+
+  .arch-connector-line {
+    width: 1px;
+    flex: 1;
+    background: linear-gradient(180deg, rgba(110, 191, 126, 0.12), rgba(110, 191, 126, 0.22));
+  }
+
+  .arch-connector-line:last-child {
+    background: linear-gradient(180deg, rgba(110, 191, 126, 0.22), rgba(110, 191, 126, 0.12));
+  }
+
+  .arch-flow-dots {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 2px 0;
+  }
+
+  .arch-dot {
+    display: block;
+    width: 4px;
+    height: 4px;
+    border-radius: 999px;
+    background: var(--fresh-green-color);
+    opacity: 0;
+    animation: archFlow 1.8s ease-in-out infinite;
+  }
+
+  .arch-dot--1 { animation-delay: 0s; }
+  .arch-dot--2 { animation-delay: 0.3s; }
+  .arch-dot--3 { animation-delay: 0.6s; }
+
+  @keyframes archFlow {
+    0%   { opacity: 0;    transform: translateY(-4px); }
+    30%  { opacity: 0.9;  transform: translateY(0); }
+    70%  { opacity: 0.9;  transform: translateY(0); }
+    100% { opacity: 0;    transform: translateY(4px); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-up { animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+  .plant-to-bioactives {
+    background: transparent;
+  }
+
+  /* ── Discovery Pipeline ──────────────────────── */
+  .pipeline-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: start;
+    gap: 0;
+  }
+
+  .pipeline-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1.25rem;
+    border-radius: 1.75rem;
+    border: 1px solid rgba(110, 191, 126, 0.10);
+    background: linear-gradient(145deg, rgba(18, 18, 18, 0.72), rgba(19, 45, 37, 0.40));
+    backdrop-filter: blur(16px);
+    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.22);
+    transition: transform 300ms ease, border-color 300ms ease;
+  }
+
+  .pipeline-step:hover {
+    transform: translateY(-6px);
+    border-color: rgba(110, 191, 126, 0.28);
+  }
+
+  .pipeline-step--center {
+    border-color: rgba(110, 191, 126, 0.22);
+    background: linear-gradient(145deg, rgba(19, 45, 37, 0.72), rgba(12, 28, 20, 0.68));
+  }
+
+  .pipeline-step-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 1.1rem;
+    margin-bottom: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  .pipeline-step-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .pipeline-step-icon--01 {
+    background: rgba(19, 45, 37, 0.55);
+    color: rgba(110, 191, 126, 0.75);
+    border: 1px solid rgba(110, 191, 126, 0.14);
+  }
+
+  .pipeline-step-icon--02 {
+    background: rgba(19, 45, 37, 0.72);
+    color: var(--fresh-green-color);
+    border: 1px solid rgba(110, 191, 126, 0.28);
+    box-shadow: 0 0 28px rgba(110, 191, 126, 0.12);
+  }
+
+  .pipeline-step-icon--03 {
+    background: rgba(19, 45, 37, 0.55);
+    color: rgba(110, 191, 126, 0.75);
+    border: 1px solid rgba(110, 191, 126, 0.14);
+  }
+
+  .pipeline-step-num {
+    font-family: Roboto, sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.38em;
+    color: rgba(110, 191, 126, 0.45);
+    margin-bottom: 0.35rem;
+  }
+
+  .pipeline-step-label {
+    font-family: Inter, sans-serif;
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    font-weight: 700;
+    color: var(--pure-color);
+    margin-bottom: 0.4rem;
+  }
+
+  .pipeline-step-stat {
+    font-family: Roboto, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--fresh-green-color);
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(110, 191, 126, 0.10);
+    border: 1px solid rgba(110, 191, 126, 0.20);
+    margin-bottom: 0.85rem;
+  }
+
+  .pipeline-step-desc {
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    line-height: 1.65;
+    color: rgba(222, 222, 222, 0.52);
+  }
+
+  /* ── Pipeline arrows ─────────────────────────── */
+  .pipeline-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.5rem;
+    margin-top: 4.2rem; /* align with icon center */
+    gap: 4px;
+  }
+
+  .pipeline-arrow-track {
+    position: relative;
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(110, 191, 126, 0.15), rgba(110, 191, 126, 0.40));
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .pipeline-arrow-pulse {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(110, 191, 126, 0.9), transparent);
+    animation: pipelinePulse 2s ease-in-out infinite;
+  }
+
+  .pipeline-arrow-head {
+    width: 16px;
+    height: 16px;
+    color: rgba(110, 191, 126, 0.50);
+    margin-top: -4px;
+  }
+
+  @keyframes pipelinePulse {
+    0%   { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* ── Proof point ─────────────────────────────── */
+  .pipeline-proof {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 2.5rem;
+    padding: 1.1rem 1.6rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(110, 191, 126, 0.14);
+    background: rgba(19, 45, 37, 0.28);
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(222, 222, 222, 0.55);
+    max-width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pipeline-proof strong {
+    color: rgba(222, 222, 222, 0.85);
+    font-weight: 600;
+  }
+
+  .pipeline-proof-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--fresh-green-color);
+    flex-shrink: 0;
+    box-shadow: 0 0 10px rgba(110, 191, 126, 0.55);
+    animation: proofPulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes proofPulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50%       { opacity: 1;   transform: scale(1.4); }
+  }
+
+  .home-applications {
+    background: transparent;
+  }
+
+  .app-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .app-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 210px;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(110, 191, 126, 0.15);
+    background: linear-gradient(145deg, rgba(18, 18, 18, 0.68), rgba(19, 45, 37, 0.46));
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(18px);
+    transition: transform 320ms ease, border-color 320ms ease, background 320ms ease, box-shadow 320ms ease;
+    overflow: hidden;
+  }
+
+  .app-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 0%, rgba(110, 191, 126, 0.1), transparent 42%);
+    opacity: 0;
+    transition: opacity 320ms ease;
+    pointer-events: none;
+  }
+
+  .app-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(110, 191, 126, 0.38);
+    background: linear-gradient(145deg, rgba(19, 45, 37, 0.82), rgba(18, 18, 18, 0.56));
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3), 0 0 40px rgba(110, 191, 126, 0.07);
+  }
+
+  .app-card:hover::after {
+    opacity: 1;
+  }
+
+  .app-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(110, 191, 126, 0.12);
+    border: 1px solid rgba(110, 191, 126, 0.22);
+    color: var(--fresh-green-color);
+    flex-shrink: 0;
+  }
+
+  .app-name {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    margin-top: 1rem;
+    font-family: Inter, sans-serif;
+    font-size: clamp(0.88rem, 1.1vw, 1rem);
+    font-weight: 650;
+    color: var(--pure-color);
+    line-height: 1.2;
+    padding-bottom: 0.2rem;
+  }
+
+  .app-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    margin-top: 1rem;
+    padding-top: 0.875rem;
+    border-top: 1px solid rgba(110, 191, 126, 0.14);
+  }
+
+  .app-market {
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.35rem, 1.8vw, 1.65rem);
+    font-weight: 700;
+    color: var(--fresh-green-color);
+    line-height: 1;
+  }
+
+  .app-growth {
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: rgba(222, 222, 222, 0.48);
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+  }
+
+  /* ── Traction ────────────────────────────────── */
+  .home-traction {
+    background: transparent;
+  }
+
+  .traction-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .traction-card {
+    position: relative;
+    border-radius: 1.75rem;
+    border: 1px solid rgba(110, 191, 126, 0.18);
+    background: linear-gradient(145deg, rgba(19, 45, 37, 0.62), rgba(18, 18, 18, 0.58));
+    backdrop-filter: blur(20px);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(110, 191, 126, 0.08);
+    overflow: hidden;
+    transition: transform 320ms ease, border-color 320ms ease;
+  }
+
+  .traction-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(110, 191, 126, 0.4);
+  }
+
+  .traction-card:hover .traction-card-glow {
+    opacity: 1;
+  }
+
+  .traction-card-inner {
+    position: relative;
+    z-index: 1;
+    padding: 2.25rem 2rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    height: 100%;
+  }
+
+  .traction-card-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 0%, rgba(110, 191, 126, 0.12), transparent 50%);
+    opacity: 0;
+    transition: opacity 320ms ease;
+    pointer-events: none;
+  }
+
+  .traction-number {
+    font-family: Inter, sans-serif;
+    font-size: clamp(3rem, 6vw, 5rem);
+    font-weight: 750;
+    line-height: 1;
+    color: var(--fresh-green-color);
+    letter-spacing: -0.02em;
+  }
+
+  .traction-unit {
+    font-size: 0.42em;
+    font-weight: 600;
+    color: rgba(110, 191, 126, 0.7);
+    letter-spacing: 0.04em;
+  }
+
+  .traction-divider {
+    width: 2.5rem;
+    height: 2px;
+    background: linear-gradient(90deg, var(--fresh-green-color), transparent);
+    border-radius: 999px;
+    margin: 1.25rem 0 1rem;
+    opacity: 0.5;
+  }
+
+  .traction-label {
+    font-family: Inter, sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--pure-color);
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+
+  .traction-desc {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(222, 222, 222, 0.55);
+    flex: 1;
+  }
+
+  /* ── Delta / What Changes section ───────────── */
+  .home-delta-section {
+    background: transparent;
+  }
+
+  .delta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    align-items: stretch;
+  }
+
+  .delta-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.75rem;
+    overflow: hidden;
+    border: 1px solid rgba(110, 191, 126, 0.14);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.26);
+    transition: transform 320ms ease, border-color 320ms ease;
+  }
+
+  .delta-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(110, 191, 126, 0.32);
+  }
+
+  /* Before block */
+  .delta-before {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.75rem 1.75rem 1.5rem;
+    background: linear-gradient(145deg, rgba(22, 22, 22, 0.92), rgba(18, 18, 18, 0.72));
+    border-bottom: 1px solid rgba(222, 222, 222, 0.07);
+  }
+
+  /* Bridge / arrow */
+  .delta-bridge {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0 1.75rem;
+    background: rgba(12, 12, 12, 0.72);
+    backdrop-filter: blur(12px);
+  }
+
+  .delta-bridge-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(110, 191, 126, 0.22), transparent);
+  }
+
+  .delta-bridge-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(110, 191, 126, 0.22);
+    background: rgba(19, 45, 37, 0.5);
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+    white-space: nowrap;
+  }
+
+  /* After block */
+  .delta-after {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1.75rem 1.75rem;
+    background: linear-gradient(145deg, rgba(19, 45, 37, 0.78), rgba(12, 28, 20, 0.68));
+  }
+
+  /* Tags */
+  .delta-tag {
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.38em;
+    text-transform: uppercase;
+    margin-bottom: 0.875rem;
+    display: block;
+  }
+
+  .delta-tag--before {
+    color: rgba(222, 222, 222, 0.42);
+  }
+
+  .delta-tag--after {
+    color: rgba(110, 191, 126, 0.7);
+  }
+
+  /* Metrics */
+  .delta-metric {
+    font-family: Inter, sans-serif;
+    font-size: clamp(2.4rem, 4.5vw, 4rem);
+    font-weight: 750;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .delta-metric--before {
+    color: rgba(222, 222, 222, 0.68);
+  }
+
+  .delta-metric--after {
+    color: var(--fresh-green-color);
+  }
+
+  .delta-metric-unit {
+    font-size: 0.5em;
+    font-weight: 600;
+    opacity: 0.75;
+    letter-spacing: 0;
+  }
+
+  /* Sub-labels */
+  .delta-sublabel {
+    margin-top: 0.625rem;
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(222, 222, 222, 0.38);
+  }
+
+  .delta-sublabel--after {
+    color: rgba(222, 222, 222, 0.58);
+  }
+
+  .home-problem-solution {
+    background: transparent;
+  }
+
+  .home-contact-section {
+    background: transparent;
+  }
+
+  .contact-form-shell {
+    border-radius: 2rem;
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+  }
+
+  .home-articles-band {
+    position: relative;
+    isolation: isolate;
+    padding: 0 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .home-articles-band { padding: 0 2rem; }
+  }
+
+  .home-articles-band::before {
+    content: "";
+    position: absolute;
+    inset: -42px 0 -56px;
+    z-index: -1;
+    background: var(--charcoal-color);
+    pointer-events: none;
+  }
+
+  .articles-see-all {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--fresh-green-color);
+    opacity: 0.8;
+    transition: opacity 200ms ease;
+    white-space: nowrap;
+    margin-bottom: 0.35rem;
+  }
+
+  .articles-see-all:hover {
+    opacity: 1;
+  }
+
+
+  @media (max-width: 1023px) {
+    .flow-track::before {
+      display: none;
+    }
+
+    .app-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+
+    .traction-grid,
+    .delta-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .traction-grid,
+    .delta-grid {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .app-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* Pipeline collapses to vertical on mobile */
+    .pipeline-flow {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+
+    .pipeline-arrow {
+      flex-direction: row;
+      margin-top: 0;
+      padding: 0.25rem 1rem;
+      justify-content: flex-start;
+    }
+
+    .pipeline-arrow-track {
+      width: 36px;
+      height: 2px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .arch-dot,
+    .pipeline-arrow-pulse,
+    .pipeline-proof-dot {
+      animation: none;
+    }
+  }
+</style>

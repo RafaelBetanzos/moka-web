@@ -4,16 +4,51 @@ import DoubleChevronSecondary from "@assets/icons/DoubleChevronSecondary.svg";
 import Integration from "@assets/icons/Integration.svg";
 import Scalability from "@assets/icons/Scalability.svg";
 import { Image } from "astro:assets";
+
+const problemCopy = {
+  en: {
+    kicker: "THE PROBLEM",
+    headline: "Almost 99% of plant bioactives are unexplored, a living library waiting to be read.",
+    cards: [
+      ["The Invisible Chemistry Gap", "Less than 9% of the plant kingdom's potential has been explored", "Slow and manual discovery processes", "Unmapped chemical diversity"],
+      ["The Consistency Crisis", "Natural ingredients vary by soil, weather, and season", "Instability for pharmaceutical or industrial standards", "Lack of chemical standardization"],
+      ["The Scalability Bottleneck", "Extracting rare molecules requires massive land use", "Environmentally destructive extraction methods", "Economically impossible to scale manually"],
+    ],
+  },
+  es: {
+    kicker: "EL PROBLEMA",
+    headline: "Casi el 99% de los bioactivos vegetales sigue sin explorarse: una biblioteca viva esperando ser leída.",
+    cards: [
+      ["La brecha invisible de la química", "Menos del 9% del potencial del reino vegetal ha sido explorado", "Procesos de descubrimiento lentos y manuales", "Diversidad química sin mapear"],
+      ["La crisis de consistencia", "Los ingredientes naturales varían por suelo, clima y estación", "Inestabilidad frente a estándares farmacéuticos o industriales", "Falta de estandarización química"],
+      ["El cuello de botella de escala", "Extraer moléculas raras requiere enormes extensiones de tierra", "Métodos de extracción ambientalmente destructivos", "Escalar manualmente es económicamente inviable"],
+    ],
+  },
+  pt: {
+    kicker: "O PROBLEMA",
+    headline: "Quase 99% dos bioativos vegetais ainda não foi explorado: uma biblioteca viva esperando para ser lida.",
+    cards: [
+      ["A lacuna invisível da química", "Menos de 9% do potencial do reino vegetal foi explorado", "Processos de descoberta lentos e manuais", "Diversidade química não mapeada"],
+      ["A crise de consistência", "Ingredientes naturais variam por solo, clima e estação", "Instabilidade frente a padrões farmacêuticos ou industriais", "Falta de padronização química"],
+      ["O gargalo de escala", "Extrair moléculas raras exige uso massivo de terra", "Métodos de extração ambientalmente destrutivos", "Escalar manualmente é economicamente inviável"],
+    ],
+  },
+};
+
+const { locale = "en" } = Astro.props;
+const t = problemCopy[locale] ?? problemCopy.en;
+const icons = [Integration, BigData, Scalability];
+const alts = ["integration", "Big Data", "scalability"];
 ---
 
 <div class="relative z-10 flex flex-col gap-8 w-full overflow-hidden bg-transparent">
   <div class="py-0 px-6 md:px-12 max-w-7xl mx-auto w-full">
     <div class="reveal opacity-0" data-animation="slide-in">
       <p class="font-roboto font-bold text-xs leading-none tracking-[0.48em] text-center py-10 uppercase" style="color: rgba(222,222,222,0.52)">
-        THE PROBLEM
+        {t.kicker}
       </p>
       <h2 class="text-pure text-[22px] md:text-[26px] font-semibold text-center font-inter max-w-4xl mx-auto">
-        Almost 99% of plant bioactives are unexplored, a living library waiting to be read.
+        {t.headline}
       </h2>
     </div>
   </div>
@@ -22,53 +57,23 @@ import { Image } from "astro:assets";
     <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sage/30 to-transparent"></div>
     <div class="flex flex-col md:flex-row gap-16 md:gap-8 justify-center items-stretch max-w-7xl mx-auto"> 
       
-      <div class="reveal opacity-0 relative flex-1 max-w-sm mx-auto w-full group" data-animation="pop-in" style="transition-delay: 0.1s;">
+      {t.cards.map((card, index) => (
+      <div class="reveal opacity-0 relative flex-1 max-w-sm mx-auto w-full group" data-animation="pop-in" style={`transition-delay: ${0.1 + index * 0.2}s;`}>
         <div class="absolute z-20 left-1/2 -translate-x-1/2 -top-12 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
-          <Image src={Integration} alt="integration" class="xray-icon w-24 drop-shadow-lg" />
+          <Image src={icons[index]} alt={alts[index]} class="xray-icon w-24 drop-shadow-lg" />
         </div>
         <div class="problem-card rounded-2xl pt-16 pb-8 px-8 min-h-[420px] h-full flex flex-col transition-all duration-500 group-hover:scale-[1.02]">
           <h3 class="font-inter font-semibold text-[22px] text-center mb-6 leading-tight group-hover:text-pure transition-colors duration-300" style="color: rgba(222,222,222,0.82)">
-            The Invisible Chemistry Gap
+            {card[0]}
           </h3>
           <ul class="text-birch/80 space-y-4 text-center list-none flex-grow flex flex-col justify-center text-[18px]">
-            <li class="transition-transform duration-300 group-hover:translate-x-1">Less than 9% of the plant kingdom's potential has been explored</li>
-            <li class="transition-transform duration-300 group-hover:translate-x-1">Slow and manual discovery processes</li>
-            <li class="transition-transform duration-300 group-hover:translate-x-1">Unmapped chemical diversity</li>
+            {card.slice(1).map((item) => (
+              <li class="transition-transform duration-300 group-hover:translate-x-1">{item}</li>
+            ))}
           </ul>
         </div>
       </div>
-
-      <div class="reveal opacity-0 relative flex-1 max-w-sm mx-auto w-full group" data-animation="pop-in" style="transition-delay: 0.3s;">
-        <div class="absolute z-20 left-1/2 -translate-x-1/2 -top-12 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
-          <Image src={BigData} alt="Big Data" class="xray-icon w-24 drop-shadow-lg" />
-        </div>
-        <div class="problem-card rounded-2xl pt-16 pb-8 px-8 min-h-[420px] h-full flex flex-col transition-all duration-500 group-hover:scale-[1.02]">
-          <h3 class="font-inter font-semibold text-[22px] text-center mb-6 leading-tight group-hover:text-pure transition-colors duration-300" style="color: rgba(222,222,222,0.82)">
-            The Consistency Crisis
-          </h3>
-          <ul class="text-birch/80 space-y-4 text-center list-none flex-grow flex flex-col justify-center text-[18px]">
-            <li class="transition-transform duration-300 group-hover:translate-x-1">Natural ingredients vary by soil, weather, and season</li>
-            <li class="transition-transform duration-300 group-hover:translate-x-1">Instability for pharmaceutical or industrial standards</li>
-            <li class="transition-transform duration-300 group-hover:translate-x-1">Lack of chemical standardization</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="reveal opacity-0 relative flex-1 max-w-sm mx-auto w-full group" data-animation="pop-in" style="transition-delay: 0.5s;">
-        <div class="absolute z-20 left-1/2 -translate-x-1/2 -top-12 transition-transform duration-500 group-hover:scale-110 group-hover:-translate-y-2">
-          <Image src={Scalability} alt="scalability" class="xray-icon w-24 drop-shadow-lg" />
-        </div>
-        <div class="problem-card rounded-2xl pt-16 pb-8 px-8 min-h-[420px] h-full flex flex-col transition-all duration-500 group-hover:scale-[1.02]">
-          <h3 class="font-inter font-semibold text-[22px] text-center mb-6 leading-tight group-hover:text-pure transition-colors duration-300" style="color: rgba(222,222,222,0.82)">
-            The Scalability Bottleneck
-          </h3>
-          <ul class="text-birch/80 space-y-4 text-center list-none flex-grow flex flex-col justify-center text-[18px]">
-            <li class="transition-transform duration-300 group-hover:translate-x-1">Extracting rare molecules requires massive land use</li>
-            <li class="transition-transform duration-300 group-hover:translate-x-1">Environmentally destructive extraction methods</li>
-            <li class="transition-transform duration-300 group-hover:translate-x-1">Economically impossible to scale manually</li>
-          </ul>
-        </div>
-      </div>
+      ))}
 
     </div>
 
