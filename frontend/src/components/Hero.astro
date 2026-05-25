@@ -8,7 +8,7 @@ import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
   <div class="absolute inset-0 bg-freshgreen/5"></div>
   <div class="absolute inset-0 hero-scan opacity-20"></div>
   <!-- fade inferior para que fluya con las secciones de abajo -->
-  <div class="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-b from-transparent to-black/30"></div>
+  <div class="hero-bottom-fade absolute inset-x-0 bottom-0"></div>
 
   <div class="hero-botanical botanical-line-a" aria-hidden="true"></div>
   <div class="hero-botanical botanical-line-b" aria-hidden="true"></div>
@@ -93,6 +93,20 @@ import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
       linear-gradient(90deg, rgba(18, 18, 18, 0.96), rgba(18, 18, 18, 0.62) 54%, rgba(18, 18, 18, 0.92));
     mix-blend-mode: normal;
     opacity: 0.88;
+  }
+
+  .hero-bottom-fade {
+    z-index: 4;
+    height: min(36vh, 360px);
+    pointer-events: none;
+    background:
+      linear-gradient(
+        180deg,
+        rgba(18, 18, 18, 0) 0%,
+        rgba(18, 18, 18, 0.28) 38%,
+        rgba(18, 18, 18, 0.72) 72%,
+        rgba(18, 18, 18, 1) 100%
+      );
   }
 
   .hero-scan {
