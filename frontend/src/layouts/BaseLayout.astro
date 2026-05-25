@@ -70,6 +70,23 @@ const ogImageAbsolute = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogIm
       gtag('js', new Date());
       gtag('config', 'G-MEXX4CR4HW');
     </script>
+    <script is:inline>
+      document.addEventListener('click', (event) => {
+        const target = event.target instanceof Element
+          ? event.target.closest('[data-analytics-event]')
+          : null;
+
+        const eventName = target?.getAttribute('data-analytics-event');
+
+        if (!eventName || typeof window.gtag !== 'function') return;
+
+        window.gtag('event', eventName, {
+          event_category: target.getAttribute('data-analytics-category') || 'engagement',
+          event_label: target.getAttribute('data-analytics-label') || target.textContent?.trim(),
+          link_url: target instanceof HTMLAnchorElement ? target.href : undefined,
+        });
+      });
+    </script>
   </head>
   <body class="bg-charcoal text-birch">
     <Navbar />

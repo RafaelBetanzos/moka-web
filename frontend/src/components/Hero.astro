@@ -37,7 +37,15 @@ import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
         </p>
         <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
           <a href="/our-technology" class="hero-primary-cta no-underline">Explore the platform</a>
-          <a href="/contact-us" class="hero-demo-cta no-underline">Book a Demo</a>
+          <a
+            href="/contact-us"
+            class="hero-demo-cta no-underline"
+            data-analytics-event="book_demo_click"
+            data-analytics-category="cta"
+            data-analytics-label="Hero Book a Demo"
+          >
+            Book a Demo
+          </a>
         </div>
       </div>
 
@@ -119,11 +127,19 @@ import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
   }
 
   .hero-demo-cta {
-    border: 1.5px solid rgba(110, 191, 126, 0.55);
-    background: rgba(19, 45, 37, 0.52);
-    color: var(--fresh-green-color);
-    backdrop-filter: blur(14px);
-    box-shadow: 0 0 28px rgba(110, 191, 126, 0.08);
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--fresh-green-color);
+    color: var(--charcoal-color);
+    padding: 0.85rem 1.35rem;
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    box-shadow: 0 18px 60px rgba(110, 191, 126, 0.16);
+    transition: transform 280ms ease, background 280ms ease, color 280ms ease, box-shadow 280ms ease;
   }
 
   .hero-primary-cta:hover {
@@ -135,8 +151,7 @@ import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
 
   .hero-demo-cta:hover {
     transform: translateY(-2px);
-    border-color: rgba(110, 191, 126, 0.9);
-    background: var(--fresh-green-color);
+    background: var(--pure-color);
     color: var(--charcoal-color);
     box-shadow: 0 18px 60px rgba(110, 191, 126, 0.22);
   }
