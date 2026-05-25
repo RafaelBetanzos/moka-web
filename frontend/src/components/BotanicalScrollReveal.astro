@@ -1,0 +1,154 @@
+---
+interface Props {
+  src?: string;
+  alt?: string;
+  side?: "right" | "left";
+  tone?: "strong" | "soft";
+  class?: string;
+}
+
+const {
+  src = "/assets/about-botanicals/botanical-line-03.png",
+  alt = "",
+  side = "right",
+  tone = "soft",
+  class: className = "",
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    "botanical-scroll-reveal",
+    side === "left" && "botanical-scroll-reveal--left",
+    tone === "strong" && "botanical-scroll-reveal--strong",
+    className,
+  ]}
+  aria-hidden={alt ? undefined : "true"}
+>
+  <img src={src} alt={alt} loading="lazy" decoding="async" />
+</div>
+
+<script>
+  const botanicalReveals = document.querySelectorAll<HTMLElement>(".botanical-scroll-reveal");
+
+  const clamp = (value: number, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+
+  const updateBotanicalReveals = () => {
+    const viewport = window.innerHeight || 1;
+
+    botanicalReveals.forEach((reveal) => {
+      const parent = reveal.parentElement;
+      if (!parent) return;
+
+      const rect = parent.getBoundingClientRect();
+      const start = viewport * 0.92;
+      const end = -rect.height * 0.18;
+      const progress = clamp((start - rect.top) / (start - end));
+
+      reveal.style.setProperty("--botanical-progress", progress.toFixed(4));
+    });
+  };
+
+  updateBotanicalReveals();
+  window.addEventListener("scroll", updateBotanicalReveals, { passive: true });
+  window.addEventListener("resize", updateBotanicalReveals);
+</script>
+
+<style>
+  .botanical-scroll-reveal {
+    --botanical-progress: 0;
+    pointer-events: none;
+    position: absolute;
+    right: clamp(-13rem, -10vw, -4rem);
+    top: clamp(4rem, 12vh, 9rem);
+    z-index: 1;
+    width: clamp(26rem, 48vw, 48rem);
+    opacity: calc(0.08 + (var(--botanical-progress) * 0.38));
+    transform:
+      translate3d(calc((1 - var(--botanical-progress)) * 4rem), calc((1 - var(--botanical-progress)) * 2rem), 0)
+      scale(calc(0.96 + (var(--botanical-progress) * 0.04)));
+    transition: opacity 120ms linear, transform 120ms linear;
+  }
+
+  .botanical-scroll-reveal--left {
+    left: clamp(-13rem, -10vw, -4rem);
+    right: auto;
+    transform:
+      translate3d(calc((var(--botanical-progress) - 1) * 4rem), calc((1 - var(--botanical-progress)) * 2rem), 0)
+      scale(calc(0.96 + (var(--botanical-progress) * 0.04)));
+  }
+
+  .botanical-scroll-reveal--strong {
+    opacity: calc(0.12 + (var(--botanical-progress) * 0.52));
+  }
+
+  .home-botanical {
+    top: clamp(32rem, 72vh, 48rem);
+    right: clamp(-16rem, -13vw, -6rem);
+    width: clamp(28rem, 52vw, 54rem);
+  }
+
+  .about-botanical-focus {
+    top: clamp(6rem, 14vh, 10rem);
+    right: clamp(-16rem, -12vw, -5rem);
+    width: clamp(30rem, 54vw, 56rem);
+  }
+
+  .tech-botanical-focus {
+    top: clamp(5rem, 10vh, 8rem);
+    right: clamp(-14rem, -10vw, -4rem);
+    width: clamp(31rem, 55vw, 58rem);
+  }
+
+  .insights-botanical-focus {
+    top: clamp(5rem, 11vh, 8rem);
+    right: clamp(-17rem, -14vw, -7rem);
+    width: clamp(28rem, 48vw, 48rem);
+  }
+
+  .botanical-scroll-reveal img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter:
+      drop-shadow(0 0 18px rgba(110, 191, 126, 0.09))
+      drop-shadow(0 0 46px rgba(255, 255, 255, 0.04));
+    mask-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, calc(var(--botanical-progress) * 1.2)) 16%,
+      rgba(0, 0, 0, calc(var(--botanical-progress) * 1.2)) 86%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
+
+  @media (max-width: 767px) {
+    .botanical-scroll-reveal,
+    .botanical-scroll-reveal--left {
+      left: 50%;
+      right: auto;
+      top: 5rem;
+      width: min(125vw, 32rem);
+      opacity: calc(0.05 + (var(--botanical-progress) * 0.18));
+      transform:
+        translate3d(-50%, calc((1 - var(--botanical-progress)) * 1.5rem), 0)
+        scale(calc(0.98 + (var(--botanical-progress) * 0.04)));
+    }
+
+    .home-botanical,
+    .about-botanical-focus,
+    .tech-botanical-focus,
+    .insights-botanical-focus {
+      top: 7rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .botanical-scroll-reveal,
+    .botanical-scroll-reveal--left {
+      opacity: 0.24;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>

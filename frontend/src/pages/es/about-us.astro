@@ -3,6 +3,7 @@ import MapSection from "@components/MapSection.astro";
 import OurTeam from "@components/OurTeam.astro";
 import OurVisionCard from "@components/OurVisionCard.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
 ---
 
 <BaseLayout
@@ -11,6 +12,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
   description="Conoce al equipo de Moka Bio. Construimos el sistema operativo para el descubrimiento de productos naturales."
 >
   <div class="about-page min-h-screen bg-charcoal relative overflow-hidden">
+    <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-04.png" tone="strong" class="about-botanical-focus" />
     <div class="about-botanical-field pointer-events-none fixed inset-0 z-0" aria-hidden="true">
       <svg class="h-full w-full" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice">
         <defs>

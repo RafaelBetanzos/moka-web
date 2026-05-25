@@ -4,6 +4,7 @@ import ProblemSection from "@components/ProblemSection.astro";
 import SolutionSection from "@components/SolutionSection.astro";
 import TargetSection from "@components/TargetSection.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
 ---
 
 <BaseLayout
@@ -12,6 +13,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
   description="Explore a plataforma Moka: da complexidade botânica à inteligência molecular programável."
 >
   <div class="tech-page relative flex flex-col items-center justify-between w-full bg-charcoal overflow-hidden">
+    <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-03.png" tone="strong" class="tech-botanical-focus" />
     <div class="tech-biofield pointer-events-none fixed inset-0 z-0" aria-hidden="true">
       <svg class="h-full w-full" viewBox="0 0 1440 2200" preserveAspectRatio="xMidYMid slice">
         <defs>
@@ -210,6 +212,11 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 </script>
 
 <style>
+  .tech-biofield,
+  .tech-silhouette-layer {
+    display: none;
+  }
+
   /* ── Page Header ─────────────────────────────── */
   .tech-page-kicker {
     font-family: Roboto, sans-serif;

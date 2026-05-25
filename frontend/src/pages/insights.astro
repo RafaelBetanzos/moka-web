@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
+import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
 import { mockcarrousel } from "@utils/CarrouselMock";
 ---
 
@@ -14,6 +15,7 @@ import { mockcarrousel } from "@utils/CarrouselMock";
 
     <!-- Grid background texture -->
     <div class="insights-grid-bg pointer-events-none absolute inset-0" aria-hidden="true"></div>
+    <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-05.png" class="insights-botanical-focus" />
 
     <!-- Page header -->
     <div class="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 pt-20 pb-16">

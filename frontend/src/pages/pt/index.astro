@@ -7,6 +7,7 @@ import ProblemSection from "@components/ProblemSection.astro";
 import SolutionSection from "@components/SolutionSection.astro";
 import { ArticlesCarrousel } from "@components/Swiper/ArticlesCarrousel";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
 import Hero from "../../components/Hero.astro";
 
 const seo = {
@@ -48,8 +49,9 @@ const industries = [
 ];
 ---
 <BaseLayout lang="pt" title={seo.title} description={seo.description}>
-  <div class="home-color-system">
+  <div class="home-color-system relative overflow-hidden">
     <Hero locale="pt" />
+    <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-02.png" tone="strong" class="home-botanical" />
 
 
     <DataPlatformSection locale="pt" />
