@@ -12,8 +12,8 @@ interface Props {
 const { locale = "en" } = Astro.props;
 const copy = {
   en: {
-    titleA: "AI Powered Nature",
-    titleB: "The operating system for natural product discovery.",
+  titleA: "AI Powered Nature",
+    titleB: "Building LATAM's largest database for bioactivity and natural compounds.",
     body: "Despite the Americas hosting 40% of the world’s plant diversity, it is estimated that over 85% of these species have yet to be scientifically mapped for their molecular activity.",
     mexico: "Mexico hosts over 23,000 plant species, but only",
     mexicoEnd: "are currently utilized in scientific discovery.",
@@ -24,7 +24,7 @@ const copy = {
   },
   es: {
     titleA: "Naturaleza impulsada por IA",
-    titleB: "El sistema operativo para el descubrimiento de productos naturales.",
+    titleB: "Construyendo la mayor base de datos de bioactividad y compuestos naturales de LATAM.",
     body: "Aunque América concentra el 40% de la diversidad vegetal del mundo, se estima que más del 85% de estas especies aún no han sido mapeadas científicamente por su actividad molecular.",
     mexico: "México alberga más de 23,000 especies vegetales, pero solo",
     mexicoEnd: "se utiliza actualmente en descubrimiento científico.",
@@ -35,7 +35,7 @@ const copy = {
   },
   pt: {
     titleA: "Natureza impulsionada por IA",
-    titleB: "O sistema operacional para a descoberta de produtos naturais.",
+    titleB: "Construindo a maior base de dados de bioatividade e compostos naturais da LATAM.",
     body: "Embora as Américas concentrem 40% da diversidade vegetal do mundo, estima-se que mais de 85% dessas espécies ainda não tenham sido mapeadas cientificamente por sua atividade molecular.",
     mexico: "O México abriga mais de 23.000 espécies vegetais, mas apenas",
     mexicoEnd: "é usado atualmente em descoberta científica.",
@@ -54,7 +54,7 @@ const copy = {
       <div class="animate-float relative w-full h-full flex items-center justify-center transition-all duration-1000 ease-out transform group-hover:scale-105">
         <Image 
           src={Map} 
-          alt="Map" 
+          alt=""
           class="w-full h-auto lg:h-full lg:max-h-[500px] object-contain drop-shadow-2xl opacity-85 grayscale contrast-125 brightness-75" 
         />
         <div class="absolute inset-0 bg-freshgreen/10 mix-blend-screen rounded-full"></div>
@@ -64,19 +64,13 @@ const copy = {
 
     <div class="flex flex-col gap-6 w-full lg:w-1/2 items-center lg:items-end text-center lg:text-end">
       
-      <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.1s;">
-        <h1 class="font-roboto font-medium text-birch text-sm md:text-base leading-4 tracking-[0.4em] uppercase transition-transform duration-300 hover:scale-105 lg:origin-right cursor-default">
-          MOKA BIO
-        </h1>
-      </div>
-      
-      <div class="reveal opacity-0 xl:text-[48px] lg:text-[38px] text-[28px] md:text-[32px] font-semibold leading-tight" data-animation="slide-in" style="transition-delay: 0.3s;">
+      <div class="reveal opacity-0 map-title" data-animation="slide-in" style="transition-delay: 0.1s;">
         <h2 class="text-freshgreen transition-transform duration-300 hover:scale-105 lg:origin-right cursor-default">{copy.titleA}</h2>
         <h2 class="transition-transform duration-300 hover:scale-105 lg:origin-right cursor-default text-pure">{copy.titleB}</h2>
       </div>
 
-      <div class="reveal opacity-0 flex flex-col gap-8 items-center lg:items-end" data-animation="slide-in" style="transition-delay: 0.5s;">
-        <p class="text-birch/75 font-inter font-medium text-base md:text-lg leading-relaxed lg:pl-20">
+      <div class="reveal opacity-0 flex flex-col gap-8 items-center lg:items-end" data-animation="slide-in" style="transition-delay: 0.3s;">
+        <p class="map-body">
           {copy.body}
         </p>
         
@@ -138,6 +132,24 @@ const copy = {
 </script>
 
 <style>
+  .map-title {
+    max-width: 680px;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.9rem, 4vw, 3.8rem);
+    font-weight: 650;
+    line-height: 1.02;
+    text-wrap: balance;
+  }
+
+  .map-body {
+    max-width: 620px;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1rem, 1.6vw, 1.22rem);
+    font-weight: 500;
+    line-height: 1.75;
+    color: rgba(222, 222, 222, 0.72);
+  }
+
   .animate-float { animation: float 6s ease-in-out infinite; }
   .animate-slide-in { animation: slideIn 0.8s ease-out forwards; }
   .animate-pop-in { animation: popIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; }

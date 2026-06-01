@@ -1,7 +1,5 @@
 ---
 import BrainSection from "@components/BrainSection.astro";
-import ProblemSection from "@components/ProblemSection.astro";
-import SolutionSection from "@components/SolutionSection.astro";
 import TargetSection from "@components/TargetSection.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
@@ -9,7 +7,7 @@ import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
 
 <BaseLayout
   title="Our Technology | Moka Bio"
-  description="Explore the Moka platform — from botanical complexity to programmable molecular intelligence. MokaDex indexes natural bioactivity into standardized, IP-ready molecular assets."
+  description="Explore Moka — from botanical complexity to programmable molecular intelligence. MokaDex indexes natural bioactivity into standardized, IP-ready molecular assets."
 >
   <div class="tech-page relative flex flex-col items-center justify-between w-full bg-charcoal overflow-hidden">
     <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-03.png" tone="strong" class="tech-botanical-focus" />
@@ -147,7 +145,7 @@ import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
       </div>
       <div class="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 gap-5">
         <p class="tech-page-kicker">
-          MOKA PLATFORM
+          MOKA TECH
         </p>
         <h1 class="tech-page-title">
           Our Technology
@@ -160,15 +158,6 @@ import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
       <BrainSection />
     </div>
 
-    <ProblemSection />
-
-    <div class="answer-bridge" aria-hidden="true">
-      <div class="answer-bridge-line"></div>
-      <div class="answer-bridge-pill">OUR ANSWER</div>
-      <div class="answer-bridge-line"></div>
-    </div>
-
-    <SolutionSection />
     <TargetSection />
   </div>
 </BaseLayout>

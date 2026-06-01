@@ -18,7 +18,13 @@ const copy = {
     kicker: "HOW IT WORKS",
     titleStart: "MokaDex integrates nature’s knowledge with",
     titleHighlight: "cutting edge technology",
-    body: "MokaDex is our proprietary AI engine that serves as the digital architect for Moka’s Operating System. It identifies novel bioactive molecules and their mechanisms of action with unprecedented speed.",
+    body: "MokaDex combines empirical evidence with predictive biology to turn Latin America's biodiversity into a searchable, programmable discovery system.",
+    leftTitle: "Left Brain",
+    leftBody: "Empirical data — chemical fingerprints, LC-MS, experimental bioactives, ethnobotany, species records, and validated biological activity.",
+    rightTitle: "Right Brain",
+    rightBody: "MokaDex — bioinformatic prediction, mechanism of action inference, structure-activity relationships, pathway mapping, and market intelligence.",
+    togetherTitle: "Together",
+    togetherBody: "A knowledge graph of Latin American biodiversity — built to identify what nature already knows, and translate it into molecules, products, IP, and scalable innovation.",
     connector: "THE PROBLEM",
   },
   es: {
@@ -31,7 +37,13 @@ const copy = {
     kicker: "CÓMO FUNCIONA",
     titleStart: "MokaDex integra el conocimiento de la naturaleza con",
     titleHighlight: "tecnología de vanguardia",
-    body: "MokaDex es nuestro motor propietario de IA y funciona como el arquitecto digital del sistema operativo de Moka. Identifica moléculas bioactivas novedosas y sus mecanismos de acción con velocidad sin precedentes.",
+    body: "MokaDex combina evidencia empírica con biología predictiva para convertir la biodiversidad latinoamericana en un sistema de descubrimiento consultable y programable.",
+    leftTitle: "Cerebro izquierdo",
+    leftBody: "Datos empíricos: fingerprints químicos, LC-MS, bioactivos experimentales, etnobotánica, registros de especies y actividad biológica validada.",
+    rightTitle: "Cerebro derecho",
+    rightBody: "MokaDex: predicción bioinformática, inferencia de mecanismos de acción, relaciones estructura-actividad, mapeo de rutas e inteligencia de mercado.",
+    togetherTitle: "Juntos",
+    togetherBody: "Un grafo de conocimiento de la biodiversidad latinoamericana, creado para identificar lo que la naturaleza ya sabe y traducirlo en moléculas, productos, PI e innovación escalable.",
     connector: "EL PROBLEMA",
   },
   pt: {
@@ -44,7 +56,13 @@ const copy = {
     kicker: "COMO FUNCIONA",
     titleStart: "MokaDex integra o conhecimento da natureza com",
     titleHighlight: "tecnologia de ponta",
-    body: "MokaDex é nosso motor proprietário de IA e atua como o arquiteto digital do sistema operacional da Moka. Ele identifica moléculas bioativas novas e seus mecanismos de ação com velocidade sem precedentes.",
+    body: "O MokaDex combina evidência empírica com biologia preditiva para transformar a biodiversidade latino-americana em um sistema de descoberta pesquisável e programável.",
+    leftTitle: "Cérebro esquerdo",
+    leftBody: "Dados empíricos: fingerprints químicos, LC-MS, bioativos experimentais, etnobotânica, registros de espécies e atividade biológica validada.",
+    rightTitle: "Cérebro direito",
+    rightBody: "MokaDex: predição bioinformática, inferência de mecanismos de ação, relações estrutura-atividade, mapeamento de vias e inteligência de mercado.",
+    togetherTitle: "Juntos",
+    togetherBody: "Um grafo de conhecimento da biodiversidade latino-americana, criado para identificar o que a natureza já sabe e traduzir isso em moléculas, produtos, PI e inovação escalável.",
     connector: "O PROBLEMA",
   },
 }[locale];
@@ -125,6 +143,23 @@ const copy = {
         {copy.body}
       </p>
     </div>
+
+    <div class="brain-thinking-grid">
+      <article class="reveal opacity-0 brain-thinking-card" data-animation="slide-left" style="transition-delay: 0.65s;">
+        <p class="brain-thinking-title">{copy.leftTitle}</p>
+        <p class="brain-thinking-body">{copy.leftBody}</p>
+      </article>
+
+      <article class="reveal opacity-0 brain-thinking-card brain-thinking-card--accent" data-animation="slide-right" style="transition-delay: 0.75s;">
+        <p class="brain-thinking-title">{copy.rightTitle}</p>
+        <p class="brain-thinking-body">{copy.rightBody}</p>
+      </article>
+    </div>
+
+    <article class="reveal opacity-0 brain-thinking-card brain-thinking-card--together" data-animation="slide-up" style="transition-delay: 0.85s;">
+      <p class="brain-thinking-title brain-thinking-title--accent">{copy.togetherTitle}</p>
+      <p class="brain-thinking-body">{copy.togetherBody}</p>
+    </article>
   </div>
 
   {/* Conector visual → ProblemSection */}
@@ -190,6 +225,60 @@ const copy = {
     border-radius: 999px;
     margin-top: 1rem;
     margin-bottom: 1rem;
+  }
+
+  .brain-thinking-grid {
+    display: grid;
+    width: min(100%, 980px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .brain-thinking-card {
+    width: 100%;
+    border: 1px solid rgba(222, 222, 222, 0.10);
+    border-radius: 1.5rem;
+    background: linear-gradient(145deg, rgba(18, 18, 18, 0.66), rgba(19, 45, 37, 0.42));
+    padding: 1.75rem;
+    text-align: left;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(18px);
+  }
+
+  .brain-thinking-card--accent {
+    border-color: rgba(110, 191, 126, 0.22);
+    background: linear-gradient(145deg, rgba(19, 45, 37, 0.72), rgba(18, 18, 18, 0.58));
+  }
+
+  .brain-thinking-card--together {
+    width: min(100%, 980px);
+    text-align: center;
+    border-color: rgba(110, 191, 126, 0.24);
+  }
+
+  .brain-thinking-title {
+    font-family: Inter, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--pure-color);
+  }
+
+  .brain-thinking-title--accent {
+    color: var(--fresh-green-color);
+  }
+
+  .brain-thinking-body {
+    margin-top: 1rem;
+    font-family: Inter, sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: rgba(222, 222, 222, 0.74);
+  }
+
+  @media (max-width: 767px) {
+    .brain-thinking-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   /* ── Brain → Problem connector ───────────────── */

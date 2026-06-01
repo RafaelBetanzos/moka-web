@@ -3,31 +3,31 @@ import { MarqueeComponent } from "@components/Marquee/MarqueeComponent";
 
 const copy = {
   en: {
-    titleBefore: "The operating system for",
-    titleHighlight: "natural",
-    titleAfter: "product discovery",
-    description: "Moka turns natural knowledge into programmable bioactive intelligence for molecular innovation.",
-    platformCta: "Explore the platform",
+    titleBefore: "Discovering the bioactive potential of Latin American",
+    titleHighlight: "plants",
+    titleAfter: "",
+    description: "Building LATAM's largest database for bioactivity and natural compounds.",
+    primaryCta: "Explore Moka",
     demoCta: "Book a Demo",
     analyticsLabel: "Hero Book a Demo",
     backedBy: "BACKED BY",
   },
   es: {
-    titleBefore: "El sistema operativo para el descubrimiento de productos",
-    titleHighlight: "naturales",
+    titleBefore: "Descubriendo el potencial bioactivo de las plantas",
+    titleHighlight: "latinoamericanas",
     titleAfter: "",
-    description: "Moka convierte el conocimiento natural en inteligencia bioactiva programable para la innovación molecular.",
-    platformCta: "Explorar la plataforma",
+    description: "Construyendo la mayor base de datos de bioactividad y compuestos naturales de LATAM.",
+    primaryCta: "Explorar Moka",
     demoCta: "Agendar demo",
     analyticsLabel: "Hero Agendar Demo",
     backedBy: "RESPALDADO POR",
   },
   pt: {
-    titleBefore: "O sistema operacional para a descoberta de produtos",
-    titleHighlight: "naturais",
+    titleBefore: "Descobrindo o potencial bioativo das plantas",
+    titleHighlight: "latino-americanas",
     titleAfter: "",
-    description: "A Moka transforma conhecimento natural em inteligência bioativa programável para inovação molecular.",
-    platformCta: "Explorar a plataforma",
+    description: "Construindo a maior base de dados de bioatividade e compostos naturais da LATAM.",
+    primaryCta: "Explorar a Moka",
     demoCta: "Agendar demo",
     analyticsLabel: "Hero Agendar Demo PT",
     backedBy: "APOIADO POR",
@@ -61,18 +61,18 @@ const t = copy[locale] ?? copy.en;
   <div class="relative z-10 flex flex-col min-h-screen">
     <!-- Copy + Marquee juntos en el bloque superior -->
     <div class="px-8 pt-10 pb-8 sm:px-12 sm:pt-14 lg:px-16 lg:pt-16">
-      <div class="hero-copy max-w-3xl animate-moka-reveal">
+      <div class="hero-copy max-w-4xl animate-moka-reveal">
         <p class="font-roboto text-[12px] font-semibold uppercase tracking-[0.48em] text-freshgreen">
           MOKA BIO
         </p>
-        <h1 class="mt-5 font-inter text-[44px] font-semibold leading-[0.98] text-pure drop-shadow-2xl sm:text-[72px] lg:text-[92px]">
+        <h1 class="mt-6 font-inter text-[44px] font-semibold leading-[1.04] text-pure drop-shadow-2xl sm:text-[72px] lg:text-[92px]">
           {t.titleBefore} <span class="text-freshgreen">{t.titleHighlight}</span>{t.titleAfter ? ` ${t.titleAfter}` : ""}
         </h1>
-        <p class="mt-7 max-w-2xl font-inter text-[17px] leading-relaxed text-birch/78 sm:text-[20px]">
+        <p class="mt-8 max-w-3xl font-inter text-[17px] leading-relaxed text-birch/78 sm:text-[20px]">
           {t.description}
         </p>
-        <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <a href="/our-technology" class="hero-primary-cta no-underline">{t.platformCta}</a>
+        <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <a href="/our-technology" class="hero-primary-cta no-underline">{t.primaryCta}</a>
           <a
             href="/contact-us"
             class="hero-demo-cta no-underline"
@@ -86,7 +86,7 @@ const t = copy[locale] ?? copy.en;
       </div>
 
       <!-- Marquee justo debajo de los botones -->
-      <div class="mt-10 sm:mt-12">
+      <div class="mt-14 sm:mt-16">
         <div class="flex items-center gap-6 mb-5">
           <span class="hero-partners-label">{t.backedBy}</span>
           <div class="flex-1 h-px bg-gradient-to-r from-birch/15 to-transparent"></div>
@@ -101,6 +101,11 @@ const t = copy[locale] ?? copy.en;
 </section>
 
 <style>
+  .hero-xray {
+    isolation: isolate;
+    background: var(--charcoal-color);
+  }
+
   .hero-xray::before {
     content: "";
     position: absolute;

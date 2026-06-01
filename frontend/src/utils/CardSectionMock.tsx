@@ -10,7 +10,7 @@ export const blocksProblem = [
     alt: "lab",
     title: "THE PROBLEM",
     content:
-      "Nature’s chemical diversity is unstructured and offline, making the discovery of predictable, scalable bioactives an artisanal and high-risk process.",
+      "Latin America's chemical diversity remains unexplored and underrepresented.",
     chevron: true,
   },
   {

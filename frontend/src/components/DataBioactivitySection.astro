@@ -4,61 +4,58 @@ import { Image } from "astro:assets";
 
 const dataCopy = {
   en: {
-    headline: "Index. Program. Scale.",
-    subheadline: "The Biological Intelligence Layer",
-    intro: "We transform the planet’s largest validated chemical library into a programmable engine for molecular innovation across medicine, nutrition, and beyond.",
+    subheadline: "Latin America's chemical diversity remains unexplored and underrepresented.",
+    intro: "Moka transforms Latin America's biodiversity — the richest and least explored on the planet — into a programmable engine for molecular innovation across medicine, nutrition, and beyond.",
     pills: ["Validated bioactivity", "Molecular indexing", "IP-ready assets"],
     cta: "Our Technology",
     global: "Global Bioactivity",
     globalBadge: "VALIDATED",
-    globalDesc: "Of the world population utilizes natural molecular solutions.",
+    globalDesc: "Of the world population uses natural molecular solutions — the demand already exists.",
     globalNote: "Synthetic signal mapped",
     natural: "Natural Chemistry",
     naturalBadge: "INDEXED",
-    naturalDesc: "Of the world’s natural chemistry has been chemically characterized.",
+    naturalDesc: "Of Latin America's natural chemistry has been characterized. The remaining 91% is unexplored opportunity.",
     naturalNote: "Unindexed opportunity",
-    problem: "The Problem",
-    problemDesc: "Nature’s chemical diversity is unstructured and offline, making the discovery of predictable, scalable bioactives an artisanal and high-risk process.",
-    solution: "The Solution",
-    solutionDesc: "Moka provides the programmable infrastructure to decode natural bioactivity into standardized, IP-protected molecular assets for global industries.",
+    unexplored: "Latin American Biodiversity",
+    unexploredBadge: "GLOBAL BIODIVERSITY",
+    unexploredDesc: "Of the world's biodiversity is in LATAM.",
+    unexploredNote: "Biodiversity hotspot",
   },
   es: {
-    headline: "Indexar. Programar. Escalar.",
-    subheadline: "La capa de inteligencia biológica",
-    intro: "Transformamos la mayor biblioteca química validada del planeta en un motor programable para innovación molecular en medicina, nutrición y más.",
+    subheadline: "La diversidad química de América Latina sigue inexplorada y subrepresentada.",
+    intro: "Moka transforma la biodiversidad de América Latina — la más rica y menos explorada del planeta — en un motor programable para innovación molecular en medicina, nutrición y más.",
     pills: ["Bioactividad validada", "Indexación molecular", "Activos listos para PI"],
     cta: "Nuestra tecnología",
     global: "Bioactividad global",
     globalBadge: "VALIDADO",
-    globalDesc: "De la población mundial utiliza soluciones moleculares naturales.",
+    globalDesc: "De la población mundial utiliza soluciones moleculares naturales: la demanda ya existe.",
     globalNote: "Señal sintética mapeada",
     natural: "Química natural",
     naturalBadge: "INDEXADO",
-    naturalDesc: "De la química natural del mundo ha sido caracterizada químicamente.",
+    naturalDesc: "De la química natural de América Latina ha sido caracterizada. El 91% restante es oportunidad sin explorar.",
     naturalNote: "Oportunidad no indexada",
-    problem: "El problema",
-    problemDesc: "La diversidad química de la naturaleza está desestructurada y fuera de línea, haciendo que descubrir bioactivos predecibles y escalables sea artesanal y riesgoso.",
-    solution: "La solución",
-    solutionDesc: "Moka ofrece la infraestructura programable para decodificar bioactividad natural en activos moleculares estandarizados y protegidos por PI para industrias globales.",
+    unexplored: "Biodiversidad latinoamericana",
+    unexploredBadge: "BIODIVERSIDAD GLOBAL",
+    unexploredDesc: "De la biodiversidad mundial está en LATAM.",
+    unexploredNote: "Hotspot de biodiversidad",
   },
   pt: {
-    headline: "Indexar. Programar. Escalar.",
-    subheadline: "A camada de inteligência biológica",
-    intro: "Transformamos a maior biblioteca química validada do planeta em um motor programável para inovação molecular em medicina, nutrição e além.",
+    subheadline: "A diversidade química da América Latina segue inexplorada e sub-representada.",
+    intro: "A Moka transforma a biodiversidade da América Latina — a mais rica e menos explorada do planeta — em um motor programável para inovação molecular em medicina, nutrição e além.",
     pills: ["Bioatividade validada", "Indexação molecular", "Ativos prontos para PI"],
     cta: "Nossa tecnologia",
     global: "Bioatividade global",
     globalBadge: "VALIDADO",
-    globalDesc: "Da população mundial utiliza soluções moleculares naturais.",
+    globalDesc: "Da população mundial utiliza soluções moleculares naturais: a demanda já existe.",
     globalNote: "Sinal sintético mapeado",
     natural: "Química natural",
     naturalBadge: "INDEXADO",
-    naturalDesc: "Da química natural do mundo foi caracterizada quimicamente.",
+    naturalDesc: "Da química natural da América Latina foi caracterizada. Os 91% restantes são oportunidade inexplorada.",
     naturalNote: "Oportunidade não indexada",
-    problem: "O problema",
-    problemDesc: "A diversidade química da natureza está desestruturada e offline, tornando a descoberta de bioativos previsíveis e escaláveis um processo artesanal e de alto risco.",
-    solution: "A solução",
-    solutionDesc: "A Moka oferece a infraestrutura programável para decodificar bioatividade natural em ativos moleculares padronizados e protegidos por PI para indústrias globais.",
+    unexplored: "Biodiversidade latino-americana",
+    unexploredBadge: "BIODIVERSIDADE GLOBAL",
+    unexploredDesc: "Da biodiversidade mundial está na LATAM.",
+    unexploredNote: "Hotspot de biodiversidade",
   },
 };
 
@@ -80,8 +77,7 @@ const t = dataCopy[locale] ?? dataCopy.en;
           MOKA BIO
         </p>
         <div class="mt-5">
-          <h2 class="font-inter text-[40px] font-semibold leading-[1.05] text-pure sm:text-[56px] lg:text-[64px]">{t.headline}</h2>
-          <p class="mt-3 font-inter text-[40px] font-semibold leading-[1.05] text-birch/88 sm:text-[56px] lg:text-[64px]">{t.subheadline}</p>
+          <h2 class="font-inter text-[32px] font-semibold leading-[1.12] text-pure sm:text-[44px] lg:text-[54px]">{t.subheadline}</h2>
         </div>
       </div>
 
@@ -112,6 +108,18 @@ const t = dataCopy[locale] ?? dataCopy.en;
 
     <div class="grid gap-4 font-inter">
       <div class="grid gap-4 sm:grid-cols-2">
+        <article class="data-card reveal opacity-0 rounded-[1.5rem] border border-freshgreen/24 bg-gradient-to-br from-deepforest/88 via-charcoal/72 to-charcoal/88 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl sm:col-span-2" data-animation="pop-in" style="transition-delay: 0.18s;">
+          <p class="text-xs font-semibold uppercase tracking-[0.32em] text-birch/70">{t.unexplored}</p>
+          <div class="mt-6 flex flex-wrap items-end gap-3">
+            <p class="text-[56px] font-semibold leading-none text-freshgreen sm:text-[64px]">40%</p>
+            <span class="mb-2 rounded-full border border-freshgreen/30 px-3 py-1 text-[11px] font-semibold text-freshgreen">{t.unexploredBadge}</span>
+          </div>
+          <p class="mt-5 text-[15px] leading-relaxed text-birch/74">
+            {t.unexploredDesc}
+          </p>
+          <p class="mt-6 text-xs font-semibold uppercase tracking-[0.28em] text-sage/90">{t.unexploredNote}</p>
+        </article>
+
         <article class="data-card reveal opacity-0 rounded-[1.5rem] border border-birch/10 bg-charcoal/52 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl" data-animation="pop-in" style="transition-delay: 0.25s;">
           <p class="text-xs font-semibold uppercase tracking-[0.32em] text-birch/70">{t.global}</p>
           <div class="mt-6 flex flex-wrap items-end gap-3">
@@ -134,28 +142,6 @@ const t = dataCopy[locale] ?? dataCopy.en;
             {t.naturalDesc}
           </p>
           <p class="mt-6 text-xs font-semibold uppercase tracking-[0.28em] text-sage/90">{t.naturalNote}</p>
-        </article>
-      </div>
-
-      <div class="grid gap-4">
-        <article class="data-card reveal opacity-0 rounded-[1.25rem] border border-birch/10 bg-charcoal/58 p-6 shadow-lg shadow-black/10 backdrop-blur-xl" data-animation="slide-in-right" style="transition-delay: 0.55s;">
-          <div class="flex items-center gap-3">
-            <span class="h-2.5 w-2.5 rounded-full bg-sage shadow-[0_0_18px_rgba(86,114,99,0.45)]"></span>
-            <p class="text-xs font-semibold uppercase tracking-[0.32em] text-sage/95">{t.problem}</p>
-          </div>
-          <p class="mt-4 text-[17px] leading-relaxed text-birch">
-            {t.problemDesc}
-          </p>
-        </article>
-
-        <article class="data-card reveal opacity-0 rounded-[1.25rem] border border-freshgreen/24 bg-gradient-to-br from-deepforest/90 via-deepforest/62 to-charcoal/88 p-6 shadow-xl shadow-freshgreen/5 backdrop-blur-xl" data-animation="slide-in-right" style="transition-delay: 0.7s;">
-          <div class="flex items-center gap-3">
-            <span class="h-2.5 w-2.5 rounded-full bg-freshgreen shadow-[0_0_18px_rgba(110,191,126,0.55)]"></span>
-            <p class="text-xs font-semibold uppercase tracking-[0.32em] text-freshgreen">{t.solution}</p>
-          </div>
-          <p class="mt-4 text-[17px] leading-relaxed text-birch">
-            {t.solutionDesc}
-          </p>
         </article>
       </div>
     </div>

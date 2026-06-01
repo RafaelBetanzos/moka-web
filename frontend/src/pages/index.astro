@@ -1,18 +1,17 @@
 ---
 import { ContactForm } from "@components/ContactForm/ContactForm";
 import ContactUsCard from "@components/ContactUsCard.astro";
-import DataPlatformSection from "@components/DataPlatformSection.astro";
+import DataBioactivitySection from "@components/DataBioactivitySection.astro";
 import OurVisionSection from "@components/OurVisionSection.astro";
-import ProblemSection from "@components/ProblemSection.astro";
-import SolutionSection from "@components/SolutionSection.astro";
 import { ArticlesCarrousel } from "@components/Swiper/ArticlesCarrousel";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
 import Hero from "../components/Hero.astro";
+import MapSection from "@components/MapSection.astro";
 
 const seo = {
-  title: "Moka Bio — The OS for Natural Product Discovery",
-  description: "Moka turns the world's natural chemical diversity into programmable bioactive intelligence. Accelerating molecular innovation across pharma, nutraceuticals, cosmetics, food, and agriculture.",
+  title: "Moka Bio — Discovering the bioactive potential of Latin American plants",
+  description: "Building LATAM's largest database for bioactivity and natural compounds.",
 };
 
 const industries = [
@@ -53,121 +52,49 @@ const industries = [
     <Hero />
     <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-02.png" tone="strong" revealStart={0.92} revealRange={0.42} class="home-botanical" />
 
+    <DataBioactivitySection />
 
-    <DataPlatformSection />
-
-    <section class="home-flow-section relative overflow-hidden px-5 py-10 sm:px-8 lg:py-14">
-      <div class="home-section-shell">
-        <div class="home-section-kicker">HOW MOKA WORKS</div>
-        <div class="grid items-end gap-8 lg:grid-cols-[0.8fr_1.2fr]">
-          <h2 class="home-section-title">A living knowledge system for natural discovery.</h2>
-          <p class="home-section-copy">
-            Moka connects natural knowledge, bioactive potential, and molecular intelligence into a workflow that can support product discovery.
-          </p>
-        </div>
-
-        <div class="flow-track mt-14 grid gap-5 lg:grid-cols-3">
-          <article class="flow-step">
-            <span>01</span>
-            <h3>Explore natural knowledge</h3>
-            <p>Organize botanical and scientific knowledge into a searchable discovery foundation.</p>
-          </article>
-          <article class="flow-step">
-            <span>02</span>
-            <h3>Identify bioactive potential</h3>
-            <p>Map biological signals, mechanisms, and chemical patterns across natural molecular space.</p>
-          </article>
-          <article class="flow-step">
-            <span>03</span>
-            <h3>Transform findings</h3>
-            <p>Turn discoveries into usable molecular, product, IP, and regulatory intelligence.</p>
-          </article>
+    <section class="home-what-section relative overflow-hidden">
+      <div class="home-flow-section px-5 py-8 sm:px-8 lg:py-10">
+        <div class="home-section-shell">
+          <div class="mx-auto max-w-4xl text-center">
+            <div class="home-section-kicker">WHAT WE DO</div>
+            <h2 class="home-section-title mt-4">Building LATAM's largest database for bioactivity and natural compounds.</h2>
+          </div>
         </div>
       </div>
-    </section>
 
-    <section class="home-layers-section relative overflow-hidden px-5 py-10 sm:px-8 lg:py-14">
-      <div class="absolute left-[-8%] top-8 h-[520px] w-[520px] rounded-full bg-freshgreen/6 blur-3xl"></div>
-      <div class="absolute right-[-10%] bottom-0 h-[560px] w-[560px] rounded-full bg-sage/10 blur-3xl"></div>
-      <div class="home-section-shell relative">
+      <MapSection />
+
+      <div class="home-layers-section relative overflow-hidden px-5 py-10 sm:px-8 lg:py-14">
+        <div class="absolute left-[-8%] top-8 h-[520px] w-[520px] rounded-full bg-freshgreen/6 blur-3xl"></div>
+        <div class="absolute right-[-10%] bottom-0 h-[560px] w-[560px] rounded-full bg-sage/10 blur-3xl"></div>
+        <div class="home-section-shell relative">
         <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
-            <div class="home-section-kicker">PLATFORM LAYERS</div>
-            <h2 class="home-section-title mt-4">From botanical complexity to bioactive intelligence.</h2>
+            <div class="home-section-kicker">MOKADEX</div>
+            <h2 class="home-section-title mt-4">Finds bioactive molecules in Latin American plants.</h2>
             <p class="home-section-copy mt-5">
-              The platform acts as a layered system that structures data, AI interpretation, bioactivity, and product-facing intelligence.
+              MokaDex is our proprietary tool that interprets the data and fits it into a repeatable pipeline, turning a database into a discovery system.
             </p>
+            <a href="/our-technology" class="learn-more-link mt-7 no-underline">Learn more</a>
           </div>
 
           <div class="arch-stack reveal opacity-0" data-animation="fade-up">
 
-            <!-- Layer 04 — top / most refined -->
+            <!-- Layer 01 — raw -->
             <div class="arch-layer arch-layer--04">
               <div class="arch-layer-left">
-                <span class="arch-num">04</span>
+                <span class="arch-num">01</span>
                 <div class="arch-accent arch-accent--04"></div>
               </div>
               <div class="arch-layer-body">
                 <div class="arch-layer-head">
-                  <svg class="arch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/><circle cx="12" cy="12" r="3" stroke-width="1.2"/></svg>
-                  <p class="arch-name">Product, IP & Regulatory</p>
-                  <span class="arch-badge arch-badge--04">MARKET-READY</span>
+                  <svg class="arch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C12 12 5 8 4 4c4 0 8 4 8 8z"/><path d="M12 22C12 13 19 8 20 4c-4 0-8 4-8 8z"/><line x1="12" y1="12" x2="12" y2="22"/></svg>
+                  <p class="arch-name">Botanical & Scientific Data</p>
+                  <span class="arch-badge arch-badge--04">RAW DATA</span>
                 </div>
-                <p class="arch-desc">Patent-ready molecular assets, regulatory dossiers, and product formulation packages.</p>
-              </div>
-            </div>
-
-            <!-- Connector 03→04 -->
-            <div class="arch-connector" aria-hidden="true">
-              <div class="arch-connector-line"></div>
-              <div class="arch-flow-dots">
-                <span class="arch-dot arch-dot--1"></span>
-                <span class="arch-dot arch-dot--2"></span>
-                <span class="arch-dot arch-dot--3"></span>
-              </div>
-              <div class="arch-connector-line"></div>
-            </div>
-
-            <!-- Layer 03 -->
-            <div class="arch-layer arch-layer--03">
-              <div class="arch-layer-left">
-                <span class="arch-num">03</span>
-                <div class="arch-accent arch-accent--03"></div>
-              </div>
-              <div class="arch-layer-body">
-                <div class="arch-layer-head">
-                  <svg class="arch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/><line x1="6" y1="7" x2="10" y2="10.5"/><line x1="18" y1="7" x2="14" y2="10.5"/><line x1="6" y1="17" x2="10" y2="13.5"/><line x1="18" y1="17" x2="14" y2="13.5"/></svg>
-                  <p class="arch-name">Bioactivity Intelligence</p>
-                  <span class="arch-badge arch-badge--03">VALIDATED</span>
-                </div>
-                <p class="arch-desc">Mechanism-of-action mapping, biological target prediction, and efficacy signal scoring.</p>
-              </div>
-            </div>
-
-            <!-- Connector 02→03 -->
-            <div class="arch-connector" aria-hidden="true">
-              <div class="arch-connector-line"></div>
-              <div class="arch-flow-dots">
-                <span class="arch-dot arch-dot--1"></span>
-                <span class="arch-dot arch-dot--2"></span>
-                <span class="arch-dot arch-dot--3"></span>
-              </div>
-              <div class="arch-connector-line"></div>
-            </div>
-
-            <!-- Layer 02 -->
-            <div class="arch-layer arch-layer--02">
-              <div class="arch-layer-left">
-                <span class="arch-num">02</span>
-                <div class="arch-accent arch-accent--02"></div>
-              </div>
-              <div class="arch-layer-body">
-                <div class="arch-layer-head">
-                  <svg class="arch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="5" height="5" rx="1"/><rect x="17" y="8" width="5" height="5" rx="1"/><rect x="9.5" y="3" width="5" height="5" rx="1"/><rect x="9.5" y="16" width="5" height="5" rx="1"/><line x1="7" y1="10.5" x2="9.5" y2="10.5"/><line x1="14.5" y1="10.5" x2="17" y2="10.5"/><line x1="12" y1="8" x2="12" y2="10.5"/><line x1="12" y1="13.5" x2="12" y2="16"/></svg>
-                  <p class="arch-name">AI / Knowledge Graph</p>
-                  <span class="arch-badge arch-badge--02">INTELLIGENCE</span>
-                </div>
-                <p class="arch-desc">MokaDex — our proprietary AI engine cross-referencing 130K+ species through graph-based reasoning.</p>
+                <p class="arch-desc">Botanical literature, ethnobotanical records, phytochemistry references, and experimental datasets structured for MokaDex analysis.</p>
               </div>
             </div>
 
@@ -182,144 +109,91 @@ const industries = [
               <div class="arch-connector-line"></div>
             </div>
 
-            <!-- Layer 01 — bottom / raw -->
+            <!-- Layer 02 -->
+            <div class="arch-layer arch-layer--03">
+              <div class="arch-layer-left">
+                <span class="arch-num">02</span>
+                <div class="arch-accent arch-accent--03"></div>
+              </div>
+              <div class="arch-layer-body">
+                <div class="arch-layer-head">
+                  <svg class="arch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="5" height="5" rx="1"/><rect x="17" y="8" width="5" height="5" rx="1"/><rect x="9.5" y="3" width="5" height="5" rx="1"/><rect x="9.5" y="16" width="5" height="5" rx="1"/><line x1="7" y1="10.5" x2="9.5" y2="10.5"/><line x1="14.5" y1="10.5" x2="17" y2="10.5"/><line x1="12" y1="8" x2="12" y2="10.5"/><line x1="12" y1="13.5" x2="12" y2="16"/></svg>
+                  <p class="arch-name">AI / Knowledge Graph</p>
+                  <span class="arch-badge arch-badge--03">INTELLIGENCE</span>
+                </div>
+                <p class="arch-desc">MokaDex connects species, compounds, evidence, and biological signals through graph-based reasoning.</p>
+              </div>
+            </div>
+
+            <!-- Connector 02→03 -->
+            <div class="arch-connector" aria-hidden="true">
+              <div class="arch-connector-line"></div>
+              <div class="arch-flow-dots">
+                <span class="arch-dot arch-dot--1"></span>
+                <span class="arch-dot arch-dot--2"></span>
+                <span class="arch-dot arch-dot--3"></span>
+              </div>
+              <div class="arch-connector-line"></div>
+            </div>
+
+            <!-- Layer 03 -->
+            <div class="arch-layer arch-layer--02">
+              <div class="arch-layer-left">
+                <span class="arch-num">03</span>
+                <div class="arch-accent arch-accent--02"></div>
+              </div>
+              <div class="arch-layer-body">
+                <div class="arch-layer-head">
+                  <svg class="arch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/><line x1="6" y1="7" x2="10" y2="10.5"/><line x1="18" y1="7" x2="14" y2="10.5"/><line x1="6" y1="17" x2="10" y2="13.5"/><line x1="18" y1="17" x2="14" y2="13.5"/></svg>
+                  <p class="arch-name">Bioactivity Intelligence</p>
+                  <span class="arch-badge arch-badge--02">VALIDATED</span>
+                </div>
+                <p class="arch-desc">MokaDex helps prioritize mechanism hypotheses, biological targets, and bioactivity signals for further validation.</p>
+              </div>
+            </div>
+
+            <!-- Connector 03→04 -->
+            <div class="arch-connector" aria-hidden="true">
+              <div class="arch-connector-line"></div>
+              <div class="arch-flow-dots">
+                <span class="arch-dot arch-dot--1"></span>
+                <span class="arch-dot arch-dot--2"></span>
+                <span class="arch-dot arch-dot--3"></span>
+              </div>
+              <div class="arch-connector-line"></div>
+            </div>
+
+            <!-- Layer 04 — market-ready -->
             <div class="arch-layer arch-layer--01">
               <div class="arch-layer-left">
-                <span class="arch-num">01</span>
+                <span class="arch-num">04</span>
                 <div class="arch-accent arch-accent--01"></div>
               </div>
               <div class="arch-layer-body">
                 <div class="arch-layer-head">
-                  <svg class="arch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C12 12 5 8 4 4c4 0 8 4 8 8z"/><path d="M12 22C12 13 19 8 20 4c-4 0-8 4-8 8z"/><line x1="12" y1="12" x2="12" y2="22"/></svg>
-                  <p class="arch-name">Botanical & Scientific Data</p>
-                  <span class="arch-badge arch-badge--01">RAW DATA</span>
+                  <svg class="arch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/><circle cx="12" cy="12" r="3" stroke-width="1.2"/></svg>
+                  <p class="arch-name">Product, IP & Regulatory</p>
+                  <span class="arch-badge arch-badge--01">MARKET-READY</span>
                 </div>
-                <p class="arch-desc">Indexed botanical literature, ethnobotanical records, phytochemistry databases, and experimental datasets.</p>
+                <p class="arch-desc">MokaDex outputs can support product direction, IP assessment, regulatory review, and formulation decisions.</p>
               </div>
             </div>
 
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="plant-to-bioactives relative overflow-hidden px-5 py-10 sm:px-8 lg:py-16">
-      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/14 to-transparent"></div>
-      <div class="absolute left-1/2 top-1/3 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-deepforest/20 blur-3xl pointer-events-none"></div>
-
-      <div class="home-section-shell relative">
-
-        <!-- Header -->
-        <div class="reveal opacity-0 flex flex-col items-center text-center mb-14" data-animation="slide-in">
-          <div class="home-section-kicker">THE DISCOVERY PIPELINE</div>
-          <h2 class="home-section-title mt-4 max-w-2xl mx-auto">
-            From a species in nature to a<br class="hidden sm:block"> patent-ready molecule. In weeks.
-          </h2>
-          <p class="home-section-copy mt-5 max-w-xl mx-auto">
-            What once cost millions and took years, Moka compresses into a repeatable, AI-driven pipeline that delivers validated molecular assets ready for licensing or formulation.
-          </p>
-        </div>
-
-        <!-- Pipeline flow -->
-        <div class="pipeline-flow reveal opacity-0" data-animation="fade-in" style="transition-delay: 0.2s;">
-
-          <!-- Step 1 -->
-          <div class="pipeline-step">
-            <div class="pipeline-step-icon pipeline-step-icon--01">
-              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 28C16 16 7 10 5 4c5 0 11 5 11 10z"/>
-                <path d="M16 28C16 17 25 11 27 5c-5 0-11 5-11 11z"/>
-                <line x1="16" y1="14" x2="16" y2="28"/>
-              </svg>
-            </div>
-            <p class="pipeline-step-num">01</p>
-            <p class="pipeline-step-label">Natural Species</p>
-            <p class="pipeline-step-stat">130K+ indexed</p>
-            <p class="pipeline-step-desc">Botanical literature, phytochemical databases, and experimental records — all structured.</p>
-          </div>
-
-          <!-- Arrow 1 -->
-          <div class="pipeline-arrow" aria-hidden="true">
-            <div class="pipeline-arrow-track">
-              <div class="pipeline-arrow-pulse"></div>
-            </div>
-            <svg class="pipeline-arrow-head" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="pipeline-step pipeline-step--center">
-            <div class="pipeline-step-icon pipeline-step-icon--02">
-              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="10" y="10" width="12" height="12" rx="2"/>
-                <circle cx="7" cy="7" r="2.5"/>
-                <circle cx="25" cy="7" r="2.5"/>
-                <circle cx="7" cy="25" r="2.5"/>
-                <circle cx="25" cy="25" r="2.5"/>
-                <line x1="9.2" y1="8.8" x2="11" y2="10.5"/>
-                <line x1="22.8" y1="8.8" x2="21" y2="10.5"/>
-                <line x1="9.2" y1="23.2" x2="11" y2="21.5"/>
-                <line x1="22.8" y1="23.2" x2="21" y2="21.5"/>
-              </svg>
-            </div>
-            <p class="pipeline-step-num">02</p>
-            <p class="pipeline-step-label">MokaDex AI</p>
-            <p class="pipeline-step-stat">Weeks, not years</p>
-            <p class="pipeline-step-desc">Graph-based AI maps chemical space, predicts mechanisms of action, and scores bioactive candidates.</p>
-          </div>
-
-          <!-- Arrow 2 -->
-          <div class="pipeline-arrow" aria-hidden="true">
-            <div class="pipeline-arrow-track">
-              <div class="pipeline-arrow-pulse"></div>
-            </div>
-            <svg class="pipeline-arrow-head" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="pipeline-step">
-            <div class="pipeline-step-icon pipeline-step-icon--03">
-              <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M10 4h8l6 6v18H8V4z"/>
-                <path d="M18 4v6h6"/>
-                <line x1="12" y1="16" x2="20" y2="16"/>
-                <line x1="12" y1="20" x2="18" y2="20"/>
-                <path d="M12 12h3"/>
-                <circle cx="22" cy="22" r="5" fill="rgba(110,191,126,0.12)" stroke-width="1.5"/>
-                <path d="M20 22l1.5 1.5L24 20" stroke-width="1.5"/>
-              </svg>
-            </div>
-            <p class="pipeline-step-num">03</p>
-            <p class="pipeline-step-label">IP-Ready Asset</p>
-            <p class="pipeline-step-stat">1 patent filed</p>
-            <p class="pipeline-step-desc">Validated molecular candidates packaged as patent-ready assets with full regulatory documentation.</p>
-          </div>
-
-        </div>
-
-        <!-- Proof point -->
-        <div class="pipeline-proof reveal opacity-0" data-animation="fade-in" style="transition-delay: 0.4s;">
-          <div class="pipeline-proof-dot"></div>
-          <p>
-            Already proven — a novel <strong>immunomodulator</strong> identified through MokaDex is now protected by a provisional patent.
-          </p>
-        </div>
-
       </div>
     </section>
 
-    <section class="home-applications relative overflow-hidden px-5 py-10 sm:px-8 lg:py-14">
+    <section class="home-applications relative overflow-hidden px-5 py-8 sm:px-8 lg:py-10">
       <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/18 to-transparent"></div>
       <div class="home-section-shell">
         <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.1s;">
-          <div class="home-section-kicker">APPLICATIONS</div>
-          <h2 class="home-section-title mt-4">Natural product intelligence<br class="hidden sm:block"> for global industries.</h2>
+          <div class="home-section-kicker">WHO IT'S FOR</div>
+          <h2 class="home-section-title mt-4">For innovative companies<br class="hidden sm:block"> building with nature.</h2>
           <p class="home-section-copy mt-4">Five high-value sectors where programmable bioactive intelligence unlocks measurable opportunity.</p>
         </div>
-        <div class="app-grid mt-12">
+        <div class="app-grid mt-8">
           {industries.map((ind, i) => (
             <article class="app-card reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${0.2 + i * 0.12}s;`}>
               <div class="app-icon-wrap">
@@ -336,7 +210,7 @@ const industries = [
       </div>
     </section>
 
-    <section class="home-traction relative overflow-hidden px-5 py-10 sm:px-8 lg:py-14">
+    <section class="home-traction relative overflow-hidden px-5 py-12 sm:px-8 lg:py-16">
       <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/20 to-transparent"></div>
       <div class="absolute left-1/2 top-0 h-[480px] w-[480px] -translate-x-1/2 rounded-full bg-freshgreen/5 blur-3xl pointer-events-none"></div>
       <div class="home-section-shell">
@@ -344,14 +218,14 @@ const industries = [
           <div class="home-section-kicker">TRACTION</div>
           <h2 class="home-section-title mt-4">Real science.<br class="hidden sm:block"> Real progress.</h2>
         </div>
-        <div class="traction-grid mt-12">
+        <div class="traction-grid mt-10">
 
           <article class="traction-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.15s;">
             <div class="traction-card-inner">
-              <p class="traction-number">130<span class="traction-unit">K+</span></p>
+              <p class="traction-number">30<span class="traction-unit">K+</span></p>
               <div class="traction-divider"></div>
               <p class="traction-label">Species Indexed</p>
-              <p class="traction-desc">Natural species catalogued and structured inside MokaDex — the world's largest validated natural chemical library.</p>
+              <p class="traction-desc">Species indexed in MokaDex — the most comprehensive natural chemistry database with a Latin American focus.</p>
             </div>
             <div class="traction-card-glow"></div>
           </article>
@@ -361,7 +235,7 @@ const industries = [
               <p class="traction-number">1<span class="traction-unit"> patent</span></p>
               <div class="traction-divider"></div>
               <p class="traction-label">Provisional Patent Filed</p>
-              <p class="traction-desc">An immunomodulator candidate identified and protected through Moka's bioactivity intelligence pipeline. IP-ready from day one.</p>
+              <p class="traction-desc">Provisional patent filed — an immunomodulator candidate identified and protected through Moka's discovery pipeline.</p>
             </div>
             <div class="traction-card-glow"></div>
           </article>
@@ -371,7 +245,7 @@ const industries = [
               <p class="traction-number">3<span class="traction-unit"> active</span></p>
               <div class="traction-divider"></div>
               <p class="traction-label">Research Partners</p>
-              <p class="traction-desc">Collaborating with institutions and industry partners to validate and deploy natural bioactive intelligence at scale.</p>
+              <p class="traction-desc">Active research partners — collaborating with institutions and industry to validate bioactive intelligence at scale.</p>
             </div>
             <div class="traction-card-glow"></div>
           </article>
@@ -380,94 +254,6 @@ const industries = [
       </div>
     </section>
 
-    <section class="home-delta-section relative overflow-hidden px-5 py-10 sm:px-8 lg:py-14">
-      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/22 to-transparent"></div>
-      <div class="absolute left-1/2 top-0 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-deepforest/18 blur-3xl pointer-events-none"></div>
-      <div class="home-section-shell">
-
-        <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
-          <div class="home-section-kicker">WHY MOKA</div>
-          <h2 class="home-section-title mt-4">What changes<br class="hidden sm:block"> with Moka Bio?</h2>
-        </div>
-
-        <div class="delta-grid mt-14">
-
-          <!-- COST -->
-          <article class="delta-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.15s;">
-            <div class="delta-before">
-              <span class="delta-tag delta-tag--before">BEFORE</span>
-              <p class="delta-metric delta-metric--before">$1<span class="delta-metric-unit">M</span></p>
-              <p class="delta-sublabel">Per bioactive compound</p>
-            </div>
-            <div class="delta-bridge">
-              <div class="delta-bridge-line"></div>
-              <div class="delta-bridge-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-                94% cost reduction
-              </div>
-              <div class="delta-bridge-line"></div>
-            </div>
-            <div class="delta-after">
-              <span class="delta-tag delta-tag--after">WITH MOKA</span>
-              <p class="delta-metric delta-metric--after">$60<span class="delta-metric-unit">K</span></p>
-              <p class="delta-sublabel delta-sublabel--after">For as many compounds as you want</p>
-            </div>
-          </article>
-
-          <!-- SPEED -->
-          <article class="delta-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.27s;">
-            <div class="delta-before">
-              <span class="delta-tag delta-tag--before">BEFORE</span>
-              <p class="delta-metric delta-metric--before">2–7<span class="delta-metric-unit"> yr</span></p>
-              <p class="delta-sublabel">From research to candidate</p>
-            </div>
-            <div class="delta-bridge">
-              <div class="delta-bridge-line"></div>
-              <div class="delta-bridge-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-                From years to weeks
-              </div>
-              <div class="delta-bridge-line"></div>
-            </div>
-            <div class="delta-after">
-              <span class="delta-tag delta-tag--after">WITH MOKA</span>
-              <p class="delta-metric delta-metric--after">Weeks</p>
-              <p class="delta-sublabel delta-sublabel--after">To your first validated candidates</p>
-            </div>
-          </article>
-
-          <!-- IP -->
-          <article class="delta-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.39s;">
-            <div class="delta-before">
-              <span class="delta-tag delta-tag--before">BEFORE</span>
-              <p class="delta-metric delta-metric--before" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.1;">No clear path</p>
-              <p class="delta-sublabel">Fragmented IP landscape</p>
-            </div>
-            <div class="delta-bridge">
-              <div class="delta-bridge-line"></div>
-              <div class="delta-bridge-pill">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
-                Full visibility, day one
-              </div>
-              <div class="delta-bridge-line"></div>
-            </div>
-            <div class="delta-after">
-              <span class="delta-tag delta-tag--after">WITH MOKA</span>
-              <p class="delta-metric delta-metric--after" style="font-size: clamp(1.8rem, 3.5vw, 2.8rem); line-height: 1.1;">Patent-ready</p>
-              <p class="delta-sublabel delta-sublabel--after">Complete patent landscape mapping included</p>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <div class="home-problem-solution relative overflow-hidden py-5">
-      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/20 to-transparent"></div>
-      <ProblemSection />
-      <SolutionSection />
-    </div>
-    
     <OurVisionSection />
 
     <div class="home-articles-band mt-4 mb-10">
@@ -526,6 +312,11 @@ const industries = [
     background: transparent;
   }
 
+  .home-color-system > :not(.botanical-scroll-reveal) {
+    position: relative;
+    z-index: 1;
+  }
+
   .home-color-system::before {
     content: "";
     position: fixed;
@@ -578,9 +369,32 @@ const industries = [
     color: var(--moka-text-muted);
   }
 
+  .learn-more-link {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid rgba(110, 191, 126, 0.28);
+    background: rgba(19, 45, 37, 0.36);
+    padding: 0.8rem 1.15rem;
+    font-family: Inter, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--fresh-green-color);
+    transition: transform 260ms ease, background 260ms ease, color 260ms ease;
+  }
+
+  .learn-more-link:hover {
+    transform: translateY(-2px);
+    background: var(--fresh-green-color);
+    color: var(--charcoal-color);
+  }
+
   .home-flow-section {
     background: transparent;
   }
+
 
   .home-proof-motion {
     background: transparent;
@@ -1060,6 +874,7 @@ const industries = [
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
     min-height: 210px;
     border-radius: 1.5rem;
     padding: 1.5rem;
@@ -1069,6 +884,7 @@ const industries = [
     backdrop-filter: blur(18px);
     transition: transform 320ms ease, border-color 320ms ease, background 320ms ease, box-shadow 320ms ease;
     overflow: hidden;
+    text-align: center;
   }
 
   .app-card::after {
@@ -1109,6 +925,7 @@ const industries = [
     flex: 1;
     display: flex;
     align-items: flex-end;
+    justify-content: center;
     margin-top: 1rem;
     font-family: Inter, sans-serif;
     font-size: clamp(0.88rem, 1.1vw, 1rem);
@@ -1116,11 +933,13 @@ const industries = [
     color: var(--pure-color);
     line-height: 1.2;
     padding-bottom: 0.2rem;
+    text-align: center;
   }
 
   .app-meta {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 0.2rem;
     margin-top: 1rem;
     padding-top: 0.875rem;
@@ -1151,53 +970,45 @@ const industries = [
   }
 
   .traction-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(110, 191, 126, 0.18);
+    border-bottom: 1px solid rgba(110, 191, 126, 0.18);
   }
 
   .traction-card {
     position: relative;
-    border-radius: 1.75rem;
-    border: 1px solid rgba(110, 191, 126, 0.18);
-    background: linear-gradient(145deg, rgba(19, 45, 37, 0.62), rgba(18, 18, 18, 0.58));
-    backdrop-filter: blur(20px);
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(110, 191, 126, 0.08);
+    border-bottom: 1px solid rgba(222, 222, 222, 0.08);
+    background: transparent;
     overflow: hidden;
-    transition: transform 320ms ease, border-color 320ms ease;
+    transition: background 260ms ease;
+  }
+
+  .traction-card:last-child {
+    border-bottom: 0;
   }
 
   .traction-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(110, 191, 126, 0.4);
-  }
-
-  .traction-card:hover .traction-card-glow {
-    opacity: 1;
+    background: rgba(19, 45, 37, 0.22);
   }
 
   .traction-card-inner {
     position: relative;
     z-index: 1;
-    padding: 2.25rem 2rem 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    height: 100%;
+    display: grid;
+    grid-template-columns: minmax(7rem, 0.28fr) minmax(9rem, 0.34fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 2rem;
+    padding: 1.6rem 0;
   }
 
   .traction-card-glow {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 30% 0%, rgba(110, 191, 126, 0.12), transparent 50%);
-    opacity: 0;
-    transition: opacity 320ms ease;
-    pointer-events: none;
+    display: none;
   }
 
   .traction-number {
     font-family: Inter, sans-serif;
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(2.8rem, 5vw, 4.6rem);
     font-weight: 750;
     line-height: 1;
     color: var(--fresh-green-color);
@@ -1212,29 +1023,23 @@ const industries = [
   }
 
   .traction-divider {
-    width: 2.5rem;
-    height: 2px;
-    background: linear-gradient(90deg, var(--fresh-green-color), transparent);
-    border-radius: 999px;
-    margin: 1.25rem 0 1rem;
-    opacity: 0.5;
+    display: none;
   }
 
   .traction-label {
     font-family: Inter, sans-serif;
-    font-size: 1.05rem;
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
     font-weight: 700;
     color: var(--pure-color);
     line-height: 1.2;
-    margin-bottom: 0.75rem;
+    margin: 0;
   }
 
   .traction-desc {
     font-family: Inter, sans-serif;
     font-size: 14px;
     line-height: 1.65;
-    color: rgba(222, 222, 222, 0.55);
-    flex: 1;
+    color: rgba(222, 222, 222, 0.62);
   }
 
   /* ── Delta / What Changes section ───────────── */

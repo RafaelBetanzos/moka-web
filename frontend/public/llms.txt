@@ -1,0 +1,46 @@
+# Moka Bio
+
+Moka Bio is Latin America's leading bioprospecting company.
+
+Moka builds Latin America's leading bioactivity database. MokaDex combines plant bioactive data, chemical fingerprints, mechanisms of action, ethnobotanical knowledge, experimental evidence, and artificial intelligence to accelerate the discovery of new compounds.
+
+## Core Positioning
+
+Moka is the largest plant bioactive database in Latam. It transforms Latin America's biodiversity into searchable, programmable intelligence for molecular innovation across medicine, nutrition, cosmetics, food, agriculture, and other industries.
+
+## MokaDex
+
+MokaDex is Moka's AI prediction engine. It helps map chemical space, infer mechanisms of action, identify bioactive candidates, and translate discoveries into molecular, product, IP, and regulatory intelligence.
+
+## Proof Points
+
+- 30K+ species indexed in MokaDex.
+- A provisional patent filed for an immunomodulator candidate identified through Moka's discovery pipeline.
+- Antibacterial activity confirmed in laboratory across multiple Latin American species.
+- Active research partners validating bioactive intelligence at scale.
+
+## Landing Page Sections
+
+Hero: Moka Bio presents itself as discovering the bioactive potential of Latin American plants and building LATAM's largest database for bioactivity and natural compounds.
+
+Chemical Diversity: Moka explains that Latin America's chemical diversity remains unexplored and underrepresented.
+
+Statistics: Moka highlights demand for natural molecular solutions and the unexplored opportunity in Latin America's natural chemistry.
+
+40% Global Biodiversity: Moka highlights that 40% of the world's biodiversity is in LATAM.
+
+What We Do: Moka is building LATAM's largest database for bioactivity and natural compounds.
+
+How It Works: MokaDex combines nature's knowledge, empirical data, and predictive biology into one intelligence system for Latin American biodiversity.
+
+Moka Layers: Moka structures botanical and scientific data, AI interpretation, bioactivity intelligence, and market-ready outputs.
+
+Traction: Moka anchors credibility through indexed species, patent progress, and active research partnerships.
+
+Why Moka: Moka reduces cost, accelerates discovery, and creates clearer paths to patent-ready candidates.
+
+Problem: Moka addresses the fact that almost 99% of Latin American plant bioactives remain unexplored.
+
+Vision: Moka believes Latin America's biodiversity should have economic value, be protected, and include the communities that have always known it.
+
+Contact: Moka invites partners to find the next breakthrough in Latin America.
