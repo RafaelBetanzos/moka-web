@@ -30,14 +30,16 @@ const navCopy = {
   <nav
     class="flex flex-row justify-between items-center w-full py-5 sm:py-7 px-4 sm:px-8 flex-nowrap gap-4"
   >
+    <!-- Logo + Home link (always visible) -->
     <div class="flex items-center gap-4 sm:gap-7 shrink-0">
       <a href={navHref("/")}>
-        <Image src={Logo} alt="Moka Bio Logo" class="w-10 sm:w-14" />
+        <Image src={Logo} alt="Moka Bio Logo" class="w-7 sm:w-9" />
       </a>
       <a href={navHref("/")} class="nav-link hover:text-freshgreen transition-colors text-pure text-[16px] font-semibold whitespace-nowrap">{navCopy.home}</a>
     </div>
 
-    <div class="flex flex-row gap-4 sm:gap-8 items-center justify-end shrink-0">
+    <!-- Desktop right side — hidden on mobile, shown on md+ -->
+    <div class="hidden md:flex flex-row gap-4 sm:gap-8 items-center justify-end shrink-0">
       <div
         class="flex flex-row gap-4 sm:gap-8 text-pure text-[16px] font-semibold items-center whitespace-nowrap"
       >
@@ -79,7 +81,62 @@ const navCopy = {
         </div>
       </details>
     </div>
+
+    <!-- Mobile hamburger — flex on mobile, hidden md+ (Tailwind handles display so Astro scoping doesn't override) -->
+    <button
+      class="hamburger-btn flex items-center justify-center md:hidden"
+      id="nav-hamburger"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+    >
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+
   </nav>
+</div>
+
+<!-- Mobile full-screen overlay (only used on mobile, md:hidden equivalent via JS) -->
+<div id="mobile-menu" class="mobile-menu" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="mobile-menu-inner">
+
+    <div class="mobile-menu-top">
+      <a href={navHref("/")} id="mobile-logo-link">
+        <Image src={Logo} alt="Moka Bio Logo" class="w-11" />
+      </a>
+      <button class="mobile-close-btn" id="nav-close" aria-label="Close navigation menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation">
+      <a href={navHref("/")} class="mobile-nav-link">{navCopy.home}</a>
+      <a href={navHref("/our-technology")} class="mobile-nav-link">{navCopy.tech}</a>
+      <a href={navHref("/about-us")} class="mobile-nav-link">{navCopy.about}</a>
+      <a href={navHref("/insights")} class="mobile-nav-link">{navCopy.insights}</a>
+    </nav>
+
+    <div class="mobile-cta">
+      <a href={navHref("/contact-us")} class="mobile-cta-btn no-underline">{navCopy.bookDemo}</a>
+      <a href="https://www.linkedin.com/company/mokabio" target="_blank" rel="noopener noreferrer" class="mobile-linkedin no-underline">
+        <Image src={LinkedIn} alt="LinkedIn" class="w-5 opacity-75" loading="lazy" />
+        <span>LinkedIn</span>
+      </a>
+    </div>
+
+    <div class="mobile-lang">
+      <a href={localizedPath("en")} class:list={["mobile-lang-btn", currentLang === "EN" && "mobile-lang-btn--active"]}>EN</a>
+      <a href={localizedPath("es")} class:list={["mobile-lang-btn", currentLang === "ES" && "mobile-lang-btn--active"]}>ES</a>
+      <a href={localizedPath("pt")} class:list={["mobile-lang-btn", currentLang === "PT" && "mobile-lang-btn--active"]}>PT</a>
+    </div>
+
+  </div>
 </div>
 
 <script>
@@ -91,20 +148,60 @@ const navCopy = {
   }
 </script>
 
+<script>
+  const links = document.querySelectorAll('.nav-link');
+  const path  = window.location.pathname.replace(/\/$/, '') || '/';
+  links.forEach((link) => {
+    const href = link.getAttribute('href')?.replace(/\/$/, '') || '';
+    const isLocalizedHome = href === '/' || href === '/es' || href === '/pt';
+    const isActive = isLocalizedHome ? path === href : path.startsWith(href);
+    if (isActive) link.classList.add('nav-link--active');
+  });
+</script>
+
+<script>
+  const hamburger = document.getElementById('nav-hamburger');
+  const closeBtn  = document.getElementById('nav-close');
+  const menu      = document.getElementById('mobile-menu');
+  const logoLink  = document.getElementById('mobile-logo-link');
+
+  function openMenu() {
+    menu?.classList.add('open');
+    menu?.setAttribute('aria-hidden', 'false');
+    hamburger?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    menu?.classList.remove('open');
+    menu?.setAttribute('aria-hidden', 'true');
+    hamburger?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  hamburger?.addEventListener('click', openMenu);
+  closeBtn?.addEventListener('click', closeMenu);
+  logoLink?.addEventListener('click', closeMenu);
+  menu?.querySelectorAll('.mobile-nav-link, .mobile-cta-btn').forEach(el => {
+    el.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menu?.classList.contains('open')) closeMenu();
+  });
+</script>
+
 <style>
   /* ── Scroll-aware background ──────────────────── */
   .nav-root {
     transition: background 280ms ease, backdrop-filter 280ms ease, border-color 280ms ease;
   }
 
-  /* Interior pages: always opaque */
   .nav-root:not([data-home]) {
     background: rgba(18, 18, 18, 0.94);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-  /* Home: opaque only after scrolling past the hero intro */
   .nav-root[data-home].nav-scrolled {
     background: rgba(18, 18, 18, 0.94);
     backdrop-filter: blur(20px);
@@ -130,17 +227,12 @@ const navCopy = {
   }
 
   .nav-link:hover::after,
-  .nav-link--active::after {
-    width: 100%;
-  }
+  .nav-link--active::after { width: 100%; }
 
-  .nav-link--active {
-    color: var(--fresh-green-color);
-  }
+  .nav-link--active { color: var(--fresh-green-color); }
 
-  .language-menu {
-    font-family: Inter, sans-serif;
-  }
+  /* ── Language picker ──────────────────────────── */
+  .language-menu { font-family: Inter, sans-serif; }
 
   .language-menu[open] .language-trigger {
     border-color: rgba(110, 191, 126, 0.5);
@@ -164,9 +256,7 @@ const navCopy = {
     transition: border-color 220ms ease, color 220ms ease, background 220ms ease;
   }
 
-  .language-trigger::-webkit-details-marker {
-    display: none;
-  }
+  .language-trigger::-webkit-details-marker { display: none; }
 
   .language-options {
     position: absolute;
@@ -198,16 +288,168 @@ const navCopy = {
     background: rgba(110, 191, 126, 0.12);
     color: var(--fresh-green-color);
   }
+
+  /* ── Hamburger button (mobile only) ───────────── */
+  /* display intentionally omitted — Tailwind flex/md:hidden handles it
+     so Astro's scoped specificity doesn't override the utility class   */
+  .hamburger-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(222, 222, 222, 0.14);
+    background: rgba(18, 18, 18, 0.42);
+    color: var(--pure-color);
+    cursor: pointer;
+    transition: background 200ms ease, border-color 200ms ease;
+    flex-shrink: 0;
+  }
+
+  .hamburger-btn:hover {
+    background: rgba(110, 191, 126, 0.12);
+    border-color: rgba(110, 191, 126, 0.28);
+  }
+
+  /* ── Mobile overlay (only rendered when open) ─── */
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(8, 12, 10, 0.98);
+    backdrop-filter: blur(18px);
+    transform: translateX(100%);
+    transition: transform 340ms cubic-bezier(0.16, 1, 0.3, 1);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-menu.open { transform: translateX(0); }
+
+  .mobile-menu-inner {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    padding: 1.5rem 1.5rem 2.5rem;
+    gap: 1.75rem;
+  }
+
+  .mobile-menu-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid rgba(110, 191, 126, 0.10);
+  }
+
+  .mobile-close-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgba(222, 222, 222, 0.12);
+    background: rgba(18, 18, 18, 0.42);
+    color: var(--pure-color);
+    cursor: pointer;
+    transition: background 200ms ease, border-color 200ms ease;
+  }
+
+  .mobile-close-btn:hover {
+    background: rgba(110, 191, 126, 0.12);
+    border-color: rgba(110, 191, 126, 0.28);
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .mobile-nav-link {
+    display: block;
+    padding: 1.1rem 0.25rem;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.35rem, 5vw, 1.6rem);
+    font-weight: 650;
+    color: rgba(222, 222, 222, 0.78);
+    border-bottom: 1px solid rgba(222, 222, 222, 0.06);
+    text-decoration: none;
+    transition: color 200ms ease, padding-left 200ms ease;
+  }
+
+  .mobile-nav-link:hover {
+    color: var(--fresh-green-color);
+    padding-left: 0.75rem;
+  }
+
+  .mobile-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+  }
+
+  .mobile-cta-btn {
+    display: block;
+    text-align: center;
+    background: var(--fresh-green-color);
+    color: var(--charcoal-color);
+    border-radius: 999px;
+    padding: 1rem 1.5rem;
+    font-family: Inter, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: background 200ms ease, transform 200ms ease;
+  }
+
+  .mobile-cta-btn:hover {
+    background: var(--pure-color);
+    transform: translateY(-2px);
+  }
+
+  .mobile-linkedin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    color: rgba(222, 222, 222, 0.55);
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 180ms ease;
+  }
+
+  .mobile-linkedin:hover { color: var(--fresh-green-color); }
+
+  .mobile-lang {
+    display: flex;
+    gap: 0.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(110, 191, 126, 0.10);
+  }
+
+  .mobile-lang-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem;
+    border-radius: 10px;
+    border: 1px solid rgba(222, 222, 222, 0.10);
+    background: rgba(18, 18, 18, 0.40);
+    color: rgba(222, 222, 222, 0.55);
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: all 200ms ease;
+  }
+
+  .mobile-lang-btn--active {
+    background: rgba(110, 191, 126, 0.14);
+    color: var(--fresh-green-color);
+    border-color: rgba(110, 191, 126, 0.28);
+  }
+
+  .mobile-lang-btn:hover { color: var(--fresh-green-color); }
 </style>
-
-<script>
-  const links = document.querySelectorAll('.nav-link');
-  const path  = window.location.pathname.replace(/\/$/, '') || '/';
-
-  links.forEach((link) => {
-    const href = link.getAttribute('href')?.replace(/\/$/, '') || '';
-    const isLocalizedHome = href === '/' || href === '/es' || href === '/pt';
-    const isActive = isLocalizedHome ? path === href : path.startsWith(href);
-    if (isActive) link.classList.add('nav-link--active');
-  });
-</script>

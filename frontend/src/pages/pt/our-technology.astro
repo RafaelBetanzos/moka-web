@@ -11,7 +11,7 @@ import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
   description="Explore a Moka: da complexidade botânica à inteligência molecular programável."
 >
   <div class="tech-page relative flex flex-col items-center justify-between w-full bg-charcoal overflow-hidden">
-    <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-03.png" tone="strong" class="tech-botanical-focus" />
+    <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-03.png" tone="strong" class="tech-botanical-focus" revealStart={-0.15} />
     <div class="tech-biofield pointer-events-none fixed inset-0 z-0" aria-hidden="true">
       <svg class="h-full w-full" viewBox="0 0 1440 2200" preserveAspectRatio="xMidYMid slice">
         <defs>
@@ -94,8 +94,6 @@ import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
     <div
       class="relative z-10 overflow-hidden bg-transparent flex flex-col items-center justify-center py-20 w-full"
     >
-      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/40 to-transparent"></div>
-      <div class="absolute left-1/2 top-24 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-deepforest/35 blur-3xl"></div>
       <div class="tech-silhouette-layer pointer-events-none absolute inset-0 z-[5] overflow-hidden" aria-hidden="true">
         <div class="absolute left-3 top-24 hidden h-[78%] w-[30%] md:block">
           <svg class="tech-silhouette float-a absolute left-[8%] top-[4%] w-20 lg:w-24" viewBox="0 0 80 80">
@@ -152,7 +150,7 @@ import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
           Nossa tecnologia
         </h1>
         <p class="tech-page-tagline">
-          Da complexidade botânica à inteligência molecular programável.
+          A camada de inteligência especializada da biodiversidade latino-americana.
         </p>
         <div class="tech-page-rule" aria-hidden="true"></div>
       </div>

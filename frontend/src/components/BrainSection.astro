@@ -7,6 +7,27 @@ interface Props {
 }
 
 const { locale = "en" } = Astro.props;
+const process = {
+  en: [
+    { step: "01", kicker: "RAW DATA",       title: "Botanical & Scientific Data",  body: "Botanical literature, phytochemistry references, species records, and experimental datasets structured for MokaDex analysis." },
+    { step: "02", kicker: "INTELLIGENCE",   title: "AI / Knowledge Graph",          body: "MokaDex connects species, compounds, evidence, and biological signals through graph-based reasoning." },
+    { step: "03", kicker: "VALIDATED",      title: "Bioactivity Intelligence",      body: "MokaDex helps prioritize mechanism hypotheses, biological targets, and bioactivity signals for further validation." },
+    { step: "04", kicker: "MARKET-READY",   title: "Product, IP & Regulatory",      body: "MokaDex outputs can support product direction, IP assessment, regulatory review, and formulation decisions." },
+  ],
+  es: [
+    { step: "01", kicker: "DATOS BRUTOS",          title: "Datos Botánicos y Científicos",   body: "Literatura botánica, referencias de fitoquímica, registros de especies y conjuntos de datos experimentales estructurados para el análisis de MokaDex." },
+    { step: "02", kicker: "INTELIGENCIA",          title: "IA / Grafo de Conocimiento",      body: "MokaDex conecta especies, compuestos, evidencias y señales biológicas mediante razonamiento basado en grafos." },
+    { step: "03", kicker: "VALIDADO",              title: "Inteligencia de Bioactividad",    body: "MokaDex ayuda a priorizar hipótesis de mecanismo, dianas biológicas y señales de bioactividad para su validación posterior." },
+    { step: "04", kicker: "LISTO PARA MERCADO",    title: "Producto, IP y Regulatorio",      body: "Los resultados de MokaDex pueden orientar la dirección de productos, la evaluación de PI, la revisión regulatoria y las decisiones de formulación." },
+  ],
+  pt: [
+    { step: "01", kicker: "DADOS BRUTOS",          title: "Dados Botânicos e Científicos",   body: "Literatura botânica, referências de fitoquímica, registros de espécies e conjuntos de dados experimentais estruturados para a análise do MokaDex." },
+    { step: "02", kicker: "INTELIGÊNCIA",          title: "IA / Grafo de Conhecimento",      body: "O MokaDex conecta espécies, compostos, evidências e sinais biológicos por meio de raciocínio baseado em grafos." },
+    { step: "03", kicker: "VALIDADO",              title: "Inteligência de Bioatividade",    body: "O MokaDex ajuda a priorizar hipóteses de mecanismo, alvos biológicos e sinais de bioatividade para validação posterior." },
+    { step: "04", kicker: "PRONTO PARA MERCADO",   title: "Produto, PI e Regulatório",       body: "Os resultados do MokaDex podem apoiar a direção de produtos, avaliação de PI, revisão regulatória e decisões de formulação." },
+  ],
+}[locale];
+
 const copy = {
   en: {
     analytical: "Analytical thinking",
@@ -14,18 +35,18 @@ const copy = {
     experimentalText: "AI model trained on in-house experimental data",
     creative: "Creative thinking",
     silico: "In silico lobe",
-    silicoText: "AI model trained on public experimental data",
+    silicoText: "AI model trained on in-house predicted data",
     kicker: "HOW IT WORKS",
     titleStart: "MokaDex integrates nature’s knowledge with",
     titleHighlight: "cutting edge technology",
     body: "MokaDex combines empirical evidence with predictive biology to turn Latin America's biodiversity into a searchable, programmable discovery system.",
     leftTitle: "Left Brain",
-    leftBody: "Empirical data — chemical fingerprints, LC-MS, experimental bioactives, ethnobotany, species records, and validated biological activity.",
+    leftBody: "Empirical data — chemical fingerprints, LC-MS, experimental bioactives, species records, and validated biological activity.",
     rightTitle: "Right Brain",
     rightBody: "MokaDex — bioinformatic prediction, mechanism of action inference, structure-activity relationships, pathway mapping, and market intelligence.",
     togetherTitle: "Together",
     togetherBody: "A knowledge graph of Latin American biodiversity — built to identify what nature already knows, and translate it into molecules, products, IP, and scalable innovation.",
-    connector: "THE PROBLEM",
+    connector: "THE PROCESS",
   },
   es: {
     analytical: "Pensamiento analítico",
@@ -33,18 +54,18 @@ const copy = {
     experimentalText: "Modelo de IA entrenado con datos experimentales propios",
     creative: "Pensamiento creativo",
     silico: "Lóbulo in silico",
-    silicoText: "Modelo de IA entrenado con datos experimentales públicos",
+    silicoText: "Modelo de IA entrenado con datos predichos internos",
     kicker: "CÓMO FUNCIONA",
     titleStart: "MokaDex integra el conocimiento de la naturaleza con",
     titleHighlight: "tecnología de vanguardia",
     body: "MokaDex combina evidencia empírica con biología predictiva para convertir la biodiversidad latinoamericana en un sistema de descubrimiento consultable y programable.",
     leftTitle: "Cerebro izquierdo",
-    leftBody: "Datos empíricos: fingerprints químicos, LC-MS, bioactivos experimentales, etnobotánica, registros de especies y actividad biológica validada.",
+    leftBody: "Datos empíricos: fingerprints químicos, LC-MS, bioactivos experimentales, registros de especies y actividad biológica validada.",
     rightTitle: "Cerebro derecho",
     rightBody: "MokaDex: predicción bioinformática, inferencia de mecanismos de acción, relaciones estructura-actividad, mapeo de rutas e inteligencia de mercado.",
     togetherTitle: "Juntos",
     togetherBody: "Un grafo de conocimiento de la biodiversidad latinoamericana, creado para identificar lo que la naturaleza ya sabe y traducirlo en moléculas, productos, PI e innovación escalable.",
-    connector: "EL PROBLEMA",
+    connector: "EL PROCESO",
   },
   pt: {
     analytical: "Pensamento analítico",
@@ -52,18 +73,18 @@ const copy = {
     experimentalText: "Modelo de IA treinado com dados experimentais próprios",
     creative: "Pensamento criativo",
     silico: "Lobo in silico",
-    silicoText: "Modelo de IA treinado com dados experimentais públicos",
+    silicoText: "Modelo de IA treinado com dados preditos internos",
     kicker: "COMO FUNCIONA",
     titleStart: "MokaDex integra o conhecimento da natureza com",
     titleHighlight: "tecnologia de ponta",
     body: "O MokaDex combina evidência empírica com biologia preditiva para transformar a biodiversidade latino-americana em um sistema de descoberta pesquisável e programável.",
     leftTitle: "Cérebro esquerdo",
-    leftBody: "Dados empíricos: fingerprints químicos, LC-MS, bioativos experimentais, etnobotânica, registros de espécies e atividade biológica validada.",
+    leftBody: "Dados empíricos: fingerprints químicos, LC-MS, bioativos experimentais, registros de espécies e atividade biológica validada.",
     rightTitle: "Cérebro direito",
     rightBody: "MokaDex: predição bioinformática, inferência de mecanismos de ação, relações estrutura-atividade, mapeamento de vias e inteligência de mercado.",
     togetherTitle: "Juntos",
     togetherBody: "Um grafo de conhecimento da biodiversidade latino-americana, criado para identificar o que a natureza já sabe e traduzir isso em moléculas, produtos, PI e inovação escalável.",
-    connector: "O PROBLEMA",
+    connector: "O PROCESSO",
   },
 }[locale];
 ---
@@ -162,11 +183,32 @@ const copy = {
     </article>
   </div>
 
-  {/* Conector visual → ProblemSection */}
+  {/* Conector visual → THE PROCESS */}
   <div class="brain-connector" aria-hidden="true">
     <div class="brain-connector-line"></div>
     <div class="brain-connector-dot"></div>
     <p class="brain-connector-label">{copy.connector}</p>
+  </div>
+
+  {/* Diagrama de proceso */}
+  <div class="process-flow">
+    {process.map((step, i) => (
+      <>
+        <article class="process-card moka-page-panel reveal opacity-0 group" data-animation="pop-in" style={`transition-delay: ${0.1 + i * 0.15}s;`}>
+          <p class="process-step">{step.step}</p>
+          <p class="process-kicker">{step.kicker}</p>
+          <h3 class="process-title">{step.title}</h3>
+          <p class="process-body">{step.body}</p>
+        </article>
+        {i < process.length - 1 && (
+          <div class="process-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </div>
+        )}
+      </>
+    ))}
   </div>
 </div>
 
@@ -341,6 +383,103 @@ const copy = {
     }
     .brain-connector-dot {
       animation: none;
+    }
+  }
+
+  /* ── Process flow diagram ─────────────────────── */
+  .process-flow {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    grid-template-rows: auto auto auto 1fr;
+    row-gap: 0.5rem;
+    width: min(100%, 1200px);
+    margin-top: 2rem;
+  }
+
+  .process-card {
+    grid-row: 1 / 5;
+    display: grid;
+    grid-template-rows: subgrid;
+    align-content: start;
+    padding: 1.75rem;
+    border-radius: 1.5rem;
+    cursor: default;
+    transition: transform 400ms ease, border-color 400ms ease, box-shadow 400ms ease;
+  }
+
+  .process-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--moka-border-accent);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.28), 0 0 40px var(--moka-glow-soft);
+  }
+
+  .process-step {
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    color: rgba(110, 191, 126, 0.45);
+    align-self: start;
+  }
+
+  .process-kicker {
+    font-family: Roboto, sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.44em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+    align-self: start;
+  }
+
+  .process-title {
+    font-family: Inter, sans-serif;
+    font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+    font-weight: 700;
+    color: var(--pure-color);
+    line-height: 1.3;
+    align-self: start;
+    transition: color 300ms ease;
+  }
+
+  .process-card:hover .process-title { color: var(--fresh-green-color); }
+
+  .process-body {
+    font-family: Inter, sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: var(--moka-text-muted);
+    align-self: start;
+  }
+
+  .process-arrow {
+    grid-row: 1 / 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    color: rgba(110, 191, 126, 0.35);
+  }
+
+  .process-arrow svg { width: 20px; height: 20px; }
+
+  @media (max-width: 900px) {
+    .process-flow {
+      grid-template-columns: 1fr;
+      grid-template-rows: none;
+    }
+    .process-card {
+      grid-row: auto;
+      grid-template-rows: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .process-arrow {
+      grid-row: auto;
+      width: auto;
+      height: 2rem;
+      transform: rotate(90deg);
     }
   }
 </style>

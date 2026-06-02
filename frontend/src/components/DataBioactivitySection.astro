@@ -65,8 +65,6 @@ const t = dataCopy[locale] ?? dataCopy.en;
 
 <section class="home-data-section relative -mt-1 overflow-hidden px-5 py-20 sm:px-8 lg:py-28">
   <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/24 to-transparent"></div>
-  <div class="absolute left-1/2 top-0 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-freshgreen/8 blur-3xl"></div>
-  <div class="absolute right-[-12%] bottom-[-20%] h-[620px] w-[620px] rounded-full bg-sage/10 blur-3xl"></div>
   <div class="data-botanical data-botanical-left" aria-hidden="true"></div>
   <div class="data-botanical data-botanical-right" aria-hidden="true"></div>
 
@@ -151,22 +149,7 @@ const t = dataCopy[locale] ?? dataCopy.en;
 
 <style>
   .home-data-section {
-    background:
-      radial-gradient(circle at 8% 14%, rgba(110, 191, 126, 0.08), transparent 28%),
-      radial-gradient(circle at 74% 44%, rgba(86, 114, 99, 0.08), transparent 34%);
-  }
-
-  .home-data-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(222, 222, 222, 0.028) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(110, 191, 126, 0.032) 1px, transparent 1px);
-    background-size: 86px 86px;
-    mask-image: radial-gradient(circle at 64% 44%, black, transparent 68%);
-    opacity: 0.42;
-    pointer-events: none;
+    background: transparent;
   }
 
   .data-botanical {

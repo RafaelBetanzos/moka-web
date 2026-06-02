@@ -7,7 +7,7 @@ import { ArticlesCarrousel } from "@components/Swiper/ArticlesCarrousel";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
 import Hero from "../components/Hero.astro";
-import MapSection from "@components/MapSection.astro";
+import WhyWeDoIt from "@components/WhyWeDoIt.astro";
 
 const seo = {
   title: "Moka Bio — Discovering the bioactive potential of Latin American plants",
@@ -16,40 +16,51 @@ const seo = {
 
 const industries = [
   {
-    name: "Nutraceuticals",
-    market: "$620B",
-    growth: "+7.5% CAGR",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="4"/><line x1="12" y1="8" x2="12" y2="16"/></svg>`,
+    name: "R&D Teams",
+    product: "Explore plant intelligence",
+    signal: "Use MokaDex to discover species, compounds, evidence, and bioactivity patterns.",
+    visual: "capsules",
+    image: "/who-rdteam-card.png",
+    icon: `<svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M42 102c2.8-17.8 9.1-26.7 18.8-26.7S76.9 84.2 79 102"/><path d="M46.5 44.8c1.3-10.2 6.1-15.3 14.5-15.3s13.2 5.1 14.5 15.3"/><path d="M47.5 48.5c2.9 8.6 7.4 12.9 13.5 12.9s10.6-4.3 13.5-12.9"/><path d="M50.4 47.8h21.2"/><path d="M53 45.6c2.5-2.2 5.2-3.3 8-3.3s5.5 1.1 8 3.3"/><path d="M37 80.5c7.8-3.4 15.7-5.2 23.8-5.2s16.5 1.8 25.2 5.2"/><path d="M82.5 36.5c9.9-7.1 18.4-8.9 25.5-5.3-3.4 8.2-11.2 12.2-23.3 12.1"/><path d="M84.8 43.3c6.1-4.3 12.8-7.4 20.1-9.2"/><path d="M36.2 36.5C26.3 29.4 17.8 27.6 10.7 31.2c3.4 8.2 11.2 12.2 23.3 12.1"/><path d="M33.9 43.3c-6.1-4.3-12.8-7.4-20.1-9.2"/><circle cx="96.5" cy="64.5" r="5.5"/><circle cx="23.5" cy="64.5" r="5.5"/><path d="M74.5 67.5 91.2 64.8"/><path d="M45.5 67.5 28.8 64.8"/><path d="M94.7 69.6c-1.9 8-7 13.7-15.2 17"/><path d="M25.3 69.6c1.9 8 7 13.7 15.2 17"/></svg>`,
   },
   {
-    name: "Cosmetics",
-    market: "$430B",
-    growth: "+5.3% CAGR",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C12 2 5 11 5 15a7 7 0 0 0 14 0c0-4-7-13-7-13z"/></svg>`,
+    name: "Product Innovation",
+    product: "Build bioactive concepts",
+    signal: "Use Moka SSE to turn natural chemistry into product hypotheses and claims direction.",
+    visual: "cosmetics",
+    image: "/who-productinnovation-card.png",
+    icon: `<svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M42 104V83.5c0-12 6-18 18-18s18 6 18 18V104"/><path d="M47.5 39.5c1.4-9 5.6-13.5 12.5-13.5s11.1 4.5 12.5 13.5"/><path d="M48.2 44.2c2.6 8.2 6.5 12.3 11.8 12.3s9.2-4.1 11.8-12.3"/><path d="M40.5 83.8c6.3-2.8 12.8-4.2 19.5-4.2s13.2 1.4 19.5 4.2"/><path d="m51 70 9 13 9-13"/><path d="M56 104h8"/><path d="M19 94c13.4-2.2 24.4-1.3 33 2.7"/><path d="M101 94c-13.4-2.2-24.4-1.3-33 2.7"/><path d="M23.5 42.5c10.6-6.9 20.5-8.4 29.5-4.5-4 9.2-13.1 13.8-27.4 13.8"/><path d="M26.5 51.8C34.7 46.4 43 42.7 51.3 40.7"/><path d="M96.5 42.5C85.9 35.6 76 34.1 67 38c4 9.2 13.1 13.8 27.4 13.8"/><path d="M93.5 51.8C85.3 46.4 77 42.7 68.7 40.7"/><path d="M87.5 23.8 94 17l6.5 6.8L94 30.5z"/><path d="M25.5 23.8 32 17l6.5 6.8L32 30.5z"/></svg>`,
   },
   {
-    name: "Pharma",
-    market: "$1.6T",
-    growth: "+6.1% CAGR",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5L6 16a2 2 0 0 0 1.73 3h8.54A2 2 0 0 0 18 16l-4-8V3"/></svg>`,
+    name: "Pharma & Biotech",
+    product: "Prioritize therapeutic leads",
+    signal: "Map mechanisms, targets, and validation paths from Latin American biodiversity.",
+    visual: "pharma",
+    image: "/who-pharmabiotech-card.png",
+    icon: `<svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M48 18h24"/><path d="M52 18v24L30.8 89.2C27.2 97.1 32.9 106 41.6 106h36.8c8.7 0 14.4-8.9 10.8-16.8L68 42V18"/><path d="M39.5 78.5h41"/><path d="M44.5 90.5c9.4 3.6 19.8 3.6 31 0"/><circle cx="51" cy="94" r="2.4"/><circle cx="67.5" cy="87" r="2.4"/><circle cx="72.5" cy="98" r="1.8"/><path d="M76.5 49c9.9-7.5 18.5-9.5 25.8-5.8-3.7 8.5-11.7 12.6-24.1 12.4"/><path d="M79 55.7c5.8-4.3 12.4-7.6 19.8-9.8"/><path d="M43.5 49C33.6 41.5 25 39.5 17.7 43.2c3.7 8.5 11.7 12.6 24.1 12.4"/><path d="M41 55.7c-5.8-4.3-12.4-7.6-19.8-9.8"/><path d="M60 78.5V66"/><path d="M54 68.5h12"/></svg>`,
   },
   {
-    name: "Food & Bev",
-    market: "$8.9T",
-    growth: "+4.8% CAGR",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="22" x2="12" y2="8"/><path d="M8 11a4 4 0 0 1 8 0"/><path d="M8 15a4 4 0 0 1 8 0"/><path d="M8 19a4 4 0 0 1 8 0"/></svg>`,
+    name: "Ingredient Suppliers",
+    product: "Find differentiated actives",
+    signal: "Identify natural ingredients with stronger biological rationale and market fit.",
+    visual: "food",
+    image: "/who-ingredientsupplier-card.png",
+    icon: `<svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M38 100V47"/><path d="M82 100V47"/><path d="M32 47h56"/><path d="M42 47c0-17 6-25.5 18-25.5S78 30 78 47"/><path d="M46 65h28"/><path d="M46 82h28"/><path d="M60 22v78"/><path d="M23.5 31c13.5-.2 25.6 5.1 36.5 16"/><path d="M96.5 31C83 30.8 70.9 36.1 60 47"/><path d="M23.5 31c2.6 10.8 10.2 17 22.7 18.7"/><path d="M96.5 31c-2.6 10.8-10.2 17-22.7 18.7"/><path d="M19 100h82"/><circle cx="31" cy="73" r="3"/><circle cx="89" cy="73" r="3"/><path d="M31 76c.5 6.4 3.7 11.4 9.5 15"/><path d="M89 76c-.5 6.4-3.7 11.4-9.5 15"/></svg>`,
   },
   {
-    name: "Agriculture",
-    market: "$2.7T",
-    growth: "+4.1% CAGR",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C7 12 4 8 4 4c4 0 8 3 8 8z"/><path d="M12 12c5 0 8-4 8-8-4 0-8 3-8 8z"/></svg>`,
+    name: "Universities & Labs",
+    product: "Structure discovery programs",
+    signal: "Connect botanical knowledge, phytochemistry, and experimental data in one workspace.",
+    visual: "agriculture",
+    image: "/who-universitiesandlabs-card.png",
+    icon: `<svg viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M18 48h84"/><path d="M25 48 60 24l35 24"/><path d="M29 48v42"/><path d="M45 48v42"/><path d="M60 48v42"/><path d="M75 48v42"/><path d="M91 48v42"/><path d="M22 90h76"/><path d="M14 101h92"/><path d="M60 24v66"/><path d="M39 35c7-7.5 14-11.2 21-11.2S74 27.5 81 35"/><path d="M25 71c11-6.3 22.7-7.8 35-4.5"/><path d="M95 71c-11-6.3-22.7-7.8-35-4.5"/><path d="M31 71c4.5 7.6 12 11.2 22.5 10.8"/><path d="M89 71c-4.5 7.6-12 11.2-22.5 10.8"/></svg>`,
   },
 ];
 ---
 <BaseLayout title={seo.title} description={seo.description}>
   <div class="home-color-system relative overflow-hidden">
     <Hero />
+    <WhyWeDoIt />
     <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-02.png" tone="strong" revealStart={0.92} revealRange={0.42} class="home-botanical" />
 
     <DataBioactivitySection />
@@ -59,24 +70,31 @@ const industries = [
         <div class="home-section-shell">
           <div class="mx-auto max-w-4xl text-center">
             <div class="home-section-kicker">WHAT WE DO</div>
-            <h2 class="home-section-title mt-4">Building LATAM's largest database for bioactivity and natural compounds.</h2>
+            <h2 class="home-section-title mt-4">Building the intelligence layer for Latin America's biodiversity.</h2>
           </div>
         </div>
       </div>
 
-      <MapSection />
+      <!-- HOW WE DO IT label -->
+      <div class="px-5 sm:px-8 pt-8">
+        <div class="home-section-shell">
+          <div class="home-section-kicker text-center">HOW WE DO IT</div>
+        </div>
+      </div>
 
       <div class="home-layers-section relative overflow-hidden px-5 py-10 sm:px-8 lg:py-14">
-        <div class="absolute left-[-8%] top-8 h-[520px] w-[520px] rounded-full bg-freshgreen/6 blur-3xl"></div>
-        <div class="absolute right-[-10%] bottom-0 h-[560px] w-[560px] rounded-full bg-sage/10 blur-3xl"></div>
         <div class="home-section-shell relative">
         <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
-            <div class="home-section-kicker">MOKADEX</div>
-            <h2 class="home-section-title mt-4">Finds bioactive molecules in Latin American plants.</h2>
+            <div class="home-section-kicker">MOKADEX · DATABASE</div>
+            <h2 class="home-section-title mt-4">Index and interpret the bioactivity of Latin American plants.</h2>
             <p class="home-section-copy mt-5">
-              MokaDex is our proprietary tool that interprets the data and fits it into a repeatable pipeline, turning a database into a discovery system.
+              MokaDex learns from every new plant we add — extracting molecular patterns, cross-referencing biological signals, and surfacing what makes each species valuable. The more it indexes, the sharper it gets.
             </p>
+            <div class="mokadex-stat reveal opacity-0 mt-6" data-animation="pop-in" style="transition-delay: 0.2s;">
+              <p class="mokadex-stat-number">30<span class="mokadex-stat-sup">K+</span></p>
+              <p class="mokadex-stat-label">species indexed today</p>
+            </div>
             <a href="/our-technology" class="learn-more-link mt-7 no-underline">Learn more</a>
           </div>
 
@@ -94,7 +112,7 @@ const industries = [
                   <p class="arch-name">Botanical & Scientific Data</p>
                   <span class="arch-badge arch-badge--04">RAW DATA</span>
                 </div>
-                <p class="arch-desc">Botanical literature, ethnobotanical records, phytochemistry references, and experimental datasets structured for MokaDex analysis.</p>
+                <p class="arch-desc">Botanical literature, phytochemistry references, species records, and experimental datasets structured for MokaDex analysis.</p>
               </div>
             </div>
 
@@ -183,6 +201,80 @@ const industries = [
         </div>
       </div>
       </div>
+      <!-- ── Moka platform subsection ────────────── -->
+      <div class="home-moka-section relative overflow-hidden px-5 py-12 sm:px-8 lg:py-16">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-birch/8 to-transparent"></div>
+        <div class="home-section-shell">
+
+          <!-- Header: text left, laptop mockup right -->
+          <div class="moka-header-grid">
+            <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
+              <div class="home-section-kicker">MOKA · SSE</div>
+              <h2 class="home-section-title mt-4">Index and interpret the bioactivity of Latin American plants.</h2>
+              <p class="home-section-copy mt-5">
+                Moka is a specialized software environment that gives researchers and companies direct access to MokaDex's intelligence — enabling exploration, validation, and discovery at scale.
+              </p>
+            </div>
+            <div class="moka-laptop-main reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.18s;" aria-hidden="true">
+              <svg class="moka-laptop-svg" viewBox="0 0 400 255" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5">
+                <rect x="28" y="8" width="344" height="208" rx="12"/>
+                <rect x="42" y="22" width="316" height="182" rx="6" stroke-dasharray="6 4" opacity="0.4"/>
+                <line x1="42" y1="22" x2="358" y2="204" opacity="0.15"/>
+                <line x1="358" y1="22" x2="42" y2="204" opacity="0.15"/>
+                <circle cx="200" cy="15" r="3.5" opacity="0.4"/>
+                <line x1="10" y1="220" x2="390" y2="220" stroke-linecap="round"/>
+                <path d="M0 232 Q0 246 16 246 L384 246 Q400 246 400 232 L390 220 L10 220 Z" stroke-linejoin="round"/>
+                <rect x="152" y="228" width="96" height="10" rx="4" opacity="0.5"/>
+              </svg>
+              <p class="moka-placeholder-label">Platform mockup</p>
+            </div>
+          </div>
+
+          <!-- Three laptop silhouettes -->
+          <div class="moka-laptop-grid mt-12">
+            <div class="moka-laptop-item reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.12s;" aria-hidden="true">
+              <svg class="moka-laptop-mini" viewBox="0 0 280 178" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5">
+                <rect x="20" y="6" width="240" height="146" rx="9"/>
+                <rect x="30" y="16" width="220" height="126" rx="5" stroke-dasharray="5 3" opacity="0.4"/>
+                <line x1="30" y1="16" x2="250" y2="142" opacity="0.12"/>
+                <line x1="250" y1="16" x2="30" y2="142" opacity="0.12"/>
+                <circle cx="140" cy="11" r="2.5" opacity="0.4"/>
+                <line x1="6" y1="155" x2="274" y2="155" stroke-linecap="round"/>
+                <path d="M0 163 Q0 172 11 172 L269 172 Q280 172 280 163 L274 155 L6 155 Z" stroke-linejoin="round"/>
+                <rect x="107" y="158" width="66" height="8" rx="3" opacity="0.4"/>
+              </svg>
+              <p class="moka-laptop-label">Species Exploration</p>
+            </div>
+            <div class="moka-laptop-item reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.22s;" aria-hidden="true">
+              <svg class="moka-laptop-mini" viewBox="0 0 280 178" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5">
+                <rect x="20" y="6" width="240" height="146" rx="9"/>
+                <rect x="30" y="16" width="220" height="126" rx="5" stroke-dasharray="5 3" opacity="0.4"/>
+                <line x1="30" y1="16" x2="250" y2="142" opacity="0.12"/>
+                <line x1="250" y1="16" x2="30" y2="142" opacity="0.12"/>
+                <circle cx="140" cy="11" r="2.5" opacity="0.4"/>
+                <line x1="6" y1="155" x2="274" y2="155" stroke-linecap="round"/>
+                <path d="M0 163 Q0 172 11 172 L269 172 Q280 172 280 163 L274 155 L6 155 Z" stroke-linejoin="round"/>
+                <rect x="107" y="158" width="66" height="8" rx="3" opacity="0.4"/>
+              </svg>
+              <p class="moka-laptop-label">Bioactivity Mapping</p>
+            </div>
+            <div class="moka-laptop-item reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.32s;" aria-hidden="true">
+              <svg class="moka-laptop-mini" viewBox="0 0 280 178" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5">
+                <rect x="20" y="6" width="240" height="146" rx="9"/>
+                <rect x="30" y="16" width="220" height="126" rx="5" stroke-dasharray="5 3" opacity="0.4"/>
+                <line x1="30" y1="16" x2="250" y2="142" opacity="0.12"/>
+                <line x1="250" y1="16" x2="30" y2="142" opacity="0.12"/>
+                <circle cx="140" cy="11" r="2.5" opacity="0.4"/>
+                <line x1="6" y1="155" x2="274" y2="155" stroke-linecap="round"/>
+                <path d="M0 163 Q0 172 11 172 L269 172 Q280 172 280 163 L274 155 L6 155 Z" stroke-linejoin="round"/>
+                <rect x="107" y="158" width="66" height="8" rx="3" opacity="0.4"/>
+              </svg>
+              <p class="moka-laptop-label">Intelligence Reports</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </section>
 
     <section class="home-applications relative overflow-hidden px-5 py-8 sm:px-8 lg:py-10">
@@ -190,20 +282,21 @@ const industries = [
       <div class="home-section-shell">
         <div class="reveal opacity-0 mx-auto max-w-4xl text-center" data-animation="slide-in" style="transition-delay: 0.1s;">
           <div class="home-section-kicker">WHO IT'S FOR</div>
-          <h2 class="home-section-title mt-4">For innovative companies<br class="hidden sm:block"> building with nature.</h2>
-          <p class="home-section-copy mt-4 mx-auto">Five high-value sectors where programmable bioactive intelligence unlocks measurable opportunity.</p>
+          <h2 class="home-section-title mt-4">For teams turning biodiversity into bioactive products.</h2>
+          <p class="home-section-copy mt-4 mx-auto">MokaDex and Moka SSE support discovery, validation, and product strategy for teams building with Latin America's natural chemistry.</p>
         </div>
-        <div class="app-grid mt-8">
+        <div class="bioactive-showcase reveal opacity-0 mt-14" data-animation="pop-in" style="transition-delay: 0.2s;">
           {industries.map((ind, i) => (
-            <article class="app-card reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${0.2 + i * 0.12}s;`}>
-              <div class="app-icon-wrap">
-                <Fragment set:html={ind.icon} />
+            <article class={`bio-product-card bio-product-card--${ind.visual}`} style={`--product-delay: ${i * 90}ms;`}>
+              <div class="bio-product-head">
+                <p class="bio-product-sector">{ind.name}</p>
               </div>
-              <p class="app-name">{ind.name}</p>
-              <div class="app-meta">
-                <span class="app-market">{ind.market}</span>
-                <span class="app-growth">{ind.growth}</span>
+              <div class="bio-product-visual" aria-hidden="true">
+                <div class="bio-product-line-icon">
+                  <img src={ind.image} alt="" loading="lazy" decoding="async" />
+                </div>
               </div>
+              <p class="bio-product-name">{ind.product}</p>
             </article>
           ))}
         </div>
@@ -212,7 +305,6 @@ const industries = [
 
     <section class="home-traction relative overflow-hidden px-5 py-12 sm:px-8 lg:py-16">
       <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/20 to-transparent"></div>
-      <div class="absolute left-1/2 top-0 h-[480px] w-[480px] -translate-x-1/2 rounded-full bg-freshgreen/5 blur-3xl pointer-events-none"></div>
       <div class="home-section-shell">
         <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
           <div class="home-section-kicker">TRACTION</div>
@@ -463,49 +555,70 @@ const industries = [
 
   .home-layers-section {
     background: transparent;
+    z-index: 1;
   }
 
   /* ── Architecture Stack ──────────────────────── */
   .arch-stack {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 1rem;
   }
 
   /* Individual layer card */
   .arch-layer {
+    position: relative;
     display: grid;
-    grid-template-columns: 2.5rem 1fr;
+    grid-template-columns: 3rem 1fr;
     gap: 0;
-    border-radius: 1.25rem;
+    border-radius: 1.5rem;
     overflow: hidden;
-    border: 1px solid rgba(110, 191, 126, 0.10);
-    transition: transform 300ms ease, border-color 300ms ease, box-shadow 300ms ease;
+    border: 1px solid rgba(110, 191, 126, 0.24);
+    background: linear-gradient(135deg, rgba(19, 45, 37, 0.88), rgba(18, 18, 18, 0.72), rgba(18, 18, 18, 0.88));
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(24px);
+    transition: transform 320ms ease, border-color 320ms ease, background 320ms ease;
     cursor: default;
   }
 
+  .arch-layer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 24% 0%, rgba(110, 191, 126, 0.12), transparent 36%);
+    opacity: 0;
+    transition: opacity 320ms ease;
+    pointer-events: none;
+  }
+
   .arch-layer:hover {
-    transform: translateX(6px);
-    border-color: rgba(110, 191, 126, 0.28);
-    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.28), 0 0 32px rgba(110, 191, 126, 0.07);
+    transform: translateY(-4px);
+    border-color: rgba(110, 191, 126, 0.34);
+  }
+
+  .arch-layer:hover::after {
+    opacity: 1;
   }
 
   /* Left rail with number + accent bar */
   .arch-layer-left {
+    position: relative;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 1.25rem 0 1.25rem;
+    padding: 1.5rem 0 1.5rem;
     gap: 0.6rem;
-    background: rgba(12, 12, 12, 0.6);
+    background: rgba(18, 18, 18, 0.2);
+    border-right: 1px solid rgba(110, 191, 126, 0.14);
   }
 
   .arch-num {
     font-family: Roboto, sans-serif;
-    font-size: 9px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.18em;
-    color: rgba(110, 191, 126, 0.50);
+    color: rgba(110, 191, 126, 0.86);
     writing-mode: vertical-rl;
     transform: rotate(180deg);
   }
@@ -515,38 +628,31 @@ const industries = [
     width: 2px;
     border-radius: 999px;
     min-height: 20px;
+    background: rgba(110, 191, 126, 0.62);
   }
 
   /* Layer body */
   .arch-layer-body {
-    padding: 1.1rem 1.4rem;
+    position: relative;
+    z-index: 1;
+    padding: 1.5rem;
   }
 
   .arch-layer-head {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
-    margin-bottom: 0.5rem;
+    gap: 0;
+    margin-bottom: 0.75rem;
     flex-wrap: wrap;
   }
 
   .arch-icon {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-    color: var(--fresh-green-color);
-    opacity: 0.82;
-    transition: opacity 280ms ease, transform 280ms ease;
-  }
-
-  .arch-layer:hover .arch-icon {
-    opacity: 1;
-    transform: scale(1.15);
+    display: none;
   }
 
   .arch-name {
     font-family: Inter, sans-serif;
-    font-size: clamp(0.85rem, 1.3vw, 1rem);
+    font-size: clamp(1rem, 1.35vw, 1.12rem);
     font-weight: 650;
     color: var(--pure-color);
     flex: 1;
@@ -554,19 +660,21 @@ const industries = [
 
   .arch-badge {
     font-family: Roboto, sans-serif;
-    font-size: 8.5px;
+    font-size: 11px;
     font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 0.18rem 0.55rem;
+    padding: 0.25rem 0.75rem;
     border-radius: 999px;
+    border: 1px solid rgba(110, 191, 126, 0.3);
+    color: var(--fresh-green-color);
   }
 
   .arch-desc {
     font-family: Inter, sans-serif;
-    font-size: 13px;
-    line-height: 1.6;
-    color: rgba(222, 222, 222, 0.52);
+    font-size: 15px;
+    line-height: 1.625;
+    color: rgba(222, 222, 222, 0.74);
     transition: color 280ms ease;
   }
 
@@ -574,56 +682,23 @@ const industries = [
     color: rgba(222, 222, 222, 0.72);
   }
 
-  /* Layer-specific theming — darkest (raw) to brightest (refined) */
-  .arch-layer--01 {
-    background: linear-gradient(135deg, rgba(16, 16, 16, 0.92), rgba(18, 20, 18, 0.82));
-  }
-  .arch-accent--01 { background: rgba(110, 191, 126, 0.20); }
-  .arch-badge--01 {
-    background: rgba(30, 30, 30, 0.9);
-    color: rgba(222, 222, 222, 0.40);
-    border: 1px solid rgba(222, 222, 222, 0.10);
+  .arch-accent--01,
+  .arch-accent--02,
+  .arch-accent--03,
+  .arch-accent--04 {
+    background: rgba(110, 191, 126, 0.62);
   }
 
-  .arch-layer--02 {
-    background: linear-gradient(135deg, rgba(16, 18, 16, 0.90), rgba(18, 28, 20, 0.78));
-  }
-  .arch-accent--02 { background: rgba(110, 191, 126, 0.35); }
-  .arch-badge--02 {
-    background: rgba(19, 38, 28, 0.85);
-    color: rgba(110, 191, 126, 0.68);
-    border: 1px solid rgba(110, 191, 126, 0.18);
-  }
-
-  .arch-layer--03 {
-    background: linear-gradient(135deg, rgba(16, 22, 18, 0.88), rgba(18, 36, 26, 0.76));
-  }
-  .arch-accent--03 { background: rgba(110, 191, 126, 0.55); }
-  .arch-badge--03 {
-    background: rgba(19, 45, 30, 0.85);
-    color: rgba(110, 191, 126, 0.82);
-    border: 1px solid rgba(110, 191, 126, 0.28);
-  }
-
-  .arch-layer--04 {
-    background: linear-gradient(135deg, rgba(16, 28, 20, 0.88), rgba(19, 45, 37, 0.78));
-  }
-  .arch-accent--04 { background: var(--fresh-green-color); }
+  .arch-badge--01,
+  .arch-badge--02,
+  .arch-badge--03,
   .arch-badge--04 {
     background: rgba(110, 191, 126, 0.15);
-    color: var(--fresh-green-color);
-    border: 1px solid rgba(110, 191, 126, 0.38);
   }
 
   /* ── Connectors between layers ───────────────── */
   .arch-connector {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    padding: 0 0 0 1.25rem; /* align with layer body */
-    height: 36px;
-    position: relative;
+    display: none;
   }
 
   .arch-connector-line {
@@ -862,7 +937,150 @@ const industries = [
 
   .home-applications {
     background: transparent;
+    position: relative;
+    z-index: 40;
+    overflow: visible;
+    isolation: isolate;
+    padding-top: 4.5rem;
   }
+
+  .bioactive-showcase {
+    position: relative;
+    z-index: 41;
+    overflow: visible;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .bio-product-card {
+    position: relative;
+    z-index: 10;
+  }
+
+  .bio-product-card {
+    display: flex;
+    aspect-ratio: 1 / 1;
+    min-height: 0;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(222, 222, 222, 0.10);
+    background: linear-gradient(135deg, rgba(19, 45, 37, 0.68), rgba(18, 18, 18, 0.88));
+    padding: 1.2rem;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(18px);
+    transition: transform 320ms ease, border-color 320ms ease, background 320ms ease, box-shadow 320ms ease;
+  }
+
+  .bio-product-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 0%, rgba(110, 191, 126, 0.1), transparent 42%);
+    opacity: 0;
+    transition: opacity 320ms ease;
+    pointer-events: none;
+  }
+
+  .bio-product-card:hover {
+    z-index: 50;
+    transform: translateY(-6px);
+    border-color: rgba(222, 222, 222, 0.20);
+    background: linear-gradient(135deg, rgba(19, 45, 37, 0.86), rgba(18, 18, 18, 0.76));
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3), 0 0 40px rgba(110, 191, 126, 0.07);
+  }
+
+  .bio-product-card:hover::after {
+    opacity: 1;
+  }
+
+  .bio-product-head,
+  .bio-product-visual,
+  .bio-product-name {
+    position: relative;
+    z-index: 1;
+  }
+
+  .bio-product-head {
+    position: absolute;
+    left: 1rem;
+    right: 1rem;
+    top: 1rem;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .bio-product-sector {
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    line-height: 1.35;
+    text-transform: uppercase;
+    color: rgba(222, 222, 222, 0.72);
+    text-align: center;
+    width: 100%;
+  }
+
+  .bio-product-visual {
+    position: absolute;
+    top: 3.6rem;
+    right: 0.8rem;
+    bottom: 0.95rem;
+    left: 0.8rem;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    transition: opacity 260ms ease, transform 260ms ease;
+  }
+
+  .bio-product-line-icon {
+    display: flex;
+    width: 96%;
+    height: 96%;
+    align-items: center;
+    justify-content: center;
+    filter:
+      drop-shadow(0 0 18px rgba(255, 255, 255, 0.18))
+      drop-shadow(0 0 48px rgba(255, 255, 255, 0.10));
+  }
+
+  .bio-product-line-icon img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    opacity: 1;
+  }
+
+  .bio-product-name {
+    z-index: 2;
+    max-width: 90%;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.1rem, 1.45vw, 1.35rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--pure-color);
+    text-align: center;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 260ms ease, transform 260ms ease;
+  }
+
+  .bio-product-card:hover .bio-product-visual {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+
+  .bio-product-card:hover .bio-product-name {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
 
   .app-grid {
     display: grid;
@@ -878,9 +1096,9 @@ const industries = [
     min-height: 210px;
     border-radius: 1.5rem;
     padding: 1.5rem;
-    border: 1px solid rgba(110, 191, 126, 0.15);
-    background: linear-gradient(145deg, rgba(18, 18, 18, 0.68), rgba(19, 45, 37, 0.46));
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(222, 222, 222, 0.10);
+    background: linear-gradient(135deg, rgba(19, 45, 37, 0.68), rgba(18, 18, 18, 0.88));
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(18px);
     transition: transform 320ms ease, border-color 320ms ease, background 320ms ease, box-shadow 320ms ease;
     overflow: hidden;
@@ -899,8 +1117,8 @@ const industries = [
 
   .app-card:hover {
     transform: translateY(-6px);
-    border-color: rgba(110, 191, 126, 0.38);
-    background: linear-gradient(145deg, rgba(19, 45, 37, 0.82), rgba(18, 18, 18, 0.56));
+    border-color: rgba(222, 222, 222, 0.20);
+    background: linear-gradient(135deg, rgba(19, 45, 37, 0.86), rgba(18, 18, 18, 0.76));
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3), 0 0 40px rgba(110, 191, 126, 0.07);
   }
 
@@ -970,41 +1188,49 @@ const industries = [
   }
 
   .traction-grid {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid rgba(110, 191, 126, 0.18);
-    border-bottom: 1px solid rgba(110, 191, 126, 0.18);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
   }
 
   .traction-card {
     position: relative;
-    border-bottom: 1px solid rgba(222, 222, 222, 0.08);
-    background: transparent;
     overflow: hidden;
-    transition: background 260ms ease;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(222, 222, 222, 0.10);
+    background: linear-gradient(135deg, rgba(19, 45, 37, 0.72), rgba(18, 18, 18, 0.88));
+    backdrop-filter: blur(18px);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: transform 320ms ease, border-color 320ms ease;
   }
 
-  .traction-card:last-child {
-    border-bottom: 0;
+  .traction-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 24% 0%, rgba(255, 255, 255, 0.04), transparent 36%);
+    opacity: 0;
+    transition: opacity 320ms ease;
+    pointer-events: none;
   }
 
   .traction-card:hover {
-    background: rgba(19, 45, 37, 0.22);
+    transform: translateY(-4px);
+    border-color: rgba(222, 222, 222, 0.20);
   }
+
+  .traction-card:hover::after { opacity: 1; }
 
   .traction-card-inner {
     position: relative;
     z-index: 1;
-    display: grid;
-    grid-template-columns: minmax(7rem, 0.28fr) minmax(9rem, 0.34fr) minmax(0, 1fr);
-    align-items: center;
-    gap: 2rem;
-    padding: 1.6rem 0;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.75rem;
+    height: 100%;
   }
 
-  .traction-card-glow {
-    display: none;
-  }
+  .traction-card-glow { display: none; }
 
   .traction-number {
     font-family: Inter, sans-serif;
@@ -1023,7 +1249,10 @@ const industries = [
   }
 
   .traction-divider {
-    display: none;
+    display: block;
+    height: 1px;
+    background: rgba(110, 191, 126, 0.14);
+    margin: 0.875rem 0;
   }
 
   .traction-label {
@@ -1201,12 +1430,7 @@ const industries = [
   }
 
   .home-articles-band::before {
-    content: "";
-    position: absolute;
-    inset: -42px 0 -56px;
-    z-index: -1;
-    background: var(--charcoal-color);
-    pointer-events: none;
+    display: none;
   }
 
   .articles-see-all {
@@ -1225,30 +1449,226 @@ const industries = [
   }
 
 
-  @media (max-width: 1023px) {
-    .flow-track::before {
-      display: none;
+  /* ── MokaDex 30K stat ────────────────────────── */
+  .mokadex-stat {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .mokadex-stat-number {
+    font-family: Inter, sans-serif;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 750;
+    line-height: 1;
+    color: var(--fresh-green-color);
+    letter-spacing: -0.02em;
+  }
+
+  .mokadex-stat-sup {
+    font-size: 0.45em;
+    font-weight: 600;
+    color: rgba(110, 191, 126, 0.72);
+    letter-spacing: 0.04em;
+  }
+
+  .mokadex-stat-label {
+    font-family: Roboto, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(222, 222, 222, 0.48);
+    align-self: center;
+  }
+
+  /* ── HOW WE DO IT divider ────────────────────── */
+  .how-divider { padding: 2rem 0 0; }
+
+  .how-divider-inner {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .how-divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(222, 222, 222, 0.10), transparent);
+  }
+
+  /* ── Moka platform section ────────────────────── */
+  .home-moka-section {
+    background: transparent;
+    position: relative;
+    z-index: 1;
+  }
+
+  .moka-header-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .moka-laptop-main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(110, 191, 126, 0.24);
+    background: linear-gradient(135deg, rgba(19, 45, 37, 0.88), rgba(18, 18, 18, 0.72), rgba(18, 18, 18, 0.88));
+    padding: 2rem 1.5rem 1.75rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(24px);
+    transition: transform 320ms ease, border-color 320ms ease, background 320ms ease, box-shadow 320ms ease;
+  }
+
+  .moka-laptop-main::after,
+  .moka-laptop-item::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 24% 0%, rgba(110, 191, 126, 0.12), transparent 36%);
+    opacity: 0;
+    transition: opacity 320ms ease;
+    pointer-events: none;
+  }
+
+  .moka-laptop-main:hover,
+  .moka-laptop-item:hover {
+    transform: translateY(-4px);
+    border-color: rgba(110, 191, 126, 0.34);
+  }
+
+  .moka-laptop-main:hover::after,
+  .moka-laptop-item:hover::after {
+    opacity: 1;
+  }
+
+  .moka-laptop-svg {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 380px;
+    color: rgba(222, 222, 222, 0.48);
+    display: block;
+  }
+
+  .moka-placeholder-label {
+    position: relative;
+    z-index: 1;
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.30em;
+    text-transform: uppercase;
+    color: rgba(222, 222, 222, 0.70);
+  }
+
+  .moka-laptop-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .moka-laptop-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    overflow: hidden;
+    padding: 2rem 1.5rem 1.75rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(110, 191, 126, 0.24);
+    background: linear-gradient(135deg, rgba(19, 45, 37, 0.88), rgba(18, 18, 18, 0.72), rgba(18, 18, 18, 0.88));
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(24px);
+    transition: transform 320ms ease, border-color 320ms ease, background 320ms ease, box-shadow 320ms ease;
+  }
+
+  .moka-laptop-mini {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 200px;
+    color: rgba(222, 222, 222, 0.46);
+    display: block;
+  }
+
+  .moka-laptop-label {
+    position: relative;
+    z-index: 1;
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(222, 222, 222, 0.70);
+    text-align: center;
+  }
+
+  /* ── Mobile: fix fixed background ───────────────
+     On mobile, position:fixed backdrops appear frozen
+     while content scrolls. Switch to absolute.     */
+  @media (max-width: 767px) {
+    .home-color-system::before,
+    .home-color-system::after {
+      position: absolute;
     }
 
-    .app-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-
-    .traction-grid,
-    .delta-grid {
+    .bioactive-showcase {
       grid-template-columns: 1fr;
-      max-width: 480px;
+      max-width: 420px;
       margin-left: auto;
       margin-right: auto;
     }
   }
 
+  @media (max-width: 1023px) {
+    .flow-track::before { display: none; }
+    .app-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .bioactive-showcase {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .market-row {
+      grid-template-columns: 1fr;
+      gap: 0.65rem;
+      padding: 1rem 0;
+    }
+    .market-row-values {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      text-align: left;
+    }
+    .moka-header-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .moka-laptop-main { display: none; }
+    .traction-grid, .moka-laptop-grid, .delta-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .how-divider-inner { gap: 0.75rem; }
+  }
+
   @media (min-width: 640px) and (max-width: 1023px) {
-    .traction-grid,
-    .delta-grid {
+    .traction-grid, .moka-laptop-grid, .delta-grid {
       grid-template-columns: repeat(2, 1fr);
       max-width: 100%;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .bioactive-showcase {
+      grid-template-columns: 1fr;
     }
   }
 
@@ -1257,7 +1677,6 @@ const industries = [
       grid-template-columns: 1fr;
     }
 
-    /* Pipeline collapses to vertical on mobile */
     .pipeline-flow {
       grid-template-columns: 1fr;
       gap: 0.5rem;

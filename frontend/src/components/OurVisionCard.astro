@@ -34,15 +34,15 @@ const t = visionCopy[locale] ?? visionCopy.en;
 ---
 
 <div
-  class="relative overflow-hidden rounded-[1.75rem] border border-birch/10 bg-deepforest/64 shadow-2xl shadow-black/28 flex flex-col items-center text-pure max-w-4xl py-12 px-8 md:px-20 transition-all duration-700 hover:border-freshgreen/34 backdrop-blur-xl"
+  class="relative isolate overflow-hidden rounded-[1.75rem] border border-birch/10 bg-deepforest/64 shadow-2xl shadow-black/28 flex flex-col items-center text-pure max-w-4xl py-12 px-8 md:px-20 transition-all duration-700 hover:border-freshgreen/34 backdrop-blur-xl"
 >
-  <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_10%,rgba(110,191,126,0.12),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.035),rgba(18,18,18,0.18))]"></div>
+  <div class="absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_10%,rgba(110,191,126,0.12),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.035),rgba(18,18,18,0.18))]"></div>
 
-  <p class="reveal opacity-0 relative text-xs font-bold font-roboto pb-8 tracking-[0.45em] text-freshgreen uppercase" data-animation="slide-up" style="transition-delay: 0.05s;">
+  <p class="reveal opacity-0 relative z-10 text-xs font-bold font-roboto pb-8 tracking-[0.45em] text-freshgreen uppercase" data-animation="slide-up" style="transition-delay: 0.05s;">
     {t.kicker}
   </p>
 
-  <div class="relative flex flex-col items-center">
+  <div class="relative z-10 flex flex-col items-center">
     <p class="reveal opacity-0 text-xl sm:text-4xl font-inter text-center sm:leading-[46px] text-pure" data-animation="slide-up" style="transition-delay: 0.2s;">
       {t.before} <strong class="text-freshgreen">{t.highlight}</strong>,
       {t.after}

@@ -1,5 +1,4 @@
 ---
-import MapSection from "@components/MapSection.astro";
 import OurTeam from "@components/OurTeam.astro";
 import OurVisionCard from "@components/OurVisionCard.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
@@ -11,9 +10,9 @@ import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
   description="Meet the Moka Bio team. We are building LATAM's leading bioactivity database for Latin American plants."
 >
   <div class="about-page min-h-screen bg-charcoal relative overflow-hidden">
-    <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-04.png" tone="strong" class="about-botanical-focus" />
+    <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-04.png" tone="strong" class="about-botanical-focus" revealStart={-0.15} />
     <!-- Page header -->
-    <div class="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 pt-20 pb-12">
+    <div class="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 pt-20 pb-16">
       <p class="about-kicker">MOKA BIO</p>
       <h1 class="about-title mt-5">About Us</h1>
       <p class="about-tagline mt-5">
@@ -29,9 +28,6 @@ import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
       </div>
     </div>
 
-    <div class="relative z-10 bg-transparent">
-      <MapSection />
-    </div>
     <OurTeam />
   </div>
 </BaseLayout>
@@ -50,7 +46,7 @@ import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
 
   .about-title {
     font-family: Inter, sans-serif;
-    font-size: clamp(2.2rem, 5vw, 4.7rem);
+    font-size: clamp(2.8rem, 9vw, 7rem);
     font-weight: 650;
     line-height: 1;
     color: var(--pure-color);
@@ -80,3 +76,19 @@ import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
   }
 
 </style>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const anim = entry.target.getAttribute('data-animation');
+      if (anim === 'slide-up') entry.target.classList.add('animate-slide-up');
+      else if (anim === 'fade-in') entry.target.classList.add('animate-fade-in');
+      else entry.target.classList.add('animate-slide-up');
+      entry.target.classList.remove('opacity-0');
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>

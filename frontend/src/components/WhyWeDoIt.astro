@@ -1,0 +1,375 @@
+---
+import Map from "@assets/Map.svg";
+import Argentina from "@assets/icons/Argentina.svg";
+import Mexico from "@assets/icons/Mexico.svg";
+import Venezuela from "@assets/icons/Venezuela.svg";
+import { Image } from "astro:assets";
+
+const { locale = "en" } = Astro.props;
+
+const copy = {
+  en: {
+    kicker: "WHY NOW",
+    intro: "We believe the Americas hold the richest, least-understood molecular library on Earth. For the first time, three forces are converging to make what was once impossible not just achievable — but urgent.",
+    forces: [
+      {
+        tag: "01 · AI",
+        title: "Machine intelligence at molecular scale",
+        body: "What once took decades in the lab is now a programmable pipeline.",
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="5" height="5" rx="1"/><rect x="17" y="8" width="5" height="5" rx="1"/><rect x="9.5" y="3" width="5" height="5" rx="1"/><rect x="9.5" y="16" width="5" height="5" rx="1"/><line x1="7" y1="10.5" x2="9.5" y2="10.5"/><line x1="14.5" y1="10.5" x2="17" y2="10.5"/><line x1="12" y1="8" x2="12" y2="10.5"/><line x1="12" y1="13.5" x2="12" y2="16"/></svg>`,
+        accent: false,
+      },
+      {
+        tag: "02 · BIOTECH",
+        title: "Industry demand is real and growing",
+        body: "Latin America is the largest untapped source of novel natural compounds — and R&D pipelines know it.",
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5L6 16a2 2 0 0 0 1.73 3h8.54A2 2 0 0 0 18 16l-4-8V3"/><line x1="6" y1="12" x2="18" y2="12"/></svg>`,
+        accent: false,
+      },
+      {
+        tag: "03 · REGULATION",
+        title: "The legal framework just changed",
+        body: "The WIPO Geneva Act turns Latin America's biodiversity from a free commons into a protected, value-generating asset.",
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg>`,
+        accent: true,
+      },
+    ],
+    treaty: {
+      eyebrow: "WIPO GENEVA ACT · 2024",
+      title: "A treaty that changes the economics of nature.",
+      body: "International law now requires disclosure of genetic resource origins in patent filings and mandates benefit-sharing for their commercial use. Latin America — home to 40% of the world's biodiversity — moves from resource supplier to rights holder.",
+    },
+    closing: "Moka is built for this window.",
+    flags: {
+      mexico: { name: "Mexico", stat: "10%", desc: "of plant species used in discovery." },
+      argentina: { name: "Argentina", stat: "5%", desc: "mapped for molecular potential." },
+      venezuela: { name: "Venezuela", stat: "90%", desc: "of chemical library unexplored." },
+    },
+  },
+  es: {
+    kicker: "POR QUÉ AHORA",
+    intro: "Creemos que las Américas albergan la biblioteca molecular más rica y menos comprendida de la Tierra. Por primera vez, tres fuerzas convergen para hacer lo imposible no solo alcanzable — sino urgente.",
+    forces: [
+      {
+        tag: "01 · IA",
+        title: "Inteligencia de máquinas a escala molecular",
+        body: "Lo que tomaba décadas en el laboratorio ahora es un pipeline programable.",
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="5" height="5" rx="1"/><rect x="17" y="8" width="5" height="5" rx="1"/><rect x="9.5" y="3" width="5" height="5" rx="1"/><rect x="9.5" y="16" width="5" height="5" rx="1"/><line x1="7" y1="10.5" x2="9.5" y2="10.5"/><line x1="14.5" y1="10.5" x2="17" y2="10.5"/><line x1="12" y1="8" x2="12" y2="10.5"/><line x1="12" y1="13.5" x2="12" y2="16"/></svg>`,
+        accent: false,
+      },
+      {
+        tag: "02 · BIOTECH",
+        title: "La demanda de la industria es real y crece",
+        body: "América Latina es la mayor fuente sin explotar de compuestos naturales novedosos — y los pipelines de I+D ya lo saben.",
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5L6 16a2 2 0 0 0 1.73 3h8.54A2 2 0 0 0 18 16l-4-8V3"/><line x1="6" y1="12" x2="18" y2="12"/></svg>`,
+        accent: false,
+      },
+      {
+        tag: "03 · REGULACIÓN",
+        title: "El marco legal acaba de cambiar",
+        body: "El Acta de Ginebra de la OMPI convierte la biodiversidad de LATAM de un bien común de libre acceso en un activo protegido y generador de valor.",
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg>`,
+        accent: true,
+      },
+    ],
+    treaty: {
+      eyebrow: "ACTA DE GINEBRA OMPI · 2024",
+      title: "Un tratado que cambia la economía de la naturaleza.",
+      body: "El derecho internacional ahora exige divulgar el origen de los recursos genéticos en solicitudes de patentes y obliga a compartir beneficios por su uso comercial. América Latina — con el 40% de la biodiversidad mundial — pasa de proveedor de recursos a titular de derechos.",
+    },
+    closing: "Moka está construida para esta ventana de oportunidad.",
+    flags: {
+      mexico: { name: "México", stat: "10%", desc: "de especies vegetales usadas en descubrimiento." },
+      argentina: { name: "Argentina", stat: "5%", desc: "mapeadas para su potencial molecular." },
+      venezuela: { name: "Venezuela", stat: "90%", desc: "de su biblioteca química sin explorar." },
+    },
+  },
+  pt: {
+    kicker: "POR QUE AGORA",
+    intro: "Acreditamos que as Américas abrigam a biblioteca molecular mais rica e menos compreendida da Terra. Pela primeira vez, três forças convergem para tornar o impossível não apenas alcançável — mas urgente.",
+    forces: [
+      {
+        tag: "01 · IA",
+        title: "Inteligência de máquina em escala molecular",
+        body: "O que levava décadas no laboratório agora é um pipeline programável.",
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="5" height="5" rx="1"/><rect x="17" y="8" width="5" height="5" rx="1"/><rect x="9.5" y="3" width="5" height="5" rx="1"/><rect x="9.5" y="16" width="5" height="5" rx="1"/><line x1="7" y1="10.5" x2="9.5" y2="10.5"/><line x1="14.5" y1="10.5" x2="17" y2="10.5"/><line x1="12" y1="8" x2="12" y2="10.5"/><line x1="12" y1="13.5" x2="12" y2="16"/></svg>`,
+        accent: false,
+      },
+      {
+        tag: "02 · BIOTECH",
+        title: "A demanda da indústria é real e acelera",
+        body: "A América Latina é a maior fonte inexplorada de compostos naturais novos — e os pipelines de P&D já sabem disso.",
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5L6 16a2 2 0 0 0 1.73 3h8.54A2 2 0 0 0 18 16l-4-8V3"/><line x1="6" y1="12" x2="18" y2="12"/></svg>`,
+        accent: false,
+      },
+      {
+        tag: "03 · REGULAÇÃO",
+        title: "O quadro legal acabou de mudar",
+        body: "O Ato de Genebra da OMPI transforma a biodiversidade da LATAM de bem comum de acesso livre em ativo protegido e gerador de valor.",
+        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg>`,
+        accent: true,
+      },
+    ],
+    treaty: {
+      eyebrow: "ATO DE GENEBRA OMPI · 2024",
+      title: "Um tratado que muda a economia da natureza.",
+      body: "O direito internacional agora exige divulgar a origem dos recursos genéticos em pedidos de patente e obriga o compartilhamento de benefícios pelo uso comercial. A América Latina — com 40% da biodiversidade mundial — passa de fornecedora de recursos a detentora de direitos.",
+    },
+    closing: "A Moka foi construída para esta janela de oportunidade.",
+    flags: {
+      mexico: { name: "México", stat: "10%", desc: "das espécies vegetais usadas na descoberta." },
+      argentina: { name: "Argentina", stat: "5%", desc: "mapeadas para seu potencial molecular." },
+      venezuela: { name: "Venezuela", stat: "90%", desc: "de sua biblioteca química inexplorada." },
+    },
+  },
+};
+
+const t = copy[locale as keyof typeof copy] ?? copy.en;
+---
+
+<section class="why-section relative overflow-hidden px-5 py-16 sm:px-8 lg:py-24">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-birch/10 to-transparent"></div>
+
+  <div class="why-shell">
+
+    <!-- Header: text left, map right (2-column grid) -->
+    <div class="why-header-grid">
+
+      <!-- Left: kicker + intro + flags -->
+      <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
+        <div class="why-kicker">{t.kicker}</div>
+        <p class="why-intro mt-5">{t.intro}</p>
+
+        <!-- Flags below the intro text -->
+        <div class="why-flags mt-8">
+
+          <div class="why-flag-item">
+            <Image src={Mexico} alt="Mexico" class="why-flag-icon" />
+            <div class="why-flag-tooltip">
+              <p class="why-flag-name">{t.flags.mexico.name}</p>
+              <p class="why-flag-stat"><span class="why-flag-stat-num">{t.flags.mexico.stat}</span> {t.flags.mexico.desc}</p>
+            </div>
+          </div>
+
+          <div class="why-flag-item">
+            <Image src={Argentina} alt="Argentina" class="why-flag-icon" />
+            <div class="why-flag-tooltip">
+              <p class="why-flag-name">{t.flags.argentina.name}</p>
+              <p class="why-flag-stat"><span class="why-flag-stat-num">{t.flags.argentina.stat}</span> {t.flags.argentina.desc}</p>
+            </div>
+          </div>
+
+          <div class="why-flag-item">
+            <Image src={Venezuela} alt="Venezuela" class="why-flag-icon" />
+            <div class="why-flag-tooltip">
+              <p class="why-flag-name">{t.flags.venezuela.name}</p>
+              <p class="why-flag-stat"><span class="why-flag-stat-num">{t.flags.venezuela.stat}</span> {t.flags.venezuela.desc}</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right: map -->
+      <div class="why-map-col reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.18s;" aria-hidden="true">
+        <div class="why-map-wrap">
+          <Image src={Map} alt="" class="why-map-img" />
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
+</section>
+
+<style>
+  .why-section {
+    background: transparent;
+    position: relative;
+    z-index: 3;
+  }
+
+  /* ── Shell ───────────────────────────────────── */
+  .why-shell {
+    width: min(100%, 1180px);
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ── Header: 2-col grid ─────────────────────── */
+  .why-header-grid {
+    position: relative;
+    z-index: 3;
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: clamp(2rem, 4vw, 4.5rem);
+    align-items: center;
+  }
+
+  /* Map column */
+  .why-map-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 5;
+  }
+
+  .why-map-wrap {
+    position: relative;
+    z-index: 5;
+    width: min(78vw, 840px);
+    max-width: 840px;
+    margin-right: clamp(-8rem, -7vw, -2rem);
+    animation: whyMapFloat 7s ease-in-out infinite;
+  }
+
+  .why-map-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.9;
+    filter: grayscale(1) contrast(1.24) brightness(0.78) drop-shadow(0 28px 80px rgba(0, 0, 0, 0.42));
+  }
+
+  @keyframes whyMapFloat {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-12px); }
+  }
+
+  /* ── Kicker + intro ──────────────────────────── */
+  .why-kicker {
+    font-family: Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.42em;
+    color: var(--fresh-green-color);
+    text-transform: uppercase;
+  }
+
+  .why-intro {
+    font-family: Inter, sans-serif;
+    font-size: clamp(2rem, 3.2vw, 2.44rem);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--pure-color);
+    text-wrap: balance;
+  }
+
+  /* ── Country flags ───────────────────────────── */
+  .why-flags {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  .why-flag-item {
+    position: relative;
+    cursor: pointer;
+  }
+
+  .why-flag-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    transition: transform 280ms ease, box-shadow 280ms ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.28);
+  }
+
+  .why-flag-item:hover .why-flag-icon {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.38);
+  }
+
+  .why-flag-tooltip {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(6px);
+    width: 200px;
+    background: rgba(19, 45, 37, 0.96);
+    border: 1px solid rgba(222, 222, 222, 0.12);
+    border-radius: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 240ms ease, transform 240ms ease;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.34);
+    z-index: 10;
+  }
+
+  .why-flag-item:hover .why-flag-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .why-flag-name {
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+    margin-bottom: 0.2rem;
+  }
+
+  .why-flag-stat {
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(222, 222, 222, 0.72);
+  }
+
+  .why-flag-stat-num {
+    font-weight: 700;
+    color: var(--fresh-green-color);
+  }
+
+  /* ── Animations ──────────────────────────────── */
+  .animate-slide-in { animation: whySlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+  .animate-pop-in   { animation: whyPopIn   0.72s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+  @keyframes whySlideIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes whyPopIn {
+    from { opacity: 0; transform: scale(0.96) translateY(14px); }
+    to   { opacity: 1; transform: scale(1)    translateY(0); }
+  }
+
+  /* ── Responsive ──────────────────────────────── */
+  @media (max-width: 1023px) {
+    .why-header-grid { grid-template-columns: 1fr; }
+    .why-map-col { display: none; }
+    .why-grid { grid-template-columns: 1fr; }
+    .why-treaty-inner { grid-template-columns: 1fr; gap: 0.875rem; }
+  }
+
+  @media (min-width: 640px) and (max-width: 1023px) {
+    .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .why-map-col { display: flex; }
+    .why-map-wrap {
+      width: min(92vw, 720px);
+      max-width: 720px;
+      margin-right: 0;
+    }
+    .why-flag-icon { width: 50px; height: 50px; }
+  }
+
+  @media (max-width: 639px) {
+    .why-flag-icon { width: 40px; height: 40px; }
+    .why-flags { gap: 1rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-slide-in,
+    .animate-pop-in { animation-duration: 1ms; }
+    .why-treaty-dot { animation: none; }
+    .why-map-bg     { animation: none; }
+  }
+</style>
