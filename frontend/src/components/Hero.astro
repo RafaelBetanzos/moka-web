@@ -36,6 +36,7 @@ const copy = {
 
 const { locale = "en" } = Astro.props;
 const t = copy[locale] ?? copy.en;
+const localePrefix = locale === "en" ? "" : `/${locale}`;
 ---
 
 <section class="hero-xray relative w-full overflow-hidden">
@@ -72,11 +73,17 @@ const t = copy[locale] ?? copy.en;
           {t.description}
         </p>
         <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <a href="/our-technology" class="hero-primary-cta no-underline">{t.primaryCta}</a>
           <a
-            href="/contact-us"
+            href={`${localePrefix}/our-technology`}
+            class="hero-primary-cta no-underline"
+            data-analytics-event="click_view_technology"
+            data-analytics-category="cta"
+            data-analytics-label="hero_primary_cta"
+          >{t.primaryCta}</a>
+          <a
+            href={`${localePrefix}/contact-us`}
             class="hero-demo-cta no-underline"
-            data-analytics-event="book_demo_click"
+            data-analytics-event="click_contact_cta"
             data-analytics-category="cta"
             data-analytics-label={t.analyticsLabel}
           >

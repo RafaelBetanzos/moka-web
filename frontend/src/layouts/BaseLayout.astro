@@ -20,6 +20,7 @@ const {
 } = Astro.props;
 
 const siteUrl = "https://moka.bio";
+const googleAnalyticsId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID ?? "G-MEXX4CR4HW";
 const canonical = canonicalUrl ?? `${siteUrl}${Astro.url.pathname}`;
 const ogImageAbsolute = ogImage.startsWith("http") ? ogImage : `${siteUrl}${ogImage}`;
 const path = Astro.url.pathname.replace(/\/$/, "") || "/";
@@ -76,30 +77,35 @@ const localizedPath = (locale: "en" | "es" | "pt") => {
     })} />
 
     <!-- Google Analytics (centralizado) -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-MEXX4CR4HW"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-MEXX4CR4HW');
-    </script>
-    <script is:inline>
-      document.addEventListener('click', (event) => {
-        const target = event.target instanceof Element
-          ? event.target.closest('[data-analytics-event]')
-          : null;
+    {googleAnalyticsId && (
+      <>
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
+        <script is:inline define:vars={{ googleAnalyticsId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = window.gtag || gtag;
+          window.gtag('js', new Date());
+          window.gtag('config', googleAnalyticsId);
+        </script>
+        <script is:inline>
+          document.addEventListener('click', (event) => {
+            const target = event.target instanceof Element
+              ? event.target.closest('[data-analytics-event]')
+              : null;
 
-        const eventName = target?.getAttribute('data-analytics-event');
+            const eventName = target?.getAttribute('data-analytics-event');
 
-        if (!eventName || typeof window.gtag !== 'function') return;
+            if (!eventName || typeof window.gtag !== 'function') return;
 
-        window.gtag('event', eventName, {
-          event_category: target.getAttribute('data-analytics-category') || 'engagement',
-          event_label: target.getAttribute('data-analytics-label') || target.textContent?.trim(),
-          link_url: target instanceof HTMLAnchorElement ? target.href : undefined,
-        });
-      });
-    </script>
+            window.gtag('event', eventName, {
+              event_category: target.getAttribute('data-analytics-category') || 'engagement',
+              event_label: target.getAttribute('data-analytics-label') || target.textContent?.trim(),
+              link_url: target instanceof HTMLAnchorElement ? target.href : undefined,
+            });
+          });
+        </script>
+      </>
+    )}
   </head>
   <body class="bg-charcoal text-birch">
     <Navbar />

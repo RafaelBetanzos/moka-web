@@ -31,6 +31,7 @@ const visionCopy = {
 
 const { isButtonOn, locale = "en" } = Astro.props;
 const t = visionCopy[locale] ?? visionCopy.en;
+const localePrefix = locale === "en" ? "" : `/${locale}`;
 ---
 
 <div
@@ -52,7 +53,7 @@ const t = visionCopy[locale] ?? visionCopy.en;
     {
       isButtonOn && (
         <div class="reveal opacity-0 mt-8" data-animation="slide-up" style="transition-delay: 0.35s;">
-          <a href="/about-us" class="group flex gap-6 items-center justify-center bg-pure text-charcoal font-inter font-semibold text-[16px] rounded-full max-w-fit p-1 pl-5 shadow-lg shadow-black/20 ring-1 ring-pure/10 transition-all duration-300 hover:pr-4 hover:bg-freshgreen hover:shadow-freshgreen/20 no-underline">
+          <a href={`${localePrefix}/about-us`} class="group flex gap-6 items-center justify-center bg-pure text-charcoal font-inter font-semibold text-[16px] rounded-full max-w-fit p-1 pl-5 shadow-lg shadow-black/20 ring-1 ring-pure/10 transition-all duration-300 hover:pr-4 hover:bg-freshgreen hover:shadow-freshgreen/20 no-underline">
             <span class="text-center text-[16px]">{t.cta}</span>
             <div class="flex items-center justify-center bg-charcoal rounded-full w-10 h-10 transition-transform duration-300 group-hover:rotate-[-45deg] group-hover:scale-110">
               <Image src={ArrowRight} alt="arrow-right" class="w-5 h-5" />

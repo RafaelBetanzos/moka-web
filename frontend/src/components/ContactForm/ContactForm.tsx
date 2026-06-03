@@ -4,6 +4,12 @@ import Message from "@assets/icons/Message.svg";
 import Phone from "@assets/icons/Phone.svg";
 import User from "@assets/icons/User.svg";
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 type Locale = "en" | "es" | "pt";
 
 const copy = {
@@ -60,6 +66,14 @@ export const ContactForm: React.FC<{ locale?: Locale }> = ({ locale = "en" }) =>
 
     // 2. Construct the mailto URL
     const mailtoUrl = `mailto:info@moka.bio?subject=${t.subject} ${name}&body=${t.name}: ${name}%0D%0A${t.email}: ${email}%0D%0A${t.phone}: ${phone}%0D%0A%0D%0A${t.message}:%0D%0A${message}`;
+
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "generate_lead", {
+        event_category: "contact",
+        event_label: `contact_form_${locale}`,
+        form_destination: "mailto",
+      });
+    }
     
     // 3. Open the user's email client
     window.location.href = mailtoUrl;

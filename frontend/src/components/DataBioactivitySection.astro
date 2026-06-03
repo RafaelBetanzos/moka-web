@@ -61,6 +61,7 @@ const dataCopy = {
 
 const { locale = "en" } = Astro.props;
 const t = dataCopy[locale] ?? dataCopy.en;
+const localePrefix = locale === "en" ? "" : `/${locale}`;
 ---
 
 <section class="home-data-section relative -mt-1 overflow-hidden px-5 py-20 sm:px-8 lg:py-28">
@@ -92,8 +93,11 @@ const t = dataCopy[locale] ?? dataCopy.en;
       </div>
 
       <a 
-        href="/our-technology" 
+        href={`${localePrefix}/our-technology`} 
         class="reveal opacity-0 mt-10 flex w-fit items-center gap-3 rounded-full bg-pure py-2 pl-6 pr-2 font-inter text-[16px] font-semibold text-charcoal shadow-lg shadow-black/20 ring-1 ring-pure/10 transition-all duration-300 hover:bg-freshgreen hover:shadow-freshgreen/20 active:scale-95 no-underline"
+        data-analytics-event="click_view_technology"
+        data-analytics-category="cta"
+        data-analytics-label="data_bioactivity_cta"
         data-animation="bounce-in"
         style="transition-delay: 0.75s;"
       >
