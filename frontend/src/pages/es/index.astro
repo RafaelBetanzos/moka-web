@@ -193,7 +193,7 @@ const industries = [
       <div class="home-moka-section relative overflow-hidden px-5 py-12 sm:px-8 lg:py-16">
         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-birch/8 to-transparent"></div>
         <div class="home-section-shell">
-          <div class="moka-header-grid">
+          <div class="moka-showcase-layout">
             <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
               <div class="home-section-kicker">MOKA · SSE</div>
               <h2 class="home-section-title mt-4">Interpreta la bioactividad de las plantas latinoamericanas.</h2>
@@ -201,23 +201,46 @@ const industries = [
                 Moka es un entorno de software especializado que da a investigadores y empresas acceso directo a la inteligencia de MokaDex — para explorar, validar y descubrir a escala.
               </p>
             </div>
-            <div class="moka-laptop-main reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.18s;" aria-hidden="true">
-              <img class="moka-laptop-svg" src="/mockups/PlatformMockup.svg" alt="" loading="lazy" />
-              <p class="moka-placeholder-label">Selecciona tu vertical industrial</p>
-            </div>
-          </div>
-          <div class="moka-laptop-grid mt-12">
-            <div class="moka-laptop-item reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.12s;" aria-hidden="true">
-              <img class="moka-laptop-mini" src="/mockups/Explore.svg" alt="" loading="lazy" />
-              <p class="moka-laptop-label">Explora MokaDex</p>
-            </div>
-            <div class="moka-laptop-item reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.22s;" aria-hidden="true">
-              <img class="moka-laptop-mini" src="/mockups/VirtualLab.svg" alt="" loading="lazy" />
-              <p class="moka-laptop-label">Ejecuta ensayos en el Laboratorio Virtual</p>
-            </div>
-            <div class="moka-laptop-item reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.32s;" aria-hidden="true">
-              <img class="moka-laptop-mini" src="/mockups/WetLab.svg" alt="" loading="lazy" />
-              <p class="moka-laptop-label">Gestiona tus propios datos en el Wet Lab</p>
+            <div class="moka-carousel reveal opacity-0" id="moka-carousel" data-animation="pop-in" style="transition-delay: 0.15s;">
+              <div class="moka-carousel-track" id="moka-carousel-track">
+                <div class="moka-slide">
+                  <img class="moka-slide-img" src="/mockups/PlatformMockup.svg" alt="" loading="lazy" />
+                  <div class="moka-slide-content">
+                    <p class="moka-slide-label">Vista general</p>
+                    <p class="moka-slide-desc">Las herramientas fragmentadas ralentizan cada decisión de investigación. Un entorno configurable unifica todo tu flujo de descubrimiento — adaptado a tu industria, tus datos y el ritmo de tu equipo.</p>
+                  </div>
+                </div>
+                <div class="moka-slide">
+                  <img class="moka-slide-img" src="/mockups/Explore.svg" alt="" loading="lazy" />
+                  <div class="moka-slide-content">
+                    <p class="moka-slide-label">Explora MokaDex</p>
+                    <p class="moka-slide-desc">Recopilar datos de bioactividad vegetal de fuentes dispersas lleva meses y aún pierde señales críticas. Una sola consulta devuelve perfiles de especies, compuestos y evidencia validada — convirtiendo meses de investigación en minutos.</p>
+                  </div>
+                </div>
+                <div class="moka-slide">
+                  <img class="moka-slide-img" src="/mockups/VirtualLab.svg" alt="" loading="lazy" />
+                  <div class="moka-slide-content">
+                    <p class="moka-slide-label">Laboratorio Virtual</p>
+                    <p class="moka-slide-desc">El análisis bioinformático está bloqueado detrás de código que la mayoría de investigadores no domina. Predice mecanismos, modela bioactividad y ejecuta ensayos in silico — sin programación.</p>
+                  </div>
+                </div>
+                <div class="moka-slide">
+                  <img class="moka-slide-img" src="/mockups/WetLab.svg" alt="" loading="lazy" />
+                  <div class="moka-slide-content">
+                    <p class="moka-slide-label">Wet Lab</p>
+                    <p class="moka-slide-desc">Los datos experimentales en silos pierden contexto y valor rápidamente. Centraliza tus resultados, mantén cada dato consultable y conecta tus hallazgos con la inteligencia molecular de MokaDex.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="moka-progress-bar" aria-hidden="true">
+                <div class="moka-progress-fill" id="moka-progress-fill"></div>
+              </div>
+              <div class="moka-dots" role="tablist">
+                <button class="moka-dot is-active" data-slide="0" aria-label="Vista general"></button>
+                <button class="moka-dot" data-slide="1" aria-label="Explora MokaDex"></button>
+                <button class="moka-dot" data-slide="2" aria-label="Laboratorio Virtual"></button>
+                <button class="moka-dot" data-slide="3" aria-label="Wet Lab"></button>
+              </div>
             </div>
           </div>
         </div>
@@ -348,6 +371,87 @@ const industries = [
   );
 
   document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+  // ── Moka carousel ─────────────────────────────────────────────────
+  (function () {
+    const carousel = document.getElementById('moka-carousel');
+    if (!carousel) return;
+
+    const track = document.getElementById('moka-carousel-track');
+    const fill  = document.getElementById('moka-progress-fill');
+    const slides = Array.from(track?.querySelectorAll('.moka-slide') ?? []);
+    const dots   = Array.from(carousel.querySelectorAll('.moka-dot'));
+
+    const DURATION = 3800;
+    let current = 0;
+    let timer = null;
+    let isPaused = false;
+
+    function goTo(idx, snap = false) {
+      const next = ((idx % slides.length) + slides.length) % slides.length;
+      if (snap) {
+        track.style.transition = 'none';
+        track.style.transform = `translateX(-${next * 100}%)`;
+        track.offsetWidth;
+        track.style.transition = '';
+      } else {
+        track.style.transform = `translateX(-${next * 100}%)`;
+      }
+      current = next;
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === current));
+      resetProgress();
+    }
+
+    function resetProgress() {
+      if (!fill) return;
+      fill.style.transition = 'none';
+      fill.style.width = '0%';
+      fill.offsetWidth;
+      fill.style.transition = `width ${DURATION}ms linear`;
+      fill.style.width = '100%';
+    }
+
+    function startAuto() {
+      if (timer) return;
+      timer = setInterval(() => {
+        if (isPaused) return;
+        const next = (current + 1) % slides.length;
+        goTo(next, next === 0);
+      }, DURATION);
+      resetProgress();
+    }
+
+    function stopAuto() {
+      clearInterval(timer);
+      timer = null;
+      if (fill) { fill.style.transition = 'none'; fill.style.width = '0%'; }
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        goTo(i);
+        isPaused = true;
+        setTimeout(() => { isPaused = false; }, 8000);
+      });
+    });
+
+    carousel.addEventListener('mouseenter', () => { isPaused = true; });
+    carousel.addEventListener('mouseleave', () => {
+      isPaused = false;
+      if (timer) resetProgress();
+    });
+
+    let tx = 0;
+    carousel.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
+    carousel.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - tx;
+      if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+    });
+
+    new IntersectionObserver(entries => {
+      entries.forEach(e => e.isIntersecting ? startAuto() : stopAuto());
+    }, { threshold: 0.2 }).observe(carousel);
+  })();
 </script>
 
 <style>
@@ -1453,119 +1557,125 @@ const industries = [
     background: linear-gradient(90deg, transparent, rgba(222, 222, 222, 0.10), transparent);
   }
 
-  /* ── Moka platform section ────────────────────── */
+  /* ── Moka showcase section ─────────────────────── */
   .home-moka-section {
     background: transparent;
     position: relative;
     z-index: 1;
   }
 
-  .moka-header-grid {
+  .moka-showcase-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 3.5rem;
     align-items: center;
   }
 
-  .moka-laptop-main {
+  .moka-showcase-layout { align-items: stretch; }
+
+  .moka-carousel {
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    overflow: hidden;
-    border-radius: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 1.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
     background: rgba(18, 18, 18, 0.62);
-    padding: 2rem 1.5rem 1.75rem;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.28);
-    backdrop-filter: blur(24px);
-    transition: transform 320ms ease, border-color 320ms ease, background 320ms ease;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(22px);
+    overflow: hidden;
   }
 
-  .moka-laptop-main::after,
-  .moka-laptop-item::after {
+  .moka-carousel::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at 24% 0%, rgba(110, 191, 126, 0.12), transparent 36%);
-    opacity: 0;
-    transition: opacity 320ms ease;
+    border-radius: inherit;
+    background: radial-gradient(circle at 28% 0%, rgba(110, 191, 126, 0.10), transparent 55%);
     pointer-events: none;
+    z-index: 0;
   }
 
-  .moka-laptop-main:hover,
-  .moka-laptop-item:hover {
-    transform: translateY(-4px);
-    border-color: rgba(110, 191, 126, 0.34);
-  }
-
-  .moka-laptop-main:hover::after,
-  .moka-laptop-item:hover::after {
-    opacity: 1;
-  }
-
-  .moka-laptop-svg {
+  .moka-carousel-track {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    transition: transform 620ms cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     z-index: 1;
-    width: 100%;
-    max-width: 380px;
-    color: rgba(222, 222, 222, 0.48);
-    display: block;
   }
 
-  .moka-placeholder-label {
-    position: relative;
-    z-index: 1;
+  .moka-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 2rem 1.75rem 1.5rem;
+  }
+
+  .moka-slide-img { display: block; width: 100%; pointer-events: none; }
+
+  .moka-slide-content { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-align: center; }
+
+  .moka-slide-label {
     font-family: Roboto, sans-serif;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.30em;
     text-transform: uppercase;
-    color: rgba(222, 222, 222, 0.70);
-  }
-
-  .moka-laptop-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-
-  .moka-laptop-item {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.25rem;
-    overflow: hidden;
-    padding: 2rem 1.5rem 1.75rem;
-    border-radius: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(18, 18, 18, 0.62);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.28);
-    backdrop-filter: blur(24px);
-    transition: transform 320ms ease, border-color 320ms ease, background 320ms ease;
-  }
-
-  .moka-laptop-mini {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 200px;
-    color: rgba(222, 222, 222, 0.46);
-    display: block;
-  }
-
-  .moka-laptop-label {
-    position: relative;
-    z-index: 1;
-    font-family: Roboto, sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: rgba(222, 222, 222, 0.70);
+    color: rgba(110, 191, 126, 0.80);
     text-align: center;
+  }
+
+  .moka-slide-desc {
+    font-family: Inter, sans-serif;
+    font-size: 17px;
+    line-height: 1.68;
+    color: rgba(222, 222, 222, 0.58);
+    text-align: center;
+    max-width: 340px;
+  }
+
+  .moka-progress-bar {
+    position: relative;
+    z-index: 1;
+    height: 2px;
+    background: rgba(110, 191, 126, 0.10);
+    overflow: hidden;
+  }
+
+  .moka-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--fresh-green-color);
+    box-shadow: 0 0 8px rgba(110, 191, 126, 0.55);
+  }
+
+  .moka-dots {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem 1.25rem;
+  }
+
+  .moka-dot {
+    height: 6px;
+    width: 6px;
+    border-radius: 999px;
+    border: none;
+    background: rgba(222, 222, 222, 0.20);
+    cursor: pointer;
+    padding: 0;
+    transition: background 300ms ease, width 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .moka-dot.is-active {
+    background: var(--fresh-green-color);
+    width: 24px;
+    box-shadow: 0 0 8px rgba(110, 191, 126, 0.45);
   }
 
   /* ── Mobile: fix fixed background ───────────────
@@ -1603,9 +1713,8 @@ const industries = [
       gap: 1rem;
       text-align: left;
     }
-    .moka-header-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .moka-laptop-main { display: none; }
-    .traction-grid, .moka-laptop-grid, .delta-grid {
+    .moka-showcase-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .traction-grid, .delta-grid {
       grid-template-columns: 1fr;
       max-width: 480px;
       margin-left: auto;
@@ -1615,7 +1724,7 @@ const industries = [
   }
 
   @media (min-width: 640px) and (max-width: 1023px) {
-    .traction-grid, .moka-laptop-grid, .delta-grid {
+    .traction-grid, .delta-grid {
       grid-template-columns: repeat(2, 1fr);
       max-width: 100%;
     }
@@ -1653,8 +1762,9 @@ const industries = [
   @media (prefers-reduced-motion: reduce) {
     .arch-dot,
     .pipeline-arrow-pulse,
-    .pipeline-proof-dot {
-      animation: none;
+    .pipeline-proof-dot,
+    .moka-progress-fill {
+      transition: none !important;
     }
   }
 </style>
