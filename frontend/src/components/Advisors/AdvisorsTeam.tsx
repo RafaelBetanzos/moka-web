@@ -47,13 +47,6 @@ const advisors: Advisor[] = [
     flag: Brazil.src,
   },
   {
-    id: "local-3",
-    name: "Adam Joswiak",
-    title: { en: "Advisor", es: "Asesor", pt: "Conselheiro" },
-    linkedin: "https://www.linkedin.com/in/adam-jozwiak-470135153/",
-    localImg: "/advisorspics/AdamJozwiak.jpg",
-  },
-  {
     id: "local-4",
     name: "Guillermo Repizo",
     title: { en: "Advisor", es: "Asesor", pt: "Conselheiro" },
@@ -72,7 +65,6 @@ const advisors: Advisor[] = [
 ];
 
 export const AdvisorsTeam = ({ locale = "en" }: AdvisorsTeamProps) => {
-  const visibleAdvisors = advisors.filter((advisor) => advisor.name !== "Adam Joswiak");
   const t = copy[locale];
 
   return (
@@ -84,7 +76,7 @@ export const AdvisorsTeam = ({ locale = "en" }: AdvisorsTeamProps) => {
       </div>
 
       <div className="flex justify-center gap-16 mx-auto flex-wrap max-w-6xl px-8">
-        {visibleAdvisors.map((advisor) => (
+        {advisors.map((advisor) => (
           <div className="group flex flex-col items-center w-48" key={advisor.id}>
             <div className="relative mb-4">
               <div className="overflow-hidden rounded-full bg-charcoal aspect-square w-32 shadow-md border-2 border-sage/30 group-hover:border-freshgreen transition-all duration-500">

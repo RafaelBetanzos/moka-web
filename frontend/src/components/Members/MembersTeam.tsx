@@ -65,7 +65,7 @@ export const MembersTeam = ({ locale = "en" }: MembersTeamProps) => {
   const getFlagSrc = (name: string) => {
     const founder = name.toLowerCase();
     if (founder.includes("rafa")) return Mexico.src;
-    if (founder.includes("facu") || founder.includes("flor")) return Argentina.src;
+    if (founder.includes("facu")) return Argentina.src;
     return null;
   };
 
