@@ -2,6 +2,8 @@
 import Map from "@assets/Map.svg";
 import Argentina from "@assets/icons/Argentina.svg";
 import Mexico from "@assets/icons/Mexico.svg";
+import Brazil from "@assets/icons/Brazil.svg";
+import Peru from "@assets/icons/Peru.svg";
 import Venezuela from "@assets/icons/Venezuela.svg";
 import { Image } from "astro:assets";
 
@@ -43,6 +45,8 @@ const copy = {
     flags: {
       mexico: { name: "Mexico", stat: "10%", desc: "of plant species used in discovery." },
       argentina: { name: "Argentina", stat: "5%", desc: "mapped for molecular potential." },
+      brazil: { name: "Brazil", stat: "30%", desc: "of the region's biodiversity concentrated across its biomes." },
+      peru: { name: "Peru", stat: "25,000+", desc: "plant species documented across Andean and Amazon ecosystems." },
       venezuela: { name: "Venezuela", stat: "90%", desc: "of chemical library unexplored." },
     },
   },
@@ -81,6 +85,8 @@ const copy = {
     flags: {
       mexico: { name: "México", stat: "10%", desc: "de especies vegetales usadas en descubrimiento." },
       argentina: { name: "Argentina", stat: "5%", desc: "mapeadas para su potencial molecular." },
+      brazil: { name: "Brasil", stat: "30%", desc: "de la biodiversidad de la región concentrada en sus biomas." },
+      peru: { name: "Perú", stat: "25,000+", desc: "especies vegetales documentadas entre ecosistemas andinos y amazónicos." },
       venezuela: { name: "Venezuela", stat: "90%", desc: "de su biblioteca química sin explorar." },
     },
   },
@@ -119,6 +125,8 @@ const copy = {
     flags: {
       mexico: { name: "México", stat: "10%", desc: "das espécies vegetais usadas na descoberta." },
       argentina: { name: "Argentina", stat: "5%", desc: "mapeadas para seu potencial molecular." },
+      brazil: { name: "Brasil", stat: "30%", desc: "da biodiversidade da região concentrada em seus biomas." },
+      peru: { name: "Peru", stat: "25.000+", desc: "espécies vegetais documentadas entre ecossistemas andinos e amazônicos." },
       venezuela: { name: "Venezuela", stat: "90%", desc: "de sua biblioteca química inexplorada." },
     },
   },
@@ -156,6 +164,22 @@ const t = copy[locale as keyof typeof copy] ?? copy.en;
             <div class="why-flag-tooltip">
               <p class="why-flag-name">{t.flags.argentina.name}</p>
               <p class="why-flag-stat"><span class="why-flag-stat-num">{t.flags.argentina.stat}</span> {t.flags.argentina.desc}</p>
+            </div>
+          </div>
+
+          <div class="why-flag-item">
+            <Image src={Brazil} alt="Brazil" class="why-flag-icon" />
+            <div class="why-flag-tooltip">
+              <p class="why-flag-name">{t.flags.brazil.name}</p>
+              <p class="why-flag-stat"><span class="why-flag-stat-num">{t.flags.brazil.stat}</span> {t.flags.brazil.desc}</p>
+            </div>
+          </div>
+
+          <div class="why-flag-item">
+            <Image src={Peru} alt="Peru" class="why-flag-icon" />
+            <div class="why-flag-tooltip">
+              <p class="why-flag-name">{t.flags.peru.name}</p>
+              <p class="why-flag-stat"><span class="why-flag-stat-num">{t.flags.peru.stat}</span> {t.flags.peru.desc}</p>
             </div>
           </div>
 
