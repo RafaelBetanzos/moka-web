@@ -1,0 +1,132 @@
+---
+// Cards at the bottom of Insights linking to the industry and country landing pages.
+import { industries, industrySlugs } from "../data/industries";
+import { countries, countrySlugs } from "../data/countries";
+import type { Locale } from "../data/sitePages";
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const prefix = locale === "en" ? "" : `/${locale}`;
+const copy = {
+  en: { industries: "By industry", countries: "By country", industryTag: "Industry", countryTag: "Country", cta: "Read the guide" },
+  es: { industries: "Por industria", countries: "Por país", industryTag: "Industria", countryTag: "País", cta: "Leer la guía" },
+  pt: { industries: "Por indústria", countries: "Por país", industryTag: "Indústria", countryTag: "País", cta: "Ler o guia" },
+}[locale];
+
+const groups = [
+  {
+    title: copy.industries,
+    tag: copy.industryTag,
+    items: industrySlugs.map((slug) => ({ href: `${prefix}/industries/${slug}/`, ...industries[slug][locale] })),
+  },
+  {
+    title: copy.countries,
+    tag: copy.countryTag,
+    items: countrySlugs.map((slug) => ({ href: `${prefix}/countries/${slug}/`, ...countries[slug][locale] })),
+  },
+];
+---
+
+{groups.map((group) => (
+  <section class="guides-group">
+    <h2 class="guides-title reveal opacity-0" data-animation="fade-in">{group.title}</h2>
+    <div class="guides-grid">
+      {group.items.map((item, i) => (
+        <a href={item.href} class="guide-card reveal opacity-0 no-underline" data-animation="pop-in" style={`transition-delay: ${0.08 + i * 0.08}s;`}>
+          <span class="guide-card-tag">{group.tag}</span>
+          <h3 class="guide-card-name">{item.name}</h3>
+          <p class="guide-card-summary">{item.title}</p>
+          <span class="guide-card-cta">{copy.cta} <span aria-hidden="true">→</span></span>
+        </a>
+      ))}
+    </div>
+  </section>
+))}
+
+<style>
+  .guides-group { margin-top: 4rem; }
+
+  .guides-title {
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.9rem, 3.4vw, 3rem);
+    font-weight: 650;
+    line-height: 1.1;
+    color: var(--pure-color);
+    margin: 0 0 1.5rem;
+  }
+
+  .guides-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .guides-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (min-width: 1024px) {
+    .guides-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  }
+
+  .guide-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(110, 191, 126, 0.12);
+    background: linear-gradient(145deg, rgba(18, 18, 18, 0.72), rgba(19, 45, 37, 0.44));
+    backdrop-filter: blur(18px);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    color: inherit;
+    transition: transform 320ms ease, border-color 320ms ease, box-shadow 320ms ease;
+  }
+
+  .guide-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(110, 191, 126, 0.32);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.28), 0 0 40px rgba(110, 191, 126, 0.06);
+  }
+
+  .guide-card-tag {
+    align-self: flex-start;
+    padding: 0.2rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(110, 191, 126, 0.24);
+    background: rgba(19, 45, 37, 0.5);
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+  }
+
+  .guide-card-name {
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+    font-weight: 650;
+    line-height: 1.3;
+    color: var(--pure-color);
+    margin: 0;
+  }
+
+  .guide-card-summary {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(222, 222, 222, 0.62);
+    flex: 1;
+  }
+
+  .guide-card-cta {
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--fresh-green-color);
+  }
+</style>

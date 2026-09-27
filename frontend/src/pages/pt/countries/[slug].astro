@@ -1,0 +1,12 @@
+---
+import CountryPage from "@components/CountryPage.astro";
+import { countrySlugs, type CountrySlug } from "../../../data/countries";
+
+export function getStaticPaths() {
+  return countrySlugs.map((slug) => ({ params: { slug } }));
+}
+
+const slug = Astro.params.slug as CountrySlug;
+---
+
+<CountryPage slug={slug} locale="pt" />

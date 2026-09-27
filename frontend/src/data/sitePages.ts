@@ -25,6 +25,12 @@ export const sitePages: SitePage[] = [
     priority: 0.8,
     extraSources: ["src/data/industries.ts", "src/components/IndustryPage.astro"],
   })),
+  ...["mexico", "brazil", "peru", "argentina", "colombia"].map((slug) => ({
+    path: `/countries/${slug}/`,
+    source: "countries/[slug].astro",
+    priority: 0.7,
+    extraSources: ["src/data/countries.ts", "src/components/CountryPage.astro"],
+  })),
   { path: "/about-us/", source: "about-us.astro", priority: 0.7 },
   { path: "/insights/", source: "insights.astro", priority: 0.6 },
   { path: "/privacy/", source: "privacy.astro", priority: 0.2 },

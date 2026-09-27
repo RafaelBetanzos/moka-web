@@ -6,6 +6,7 @@ const contactCopy = {
     headline: "Which plant intrigues you?",
     pageHeadline: "Book a demo or request a service.",
     nextTitle: "What happens next",
+    cta: "Contact us",
     steps: [
       { title: "You write to us", body: "A platform demo or an R&D service." },
       { title: "We reply within 1 business day", body: "With a calendar so you can choose the date and time." },
@@ -17,6 +18,7 @@ const contactCopy = {
     headline: "¿Qué planta te intriga?",
     pageHeadline: "Agenda una demo o solicita un servicio.",
     nextTitle: "Qué pasa después",
+    cta: "Contáctanos",
     steps: [
       { title: "Nos escribes", body: "Demo de la plataforma o servicio de I+D." },
       { title: "Te respondemos en 1 día hábil", body: "Con un calendario para que elijas fecha y hora." },
@@ -28,6 +30,7 @@ const contactCopy = {
     headline: "Qual planta te intriga?",
     pageHeadline: "Agende uma demonstração ou solicite um serviço.",
     nextTitle: "O que acontece depois",
+    cta: "Fale conosco",
     steps: [
       { title: "Você nos escreve", body: "Demonstração da plataforma ou serviço de P&D." },
       { title: "Respondemos em até 1 dia útil", body: "Com um calendário para você escolher data e horário." },
@@ -40,25 +43,42 @@ interface Props {
   locale?: "en" | "es" | "pt";
   /** On the contact page the headline is the page's H1 and names both offers. */
   isPageHeading?: boolean;
+  /** When set (home page), the card renders wide and short with a button to the contact page. */
+  ctaHref?: string;
 }
 
-const { locale = "en", isPageHeading = false } = Astro.props;
+const { locale = "en", isPageHeading = false, ctaHref } = Astro.props;
+const wide = Boolean(ctaHref);
 const t = contactCopy[locale] ?? contactCopy.en;
 const Heading = isPageHeading ? "h1" : "p";
 ---
 
 <div
-  class="relative z-10 overflow-hidden rounded-[2rem] border border-sage/30 bg-deepforest/80 p-8 md:p-12 flex flex-col justify-center text-pure font-inter font-bold shadow-2xl shadow-black/25 max-w-xl px-8 min-h-[450px] reveal opacity-0"
+  class:list={[
+    "relative z-10 overflow-hidden rounded-[2rem] border border-sage/30 bg-deepforest/80 flex flex-col justify-center text-pure font-inter font-bold shadow-2xl shadow-black/25 reveal opacity-0",
+    wide ? "contact-card--wide w-full p-7 md:px-10 md:py-9" : "p-8 md:p-12 max-w-xl px-8 min-h-[450px]",
+  ]}
   data-animation="fade-in"
 >
   <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(110,191,126,0.18),transparent_34%),linear-gradient(135deg,rgba(18,18,18,0.1),rgba(19,45,37,0.48))]"></div>
-  <div class="mb-8 flex flex-col gap-4">
+  <div class="contact-card-head relative mb-8">
+  <div class="flex flex-col gap-4">
     <p class="relative text-sm tracking-[0.45em] text-freshgreen reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.2s;">
       {t.kicker}
     </p>
     <Heading class="relative text-3xl md:text-4xl leading-tight reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.4s;">
       {isPageHeading ? t.pageHeadline : t.headline}
     </Heading>
+  </div>
+  {wide && (
+    <a
+      href={ctaHref}
+      class="moka-demo-cta contact-card-cta"
+      data-analytics-event="contact_click"
+      data-analytics-category="cta"
+      data-analytics-label="home_contact"
+    >{t.cta} <span aria-hidden="true">→</span></a>
+  )}
   </div>
 
   <div class="relative">
@@ -96,6 +116,43 @@ const Heading = isPageHeading ? "h1" : "p";
   @keyframes popIn {
     from { opacity: 0; transform: scale(0.8); }
     to { opacity: 1; transform: scale(1); }
+  }
+
+  .contact-card-head {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .contact-card--wide .contact-card-head {
+    margin-bottom: 1.75rem;
+  }
+
+  .contact-card-cta {
+    align-self: flex-start;
+    min-height: 52px;
+    padding: 0.9rem 2rem;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 768px) {
+    .contact-card--wide .contact-card-head {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .contact-card--wide .contact-card-cta { align-self: center; }
+
+    .contact-card--wide .contact-steps {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+  }
+
+  @media (max-width: 639px) {
+    .contact-card-cta { align-self: stretch; justify-content: center; }
   }
 
   .contact-next-title {

@@ -12,8 +12,8 @@ const { locale = "en" } = Astro.props;
 const copy = {
   en: {
     kicker: "WHY NOW",
-    title: "The window is open. Not for long.",
-    intro: "AI, market demand, and regulation are pushing in the same direction: toward the plants no one has studied.",
+    intro: "We believe the Americas hold the richest, least-understood molecular library on Earth.",
+    sub: "For the first time, three forces are converging to make what was once impossible not just achievable — but urgent.",
     forces: [
       { tag: "01 · AI", title: "Predict before you experiment", body: "Bioactivity can now be anticipated before you set foot in the lab." },
       { tag: "02 · DEMAND", title: "Industry is looking for new actives", body: "Nutraceuticals, dermocosmetics, agro, and pharma need to stand out. Latin American flora has barely been touched." },
@@ -30,8 +30,8 @@ const copy = {
   },
   es: {
     kicker: "POR QUÉ AHORA",
-    title: "La ventana está abierta. No por mucho.",
-    intro: "La IA, la demanda y la regulación empujan hacia el mismo lado: las plantas que nadie ha estudiado.",
+    intro: "Creemos que las Américas albergan la biblioteca molecular más rica y menos comprendida de la Tierra.",
+    sub: "Por primera vez, tres fuerzas convergen para hacer lo imposible no solo alcanzable — sino urgente.",
     forces: [
       { tag: "01 · IA", title: "Predecir antes de experimentar", body: "Hoy ya es posible anticipar bioactividad antes de pisar el laboratorio." },
       { tag: "02 · DEMANDA", title: "La industria busca activos nuevos", body: "Nutracéutica, dermocosmética, agro y pharma necesitan diferenciarse. La flora latinoamericana apenas se ha tocado." },
@@ -48,8 +48,8 @@ const copy = {
   },
   pt: {
     kicker: "POR QUE AGORA",
-    title: "A janela está aberta. Não por muito tempo.",
-    intro: "A IA, a demanda e a regulação empurram para o mesmo lado: as plantas que ninguém estudou.",
+    intro: "Acreditamos que as Américas abrigam a biblioteca molecular mais rica e menos compreendida da Terra.",
+    sub: "Pela primeira vez, três forças convergem para tornar o impossível não apenas alcançável — mas urgente.",
     forces: [
       { tag: "01 · IA", title: "Prever antes de experimentar", body: "Hoje já é possível antecipar bioatividade antes de pisar no laboratório." },
       { tag: "02 · DEMANDA", title: "A indústria busca novos ativos", body: "Nutracêutica, dermocosmética, agro e pharma precisam se diferenciar. A flora latino-americana mal foi tocada." },
@@ -67,6 +67,7 @@ const copy = {
 };
 
 const t = copy[locale as keyof typeof copy] ?? copy.en;
+const countryHref = (slug: string) => (locale === "en" ? "" : "/" + locale) + "/countries/" + slug + "/";
 ---
 
 <section class="why-section relative overflow-hidden px-5 py-16 sm:px-8 lg:py-24">
@@ -80,43 +81,43 @@ const t = copy[locale as keyof typeof copy] ?? copy.en;
       <!-- Left: kicker + intro + flags -->
       <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
         <div class="why-kicker">{t.kicker}</div>
-        <h2 class="why-title mt-4">{t.title}</h2>
-        <p class="why-intro mt-5">{t.intro}</p>
+        <h2 class="why-intro mt-5">{t.intro}</h2>
+        <p class="why-sub mt-5">{t.sub}</p>
 
         <!-- Flags below the intro text -->
         <div class="why-flags mt-8">
 
-          <div class="why-flag-item">
+          <a class="why-flag-item" href={countryHref("mexico")}>
             <Image src={Mexico} alt="Mexico" class="why-flag-icon" />
             <div class="why-flag-tooltip">
               <p class="why-flag-name">{t.flags.mexico.name}</p>
               <p class="why-flag-stat"><span class="why-flag-stat-num">{t.flags.mexico.stat}</span> {t.flags.mexico.desc}</p>
             </div>
-          </div>
+          </a>
 
-          <div class="why-flag-item">
+          <a class="why-flag-item" href={countryHref("argentina")}>
             <Image src={Argentina} alt="Argentina" class="why-flag-icon" />
             <div class="why-flag-tooltip">
               <p class="why-flag-name">{t.flags.argentina.name}</p>
               <p class="why-flag-stat"><span class="why-flag-stat-num">{t.flags.argentina.stat}</span> {t.flags.argentina.desc}</p>
             </div>
-          </div>
+          </a>
 
-          <div class="why-flag-item">
+          <a class="why-flag-item" href={countryHref("brazil")}>
             <Image src={Brazil} alt="Brazil" class="why-flag-icon" />
             <div class="why-flag-tooltip">
               <p class="why-flag-name">{t.flags.brazil.name}</p>
               <p class="why-flag-stat"><span class="why-flag-stat-num">{t.flags.brazil.stat}</span> {t.flags.brazil.desc}</p>
             </div>
-          </div>
+          </a>
 
-          <div class="why-flag-item">
+          <a class="why-flag-item" href={countryHref("peru")}>
             <Image src={Peru} alt="Peru" class="why-flag-icon" />
             <div class="why-flag-tooltip">
               <p class="why-flag-name">{t.flags.peru.name}</p>
               <p class="why-flag-stat"><span class="why-flag-stat-num">{t.flags.peru.stat}</span> {t.flags.peru.desc}</p>
             </div>
-          </div>
+          </a>
 
           <div class="why-flag-item">
             <Image src={Venezuela} alt="Venezuela" class="why-flag-icon" />
@@ -221,16 +222,16 @@ const t = copy[locale as keyof typeof copy] ?? copy.en;
     text-transform: uppercase;
   }
 
-  .why-title {
+  .why-intro {
     font-family: Inter, sans-serif;
-    font-size: clamp(1.9rem, 3.4vw, 3rem);
-    font-weight: 650;
-    line-height: 1.05;
+    font-size: clamp(2rem, 3.2vw, 2.44rem);
+    font-weight: 500;
+    line-height: 1.2;
     color: var(--pure-color);
     text-wrap: balance;
   }
 
-  .why-intro {
+  .why-sub {
     max-width: 560px;
     font-family: Inter, sans-serif;
     font-size: clamp(1rem, 1.5vw, 1.18rem);
@@ -412,4 +413,7 @@ const t = copy[locale as keyof typeof copy] ?? copy.en;
   @media (max-width: 900px) {
     .why-forces { grid-template-columns: 1fr; }
   }
+
+  a.why-flag-item { text-decoration: none; }
+  a.why-flag-item:focus-visible { outline: 2px solid var(--fresh-green-color); outline-offset: 4px; border-radius: 999px; }
 </style>

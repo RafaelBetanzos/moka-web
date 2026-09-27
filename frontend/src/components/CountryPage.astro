@@ -1,0 +1,135 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
+import TrustSection from "@components/TrustSection.astro";
+import { countries, countryBotanical, countryLabels, countrySlugs, type CountrySlug } from "../data/countries";
+import { industries, industrySlugs } from "../data/industries";
+import type { Locale } from "../data/sitePages";
+import "../styles/seo-landing.css";
+
+interface Props {
+  slug: CountrySlug;
+  locale: Locale;
+}
+
+const { slug, locale } = Astro.props;
+const t = countries[slug][locale];
+const l = countryLabels[locale];
+const prefix = locale === "en" ? "" : "/" + locale;
+const contactBase = prefix + "/contact-us";
+const others = countrySlugs.filter((s) => s !== slug);
+
+const schema = [
+  {
+    "@type": "FAQPage",
+    mainEntity: t.faq.map((item) => ({ "@type": "Question", name: item.q, acceptedAnswer: { "@type": "Answer", text: item.a } })),
+  },
+  {
+    "@type": "Service",
+    name: "Moka Bio — " + t.name,
+    description: t.metaDescription,
+    areaServed: { "@type": "Country", name: countries[slug].en.name },
+    provider: { "@id": "https://moka.bio/#organization" },
+  },
+];
+---
+
+<BaseLayout lang={locale} title={t.metaTitle} description={t.metaDescription} breadcrumb={t.name} schema={schema}>
+  <div class="industry-page relative overflow-hidden">
+    <BotanicalScrollReveal src={countryBotanical[slug]} tone="strong" class="tech-botanical-focus" revealStart={-0.15} />
+
+    <header class="industry-hero">
+      <p class="industry-kicker reveal opacity-0" data-animation="slide-up">{l.kicker} · {t.name.toUpperCase()}</p>
+      <h1 class="industry-title reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.1s;">{t.title}</h1>
+      <p class="industry-lead reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.2s;">{t.lead}</p>
+      <div class="industry-ctas reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.3s;">
+        <a href={contactBase + "?interest=demo"} class="moka-demo-cta" data-analytics-event="book_demo_click" data-analytics-category="cta" data-analytics-label={"country_" + slug + "_hero"}>{l.demo} <span aria-hidden="true">→</span></a>
+        <a href={contactBase + "?interest=service"} class="industry-secondary" data-analytics-event="request_service_click" data-analytics-category="cta" data-analytics-label={"country_" + slug + "_hero"}>{l.service} <span aria-hidden="true">→</span></a>
+      </div>
+    </header>
+
+    <section class="industry-section">
+      <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{l.statsTitle}</h2>
+      <div class="industry-grid industry-grid--2">
+        {t.stats.map((s, i) => (
+          <article class="industry-card reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${0.1 + i * 0.1}s;`}>
+            <p class="country-stat">{s.value}</p>
+            <p class="industry-card-body">{s.label}</p>
+            <p class="country-source">{s.source}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="industry-section">
+      <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{l.doTitle}</h2>
+      <div class="industry-grid industry-grid--2">
+        <article class="industry-card industry-card--accent reveal opacity-0" data-animation="pop-in">
+          <p class="industry-tag">{l.platformTitle} · Moka BDE</p>
+          <ul class="industry-list">{t.platform.map((item) => <li>{item}</li>)}</ul>
+          <a href={contactBase + "?interest=demo"} class="industry-link">{l.demo} <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="industry-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.1s;">
+          <p class="industry-tag">{l.serviceTitle}</p>
+          <ul class="industry-list">{t.service.map((item) => <li>{item}</li>)}</ul>
+          <a href={contactBase + "?interest=service"} class="industry-link">{l.service} <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="industry-section">
+      <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{l.accessTitle}</h2>
+      <p class="industry-intro country-access reveal opacity-0" data-animation="slide-up">{t.access}</p>
+      <p class="industry-intro reveal opacity-0" data-animation="slide-up">{l.accessNote}</p>
+    </section>
+
+    <nav class="industry-section" aria-label={l.industriesTitle}>
+      <h2 class="industry-h2 industry-h2--sm">{l.industriesTitle}</h2>
+      <div class="industry-grid country-grid--4">
+        {industrySlugs.map((s) => (
+          <a class="industry-other" href={prefix + "/industries/" + s + "/"}>
+            <span>{industries[s][locale].name}</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    <section class="industry-section">
+      <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{l.faqTitle}</h2>
+      <div class="industry-faq">
+        {t.faq.map((item) => (
+          <details class="industry-faq-item" name={"faq-" + slug}>
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <nav class="industry-section" aria-label={l.othersTitle}>
+      <h2 class="industry-h2 industry-h2--sm">{l.othersTitle}</h2>
+      <div class="industry-grid country-grid--4">
+        {others.map((s) => (
+          <a class="industry-other" href={prefix + "/countries/" + s + "/"}>
+            <span>{countries[s][locale].name}</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    <TrustSection locale={locale} />
+  </div>
+</BaseLayout>
+
+<script>
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.remove("opacity-0");
+      revealObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+  document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+</script>

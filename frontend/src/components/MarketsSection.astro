@@ -79,12 +79,8 @@ const copy = {
 
     <div class="markets-grid">
       {copy.markets.map((m, i) => (
-        <details
-          class="market-card reveal opacity-0"
-          name="markets"
-          data-animation="pop-in"
-          style={`transition-delay: ${0.12 + i * 0.1}s;`}
-        >
+        <div class="market-cell reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${0.12 + i * 0.1}s;`}>
+        <details class="market-card" name="markets">
           <summary
             class="market-summary"
             data-analytics-event="market_card_open"
@@ -121,9 +117,16 @@ const copy = {
               data-analytics-category="markets"
               data-analytics-label={m.key}
             >{copy.cta} <span aria-hidden="true">→</span></a>
-            <a href={industryHref(m.key)} class="market-page-link">{copy.pageLink} <span aria-hidden="true">→</span></a>
           </div>
         </details>
+        <a
+          href={industryHref(m.key)}
+          class="market-page-link"
+          data-analytics-event="industry_page_click"
+          data-analytics-category="markets"
+          data-analytics-label={m.key}
+        >{copy.pageLink} <span aria-hidden="true">→</span></a>
+        </div>
       ))}
     </div>
   </div>
@@ -412,17 +415,34 @@ const copy = {
     flex-direction: column;
   }
 
+  .market-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
   .market-page-link {
-    display: inline-flex;
-    min-height: 44px;
+    display: flex;
+    min-height: 48px;
     align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.7rem 1.25rem;
+    border-radius: 999px;
+    border: 1px solid rgba(110, 191, 126, 0.35);
+    background: rgba(19, 45, 37, 0.45);
     font-family: Roboto, sans-serif;
     font-size: 14px;
     font-weight: 700;
     color: var(--fresh-green-color);
     text-decoration: none;
+    transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
   }
 
   .market-page-link:hover,
-  .market-page-link:focus-visible { color: var(--pure-color); }
+  .market-page-link:focus-visible {
+    background: var(--fresh-green-color);
+    border-color: var(--fresh-green-color);
+    color: var(--charcoal-color, #121212);
+  }
 </style>

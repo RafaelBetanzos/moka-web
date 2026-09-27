@@ -29,7 +29,7 @@ export const CardHomeComponent = ({ article, locale = "en" }: { article: Article
         {/* LEFT SIDE: Content */}
         <div className="relative z-10 flex flex-col flex-1 text-left transition-transform duration-500 group-hover:translate-x-2">
           <div className="bg-charcoal/64 border border-freshgreen/18 backdrop-blur-md rounded-full w-fit py-1.5 px-5 mb-6 shadow-sm transition-all duration-300 group-hover:bg-freshgreen group-hover:scale-105">
-            <p className="font-roboto text-xs lg:text-sm font-bold tracking-widest text-freshgreen group-hover:text-charcoal uppercase">
+            <p className="font-roboto text-[13px] lg:text-sm font-bold tracking-widest text-freshgreen group-hover:text-charcoal uppercase">
               {article.journal} · {year}
             </p>
           </div>
