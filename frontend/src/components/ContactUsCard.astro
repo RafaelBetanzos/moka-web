@@ -1,27 +1,50 @@
 ---
-import LeafPill from "@assets/icons/LeafPill.svg";
-import { Image } from "astro:assets";
 
 const contactCopy = {
   en: {
-    kicker: "CONTACT US!",
-    headline: "The next breakthrough is in Latin America. Let's find it together.",
-    pills: ["Bioprospecting", "Latin America", "Computational Biology"],
+    kicker: "CONTACT",
+    headline: "Which plant intrigues you?",
+    pageHeadline: "Book a demo or request a service.",
+    nextTitle: "What happens next",
+    steps: [
+      { title: "You write to us", body: "A platform demo or an R&D service." },
+      { title: "We reply within 1 business day", body: "With a calendar so you can choose the date and time." },
+      { title: "It stays between us", body: "Your information is confidential." },
+    ],
   },
   es: {
     kicker: "CONTACTO",
-    headline: "El próximo avance está en América Latina. Encontrémoslo juntos.",
-    pills: ["Bioprospección", "América Latina", "Biología computacional"],
+    headline: "¿Qué planta te intriga?",
+    pageHeadline: "Agenda una demo o solicita un servicio.",
+    nextTitle: "Qué pasa después",
+    steps: [
+      { title: "Nos escribes", body: "Demo de la plataforma o servicio de I+D." },
+      { title: "Te respondemos en 1 día hábil", body: "Con un calendario para que elijas fecha y hora." },
+      { title: "Todo queda entre nosotros", body: "Tu información es confidencial." },
+    ],
   },
   pt: {
     kicker: "CONTATO",
-    headline: "A próxima descoberta está na América Latina. Vamos encontrá-la juntos.",
-    pills: ["Bioprospecção", "América Latina", "Biologia computacional"],
+    headline: "Qual planta te intriga?",
+    pageHeadline: "Agende uma demonstração ou solicite um serviço.",
+    nextTitle: "O que acontece depois",
+    steps: [
+      { title: "Você nos escreve", body: "Demonstração da plataforma ou serviço de P&D." },
+      { title: "Respondemos em até 1 dia útil", body: "Com um calendário para você escolher data e horário." },
+      { title: "Tudo fica entre nós", body: "Suas informações são confidenciais." },
+    ],
   },
 };
 
-const { locale = "en" } = Astro.props;
+interface Props {
+  locale?: "en" | "es" | "pt";
+  /** On the contact page the headline is the page's H1 and names both offers. */
+  isPageHeading?: boolean;
+}
+
+const { locale = "en", isPageHeading = false } = Astro.props;
 const t = contactCopy[locale] ?? contactCopy.en;
+const Heading = isPageHeading ? "h1" : "p";
 ---
 
 <div
@@ -29,35 +52,28 @@ const t = contactCopy[locale] ?? contactCopy.en;
   data-animation="fade-in"
 >
   <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(110,191,126,0.18),transparent_34%),linear-gradient(135deg,rgba(18,18,18,0.1),rgba(19,45,37,0.48))]"></div>
-  <div class="mb-12 flex flex-col gap-4">
+  <div class="mb-8 flex flex-col gap-4">
     <p class="relative text-sm tracking-[0.45em] text-freshgreen reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.2s;">
       {t.kicker}
     </p>
-    <p class="relative text-3xl md:text-4xl leading-tight reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.4s;">
-      {t.headline}
-    </p>
+    <Heading class="relative text-3xl md:text-4xl leading-tight reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.4s;">
+      {isPageHeading ? t.pageHeadline : t.headline}
+    </Heading>
   </div>
 
-  <div class="relative flex flex-wrap gap-3">
-    {
-      t.pills.map((tag, index) => (
-        <div
-          key={index}
-          class="reveal opacity-0 flex items-center gap-3 text-birch bg-charcoal/50 backdrop-blur-md border border-sage/30 rounded-full py-2 px-5 transition-all duration-300 hover:bg-freshgreen hover:text-charcoal group cursor-default shadow-sm"
-          data-animation="pop-in"
-          style={`transition-delay: ${0.6 + index * 0.1}s;`}
-        >
-          <Image 
-            src={LeafPill} 
-            alt="Leaf Pill" 
-            class="w-4 h-4 object-contain transition-transform group-hover:rotate-12" 
-          />
-          <span class="text-sm md:text-base font-medium whitespace-nowrap">
-            {tag}
-          </span>
-        </div>
-      ))
-    }
+  <div class="relative">
+    <p class="contact-next-title">{t.nextTitle}</p>
+    <ol class="contact-steps">
+      {t.steps.map((step, index) => (
+        <li class="contact-step reveal opacity-0" data-animation="slide-up" style={`transition-delay: ${0.5 + index * 0.12}s;`}>
+          <span class="contact-step-num" aria-hidden="true">{index + 1}</span>
+          <div>
+            <p class="contact-step-title">{step.title}</p>
+            <p class="contact-step-body">{step.body}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
   </div>
 </div>
 
@@ -80,5 +96,60 @@ const t = contactCopy[locale] ?? contactCopy.en;
   @keyframes popIn {
     from { opacity: 0; transform: scale(0.8); }
     to { opacity: 1; transform: scale(1); }
+  }
+
+  .contact-next-title {
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(222, 222, 222, 0.6);
+  }
+
+  .contact-steps {
+    margin-top: 1rem;
+    display: grid;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+  }
+
+  .contact-step {
+    display: flex;
+    gap: 0.9rem;
+    align-items: flex-start;
+  }
+
+  .contact-step-num {
+    display: inline-flex;
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid rgba(110, 191, 126, 0.5);
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--fresh-green-color);
+  }
+
+  .contact-step-title {
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--pure-color);
+  }
+
+  .contact-step-body {
+    margin-top: 0.2rem;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: rgba(222, 222, 222, 0.75);
   }
 </style>

@@ -29,6 +29,11 @@ const visionCopy = {
   },
 };
 
+interface Props {
+  isButtonOn?: boolean;
+  locale?: "en" | "es" | "pt";
+}
+
 const { isButtonOn, locale = "en" } = Astro.props;
 const t = visionCopy[locale] ?? visionCopy.en;
 const localePrefix = locale === "en" ? "" : `/${locale}`;
@@ -39,7 +44,7 @@ const localePrefix = locale === "en" ? "" : `/${locale}`;
 >
   <div class="absolute inset-0 z-0 bg-[radial-gradient(circle_at_18%_10%,rgba(110,191,126,0.12),transparent_34%),linear-gradient(145deg,rgba(255,255,255,0.035),rgba(18,18,18,0.18))]"></div>
 
-  <p class="reveal opacity-0 relative z-10 text-xs font-bold font-roboto pb-8 tracking-[0.45em] text-freshgreen uppercase" data-animation="slide-up" style="transition-delay: 0.05s;">
+  <p class="reveal opacity-0 relative z-10 text-[13px] font-bold font-roboto pb-8 tracking-[0.45em] text-freshgreen uppercase" data-animation="slide-up" style="transition-delay: 0.05s;">
     {t.kicker}
   </p>
 

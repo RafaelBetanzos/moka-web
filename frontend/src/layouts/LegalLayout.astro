@@ -1,0 +1,221 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
+
+interface Props {
+  lang: "en" | "es" | "pt";
+  title: string;
+  description: string;
+  heading: string;
+  updatedLabel: string;
+  lastUpdated: string;
+}
+
+const { lang, title, description, heading, updatedLabel, lastUpdated } = Astro.props;
+---
+
+<BaseLayout lang={lang} title={title} description={description} breadcrumb={heading}>
+  <div class="legal-page">
+    <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-01.png" revealStart={-0.15} revealRange={0.36} tone="strong" class="privacy-botanical-focus" />
+    <div class="legal-header">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/25 to-transparent"></div>
+      <p class="legal-kicker">LEGAL</p>
+      <h1 class="legal-title">{heading}</h1>
+      <p class="legal-updated">{updatedLabel}: {lastUpdated}</p>
+    </div>
+
+    <div class="legal-body">
+      <slot />
+    </div>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .legal-page {
+    position: relative;
+    overflow: hidden;
+    background: var(--charcoal-color);
+    min-height: 100vh;
+  }
+
+  .legal-header {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 5.5rem 1.5rem 3.5rem;
+    border-bottom: 1px solid rgba(222, 222, 222, 0.06);
+  }
+
+  .legal-kicker {
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.46em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+    margin-bottom: 1rem;
+  }
+
+  .legal-title {
+    font-family: Inter, sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--pure-color);
+    line-height: 1.1;
+  }
+
+  .legal-updated {
+    margin-top: 0.75rem;
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    color: rgba(222, 222, 222, 0.35);
+  }
+
+  /* ── Body ─────────────────────────────────────── */
+  .legal-body {
+    max-width: 1040px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    padding: 3rem 1.5rem 6rem;
+  }
+
+  /* ── Scope notice ─────────────────────────────── */
+  .legal-notice {
+    font-family: Inter, sans-serif;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: rgba(222, 222, 222, 0.82);
+    padding: 1.75rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(110, 191, 126, 0.30);
+    background: rgba(19, 45, 37, 0.52);
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .legal-notice::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at 12% 0%, rgba(110, 191, 126, 0.10), transparent 40%);
+    pointer-events: none;
+  }
+
+  .legal-notice-heading {
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-notice p { margin-bottom: 0; }
+
+  /* ── Sections ─────────────────────────────────── */
+  .legal-section {
+    margin-bottom: 1.35rem;
+    padding: 1.5rem 1.75rem;
+    border: 1px solid rgba(222, 222, 222, 0.07);
+    border-radius: 1rem;
+    background: rgba(18, 18, 18, 0.46);
+    backdrop-filter: blur(14px);
+  }
+
+  .legal-section:last-child { margin-bottom: 0; }
+
+  .legal-section h2 {
+    font-family: Inter, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--pure-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid rgba(110, 191, 126, 0.10);
+  }
+
+  .legal-section h3 {
+    font-family: Inter, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: rgba(222, 222, 222, 0.78);
+    margin: 1.25rem 0 0.4rem;
+  }
+
+  .legal-section p {
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(222, 222, 222, 0.62);
+    margin-bottom: 0.75rem;
+  }
+
+  .legal-section p:last-child { margin-bottom: 0; }
+
+  .legal-section ul {
+    margin: 0.5rem 0 0.75rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .legal-section li {
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(222, 222, 222, 0.62);
+    list-style: disc;
+  }
+
+  .legal-section a {
+    color: var(--fresh-green-color);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(110, 191, 126, 0.3);
+    transition: border-color 200ms;
+  }
+
+  .legal-section a:hover { border-color: var(--fresh-green-color); }
+
+  .legal-section strong {
+    color: rgba(222, 222, 222, 0.88);
+    font-weight: 600;
+  }
+
+  /* ── Table ───────────────────────────────────── */
+  .legal-table-wrap {
+    overflow-x: auto;
+    margin: 1rem 0;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(222, 222, 222, 0.08);
+  }
+
+  .legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+  }
+
+  .legal-table th {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 700;
+    color: rgba(222, 222, 222, 0.5);
+    background: rgba(18, 18, 18, 0.6);
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(222, 222, 222, 0.08);
+  }
+
+  .legal-table td {
+    padding: 0.75rem 1rem;
+    color: rgba(222, 222, 222, 0.62);
+    border-bottom: 1px solid rgba(222, 222, 222, 0.05);
+  }
+
+  .legal-table tr:last-child td { border-bottom: none; }
+</style>

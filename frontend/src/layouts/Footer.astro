@@ -21,6 +21,7 @@ const copy = {
     rights: "All rights reserved.",
     privacy: "Privacy Policy",
     terms: "Terms of Service",
+    cookies: "Cookie settings",
     navLabel: "Footer navigation",
     homeLabel: "Moka Bio home",
   },
@@ -34,6 +35,7 @@ const copy = {
     rights: "Todos los derechos reservados.",
     privacy: "Política de privacidad",
     terms: "Términos de servicio",
+    cookies: "Preferencias de cookies",
     navLabel: "Navegación del footer",
     homeLabel: "Inicio de Moka Bio",
   },
@@ -47,6 +49,7 @@ const copy = {
     rights: "Todos os direitos reservados.",
     privacy: "Política de privacidade",
     terms: "Termos de serviço",
+    cookies: "Preferências de cookies",
     navLabel: "Navegação do rodapé",
     homeLabel: "Início da Moka Bio",
   },
@@ -107,9 +110,10 @@ const copy = {
   <!-- Copyright bar — full width, same px as navbar -->
   <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center w-full px-4 sm:px-8 py-5 gap-2 border-t border-white/5">
     <span class="footer-copy">© {year} Moka Bio. {copy.rights}</span>
-    <div class="flex items-center gap-5">
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
       <a href={localizedHref("/privacy")} class="footer-legal">{copy.privacy}</a>
       <a href={localizedHref("/terms")} class="footer-legal">{copy.terms}</a>
+      <button type="button" class="footer-legal" data-cookie-settings>{copy.cookies}</button>
     </div>
   </div>
 </footer>
@@ -130,7 +134,7 @@ const copy = {
 
   .footer-label {
     font-family: Roboto, sans-serif;
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.44em;
     text-transform: uppercase;
@@ -196,7 +200,7 @@ const copy = {
 
   .footer-legal {
     font-family: Roboto, sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     color: rgba(222, 222, 222, 0.28);
     text-decoration: none;

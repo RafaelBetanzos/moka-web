@@ -1,14 +1,48 @@
 ---
 import BrainSection from "@components/BrainSection.astro";
 import TargetSection from "@components/TargetSection.astro";
+import TrustSection from "@components/TrustSection.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
+const schema = [
+  {
+    "@type": "SoftwareApplication",
+    "@id": "https://moka.bio/#moka-bde",
+    "name": "Moka BDE",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "Ambiente de descoberta de bioativos para explorar o Icaros, prever bioatividade em plantas pouco estudadas e avaliar PI e formulação.",
+    "featureList": [
+      "Base de plantas Icaros",
+      "Predição de bioatividade",
+      "Mecanismos e alvos",
+      "Análise de propriedade intelectual",
+      "Formulação"
+    ],
+    "provider": {
+      "@id": "https://moka.bio/#organization"
+    }
+  },
+  {
+    "@type": "Service",
+    "@id": "https://moka.bio/#rd-service",
+    "name": "Serviço de P&D de bioatividade vegetal",
+    "serviceType": "Serviço de P&D de bioatividade vegetal",
+    "description": "Desenvolvimento de bioativos a partir de uma planta de interesse ou de uma necessidade de produto, entregues como extrato, fração ou molécula.",
+    "areaServed": "Latin America",
+    "provider": {
+      "@id": "https://moka.bio/#organization"
+    }
+  }
+];
 ---
 
 <BaseLayout
+  breadcrumb="Tecnologia"
+  schema={schema}
   lang="pt"
-  title="Nossa tecnologia | Moka Bio"
-  description="Explore a Moka: da complexidade botânica à inteligência molecular programável."
+  title="Plataforma de bioatividade Moka BDE e Icaros | Moka Bio"
+  description="Preveja bioatividade em plantas sem estudos anteriores, avalie PI e formulação e desenvolva bioativos a partir de uma planta ou de uma necessidade."
 >
   <div class="tech-page relative flex flex-col items-center justify-between w-full bg-charcoal overflow-hidden">
     <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-03.png" tone="strong" class="tech-botanical-focus" revealStart={-0.15} />
@@ -150,7 +184,7 @@ import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
           Nossa tecnologia
         </h1>
         <p class="tech-page-tagline">
-          A camada de inteligência especializada da biodiversidade latino-americana.
+          Bioatividade em plantas que ninguém estudou. Mesmo sem dados prévios.
         </p>
         <div class="tech-page-rule" aria-hidden="true"></div>
       </div>
@@ -158,6 +192,7 @@ import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
     </div>
 
     <TargetSection locale="pt" />
+    <TrustSection locale="pt" />
   </div>
 </BaseLayout>
 
@@ -207,7 +242,7 @@ import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
   /* ── Page Header ─────────────────────────────── */
   .tech-page-kicker {
     font-family: Roboto, sans-serif;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.48em;
     text-transform: uppercase;

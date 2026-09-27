@@ -1,338 +1,340 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
-const lastUpdated = "Mayo 2026";
+import LegalLayout from "@layouts/LegalLayout.astro";
+const lastUpdated = "Septiembre de 2026";
 ---
 
-<BaseLayout
+<LegalLayout
   lang="es"
   title="Política de privacidad | Moka Bio"
-  description="Cómo Moka Bio recopila, usa y protege tu información personal."
+  description="Cómo Moka Bio, Inc. recaba, usa y protege tus datos en moka.bio, incluidos tus derechos ARCO en México, LGPD en Brasil y Ley 25.326 en Argentina."
+  heading="Política de privacidad"
+  updatedLabel="Última actualización"
+  lastUpdated={lastUpdated}
 >
-  <div class="legal-page">
-    <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-01.png" revealStart={-0.06} revealRange={0.36} tone="strong" class="privacy-botanical-focus" />
-    <div class="legal-header">
-      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/25 to-transparent"></div>
-      <p class="legal-kicker">LEGAL</p>
-      <h1 class="legal-title">Política de privacidad</h1>
-      <p class="legal-updated">Última actualización: {lastUpdated}</p>
-    </div>
-
-    <div class="legal-body">
-      <div class="legal-intro">
-        <p>
-          Moka Bio ("we", "us", "our") is committed to protecting your personal information.
-          This policy explains what data we collect when you visit <strong>moka.bio</strong>,
-          how we use it, and what rights you have over it.
-        </p>
-      </div>
-
-      <section class="legal-section">
-        <h2>1. What we collect</h2>
-        <p>We collect information in two ways:</p>
-
-        <h3>Information you provide directly</h3>
-        <p>When you submit the contact form on our site, we collect:</p>
-        <ul>
-          <li>Your name</li>
-          <li>Your email address</li>
-          <li>Your phone number (optional)</li>
-          <li>The message you send us</li>
-        </ul>
-        <p>This information is used solely to respond to your inquiry.</p>
-
-        <h3>Information collected automatically</h3>
-        <p>
-          We use <strong>Google Analytics</strong> (GA4) to understand how visitors interact with our site.
-          Google Analytics collects anonymized data including pages visited, time on site, and general
-          geographic location (country/city level). No personally identifiable information is sent to Google Analytics.
-        </p>
-        <p>
-          Google Analytics uses cookies to track sessions. You can opt out at any time using
-          <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">
-            Google's opt-out browser add-on
-          </a>.
-        </p>
-      </section>
-
-      <section class="legal-section">
-        <h2>2. How we use your data</h2>
-        <ul>
-          <li><strong>Contact form submissions</strong> — to respond to your message and follow up on your inquiry.</li>
-          <li><strong>Analytics data</strong> — to improve our website content and user experience. We never sell this data.</li>
-        </ul>
-        <p>We do not use your personal data for automated decision-making or profiling.</p>
-      </section>
-
-      <section class="legal-section">
-        <h2>3. Data storage and retention</h2>
-        <p>
-          Contact form submissions are sent directly via email to our team at
-          <a href="mailto:info@moka.bio">info@moka.bio</a> and stored in our email system.
-          We retain this data for as long as necessary to fulfill the purpose of your inquiry,
-          and no longer than 3 years unless a business relationship requires otherwise.
-        </p>
-        <p>
-          Analytics data is retained in Google Analytics for 14 months, in line with Google's default settings.
-        </p>
-      </section>
-
-      <section class="legal-section">
-        <h2>4. Data sharing</h2>
-        <p>We do not sell, rent, or trade your personal information. We may share data with:</p>
-        <ul>
-          <li><strong>Google LLC</strong> — for analytics purposes, governed by <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google's Privacy Policy</a>.</li>
-          <li><strong>Legal authorities</strong> — only if required by applicable law.</li>
-        </ul>
-      </section>
-
-      <section class="legal-section">
-        <h2>5. Cookies</h2>
-        <p>Our site uses the following cookies:</p>
-        <div class="legal-table-wrap">
-          <table class="legal-table">
-            <thead>
-              <tr>
-                <th>Cookie</th>
-                <th>Provider</th>
-                <th>Purpose</th>
-                <th>Expires</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>_ga</td>
-                <td>Google Analytics</td>
-                <td>Distinguishes users</td>
-                <td>2 years</td>
-              </tr>
-              <tr>
-                <td>_ga_*</td>
-                <td>Google Analytics</td>
-                <td>Maintains session state</td>
-                <td>2 years</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <p>We do not use advertising, tracking, or third-party marketing cookies.</p>
-      </section>
-
-      <section class="legal-section">
-        <h2>6. Your rights (GDPR)</h2>
-        <p>If you are located in the European Economic Area, you have the right to:</p>
-        <ul>
-          <li><strong>Access</strong> the personal data we hold about you</li>
-          <li><strong>Correct</strong> inaccurate data</li>
-          <li><strong>Request deletion</strong> of your data ("right to be forgotten")</li>
-          <li><strong>Restrict or object</strong> to certain types of processing</li>
-          <li><strong>Data portability</strong> — receive your data in a structured, machine-readable format</li>
-          <li><strong>Withdraw consent</strong> at any time</li>
-        </ul>
-        <p>
-          To exercise any of these rights, email us at
-          <a href="mailto:info@moka.bio">info@moka.bio</a>.
-          We will respond within 30 days.
-        </p>
-      </section>
-
-      <section class="legal-section">
-        <h2>7. International data transfers</h2>
-        <p>
-          Moka Bio operates globally. If you are visiting from outside the country where our
-          servers are located, your data may be transferred internationally. Where required,
-          we apply appropriate safeguards in accordance with applicable data protection laws.
-        </p>
-      </section>
-
-      <section class="legal-section">
-        <h2>8. Changes to this policy</h2>
-        <p>
-          We may update this Privacy Policy from time to time. We will post the revised version
-          on this page with an updated date. Continued use of the site after changes constitutes
-          acceptance of the updated policy.
-        </p>
-      </section>
-
-      <section class="legal-section">
-        <h2>9. Contact</h2>
-        <p>Questions about this policy? Reach us at:</p>
-        <p>
-          <strong>Moka Bio</strong><br />
-          <a href="mailto:info@moka.bio">info@moka.bio</a>
-        </p>
-      </section>
-    </div>
+  <div class="legal-notice">
+    <p class="legal-notice-heading">Alcance de esta política</p>
+    <p>
+      Esta Política de privacidad (aviso de privacidad) aplica únicamente a los datos personales
+      recabados a través del sitio web <strong>moka.bio</strong> (el "Sitio"). No regula el
+      tratamiento de datos relacionado con la plataforma de Moka Bio, los servicios de investigación
+      o las alianzas, que se rige por los contratos individuales firmados con cada cliente o socio.
+    </p>
   </div>
-</BaseLayout>
 
-<style>
-  .legal-page {
-    position: relative;
-    overflow: hidden;
-    background:
-      radial-gradient(circle at 12% 8%, rgba(110, 191, 126, 0.07), transparent 28%),
-      radial-gradient(circle at 86% 28%, rgba(86, 114, 99, 0.09), transparent 34%),
-      var(--charcoal-color);
-    min-height: 100vh;
-  }
+  <section class="legal-section">
+    <h2>1. Quiénes somos / Responsable del tratamiento</h2>
+    <p>
+      <strong>Moka Bio, Inc.</strong> es una sociedad constituida conforme a las leyes del Estado
+      de Delaware, Estados Unidos de América ("Moka Bio" o "nosotros"). Moka Bio es la responsable
+      del tratamiento de los datos personales descritos en esta Política.
+    </p>
+    <p>
+      Para cualquier consulta o solicitud sobre privacidad, escríbenos a:
+      <a href="mailto:info@moka.bio">info@moka.bio</a>
+    </p>
+  </section>
 
-  .legal-header {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 5.5rem 1.5rem 3.5rem;
-    border-bottom: 1px solid rgba(222, 222, 222, 0.06);
-  }
+  <section class="legal-section">
+    <h2>2. Datos que recabamos</h2>
 
-  .legal-kicker {
-    font-family: Roboto, sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.46em;
-    text-transform: uppercase;
-    color: var(--fresh-green-color);
-    margin-bottom: 1rem;
-  }
+    <h3>Datos que nos proporcionas directamente</h3>
+    <p>
+      Nuestro formulario de contacto prepara un correo en tu propia aplicación de correo. Solo
+      recibimos la información si envías ese correo. Puede incluir:
+    </p>
+    <ul>
+      <li>Tu nombre</li>
+      <li>Tu empresa u organización</li>
+      <li>Tu correo electrónico</li>
+      <li>Tu teléfono (opcional)</li>
+      <li>El tipo de consulta (demo de la plataforma, servicio de I+D u otra)</li>
+      <li>El contenido de tu mensaje</li>
+    </ul>
+    <p>
+      También recibimos la información que incluyas cuando nos escribes directamente por correo.
+    </p>
 
-  .legal-title {
-    font-family: Inter, sans-serif;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    color: var(--pure-color);
-    line-height: 1.1;
-  }
+    <h3>Datos recabados automáticamente (solo con tu consentimiento)</h3>
+    <p>
+      Si aceptas las cookies de analítica, usamos <strong>Google Analytics 4</strong> para recabar
+      datos técnicos y de uso, entre ellos:
+    </p>
+    <ul>
+      <li>Páginas visitadas y recorrido de navegación</li>
+      <li>Tiempo en cada página</li>
+      <li>Tipo de dispositivo, navegador y sistema operativo</li>
+      <li>Ubicación geográfica aproximada (país y ciudad)</li>
+      <li>Fuente de referencia (cómo llegaste al Sitio)</li>
+    </ul>
+    <p>
+      Si rechazas las cookies de analítica, Google Analytics no se carga y no se recaba ninguno de
+      estos datos. Según Google, Google Analytics 4 no registra ni almacena direcciones IP. No
+      combinamos los datos de analítica con la información que nos envías por correo.
+    </p>
 
-  .legal-updated {
-    margin-top: 0.75rem;
-    font-family: Roboto, sans-serif;
-    font-size: 13px;
-    color: rgba(222, 222, 222, 0.35);
-  }
+    <h3>Datos que no recabamos</h3>
+    <p>
+      A través de este Sitio no solicitamos datos personales sensibles, como información de salud,
+      datos financieros, datos biométricos, origen racial o étnico, opiniones políticas, creencias
+      religiosas o afiliación sindical. Te pedimos no incluir este tipo de datos en tus mensajes.
+    </p>
+  </section>
 
-  /* ── Body ─────────────────────────────────────── */
-  .legal-body {
-    max-width: 1040px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 10;
-    padding: 3rem 1.5rem 6rem;
-  }
+  <section class="legal-section">
+    <h2>3. Finalidades y bases legales</h2>
+    <ul>
+      <li>
+        <strong>Responder a tu consulta</strong>: contestar tu mensaje, agendar una demo o preparar
+        una propuesta para el servicio que solicites. Base legal conforme al RGPD: medidas
+        precontractuales a tu solicitud (art. 6.1.b) y nuestro interés legítimo en atender
+        consultas comerciales (art. 6.1.f). En la LGPD, las bases equivalentes son el art. 7, V y IX.
+      </li>
+      <li>
+        <strong>Analítica del Sitio</strong>: entender cómo se usa el Sitio y mejorar su contenido.
+        Base legal: tu consentimiento (art. 6.1.a RGPD; art. 7, I LGPD), que puedes retirar en cualquier momento
+        desde el enlace "Preferencias de cookies" del pie de página.
+      </li>
+      <li>
+        <strong>Obligaciones legales</strong>: cumplir la legislación aplicable y atender
+        requerimientos legítimos de autoridades (art. 6.1.c RGPD; art. 7, II LGPD).
+      </li>
+    </ul>
+    <p>
+      No vendemos tus datos personales, no los usamos para publicidad basada en comportamiento ni
+      tomamos decisiones automatizadas sobre ti. No te enviaremos comunicaciones de marketing a
+      menos que nos lo pidas.
+    </p>
+  </section>
 
-  .legal-intro {
-    font-family: Inter, sans-serif;
-    font-size: 1.05rem;
-    line-height: 1.75;
-    color: rgba(222, 222, 222, 0.72);
-    padding: 1.5rem;
-    border-radius: 1.25rem;
-    border: 1px solid rgba(110, 191, 126, 0.14);
-    background: rgba(19, 45, 37, 0.34);
-    margin-bottom: 2.5rem;
-  }
+  <section class="legal-section">
+    <h2>4. Conservación de datos</h2>
+    <p>
+      <strong>Los datos de tu consulta</strong> se conservan hasta 36 meses desde tu última
+      comunicación, o durante el tiempo necesario para mantener una relación comercial contigo, lo
+      que sea mayor. Después se eliminan, salvo que una obligación legal exija conservarlos más tiempo.
+    </p>
+    <p>
+      <strong>Los datos de analítica</strong> se conservan en Google Analytics durante el periodo
+      configurado en nuestra cuenta, que no supera 14 meses; después, Google los elimina automáticamente.
+    </p>
+  </section>
 
-  .legal-section {
-    margin-bottom: 1.35rem;
-    padding: 1.35rem 1.5rem;
-    border: 1px solid rgba(222, 222, 222, 0.07);
-    border-radius: 1rem;
-    background: rgba(18, 18, 18, 0.46);
-    backdrop-filter: blur(14px);
-  }
+  <section class="legal-section">
+    <h2>5. Con quién compartimos tus datos</h2>
+    <p>
+      No vendemos, rentamos ni intercambiamos tu información personal. Solo la compartimos en estos casos:
+    </p>
+    <ul>
+      <li>
+        <strong>Google LLC</strong>: como proveedor de analítica, solo si aceptas las cookies de
+        analítica, conforme a la <a href="https://policies.google.com/privacy?hl=es" target="_blank" rel="noopener noreferrer">Política de privacidad de Google</a>
+        y sus condiciones de tratamiento de datos.
+      </li>
+      <li>
+        <strong>Proveedores de correo y productividad</strong>: tratan la correspondencia por
+        cuenta nuestra como encargados, sujetos a obligaciones contractuales de protección de datos.
+      </li>
+      <li>
+        <strong>Autoridades</strong>: cuando lo exija la ley aplicable, una orden judicial o una
+        autoridad competente, o cuando sea necesario para proteger los derechos, bienes o seguridad
+        de Moka Bio, sus clientes o el público.
+      </li>
+      <li>
+        <strong>Operaciones corporativas</strong>: en caso de fusión, adquisición o venta de todos o
+        casi todos los activos de Moka Bio, con protecciones de privacidad equivalentes.
+      </li>
+    </ul>
+  </section>
 
-  .legal-section:last-child {
-    margin-bottom: 0;
-  }
+  <section class="legal-section">
+    <h2>6. Transferencias internacionales</h2>
+    <p>
+      Moka Bio está constituida en Estados Unidos. Tus datos pueden almacenarse y tratarse en
+      servidores ubicados en Estados Unidos o en otros países distintos al de tu residencia.
+    </p>
+    <p>
+      Para transferencias desde el Espacio Económico Europeo, el Reino Unido, Brasil u otras jurisdicciones
+      que lo requieran, aplicamos garantías adecuadas, como las Cláusulas Contractuales Tipo
+      aprobadas por la Comisión Europea o mecanismos equivalentes. Puedes solicitar información sobre
+      estas garantías en <a href="mailto:info@moka.bio">info@moka.bio</a>.
+    </p>
+  </section>
 
-  .legal-section h2 {
-    font-family: Inter, sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--pure-color);
-    margin-bottom: 1rem;
-  }
+  <section class="legal-section">
+    <h2>7. Cookies y tu elección</h2>
+    <p>
+      En tu primera visita te preguntamos si aceptas las cookies de analítica. Las cookies de Google
+      Analytics solo se instalan si aceptas. No usamos cookies de publicidad, remarketing ni redes sociales.
+    </p>
+    <div class="legal-table-wrap">
+      <table class="legal-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Proveedor</th>
+            <th>Finalidad</th>
+            <th>Duración</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>moka-analytics-consent</td>
+            <td>Moka Bio (almacenamiento local)</td>
+            <td>Recuerda tu elección de cookies. Necesaria para respetar tu decisión.</td>
+            <td>Hasta que la borres</td>
+          </tr>
+          <tr>
+            <td>_ga</td>
+            <td>Google Analytics</td>
+            <td>Distingue visitantes (solo con consentimiento)</td>
+            <td>2 años</td>
+          </tr>
+          <tr>
+            <td>_ga_*</td>
+            <td>Google Analytics</td>
+            <td>Mantiene el estado de la sesión (solo con consentimiento)</td>
+            <td>2 años</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Puedes cambiar tu elección en cualquier momento desde el enlace
+      <strong>"Preferencias de cookies"</strong> del pie de página. También puedes borrar las
+      cookies desde la configuración de tu navegador.
+    </p>
+  </section>
 
-  .legal-section h3 {
-    font-family: Inter, sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: rgba(222, 222, 222, 0.78);
-    margin: 1.25rem 0 0.5rem;
-  }
+  <section class="legal-section">
+    <h2>8. Tus derechos — Espacio Económico Europeo y Reino Unido (RGPD)</h2>
+    <p>Si te encuentras en el Espacio Económico Europeo o en el Reino Unido, tienes derecho a:</p>
+    <ul>
+      <li><strong>Acceder</strong> a los datos personales que tenemos sobre ti (art. 15).</li>
+      <li><strong>Rectificar</strong> datos inexactos o incompletos (art. 16).</li>
+      <li><strong>Suprimir</strong> tus datos, sujeto a obligaciones legales de conservación (art. 17).</li>
+      <li><strong>Limitar</strong> el tratamiento en ciertos casos (art. 18).</li>
+      <li><strong>Portabilidad</strong> de tus datos en un formato estructurado y legible por máquina (art. 20).</li>
+      <li><strong>Oponerte</strong> al tratamiento basado en intereses legítimos (art. 21).</li>
+      <li><strong>Retirar tu consentimiento</strong> en cualquier momento, sin afectar el tratamiento previo.</li>
+      <li>
+        <strong>Presentar una reclamación</strong> ante tu autoridad nacional de protección de datos o,
+        en el Reino Unido, ante la Information Commissioner's Office (<a href="https://ico.org.uk" target="_blank" rel="noopener noreferrer">ico.org.uk</a>).
+      </li>
+    </ul>
+    <p>Responderemos en un plazo de un mes, ampliable dos meses más en solicitudes complejas.</p>
+  </section>
 
-  .legal-section p {
-    font-family: Inter, sans-serif;
-    font-size: 15px;
-    line-height: 1.75;
-    color: rgba(222, 222, 222, 0.62);
-    margin-bottom: 0.75rem;
-  }
+  <section class="legal-section">
+    <h2>9. Tus derechos — California (CCPA / CPRA)</h2>
+    <p>Si resides en California, tienes derecho a:</p>
+    <ul>
+      <li><strong>Conocer</strong> las categorías y los datos personales específicos que recabamos, usamos y divulgamos.</li>
+      <li><strong>Eliminar</strong> los datos personales que recabamos de ti, con ciertas excepciones.</li>
+      <li><strong>Corregir</strong> datos personales inexactos.</li>
+      <li><strong>Excluirte de la venta o el intercambio</strong>: no vendemos ni compartimos datos personales para publicidad basada en comportamiento.</li>
+      <li><strong>No discriminación</strong> por ejercer tus derechos de privacidad.</li>
+    </ul>
+    <p>Responderemos en un plazo de 45 días, ampliable a 90 días cuando sea necesario.</p>
+  </section>
 
-  .legal-section ul {
-    margin: 0.5rem 0 0.75rem 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
+  <section class="legal-section">
+    <h2>10. Tus derechos — México (LFPDPPP)</h2>
+    <p>
+      Conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares
+      (publicada el 20 de marzo de 2025), puedes ejercer tus derechos de <strong>Acceso,
+      Rectificación, Cancelación y Oposición (ARCO)</strong>, así como revocar tu consentimiento,
+      escribiendo a <a href="mailto:info@moka.bio">info@moka.bio</a> con tu nombre, el derecho
+      que deseas ejercer y la descripción de los datos de que se trate.
+    </p>
+    <p>
+      Te comunicaremos nuestra respuesta en un plazo máximo de 20 días hábiles a partir de la
+      recepción de tu solicitud y, si resulta procedente, la haremos efectiva dentro de los 15 días
+      hábiles siguientes. La autoridad competente es la Secretaría Anticorrupción y Buen Gobierno.
+    </p>
+  </section>
 
-  .legal-section li {
-    font-family: Inter, sans-serif;
-    font-size: 15px;
-    line-height: 1.65;
-    color: rgba(222, 222, 222, 0.62);
-    list-style: disc;
-  }
+  <section class="legal-section">
+    <h2>11. Tus derechos — Brasil (LGPD)</h2>
+    <p>Conforme a la Ley General de Protección de Datos de Brasil (Ley n.º 13.709/2018), tienes derecho a:</p>
+    <ul>
+      <li>Confirmar si tratamos tus datos y acceder a ellos.</li>
+      <li>Corregir datos incompletos, inexactos o desactualizados.</li>
+      <li>La anonimización, el bloqueo o la eliminación de datos innecesarios, excesivos o tratados en incumplimiento de la LGPD.</li>
+      <li>La portabilidad de tus datos a otro proveedor.</li>
+      <li>La eliminación de los datos tratados con tu consentimiento y la revocación de dicho consentimiento.</li>
+      <li>Información sobre las entidades con las que compartimos tus datos y sobre la posibilidad de no dar tu consentimiento y sus consecuencias.</li>
+    </ul>
+    <p>
+      Nuestro canal de atención a titulares es <a href="mailto:info@moka.bio">info@moka.bio</a>.
+      Responderemos a las solicitudes de confirmación o acceso en un plazo de 15 días. También
+      puedes presentar una reclamación ante la Autoridade Nacional de Proteção de Dados (ANPD).
+    </p>
+  </section>
 
-  .legal-section a {
-    color: var(--fresh-green-color);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(110, 191, 126, 0.3);
-    transition: border-color 200ms;
-  }
+  <section class="legal-section">
+    <h2>12. Tus derechos — Argentina (Ley 25.326)</h2>
+    <p>
+      Puedes solicitar el acceso a tus datos personales en forma gratuita a intervalos no inferiores
+      a seis meses, salvo que acredites un interés legítimo. Responderemos a las solicitudes de
+      acceso en un plazo de 10 días hábiles, y a las de rectificación, actualización o supresión en
+      un plazo de 5 días hábiles, escribiendo a <a href="mailto:info@moka.bio">info@moka.bio</a>.
+    </p>
+    <p>
+      La Agencia de Acceso a la Información Pública, en su carácter de órgano de control de la Ley
+      N.º 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes
+      resulten afectados en sus derechos por incumplimiento de las normas vigentes en materia de
+      protección de datos personales.
+    </p>
+  </section>
 
-  .legal-section a:hover {
-    border-color: var(--fresh-green-color);
-  }
+  <section class="legal-section">
+    <h2>13. Otras jurisdicciones</h2>
+    <p>
+      Según el lugar donde vivas, la ley local puede darte derechos adicionales. Cuando una ley local
+      obligatoria te otorgue derechos más amplios que los descritos aquí, esos derechos aplicarán.
+      Para ejercerlos, escribe a <a href="mailto:info@moka.bio">info@moka.bio</a>.
+    </p>
+  </section>
 
-  .legal-section strong {
-    color: rgba(222, 222, 222, 0.85);
-    font-weight: 600;
-  }
+  <section class="legal-section">
+    <h2>14. Seguridad de los datos</h2>
+    <p>
+      Aplicamos medidas técnicas y organizativas razonables para proteger tus datos personales
+      contra accesos, alteraciones, divulgaciones o destrucciones no autorizadas, incluidos controles
+      de acceso y cifrado en tránsito.
+    </p>
+    <p>
+      Ningún método de transmisión por internet es totalmente seguro, por lo que no podemos
+      garantizar una seguridad absoluta. Si un incidente de seguridad puede afectar tus derechos,
+      lo notificaremos a las autoridades competentes y, cuando corresponda, a las personas
+      afectadas, conforme a la ley aplicable.
+    </p>
+  </section>
 
-  /* ── Table ───────────────────────────────────── */
-  .legal-table-wrap {
-    overflow-x: auto;
-    margin: 1rem 0;
-    border-radius: 0.75rem;
-    border: 1px solid rgba(222, 222, 222, 0.08);
-  }
+  <section class="legal-section">
+    <h2>15. Menores de edad</h2>
+    <p>
+      El Sitio está dirigido a profesionales y empresas, y no está dirigido a personas menores de
+      16 años (o de la edad de consentimiento digital en tu jurisdicción). No recabamos a sabiendas
+      datos de menores. Si crees que hemos recibido este tipo de datos, contáctanos y los eliminaremos.
+    </p>
+  </section>
 
-  .legal-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: Inter, sans-serif;
-    font-size: 13px;
-  }
+  <section class="legal-section">
+    <h2>16. Cambios a esta política</h2>
+    <p>
+      Podemos actualizar esta Política para reflejar cambios en nuestras prácticas, tecnología o
+      requisitos legales. Actualizaremos la fecha de "Última actualización" al inicio de esta página
+      y, en caso de cambios importantes, mostraremos un aviso en el Sitio.
+    </p>
+  </section>
 
-  .legal-table th {
-    padding: 0.75rem 1rem;
-    text-align: left;
-    font-weight: 700;
-    color: rgba(222, 222, 222, 0.5);
-    background: rgba(18, 18, 18, 0.6);
-    font-size: 11px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    border-bottom: 1px solid rgba(222, 222, 222, 0.08);
-  }
-
-  .legal-table td {
-    padding: 0.75rem 1rem;
-    color: rgba(222, 222, 222, 0.62);
-    border-bottom: 1px solid rgba(222, 222, 222, 0.05);
-  }
-
-  .legal-table tr:last-child td {
-    border-bottom: none;
-  }
-</style>
+  <section class="legal-section">
+    <h2>17. Contacto</h2>
+    <p>
+      <strong>Moka Bio, Inc.</strong><br />
+      Delaware, Estados Unidos de América<br />
+      <a href="mailto:info@moka.bio">info@moka.bio</a>
+    </p>
+  </section>
+</LegalLayout>

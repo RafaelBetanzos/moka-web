@@ -1,277 +1,290 @@
 ---
-import BaseLayout from "@layouts/BaseLayout.astro";
-import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
-const lastUpdated = "Mayo 2026";
+import LegalLayout from "@layouts/LegalLayout.astro";
+const lastUpdated = "Septiembre de 2026";
 ---
 
-<BaseLayout
+<LegalLayout
   lang="es"
   title="Términos de servicio | Moka Bio"
-  description="Términos y condiciones que rigen el acceso y uso del sitio web y los servicios de Moka Bio."
+  description="Términos de uso de moka.bio. El acceso a la plataforma y los servicios de I+D se rigen por contratos individuales con Moka Bio, Inc."
+  heading="Términos de servicio"
+  updatedLabel="Última actualización"
+  lastUpdated={lastUpdated}
 >
-  <div class="legal-page">
-    <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-01.png" revealStart={-0.06} revealRange={0.36} tone="strong" class="privacy-botanical-focus" />
-    <div class="legal-header">
-      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/25 to-transparent"></div>
-      <p class="legal-kicker">LEGAL</p>
-      <h1 class="legal-title">Términos de servicio</h1>
-      <p class="legal-updated">Última actualización: {lastUpdated}</p>
-    </div>
-
-    <div class="legal-body">
-      <div class="legal-intro">
-        <p>
-          Please read these Terms of Service ("Terms") carefully before using
-          <strong>moka.bio</strong> (the "Site") operated by Moka Bio ("we", "us", "our").
-          By accessing or using the Site, you agree to be bound by these Terms.
-          If you disagree with any part of the Terms, you may not access the Site.
-        </p>
-      </div>
-
-      <section class="legal-section">
-        <h2>1. Use of the Site</h2>
-        <p>
-          The Site is provided for informational and business communication purposes only.
-          You agree to use it only for lawful purposes and in a manner consistent with
-          these Terms and all applicable laws and regulations.
-        </p>
-        <p>You agree not to:</p>
-        <ul>
-          <li>Use the Site in any way that violates applicable local, national, or international law</li>
-          <li>Transmit any unsolicited or unauthorized advertising or promotional material</li>
-          <li>Attempt to gain unauthorized access to any part of the Site or its related systems</li>
-          <li>Reproduce, duplicate, copy, or resell any part of the Site in violation of these Terms</li>
-          <li>Introduce viruses, malware, or other technologically harmful material</li>
-        </ul>
-      </section>
-
-      <section class="legal-section">
-        <h2>2. Intellectual property</h2>
-        <p>
-          All content on the Site — including text, graphics, logos, images, data, software,
-          and its selection and arrangement — is the property of Moka Bio or its licensors
-          and is protected by applicable intellectual property laws.
-        </p>
-        <p>
-          You may not reproduce, distribute, modify, create derivative works of, publicly
-          display, or otherwise exploit any content from the Site without our prior written
-          consent, except as permitted by law.
-        </p>
-        <p>
-          The Moka Bio name, logo, and all related names, logos, product and service names,
-          designs, and slogans are trademarks of Moka Bio. You may not use them without
-          our prior written permission.
-        </p>
-      </section>
-
-      <section class="legal-section">
-        <h2>3. Disclaimer of warranties</h2>
-        <p>
-          The Site and all information, content, and services provided through it are offered
-          on an <strong>"as is"</strong> and <strong>"as available"</strong> basis without warranties
-          of any kind, either express or implied, including but not limited to implied warranties
-          of merchantability, fitness for a particular purpose, or non-infringement.
-        </p>
-        <p>
-          We do not warrant that the Site will be uninterrupted, error-free, or free of viruses
-          or other harmful components. We make no representation that information on the Site is
-          complete, accurate, reliable, current, or suitable for any particular purpose.
-        </p>
-      </section>
-
-      <section class="legal-section">
-        <h2>4. Limitation of liability</h2>
-        <p>
-          To the fullest extent permitted by applicable law, Moka Bio and its officers, directors,
-          employees, and agents shall not be liable for any indirect, incidental, special,
-          consequential, or punitive damages arising out of or related to your use of — or inability
-          to use — the Site, even if we have been advised of the possibility of such damages.
-        </p>
-        <p>
-          Our total liability to you for any direct damages shall not exceed the amount you paid us,
-          if any, to access or use the Site in the twelve (12) months prior to the claim.
-        </p>
-      </section>
-
-      <section class="legal-section">
-        <h2>5. Third-party links</h2>
-        <p>
-          The Site may contain links to third-party websites or services that are not owned or
-          controlled by Moka Bio. We have no control over, and assume no responsibility for,
-          the content, privacy policies, or practices of any third-party sites.
-        </p>
-        <p>
-          We encourage you to review the terms and privacy policies of any third-party sites
-          you visit. Inclusion of a link does not imply endorsement by Moka Bio.
-        </p>
-      </section>
-
-      <section class="legal-section">
-        <h2>6. Privacy</h2>
-        <p>
-          Your use of the Site is also governed by our
-          <a href="/es/privacy">Privacy Policy</a>, which is incorporated into these Terms by reference.
-          Please review the Privacy Policy to understand our practices regarding the collection
-          and use of your personal information.
-        </p>
-      </section>
-
-      <section class="legal-section">
-        <h2>7. Governing law</h2>
-        <p>
-          These Terms shall be governed by and construed in accordance with applicable law,
-          without regard to its conflict of law provisions. Any disputes arising under these
-          Terms shall be subject to the exclusive jurisdiction of the competent courts
-          in the jurisdiction where Moka Bio is registered.
-        </p>
-      </section>
-
-      <section class="legal-section">
-        <h2>8. Changes to these Terms</h2>
-        <p>
-          We reserve the right to update these Terms at any time. When we do, we will revise
-          the "last updated" date at the top of this page. Continued use of the Site after
-          any changes constitutes your acceptance of the new Terms.
-        </p>
-        <p>
-          We encourage you to review these Terms periodically to stay informed of any updates.
-        </p>
-      </section>
-
-      <section class="legal-section">
-        <h2>9. Contact</h2>
-        <p>Questions about these Terms? Reach us at:</p>
-        <p>
-          <strong>Moka Bio</strong><br />
-          <a href="mailto:info@moka.bio">info@moka.bio</a>
-        </p>
-      </section>
-    </div>
+  <div class="legal-notice">
+    <p class="legal-notice-heading">Términos del sitio web — No es un contrato comercial</p>
+    <p>
+      Estos Términos de servicio regulan únicamente el uso del sitio web <strong>moka.bio</strong>.
+      No crean, definen ni regulan ninguna relación comercial, de investigación, de licencia o de
+      servicios entre Moka Bio y ningún cliente o socio. <strong>Toda relación comercial se rige
+      exclusivamente por contratos individuales por escrito</strong> firmados por separado entre
+      Moka Bio y cada cliente.
+    </p>
   </div>
-</BaseLayout>
 
-<style>
-  .legal-page {
-    position: relative;
-    overflow: hidden;
-    background:
-      radial-gradient(circle at 12% 8%, rgba(110, 191, 126, 0.07), transparent 28%),
-      radial-gradient(circle at 86% 28%, rgba(86, 114, 99, 0.09), transparent 34%),
-      var(--charcoal-color);
-    min-height: 100vh;
-  }
+  <section class="legal-section">
+    <h2>1. Acerca de Moka Bio</h2>
+    <p>
+      El Sitio es operado por <strong>Moka Bio, Inc.</strong>, una sociedad constituida conforme a
+      las leyes del Estado de Delaware, Estados Unidos de América ("Moka Bio" o "nosotros").
+    </p>
+  </section>
 
-  .legal-header {
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    padding: 5.5rem 1.5rem 3.5rem;
-    border-bottom: 1px solid rgba(222, 222, 222, 0.06);
-  }
+  <section class="legal-section">
+    <h2>2. Aceptación de los Términos</h2>
+    <p>
+      Al acceder o usar <strong>moka.bio</strong> (el "Sitio"), aceptas estos Términos de servicio
+      (los "Términos") y reconoces nuestra <a href="/es/privacy">Política de privacidad</a>. Si no
+      estás de acuerdo, te pedimos no usar el Sitio.
+    </p>
+    <p>
+      Si usas el Sitio en nombre de una empresa u otra persona moral, declaras que tienes facultades
+      para obligarla conforme a estos Términos.
+    </p>
+  </section>
 
-  .legal-kicker {
-    font-family: Roboto, sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.46em;
-    text-transform: uppercase;
-    color: var(--fresh-green-color);
-    margin-bottom: 1rem;
-  }
+  <section class="legal-section">
+    <h2>3. Alcance — Solo uso del sitio web</h2>
+    <p>
+      El Sitio es una plataforma informativa y de contacto comercial. Estos Términos aplican
+      exclusivamente a tu navegación e interacción con el Sitio, incluido el formulario de contacto.
+    </p>
+    <p><strong>Estos Términos no regulan:</strong></p>
+    <ul>
+      <li>El acceso o uso de cualquier producto, plataforma, base de datos o entorno de software de Moka Bio (incluidos Icaros y Moka BDE)</li>
+      <li>Cualquier servicio de investigación, desarrollo, licencia, datos o tecnología prestado por Moka Bio</li>
+      <li>Cualquier relación de alianza, colaboración, codesarrollo o inversión</li>
+      <li>Cualquier licencia o transmisión de propiedad intelectual</li>
+    </ul>
+    <p>
+      Estos asuntos se rigen exclusivamente por contratos por escrito independientes entre Moka Bio y
+      la parte correspondiente.
+    </p>
+  </section>
 
-  .legal-title {
-    font-family: Inter, sans-serif;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700;
-    color: var(--pure-color);
-    line-height: 1.1;
-  }
+  <section class="legal-section">
+    <h2>4. No se crea una relación comercial</h2>
+    <p>
+      El uso del Sitio no crea ninguna relación comercial, contractual, fiduciaria ni laboral entre
+      tú y Moka Bio. Enviar una consulta o solicitar una demo no constituye una oferta, aceptación
+      ni compromiso vinculante para ninguna de las partes.
+    </p>
+    <p>
+      Ninguna comunicación originada en el Sitio o relacionada con él genera una relación comercial
+      vinculante, salvo que un representante autorizado de Moka Bio firme un contrato por escrito independiente.
+    </p>
+  </section>
 
-  .legal-updated {
-    margin-top: 0.75rem;
-    font-family: Roboto, sans-serif;
-    font-size: 13px;
-    color: rgba(222, 222, 222, 0.35);
-  }
+  <section class="legal-section">
+    <h2>5. Contratos individuales con clientes</h2>
+    <p>
+      Cada relación con clientes y socios se rige por un contrato por escrito que refleja su alcance,
+      jurisdicción y condiciones comerciales específicas. Estos contratos pueden incluir, entre otros,
+      contratos de suscripción o acceso a la plataforma, contratos de servicios, convenios de
+      colaboración en investigación, contratos de licencia o acuerdos de confidencialidad.
+    </p>
+    <p>
+      En caso de conflicto entre estos Términos y un contrato individual por escrito con Moka Bio,
+      <strong>prevalece el contrato individual</strong>.
+    </p>
+  </section>
 
-  /* ── Body ─────────────────────────────────────── */
-  .legal-body {
-    max-width: 1040px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 10;
-    padding: 3rem 1.5rem 6rem;
-  }
+  <section class="legal-section">
+    <h2>6. Uso permitido del Sitio</h2>
+    <p>Puedes usar el Sitio con fines informativos y comerciales lícitos. Te comprometes a no:</p>
+    <ul>
+      <li>Usar el Sitio en contravención de cualquier ley o reglamento aplicable</li>
+      <li>Extraer o copiar sistemáticamente el contenido del Sitio por medios automatizados para republicarlo, revenderlo o crear una base de datos competidora</li>
+      <li>Enviar comunicaciones comerciales no solicitadas (spam) a través de los medios de contacto del Sitio</li>
+      <li>Intentar acceder sin autorización al Sitio, sus servidores o infraestructura relacionada</li>
+      <li>Introducir virus, malware u otro material dañino</li>
+      <li>Usar el Sitio de cualquier forma que pueda dañar, inutilizar, sobrecargar o afectar nuestros sistemas</li>
+      <li>Falsear tu identidad o afiliación en cualquier comunicación enviada a través del Sitio</li>
+    </ul>
+    <p>
+      Se permite la indexación del Sitio por buscadores y asistentes de inteligencia artificial que
+      respeten nuestro archivo robots.txt, así como citar fragmentos breves con atribución y un
+      enlace al Sitio.
+    </p>
+  </section>
 
-  .legal-intro {
-    font-family: Inter, sans-serif;
-    font-size: 1.05rem;
-    line-height: 1.75;
-    color: rgba(222, 222, 222, 0.72);
-    padding: 1.5rem;
-    border-radius: 1.25rem;
-    border: 1px solid rgba(110, 191, 126, 0.14);
-    background: rgba(19, 45, 37, 0.34);
-    margin-bottom: 2.5rem;
-  }
+  <section class="legal-section">
+    <h2>7. Propiedad intelectual</h2>
+    <p>
+      Todo el contenido del Sitio —incluidos textos, gráficos, logotipos, imágenes, datos, software
+      y su selección y disposición— es propiedad de Moka Bio o de sus licenciantes y está protegido
+      por las leyes de propiedad intelectual aplicables en Estados Unidos y otras jurisdicciones.
+    </p>
+    <p>
+      El nombre y logotipo de Moka Bio, "Icaros", "Moka BDE" y los nombres de productos relacionados
+      son marcas o signos distintivos no registrados de Moka Bio. Nada en el Sitio otorga licencia
+      para usarlos sin nuestro permiso previo por escrito. Los logotipos de terceros que aparecen en
+      el Sitio pertenecen a sus respectivos titulares.
+    </p>
+    <p>
+      Salvo lo permitido en la sección 6 o por la ley aplicable, no puedes reproducir, distribuir,
+      modificar ni crear obras derivadas del contenido del Sitio sin nuestro consentimiento previo por escrito.
+    </p>
+  </section>
 
-  .legal-section {
-    margin-bottom: 1.35rem;
-    padding: 1.35rem 1.5rem;
-    border: 1px solid rgba(222, 222, 222, 0.07);
-    border-radius: 1rem;
-    background: rgba(18, 18, 18, 0.46);
-    backdrop-filter: blur(14px);
-  }
+  <section class="legal-section">
+    <h2>8. Contenido científico y de investigación</h2>
+    <p>
+      La información del Sitio sobre biodiversidad, plantas, bioactividad y temas relacionados se
+      ofrece con fines informativos generales. No constituye asesoría científica, regulatoria ni
+      médica, y no describe las propiedades de ningún producto terminado.
+    </p>
+    <p>
+      Las predicciones de bioactividad son hipótesis que requieren validación experimental. Moka Bio
+      no garantiza que alguna especie, extracto, compuesto o resultado mencionado en el Sitio derive en
+      un producto viable, una aprobación regulatoria o un resultado comercial. Los compromisos
+      específicos sobre nuestra plataforma y servicios se establecen únicamente en contratos
+      individuales por escrito.
+    </p>
+  </section>
 
-  .legal-section:last-child {
-    margin-bottom: 0;
-  }
+  <section class="legal-section">
+    <h2>9. Exclusión de garantías</h2>
+    <p>
+      El Sitio y su contenido se ofrecen <strong>"tal cual"</strong> y <strong>"según disponibilidad"</strong>,
+      sin garantías de ningún tipo, expresas o implícitas, incluidas las de comerciabilidad, idoneidad
+      para un fin determinado, no infracción, exactitud o integridad.
+    </p>
+    <p>
+      No garantizamos que el Sitio funcione sin interrupciones, de forma segura o sin errores, ni que su
+      información esté completa o actualizada. Algunas jurisdicciones no permiten excluir garantías
+      implícitas, por lo que algunas de estas exclusiones podrían no aplicarte.
+    </p>
+  </section>
 
-  .legal-section h2 {
-    font-family: Inter, sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--pure-color);
-    margin-bottom: 1rem;
-  }
+  <section class="legal-section">
+    <h2>10. Limitación de responsabilidad</h2>
+    <p>
+      En la máxima medida permitida por la ley aplicable, Moka Bio y sus funcionarios, consejeros,
+      empleados, agentes y licenciantes no serán responsables de daños indirectos, incidentales,
+      especiales, consecuenciales o punitivos derivados de: (i) tu uso o imposibilidad de usar el
+      Sitio; (ii) cualquier contenido obtenido del Sitio; o (iii) el acceso no autorizado a tus
+      transmisiones o datos, o su alteración.
+    </p>
+    <p>
+      Nuestra responsabilidad total acumulada por cualquier reclamación derivada de estos Términos o
+      del Sitio no excederá de cien dólares estadounidenses (USD $100) o del monto que hayas pagado
+      para acceder al Sitio en los doce (12) meses anteriores a la reclamación, lo que sea mayor.
+    </p>
+    <p>
+      Nada en estos Términos limita ni excluye la responsabilidad por: (i) muerte o lesiones personales
+      causadas por negligencia; (ii) fraude o declaraciones fraudulentas; o (iii) cualquier otra
+      responsabilidad que no pueda excluirse conforme a la ley aplicable.
+    </p>
+  </section>
 
-  .legal-section p {
-    font-family: Inter, sans-serif;
-    font-size: 15px;
-    line-height: 1.75;
-    color: rgba(222, 222, 222, 0.62);
-    margin-bottom: 0.75rem;
-  }
+  <section class="legal-section">
+    <h2>11. Indemnización</h2>
+    <p>
+      Aceptas indemnizar y sacar en paz y a salvo a Moka Bio y a sus funcionarios, consejeros,
+      empleados y agentes de cualquier reclamación, daño, pérdida y gasto (incluidos honorarios
+      razonables de abogados) derivados de: (i) tu uso del Sitio en contravención de estos Términos;
+      (ii) tu incumplimiento de cualquier ley aplicable; o (iii) tu infracción de derechos de terceros.
+    </p>
+  </section>
 
-  .legal-section ul {
-    margin: 0.5rem 0 0.75rem 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
+  <section class="legal-section">
+    <h2>12. Enlaces y contenido de terceros</h2>
+    <p>
+      El Sitio puede incluir enlaces a sitios web, publicaciones o servicios de terceros que Moka Bio
+      no controla. No somos responsables de su contenido, políticas o disponibilidad, y un enlace no
+      implica respaldo.
+    </p>
+  </section>
 
-  .legal-section li {
-    font-family: Inter, sans-serif;
-    font-size: 15px;
-    line-height: 1.65;
-    color: rgba(222, 222, 222, 0.62);
-    list-style: disc;
-  }
+  <section class="legal-section">
+    <h2>13. Privacidad</h2>
+    <p>
+      El tratamiento de tus datos personales a través del Sitio se describe en nuestra
+      <a href="/es/privacy">Política de privacidad</a>, que incluye los derechos de los usuarios del
+      Espacio Económico Europeo, el Reino Unido, Estados Unidos, México, Brasil y Argentina.
+    </p>
+  </section>
 
-  .legal-section a {
-    color: var(--fresh-green-color);
-    text-decoration: none;
-    border-bottom: 1px solid rgba(110, 191, 126, 0.3);
-    transition: border-color 200ms;
-  }
+  <section class="legal-section">
+    <h2>14. Controles de exportación y sanciones</h2>
+    <p>
+      Te comprometes a cumplir las leyes aplicables de control de exportaciones y sanciones. Declaras
+      que no te encuentras en un país sujeto a sanciones integrales de Estados Unidos o de la ONU, ni
+      eres nacional de uno de ellos, y que no figuras en ninguna lista de partes restringidas del
+      gobierno de Estados Unidos.
+    </p>
+  </section>
 
-  .legal-section a:hover {
-    border-color: var(--fresh-green-color);
-  }
+  <section class="legal-section">
+    <h2>15. Ley aplicable y jurisdicción</h2>
+    <p>
+      Estos Términos se rigen por las leyes del Estado de Delaware, Estados Unidos de América, sin
+      considerar sus normas de conflicto de leyes. Los tribunales estatales y federales ubicados en
+      Delaware son competentes para cualquier controversia derivada de estos Términos o del uso del Sitio.
+    </p>
+    <p>
+      Nada en estos Términos afecta los derechos que te otorgan las leyes obligatorias de protección
+      al consumidor de tu país de residencia, incluidos los países de América Latina, el Espacio
+      Económico Europeo y el Reino Unido.
+    </p>
+  </section>
 
-  .legal-section strong {
-    color: rgba(222, 222, 222, 0.85);
-    font-weight: 600;
-  }
-</style>
+  <section class="legal-section">
+    <h2>16. Solución de controversias</h2>
+    <p>
+      Antes de iniciar cualquier procedimiento formal, te comprometes a contactar a Moka Bio en
+      <a href="mailto:info@moka.bio">info@moka.bio</a> con una descripción por escrito de la
+      controversia. Ambas partes intentarán resolverla de manera amistosa en un plazo de treinta (30)
+      días. Este requisito no aplica a solicitudes de medidas cautelares urgentes ni a la protección
+      de derechos de propiedad intelectual.
+    </p>
+  </section>
+
+  <section class="legal-section">
+    <h2>17. Disposiciones generales</h2>
+    <h3>Divisibilidad</h3>
+    <p>
+      Si alguna disposición de estos Términos se declara inaplicable, se modificará en la medida
+      mínima necesaria o se eliminará, y las demás disposiciones seguirán vigentes.
+    </p>
+    <h3>No renuncia</h3>
+    <p>
+      No hacer valer alguna disposición de estos Términos no implica renunciar a ella.
+    </p>
+    <h3>Acuerdo íntegro (solo el Sitio)</h3>
+    <p>
+      Estos Términos y la Política de privacidad constituyen el acuerdo íntegro entre tú y Moka Bio
+      respecto del uso del Sitio. No regulan ninguna relación comercial o de servicios.
+    </p>
+    <h3>Cesión</h3>
+    <p>
+      No puedes ceder tus derechos conforme a estos Términos. Moka Bio podrá cederlos en caso de
+      fusión, adquisición, reestructuración o venta de activos.
+    </p>
+    <h3>Idioma</h3>
+    <p>
+      Estos Términos están disponibles en inglés, español y portugués. Todas las versiones tienen el
+      mismo contenido; en caso de discrepancia, prevalece la versión en inglés, en la medida en que
+      lo permita la ley aplicable.
+    </p>
+  </section>
+
+  <section class="legal-section">
+    <h2>18. Cambios a estos Términos</h2>
+    <p>
+      Podemos actualizar estos Términos en cualquier momento. Actualizaremos la fecha de "Última
+      actualización" al inicio de esta página. Si sigues usando el Sitio después de publicados los
+      cambios, aceptas los Términos modificados.
+    </p>
+  </section>
+
+  <section class="legal-section">
+    <h2>19. Contacto</h2>
+    <p>
+      <strong>Moka Bio, Inc.</strong><br />
+      Delaware, Estados Unidos de América<br />
+      <a href="mailto:info@moka.bio">info@moka.bio</a>
+    </p>
+  </section>
+</LegalLayout>

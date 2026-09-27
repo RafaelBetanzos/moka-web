@@ -5,8 +5,9 @@ import { mockcarrousel } from "@utils/CarrouselMock";
 ---
 
 <BaseLayout
-  title="Insights | Moka Bio"
-  description="Science, research, and perspectives from the Moka Bio team. Exploring the bioactive potential of Latin American plants, molecular intelligence, and natural compounds."
+  breadcrumb="Insights"
+  title="Plant Bioactivity Research Insights | Moka Bio"
+  description="Recent research on plant bioactivity and natural products selected by Moka Bio, from Nature, Nature Communications, and Scientific Reports."
 >
   <div class="insights-page relative min-h-screen bg-charcoal overflow-hidden">
     <!-- Ambient glows -->
@@ -47,11 +48,11 @@ import { mockcarrousel } from "@utils/CarrouselMock";
             </div>
             <div class="article-card-body">
               <div class="article-card-meta">
-                <span class="article-card-date">{article.date}</span>
+                <time class="article-card-date" datetime={article.isoDate}>{new Date(article.isoDate).toLocaleDateString("en-US", { month: "short", year: "numeric", timeZone: "UTC" })}</time>
                 <span class="article-card-tag">Research</span>
               </div>
               <h2 class="article-card-title">{article.title}</h2>
-              <p class="article-card-summary">{article.summary}</p>
+              <p class="article-card-summary">{article.summary.en}</p>
               <div class="article-card-author">
                 <span class="article-card-author-label">By</span>
                 <span class="article-card-author-name">{article.author}</span>
@@ -110,7 +111,7 @@ import { mockcarrousel } from "@utils/CarrouselMock";
   /* ── Page header ─────────────────────────────── */
   .insights-kicker {
     font-family: Roboto, sans-serif;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.48em;
     text-transform: uppercase;
@@ -229,7 +230,7 @@ import { mockcarrousel } from "@utils/CarrouselMock";
 
   .article-card-date {
     font-family: Roboto, sans-serif;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -242,7 +243,7 @@ import { mockcarrousel } from "@utils/CarrouselMock";
     border: 1px solid rgba(110, 191, 126, 0.24);
     background: rgba(19, 45, 37, 0.5);
     font-family: Roboto, sans-serif;
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -270,7 +271,7 @@ import { mockcarrousel } from "@utils/CarrouselMock";
     display: flex;
     gap: 0.4rem;
     font-family: Roboto, sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     padding-top: 0.75rem;
     border-top: 1px solid rgba(222, 222, 222, 0.06);
   }

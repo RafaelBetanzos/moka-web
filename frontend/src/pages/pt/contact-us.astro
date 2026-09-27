@@ -5,9 +5,10 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
+  breadcrumb="Contato"
   lang="pt"
-  title="Contato | Moka Bio"
-  description="Entre em contato com a equipe da Moka Bio. Trabalhe conosco para desbloquear inteligência bioativa natural."
+  title="Agende uma demonstração ou serviço | Moka Bio"
+  description="Agende uma demonstração do Moka BDE ou solicite um serviço de P&D de bioatividade vegetal. Respondemos em 1 dia útil com um calendário."
 >
   <div class="moka-page-skin relative bg-charcoal w-full py-16 md:py-20 overflow-hidden">
     <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/28 to-transparent"></div>
@@ -20,7 +21,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
         class="reveal opacity-0 w-full lg:w-1/2 flex justify-center lg:justify-start" 
         data-animation="slide-left"
       >
-        <ContactUsCard locale="pt" />
+        <ContactUsCard locale="pt" isPageHeading />
       </div>
 
       <div 

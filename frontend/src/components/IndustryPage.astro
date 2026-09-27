@@ -1,0 +1,464 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
+import TrustSection from "@components/TrustSection.astro";
+import { industries, industryBotanical, industryLabels, industrySlugs, type IndustrySlug } from "../data/industries";
+import type { Locale } from "../data/sitePages";
+
+interface Props {
+  slug: IndustrySlug;
+  locale: Locale;
+}
+
+const { slug, locale } = Astro.props;
+const t = industries[slug][locale];
+const l = industryLabels[locale];
+const prefix = locale === "en" ? "" : `/${locale}`;
+const contactBase = `${prefix}/contact-us`;
+const others = industrySlugs.filter((s) => s !== slug);
+
+const schema = [
+  {
+    "@type": "FAQPage",
+    mainEntity: t.faq.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  },
+  {
+    "@type": "Service",
+    name: `Moka Bio — ${t.name}`,
+    serviceType: t.name,
+    description: t.metaDescription,
+    areaServed: "Latin America",
+    provider: { "@id": "https://moka.bio/#organization" },
+  },
+];
+---
+
+<BaseLayout lang={locale} title={t.metaTitle} description={t.metaDescription} breadcrumb={t.name} schema={schema}>
+  <div class="industry-page relative overflow-hidden">
+    <BotanicalScrollReveal src={industryBotanical[slug]} tone="strong" class="tech-botanical-focus" revealStart={-0.15} />
+
+    <!-- Hero -->
+    <header class="industry-hero">
+      <p class="industry-kicker reveal opacity-0" data-animation="slide-up">{l.kicker} · {t.name.toUpperCase()}</p>
+      <h1 class="industry-title reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.1s;">{t.title}</h1>
+      <p class="industry-lead reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.2s;">{t.lead}</p>
+      <div class="industry-ctas reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.3s;">
+        <a href={`${contactBase}?interest=demo`} class="moka-demo-cta" data-analytics-event="book_demo_click" data-analytics-category="cta" data-analytics-label={`industry_${slug}_hero`}>{l.demo} <span aria-hidden="true">→</span></a>
+        <a href={`${contactBase}?interest=service`} class="industry-secondary" data-analytics-event="request_service_click" data-analytics-category="cta" data-analytics-label={`industry_${slug}_hero`}>{l.service} <span aria-hidden="true">→</span></a>
+      </div>
+    </header>
+
+    <!-- Challenges -->
+    <section class="industry-section">
+      <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{t.challengeTitle}</h2>
+      <div class="industry-grid industry-grid--3">
+        {t.challenges.map((c, i) => (
+          <article class="industry-card reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${0.1 + i * 0.1}s;`}>
+            <span class="industry-index">0{i + 1}</span>
+            <h3 class="industry-card-title">{c.title}</h3>
+            <p class="industry-card-body">{c.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- What you can do -->
+    <section class="industry-section">
+      <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{l.doTitle}</h2>
+      <div class="industry-grid industry-grid--2">
+        <article class="industry-card industry-card--accent reveal opacity-0" data-animation="pop-in">
+          <p class="industry-tag">{l.platformTitle} · Moka BDE</p>
+          <ul class="industry-list">
+            {t.platform.map((item) => <li>{item}</li>)}
+          </ul>
+          <a href={`${contactBase}?interest=demo`} class="industry-link">{l.demo} <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="industry-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.1s;">
+          <p class="industry-tag">{l.serviceTitle}</p>
+          <ul class="industry-list">
+            {t.service.map((item) => <li>{item}</li>)}
+          </ul>
+          <a href={`${contactBase}?interest=service`} class="industry-link">{l.service} <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- Questions -->
+    <section class="industry-section">
+      <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{l.questionsTitle}</h2>
+      <p class="industry-intro reveal opacity-0" data-animation="slide-up">{l.questionsIntro}</p>
+      <ul class="industry-questions">
+        {t.questions.map((q, i) => (
+          <li class="industry-question reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${0.1 + i * 0.08}s;`}>“{q}”</li>
+        ))}
+      </ul>
+      {t.research && (
+        <a class="industry-research reveal opacity-0" data-animation="slide-up" href={t.research.href} target={t.research.href.startsWith("http") ? "_blank" : undefined} rel={t.research.href.startsWith("http") ? "noopener noreferrer" : undefined}>
+          <span class="industry-tag">{l.researchTitle}</span>
+          <span class="industry-research-label">{t.research.label} <span aria-hidden="true">↗</span></span>
+        </a>
+      )}
+    </section>
+
+    <!-- FAQ -->
+    <section class="industry-section">
+      <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{l.faqTitle}</h2>
+      <div class="industry-faq">
+        {t.faq.map((item) => (
+          <details class="industry-faq-item" name={`faq-${slug}`}>
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <!-- Other industries -->
+    <nav class="industry-section" aria-label={l.othersTitle}>
+      <h2 class="industry-h2 industry-h2--sm">{l.othersTitle}</h2>
+      <div class="industry-grid industry-grid--3">
+        {others.map((s) => (
+          <a class="industry-other" href={`${prefix}/industries/${s}/`}>
+            <span>{industries[s][locale].name}</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    <TrustSection locale={locale} />
+  </div>
+</BaseLayout>
+
+<script>
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const type = entry.target.getAttribute("data-animation");
+      entry.target.classList.add(`animate-${type}`);
+      entry.target.classList.remove("opacity-0");
+      revealObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+  document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+</script>
+
+<style>
+  .industry-page {
+    background: var(--charcoal-color);
+    min-height: 100vh;
+  }
+
+  .industry-hero,
+  .industry-section {
+    position: relative;
+    z-index: 10;
+    width: min(100% - 2.5rem, 1180px);
+    margin: 0 auto;
+  }
+
+  .industry-hero {
+    padding: 6rem 0 4rem;
+    max-width: 880px;
+    margin-left: max(1.25rem, calc((100% - 1180px) / 2));
+  }
+
+  .industry-kicker {
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.42em;
+    color: var(--fresh-green-color);
+  }
+
+  .industry-title {
+    margin-top: 1.25rem;
+    font-family: Inter, sans-serif;
+    font-size: clamp(2.2rem, 5vw, 4.4rem);
+    font-weight: 650;
+    line-height: 1.03;
+    color: var(--pure-color);
+    text-wrap: balance;
+  }
+
+  .industry-lead {
+    margin-top: 1.4rem;
+    max-width: 640px;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    line-height: 1.65;
+    color: var(--moka-text-muted);
+  }
+
+  .industry-ctas {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .industry-secondary {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    border: 1px solid rgba(222, 222, 222, 0.3);
+    color: var(--pure-color);
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: border-color 200ms ease, background 200ms ease;
+  }
+
+  .industry-secondary:hover,
+  .industry-secondary:focus-visible {
+    border-color: var(--fresh-green-color);
+    background: rgba(110, 191, 126, 0.12);
+  }
+
+  .industry-section {
+    padding: 3.5rem 0;
+    border-top: 1px solid rgba(222, 222, 222, 0.06);
+  }
+
+  .industry-h2 {
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+    font-weight: 650;
+    line-height: 1.08;
+    color: var(--pure-color);
+  }
+
+  .industry-h2--sm {
+    font-size: clamp(1.3rem, 2vw, 1.6rem);
+  }
+
+  .industry-intro {
+    margin-top: 0.75rem;
+    font-family: Inter, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--moka-text-muted);
+  }
+
+  .industry-grid {
+    margin-top: 2rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .industry-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .industry-grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .industry-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1.6rem 1.5rem 1.7rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(222, 222, 222, 0.1);
+    background: linear-gradient(160deg, rgba(19, 45, 37, 0.55) 0%, rgba(18, 18, 18, 0.9) 70%);
+  }
+
+  .industry-card--accent {
+    border-color: rgba(110, 191, 126, 0.3);
+    background: linear-gradient(160deg, rgba(110, 191, 126, 0.14) 0%, rgba(19, 45, 37, 0.7) 45%, rgba(18, 18, 18, 0.9) 100%);
+  }
+
+  .industry-index,
+  .industry-tag {
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+  }
+
+  .industry-card-title {
+    margin-top: 0.9rem;
+    font-family: Inter, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--pure-color);
+  }
+
+  .industry-card-body {
+    margin-top: 0.6rem;
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(222, 222, 222, 0.74);
+  }
+
+  .industry-list {
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .industry-list li {
+    position: relative;
+    padding-left: 1.2rem;
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(222, 222, 222, 0.85);
+  }
+
+  .industry-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--fresh-green-color);
+  }
+
+  .industry-link {
+    margin-top: auto;
+    padding-top: 1.4rem;
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--pure-color);
+    text-decoration: none;
+  }
+
+  .industry-link:hover,
+  .industry-link:focus-visible { color: var(--fresh-green-color); }
+
+  .industry-questions {
+    margin: 2rem 0 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .industry-question {
+    padding: 1.3rem 1.5rem;
+    border-radius: 1.25rem;
+    border-left: 2px solid var(--fresh-green-color);
+    background: rgba(19, 45, 37, 0.45);
+    font-family: Inter, sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.45;
+    color: var(--pure-color);
+  }
+
+  .industry-research {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem 1.25rem;
+    padding: 1.2rem 1.5rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(222, 222, 222, 0.1);
+    text-decoration: none;
+    transition: border-color 200ms ease;
+  }
+
+  .industry-research:hover { border-color: rgba(110, 191, 126, 0.4); }
+
+  .industry-research-label {
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    color: var(--birch-color);
+  }
+
+  .industry-faq {
+    margin-top: 1.5rem;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .industry-faq-item {
+    border-radius: 1.25rem;
+    border: 1px solid rgba(222, 222, 222, 0.1);
+    background: rgba(18, 18, 18, 0.6);
+  }
+
+  .industry-faq-item summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 1.2rem 3rem 1.2rem 1.5rem;
+    position: relative;
+    font-family: Inter, sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--pure-color);
+  }
+
+  .industry-faq-item summary::-webkit-details-marker { display: none; }
+
+  .industry-faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    color: var(--fresh-green-color);
+  }
+
+  .industry-faq-item[open] summary::after { content: "−"; }
+
+  .industry-faq-item summary:focus-visible {
+    outline: 2px solid var(--fresh-green-color);
+    outline-offset: -2px;
+    border-radius: 1.25rem;
+  }
+
+  .industry-faq-item p {
+    padding: 0 1.5rem 1.3rem;
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(222, 222, 222, 0.78);
+  }
+
+  .industry-other {
+    display: flex;
+    min-height: 64px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.4rem;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(222, 222, 222, 0.12);
+    font-family: Inter, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--pure-color);
+    text-decoration: none;
+    transition: border-color 200ms ease, background 200ms ease;
+  }
+
+  .industry-other:hover,
+  .industry-other:focus-visible {
+    border-color: rgba(110, 191, 126, 0.45);
+    background: rgba(110, 191, 126, 0.08);
+  }
+
+  @media (max-width: 900px) {
+    .industry-grid--3,
+    .industry-grid--2,
+    .industry-questions { grid-template-columns: 1fr; }
+    .industry-hero { padding: 4rem 0 3rem; }
+  }
+</style>

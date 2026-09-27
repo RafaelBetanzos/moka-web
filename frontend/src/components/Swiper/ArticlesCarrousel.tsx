@@ -1,4 +1,4 @@
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { Navigation, Pagination, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -7,7 +7,7 @@ import "swiper/css/scrollbar";
 import { mockcarrousel } from "@utils/CarrouselMock";
 import { CardHomeComponent } from "./CardHomeComponent";
 
-export const ArticlesCarrousel = () => {
+export const ArticlesCarrousel = ({ locale = "en" }: { locale?: "en" | "es" | "pt" }) => {
   return (
     <Swiper
       modules={[Navigation, Pagination, A11y]}
@@ -23,7 +23,7 @@ export const ArticlesCarrousel = () => {
     >
       {mockcarrousel.map((article, index) => (
         <SwiperSlide key={index}>
-          <CardHomeComponent article={article} />
+          <CardHomeComponent article={article} locale={locale} />
         </SwiperSlide>
       ))}
     </Swiper>

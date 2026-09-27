@@ -4,60 +4,88 @@ import { Image } from "astro:assets";
 
 const dataCopy = {
   en: {
-    subheadline: "Latin America's chemical diversity remains unexplored and underrepresented.",
-    intro: "Moka transforms Latin America's biodiversity — the richest and least explored on the planet — into a programmable engine for molecular innovation across medicine, nutrition, and beyond.",
-    pills: ["Validated bioactivity", "Molecular indexing", "IP-ready assets"],
+    kicker: "THE PROBLEM",
+    subheadline: "Most Latin American plants have never been studied.",
+    hook: "That is where your next ingredient is.",
+    intro: "While the industry recycles the same extracts, one of the most biodiverse regions on Earth remains almost unexplored.",
+    pills: ["Bioactivity prioritization", "Molecular indexing", "IP intelligence"],
     cta: "Our Technology",
-    global: "Global Bioactivity",
-    globalBadge: "VALIDATED",
-    globalDesc: "Of the world population uses natural molecular solutions — the demand already exists.",
-    globalNote: "Synthetic signal mapped",
-    natural: "Natural Chemistry",
-    naturalBadge: "INDEXED",
-    naturalDesc: "Of Latin America's natural chemistry has been characterized. The remaining 91% is unexplored opportunity.",
-    naturalNote: "Unindexed opportunity",
+    global: "Flora of the Americas",
+    globalStat: "33%",
+    globalBadge: "124,993 SPECIES",
+    globalDesc: "Of the world's known vascular plant species grow in the Americas.",
+    globalNote: "Plant library",
+    globalSource: "Source: Ulloa Ulloa et al., Science (2017)",
+    natural: "Studied Plants",
+    naturalStat: "6%",
+    naturalBadge: "UNEXPLORED",
+    naturalDesc: "Of described plants have been studied pharmacologically, and only 15% chemically. The rest are still waiting.",
+    naturalNote: "Understudied opportunity",
+    naturalSource: "Source: Atanasov et al., Biotechnology Advances (2015)",
     unexplored: "Latin American Biodiversity",
+    unexploredStat: "40%+",
     unexploredBadge: "GLOBAL BIODIVERSITY",
-    unexploredDesc: "Of the world's biodiversity is in LATAM.",
+    unexploredDesc: "Of Earth's biodiversity is found in South America alone.",
     unexploredNote: "Biodiversity hotspot",
+    unexploredSource: "Source: UNDP, Latin America and the Caribbean: A Biodiversity Superpower (2010)",
   },
   es: {
-    subheadline: "La diversidad química de América Latina sigue inexplorada y subrepresentada.",
-    intro: "Moka transforma la biodiversidad de América Latina — la más rica y menos explorada del planeta — en un motor programable para innovación molecular en medicina, nutrición y más.",
-    pills: ["Bioactividad validada", "Indexación molecular", "Activos listos para PI"],
+    kicker: "EL PROBLEMA",
+    subheadline: "La mayoría de las plantas latinoamericanas nunca se ha estudiado.",
+    hook: "Ahí está tu próximo ingrediente.",
+    intro: "Mientras la industria recicla los mismos extractos, una de las regiones más biodiversas del planeta sigue casi sin explorar.",
+    pills: ["Priorización de bioactividad", "Indexación molecular", "Inteligencia de PI"],
     cta: "Nuestra tecnología",
-    global: "Bioactividad global",
-    globalBadge: "VALIDADO",
-    globalDesc: "De la población mundial utiliza soluciones moleculares naturales: la demanda ya existe.",
-    globalNote: "Señal sintética mapeada",
-    natural: "Química natural",
-    naturalBadge: "INDEXADO",
-    naturalDesc: "De la química natural de América Latina ha sido caracterizada. El 91% restante es oportunidad sin explorar.",
-    naturalNote: "Oportunidad no indexada",
+    global: "Flora de las Américas",
+    globalStat: "33%",
+    globalBadge: "124,993 ESPECIES",
+    globalDesc: "De las especies de plantas vasculares conocidas en el mundo crecen en las Américas.",
+    globalNote: "Biblioteca vegetal",
+    globalSource: "Fuente: Ulloa Ulloa et al., Science (2017)",
+    natural: "Plantas estudiadas",
+    naturalStat: "6%",
+    naturalBadge: "SIN EXPLORAR",
+    naturalDesc: "De las plantas descritas se ha estudiado farmacológicamente, y solo el 15% químicamente. El resto sigue esperando.",
+    naturalNote: "Oportunidad poco estudiada",
+    naturalSource: "Fuente: Atanasov et al., Biotechnology Advances (2015)",
     unexplored: "Biodiversidad latinoamericana",
+    unexploredStat: "40%+",
     unexploredBadge: "BIODIVERSIDAD GLOBAL",
-    unexploredDesc: "De la biodiversidad mundial está en LATAM.",
+    unexploredDesc: "De la biodiversidad del planeta se encuentra solo en Sudamérica.",
     unexploredNote: "Hotspot de biodiversidad",
+    unexploredSource: "Fuente: PNUD, América Latina y el Caribe: una superpotencia de biodiversidad (2010)",
   },
   pt: {
-    subheadline: "A diversidade química da América Latina segue inexplorada e sub-representada.",
-    intro: "A Moka transforma a biodiversidade da América Latina — a mais rica e menos explorada do planeta — em um motor programável para inovação molecular em medicina, nutrição e além.",
-    pills: ["Bioatividade validada", "Indexação molecular", "Ativos prontos para PI"],
+    kicker: "O PROBLEMA",
+    subheadline: "A maioria das plantas latino-americanas nunca foi estudada.",
+    hook: "É ali que está seu próximo ingrediente.",
+    intro: "Enquanto a indústria recicla os mesmos extratos, uma das regiões mais biodiversas do planeta segue quase inexplorada.",
+    pills: ["Priorização de bioatividade", "Indexação molecular", "Inteligência de PI"],
     cta: "Nossa tecnologia",
-    global: "Bioatividade global",
-    globalBadge: "VALIDADO",
-    globalDesc: "Da população mundial utiliza soluções moleculares naturais: a demanda já existe.",
-    globalNote: "Sinal sintético mapeado",
-    natural: "Química natural",
-    naturalBadge: "INDEXADO",
-    naturalDesc: "Da química natural da América Latina foi caracterizada. Os 91% restantes são oportunidade inexplorada.",
-    naturalNote: "Oportunidade não indexada",
+    global: "Flora das Américas",
+    globalStat: "33%",
+    globalBadge: "124.993 ESPÉCIES",
+    globalDesc: "Das espécies de plantas vasculares conhecidas no mundo crescem nas Américas.",
+    globalNote: "Biblioteca vegetal",
+    globalSource: "Fonte: Ulloa Ulloa et al., Science (2017)",
+    natural: "Plantas estudadas",
+    naturalStat: "6%",
+    naturalBadge: "INEXPLORADO",
+    naturalDesc: "Das plantas descritas foram estudadas farmacologicamente, e só 15% quimicamente. O restante segue esperando.",
+    naturalNote: "Oportunidade pouco estudada",
+    naturalSource: "Fonte: Atanasov et al., Biotechnology Advances (2015)",
     unexplored: "Biodiversidade latino-americana",
+    unexploredStat: "40%+",
     unexploredBadge: "BIODIVERSIDADE GLOBAL",
-    unexploredDesc: "Da biodiversidade mundial está na LATAM.",
+    unexploredDesc: "Da biodiversidade do planeta está só na América do Sul.",
     unexploredNote: "Hotspot de biodiversidade",
+    unexploredSource: "Fonte: PNUD, América Latina e Caribe: uma superpotência de biodiversidade (2010)",
   },
 };
+
+interface Props {
+  locale?: "en" | "es" | "pt";
+}
 
 const { locale = "en" } = Astro.props;
 const t = dataCopy[locale] ?? dataCopy.en;
@@ -73,10 +101,11 @@ const localePrefix = locale === "en" ? "" : `/${locale}`;
     <div class="flex flex-col">
       <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.1s;">
         <p class="font-roboto text-[13px] font-medium leading-none tracking-[0.45em] text-freshgreen uppercase">
-          MOKA BIO
+          {t.kicker}
         </p>
         <div class="mt-5">
           <h2 class="font-inter text-[32px] font-semibold leading-[1.12] text-pure sm:text-[44px] lg:text-[54px]">{t.subheadline}</h2>
+          <p class="mt-4 font-inter text-[22px] font-semibold leading-snug text-freshgreen sm:text-[28px]">{t.hook}</p>
         </div>
       </div>
 
@@ -87,7 +116,7 @@ const localePrefix = locale === "en" ? "" : `/${locale}`;
       </div>
 
       <div class="reveal opacity-0 mt-8 flex flex-wrap gap-3" data-animation="slide-in" style="transition-delay: 0.45s;">
-        {t.pills.map((pill) => (
+        {t.pills.map((pill: string) => (
           <span class="rounded-full border border-birch/10 bg-charcoal/40 px-4 py-2 text-sm font-medium text-birch/82 shadow-sm shadow-black/20 backdrop-blur-md">{pill}</span>
         ))}
       </div>
@@ -111,39 +140,42 @@ const localePrefix = locale === "en" ? "" : `/${locale}`;
     <div class="grid gap-4 font-inter">
       <div class="grid gap-4 sm:grid-cols-2">
         <article class="data-card reveal opacity-0 rounded-[1.5rem] border border-freshgreen/24 bg-gradient-to-br from-deepforest/88 via-charcoal/72 to-charcoal/88 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl sm:col-span-2" data-animation="pop-in" style="transition-delay: 0.18s;">
-          <p class="text-xs font-semibold uppercase tracking-[0.32em] text-birch/70">{t.unexplored}</p>
+          <p class="text-[13px] font-semibold uppercase tracking-[0.32em] text-birch/70">{t.natural}</p>
           <div class="mt-6 flex flex-wrap items-end gap-3">
-            <p class="text-[56px] font-semibold leading-none text-freshgreen sm:text-[64px]">40%</p>
-            <span class="mb-2 rounded-full border border-freshgreen/30 px-3 py-1 text-[11px] font-semibold text-freshgreen">{t.unexploredBadge}</span>
-          </div>
-          <p class="mt-5 text-[15px] leading-relaxed text-birch/74">
-            {t.unexploredDesc}
-          </p>
-          <p class="mt-6 text-xs font-semibold uppercase tracking-[0.28em] text-sage/90">{t.unexploredNote}</p>
-        </article>
-
-        <article class="data-card reveal opacity-0 rounded-[1.5rem] border border-birch/10 bg-charcoal/52 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl" data-animation="pop-in" style="transition-delay: 0.25s;">
-          <p class="text-xs font-semibold uppercase tracking-[0.32em] text-birch/70">{t.global}</p>
-          <div class="mt-6 flex flex-wrap items-end gap-3">
-            <p class="text-[56px] font-semibold leading-none text-freshgreen sm:text-[64px]">80%</p>
-            <span class="mb-2 rounded-full border border-freshgreen/30 px-3 py-1 text-[11px] font-semibold text-freshgreen">{t.globalBadge}</span>
-          </div>
-          <p class="mt-5 text-[15px] leading-relaxed text-birch/74">
-            {t.globalDesc}
-          </p>
-          <p class="mt-6 text-xs font-semibold uppercase tracking-[0.28em] text-sage/90">{t.globalNote}</p>
-        </article>
-
-        <article class="data-card reveal opacity-0 rounded-[1.5rem] border border-freshgreen/18 bg-deepforest/62 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl" data-animation="pop-in" style="transition-delay: 0.4s;">
-          <p class="text-xs font-semibold uppercase tracking-[0.32em] text-birch/70">{t.natural}</p>
-          <div class="mt-6 flex flex-wrap items-end gap-3">
-            <p class="text-[56px] font-semibold leading-none text-freshgreen sm:text-[64px]">&lt;9%</p>
-            <span class="mb-2 rounded-full border border-freshgreen/30 px-3 py-1 text-[11px] font-semibold text-freshgreen">{t.naturalBadge}</span>
+            <p class="text-[72px] font-semibold leading-none text-freshgreen sm:text-[96px]">{t.naturalStat}</p>
+            <span class="mb-2 rounded-full border border-freshgreen/30 px-3 py-1 text-[13px] font-semibold text-freshgreen">{t.naturalBadge}</span>
           </div>
           <p class="mt-5 text-[15px] leading-relaxed text-birch/74">
             {t.naturalDesc}
           </p>
-          <p class="mt-6 text-xs font-semibold uppercase tracking-[0.28em] text-sage/90">{t.naturalNote}</p>
+          <p class="mt-6 text-[13px] font-semibold uppercase tracking-[0.28em] text-sage/90">{t.naturalNote}</p>
+          <p class="data-card-source mt-3 text-[13px] leading-snug text-birch/50">{t.naturalSource}</p>
+        </article>
+
+        <article class="data-card reveal opacity-0 rounded-[1.5rem] border border-birch/10 bg-charcoal/52 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl" data-animation="pop-in" style="transition-delay: 0.25s;">
+          <p class="text-[13px] font-semibold uppercase tracking-[0.32em] text-birch/70">{t.global}</p>
+          <div class="mt-6 flex flex-wrap items-end gap-3">
+            <p class="text-[56px] font-semibold leading-none text-freshgreen sm:text-[64px]">{t.globalStat}</p>
+            <span class="mb-2 rounded-full border border-freshgreen/30 px-3 py-1 text-[13px] font-semibold text-freshgreen">{t.globalBadge}</span>
+          </div>
+          <p class="mt-5 text-[15px] leading-relaxed text-birch/74">
+            {t.globalDesc}
+          </p>
+          <p class="mt-6 text-[13px] font-semibold uppercase tracking-[0.28em] text-sage/90">{t.globalNote}</p>
+          <p class="data-card-source mt-3 text-[13px] leading-snug text-birch/50">{t.globalSource}</p>
+        </article>
+
+        <article class="data-card reveal opacity-0 rounded-[1.5rem] border border-freshgreen/18 bg-deepforest/62 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl" data-animation="pop-in" style="transition-delay: 0.4s;">
+          <p class="text-[13px] font-semibold uppercase tracking-[0.32em] text-birch/70">{t.unexplored}</p>
+          <div class="mt-6 flex flex-wrap items-end gap-3">
+            <p class="text-[56px] font-semibold leading-none text-freshgreen sm:text-[64px]">{t.unexploredStat}</p>
+            <span class="mb-2 rounded-full border border-freshgreen/30 px-3 py-1 text-[13px] font-semibold text-freshgreen">{t.unexploredBadge}</span>
+          </div>
+          <p class="mt-5 text-[15px] leading-relaxed text-birch/74">
+            {t.unexploredDesc}
+          </p>
+          <p class="mt-6 text-[13px] font-semibold uppercase tracking-[0.28em] text-sage/90">{t.unexploredNote}</p>
+          <p class="data-card-source mt-3 text-[13px] leading-snug text-birch/50">{t.unexploredSource}</p>
         </article>
       </div>
     </div>

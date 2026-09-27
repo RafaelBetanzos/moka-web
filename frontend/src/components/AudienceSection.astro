@@ -1,0 +1,472 @@
+---
+interface Props {
+  locale?: "en" | "es" | "pt";
+}
+
+const { locale = "en" } = Astro.props;
+const contactBase = locale === "en" ? "/contact-us" : `/${locale}/contact-us`;
+
+const copy = {
+  en:{
+    kicker: "WHO IT'S FOR",
+    title: "Built for those who create with plants.",
+    intro: "Entrepreneurs, companies, and universities who want to reach the next plant first.",
+    offersKicker: "WHAT YOU HIRE",
+    confidential: "Your data, your plants, and your project results are confidential.",
+    offersTitle: "Two ways to work with Moka.",
+    offersIntro: "You do the research, or we do it with you.",
+    whenLabel: "When",
+    getLabel: "What you get",
+    offers: [
+      { key: "demo", tag: "PLATFORM · MOKA BDE", title: "You do the research. Icaros shows you where.", when: "Explore Latin American plants, prioritize candidates, check the IP, and formulate, all without leaving Moka BDE.", get: "Access to Moka BDE and Icaros.", cta: "Book a demo" },
+      { key: "service", tag: "R&D SERVICE", title: "You bring the question. We bring the bioactive.", when: "You come with a plant or with a product need.", get: "Extract, fraction, or molecule.", cta: "Request a service" },
+    ],
+    platform: "Platform",
+    service: "Service",
+    profiles: [
+      { image: "/audience/startups.webp", name: "Entrepreneurs and innovators", body: "You have a plant or an idea. We help you turn it into a product." },
+      { image: "/audience/inventor.webp", name: "Companies and startups", body: "Your portfolio needs something no one else has." },
+      { image: "/audience/academic.webp", name: "Universities and research centers", body: "You know how to research. We help you choose what to research first." },
+    ],
+  },
+  es:{
+    kicker: "PARA QUIÉN ES",
+    title: "Para quienes crean con plantas.",
+    intro: "Emprendedores, empresas y universidades que quieren llegar primero a la próxima planta.",
+    offersKicker: "QUÉ CONTRATAS",
+    confidential: "Tus datos, tus plantas y los resultados de tu proyecto son confidenciales.",
+    offersTitle: "Dos formas de trabajar con Moka.",
+    offersIntro: "Investigas tú, o lo hacemos contigo.",
+    whenLabel: "Cuándo",
+    getLabel: "Qué recibes",
+    offers: [
+      { key: "demo", tag: "PLATAFORMA · MOKA BDE", title: "Tú investigas. Icaros te dice por dónde.", when: "Explora plantas latinoamericanas, prioriza candidatos, revisa la PI y formula, sin salir de Moka BDE.", get: "Acceso a Moka BDE y a Icaros.", cta: "Agendar demo" },
+      { key: "service", tag: "SERVICIO DE I+D", title: "Tú traes la pregunta. Nosotros, el bioactivo.", when: "Llegas con una planta o con una necesidad de producto.", get: "Extracto, fracción o molécula.", cta: "Solicitar servicio" },
+    ],
+    platform: "Plataforma",
+    service: "Servicio",
+    profiles: [
+      { image: "/audience/startups.webp", name: "Emprendedores e innovadores", body: "Tienes una planta o una idea. Te ayudamos a convertirla en producto." },
+      { image: "/audience/inventor.webp", name: "Empresas y startups", body: "Tu portafolio necesita algo que nadie más tenga." },
+      { image: "/audience/academic.webp", name: "Universidades y centros de investigación", body: "Saben investigar. Les ayudamos a elegir qué investigar primero." },
+    ],
+  },
+  pt:{
+    kicker: "PARA QUEM É",
+    title: "Para quem cria com plantas.",
+    intro: "Empreendedores, empresas e universidades que querem chegar primeiro à próxima planta.",
+    offersKicker: "O QUE VOCÊ CONTRATA",
+    confidential: "Seus dados, suas plantas e os resultados do seu projeto são confidenciais.",
+    offersTitle: "Duas formas de trabalhar com a Moka.",
+    offersIntro: "Você pesquisa, ou fazemos isso com você.",
+    whenLabel: "Quando",
+    getLabel: "O que você recebe",
+    offers: [
+      { key: "demo", tag: "PLATAFORMA · MOKA BDE", title: "Você pesquisa. O Icaros mostra por onde.", when: "Explore plantas latino-americanas, priorize candidatos, avalie a PI e formule, sem sair do Moka BDE.", get: "Acesso ao Moka BDE e ao Icaros.", cta: "Agendar demonstração" },
+      { key: "service", tag: "SERVIÇO DE P&D", title: "Você traz a pergunta. Nós, o bioativo.", when: "Você chega com uma planta ou com uma necessidade de produto.", get: "Extrato, fração ou molécula.", cta: "Solicitar serviço" },
+    ],
+    platform: "Plataforma",
+    service: "Serviço",
+    profiles: [
+      { image: "/audience/startups.webp", name: "Empreendedores e inovadores", body: "Você tem uma planta ou uma ideia. Ajudamos a transformá-la em produto." },
+      { image: "/audience/inventor.webp", name: "Empresas e startups", body: "Seu portfólio precisa de algo que ninguém mais tenha." },
+      { image: "/audience/academic.webp", name: "Universidades e centros de pesquisa", body: "Vocês sabem pesquisar. Ajudamos a escolher o que pesquisar primeiro." },
+    ],
+  },
+}[locale];
+---
+
+<section class="audience relative" aria-labelledby="audience-title">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/18 to-transparent"></div>
+  <div class="audience-shell">
+    <div class="audience-head reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
+      <p class="audience-kicker">{copy.kicker}</p>
+      <h2 id="audience-title" class="audience-title">{copy.title}</h2>
+      <p class="audience-intro">{copy.intro}</p>
+    </div>
+
+    <div class="profile-grid">
+      {copy.profiles.map((p, i) => (
+        <article class="profile-card reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${0.1 + i * 0.1}s;`}>
+          <div class="profile-photo">
+            <img src={p.image} alt="" width="800" height="800" loading="lazy" decoding="async" />
+          </div>
+          <div class="profile-text">
+            <h4 class="profile-name">{p.name}</h4>
+            <p class="profile-body">{p.body}</p>
+            <div class="profile-uses">
+              <a class="profile-use profile-use--demo" href="#offer-demo">{copy.platform} <span aria-hidden="true">↓</span></a>
+              <a class="profile-use profile-use--service" href="#offer-service">{copy.service} <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="offers-head reveal opacity-0" data-animation="slide-in">
+      <p class="audience-kicker">{copy.offersKicker}</p>
+      <h3 class="offers-title">{copy.offersTitle}</h3>
+      <p class="audience-intro">{copy.offersIntro}</p>
+    </div>
+
+    <div class="offer-grid">
+      {copy.offers.map((o, i) => (
+        <article id={`offer-${o.key}`} class={`offer-card offer-card--${o.key} reveal opacity-0`} data-animation="pop-in" style={`transition-delay: ${0.12 + i * 0.12}s;`}>
+          <p class="offer-tag">{o.tag}</p>
+          <h3 class="offer-title">{o.title}</h3>
+          <dl class="offer-details">
+            <div>
+              <dt>{copy.whenLabel}</dt>
+              <dd>{o.when}</dd>
+            </div>
+            <div>
+              <dt>{copy.getLabel}</dt>
+              <dd>{o.get}</dd>
+            </div>
+          </dl>
+          <a
+            class="offer-cta"
+            href={`${contactBase}?interest=${o.key}`}
+            data-analytics-event="audience_offer_click"
+            data-analytics-category="audience"
+            data-analytics-label={o.key}
+          >
+            {o.cta} <span aria-hidden="true">→</span>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <p class="offers-confidential reveal opacity-0" data-animation="slide-in">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      {copy.confidential}
+    </p>
+
+  </div>
+</section>
+
+<style>
+  .audience {
+    z-index: 30;
+    padding: 5rem 1.25rem 4.5rem;
+  }
+
+  .audience-shell {
+    width: min(100%, 1180px);
+    margin: 0 auto;
+  }
+
+  .audience-head { max-width: 760px; }
+
+  .audience-kicker {
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.42em;
+    color: var(--fresh-green-color);
+  }
+
+  .audience-title {
+    margin-top: 1rem;
+    font-family: Inter, sans-serif;
+    font-size: clamp(2.1rem, 4.6vw, 4.2rem);
+    font-weight: 650;
+    line-height: 1.03;
+    color: var(--pure-color);
+    text-wrap: balance;
+  }
+
+  .audience-intro {
+    margin-top: 1.1rem;
+    max-width: 640px;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.18rem);
+    line-height: 1.7;
+    color: var(--moka-text-muted);
+  }
+
+  /* ── Offers ─────────────────────────────────── */
+  .offers-head {
+    margin-top: 5rem;
+    max-width: 760px;
+  }
+
+  .offers-title {
+    margin-top: 1rem;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.8rem, 3.4vw, 3rem);
+    font-weight: 650;
+    line-height: 1.05;
+    color: var(--pure-color);
+    text-wrap: balance;
+  }
+
+  .offer-grid {
+    margin-top: 2.25rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .offer-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(222, 222, 222, 0.1);
+    background: linear-gradient(160deg, rgba(19, 45, 37, 0.78) 0%, rgba(18, 18, 18, 0.92) 70%);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+
+  .offer-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 12% 0%, rgba(110, 191, 126, 0.14), transparent 45%);
+    pointer-events: none;
+  }
+
+  .offer-card--service {
+    background: linear-gradient(160deg, rgba(86, 114, 99, 0.32) 0%, rgba(18, 18, 18, 0.92) 70%);
+  }
+
+  .offer-tag {
+    position: relative;
+    width: fit-content;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(110, 191, 126, 0.35);
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    color: var(--fresh-green-color);
+  }
+
+  .offer-title {
+    position: relative;
+    margin-top: 1.25rem;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.5rem, 2.3vw, 2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--pure-color);
+    text-wrap: balance;
+  }
+
+  .offer-details {
+    position: relative;
+    margin-top: 1.5rem;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .offer-details dt {
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(222, 222, 222, 0.55);
+  }
+
+  .offer-details dd {
+    margin-top: 0.35rem;
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(222, 222, 222, 0.85);
+  }
+
+  .offer-cta {
+    position: relative;
+    margin-top: auto;
+    align-self: flex-start;
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 1.5rem;
+    border-radius: 999px;
+    background: var(--pure-color);
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--charcoal-color);
+    text-decoration: none;
+    transition: background-color 200ms ease, transform 200ms ease;
+  }
+
+  .offer-details + .offer-cta { margin-top: 2rem; }
+
+  .offer-card--demo .offer-cta { background: var(--fresh-green-color); }
+
+  .offer-cta:hover,
+  .offer-cta:focus-visible {
+    background: var(--pure-color);
+    transform: translateY(-2px);
+  }
+
+  .offer-card--service .offer-cta:hover,
+  .offer-card--service .offer-cta:focus-visible { background: var(--fresh-green-color); }
+
+  /* ── Profiles ───────────────────────────────── */
+  .profile-grid {
+    margin-top: 6.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 1rem;
+    row-gap: 6rem;
+  }
+
+  .profile-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(222, 222, 222, 0.1);
+    background: rgba(18, 18, 18, 0.7);
+  }
+
+  /* Photo panel: clipped at the sides and bottom, open at the top so the person
+     rises above the card edge. */
+  .profile-photo {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    clip-path: inset(-60% 0 0 0);
+  }
+
+  .profile-photo::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 1.5rem 1.5rem 0 0;
+    background: radial-gradient(circle at 50% 85%, rgba(110, 191, 126, 0.2), transparent 60%), linear-gradient(180deg, #16241f, #121212);
+  }
+
+  .profile-photo::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 30%;
+    background: linear-gradient(to bottom, transparent, rgba(18, 18, 18, 0.92));
+  }
+
+  .profile-photo img {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    transform: translateX(-50%);
+    transform-origin: 50% 100%;
+    filter: saturate(0.8) contrast(1.05) drop-shadow(0 -6px 18px rgba(0, 0, 0, 0.35));
+    transition: transform 600ms ease;
+  }
+
+  .profile-card:hover .profile-photo img { transform: translateX(-50%) scale(1.03); }
+
+  .profile-text { padding: 1.25rem 1.4rem 1.5rem; }
+
+  .profile-name {
+    font-family: Inter, sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--pure-color);
+  }
+
+  .profile-body {
+    margin-top: 0.5rem;
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    color: rgba(222, 222, 222, 0.72);
+  }
+
+  .profile-uses {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .profile-use {
+    display: inline-flex;
+    min-height: 36px;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0 0.9rem;
+    border-radius: 999px;
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    border: 1px solid rgba(222, 222, 222, 0.22);
+    color: rgba(222, 222, 222, 0.85);
+    transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+  }
+
+  .profile-use--demo {
+    border-color: rgba(110, 191, 126, 0.45);
+    color: var(--fresh-green-color);
+  }
+
+  .profile-use:hover,
+  .profile-use:focus-visible {
+    background: var(--fresh-green-color);
+    border-color: var(--fresh-green-color);
+    color: var(--charcoal-color);
+  }
+
+  /* Offer cards reached from the profile chips: leave room for the fixed navbar and flash a highlight */
+  .offer-card {
+    scroll-margin-top: 110px;
+  }
+
+  .offer-card:target {
+    animation: offer-highlight 1.6s ease;
+  }
+
+  @keyframes offer-highlight {
+    0%, 60% { border-color: rgba(110, 191, 126, 0.8); box-shadow: 0 0 0 3px rgba(110, 191, 126, 0.25), 0 24px 70px rgba(0, 0, 0, 0.28); }
+    100% { border-color: rgba(222, 222, 222, 0.1); }
+  }
+
+  @media (max-width: 900px) {
+    .offer-grid { grid-template-columns: 1fr; }
+    .profile-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 640px) {
+    .audience { padding: 3.5rem 1rem 3.5rem; }
+    .offer-card { padding: 1.5rem; }
+    .profile-grid { grid-template-columns: 1fr; margin-top: 5.5rem; row-gap: 5rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .offer-cta, .profile-photo img { transition: none; }
+    .offer-card:target { animation: none; }
+  }
+
+  .offers-confidential {
+    margin-top: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    color: rgba(222, 222, 222, 0.75);
+    text-align: center;
+  }
+
+  .offers-confidential svg {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--fresh-green-color);
+  }
+</style>

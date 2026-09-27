@@ -12,122 +12,56 @@ const { locale = "en" } = Astro.props;
 const copy = {
   en: {
     kicker: "WHY NOW",
-    intro: "We believe the Americas hold the richest, least-understood molecular library on Earth. For the first time, three forces are converging to make what was once impossible not just achievable — but urgent.",
+    title: "The window is open. Not for long.",
+    intro: "AI, market demand, and regulation are pushing in the same direction: toward the plants no one has studied.",
     forces: [
-      {
-        tag: "01 · AI",
-        title: "Machine intelligence at molecular scale",
-        body: "What once took decades in the lab is now a programmable pipeline.",
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="5" height="5" rx="1"/><rect x="17" y="8" width="5" height="5" rx="1"/><rect x="9.5" y="3" width="5" height="5" rx="1"/><rect x="9.5" y="16" width="5" height="5" rx="1"/><line x1="7" y1="10.5" x2="9.5" y2="10.5"/><line x1="14.5" y1="10.5" x2="17" y2="10.5"/><line x1="12" y1="8" x2="12" y2="10.5"/><line x1="12" y1="13.5" x2="12" y2="16"/></svg>`,
-        accent: false,
-      },
-      {
-        tag: "02 · BIOTECH",
-        title: "Industry demand is real and growing",
-        body: "Latin America is the largest untapped source of novel natural compounds — and R&D pipelines know it.",
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5L6 16a2 2 0 0 0 1.73 3h8.54A2 2 0 0 0 18 16l-4-8V3"/><line x1="6" y1="12" x2="18" y2="12"/></svg>`,
-        accent: false,
-      },
-      {
-        tag: "03 · REGULATION",
-        title: "The legal framework just changed",
-        body: "The WIPO Geneva Act turns Latin America's biodiversity from a free commons into a protected, value-generating asset.",
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg>`,
-        accent: true,
-      },
+      { tag: "01 · AI", title: "Predict before you experiment", body: "Bioactivity can now be anticipated before you set foot in the lab." },
+      { tag: "02 · DEMAND", title: "Industry is looking for new actives", body: "Nutraceuticals, dermocosmetics, agro, and pharma need to stand out. Latin American flora has barely been touched." },
+      { tag: "03 · REGULATION", title: "Origin now has value", body: "Nagoya already requires sharing benefits; the WIPO treaty will require declaring origin in patents. Traceable becomes valuable." },
     ],
-    treaty: {
-      eyebrow: "WIPO GENEVA ACT · 2024",
-      title: "A treaty that changes the economics of nature.",
-      body: "International law now requires disclosure of genetic resource origins in patent filings and mandates benefit-sharing for their commercial use. Latin America — home to 40% of the world's biodiversity — moves from resource supplier to rights holder.",
-    },
     closing: "Moka is built for this window.",
     flags: {
-      mexico: { name: "Mexico", stat: "10%", desc: "of plant species used in discovery." },
-      argentina: { name: "Argentina", stat: "5%", desc: "mapped for molecular potential." },
-      brazil: { name: "Brazil", stat: "30%", desc: "of the region's biodiversity concentrated across its biomes." },
-      peru: { name: "Peru", stat: "25,000+", desc: "plant species documented across Andean and Amazon ecosystems." },
-      venezuela: { name: "Venezuela", stat: "90%", desc: "of chemical library unexplored." },
+      mexico: { name: "Mexico", stat: "10–12%", desc: "of the world's known species live in Mexico (CONABIO)." },
+      argentina: { name: "Argentina", stat: "~10,000", desc: "native vascular plant species, about 2,000 of them endemic (CONICET)." },
+      brazil: { name: "Brazil", stat: "15–20%", desc: "of the planet's biological diversity is found in Brazil (UNEP)." },
+      peru: { name: "Peru", stat: "25,000", desc: "plant species, 10% of the world total; about 1,400 have medicinal uses (MINAM)." },
+      venezuela: { name: "Venezuela", stat: "1 of 17", desc: "megadiverse countries on Earth." },
     },
   },
   es: {
     kicker: "POR QUÉ AHORA",
-    intro: "Creemos que las Américas albergan la biblioteca molecular más rica y menos comprendida de la Tierra. Por primera vez, tres fuerzas convergen para hacer lo imposible no solo alcanzable — sino urgente.",
+    title: "La ventana está abierta. No por mucho.",
+    intro: "La IA, la demanda y la regulación empujan hacia el mismo lado: las plantas que nadie ha estudiado.",
     forces: [
-      {
-        tag: "01 · IA",
-        title: "Inteligencia de máquinas a escala molecular",
-        body: "Lo que tomaba décadas en el laboratorio ahora es un pipeline programable.",
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="5" height="5" rx="1"/><rect x="17" y="8" width="5" height="5" rx="1"/><rect x="9.5" y="3" width="5" height="5" rx="1"/><rect x="9.5" y="16" width="5" height="5" rx="1"/><line x1="7" y1="10.5" x2="9.5" y2="10.5"/><line x1="14.5" y1="10.5" x2="17" y2="10.5"/><line x1="12" y1="8" x2="12" y2="10.5"/><line x1="12" y1="13.5" x2="12" y2="16"/></svg>`,
-        accent: false,
-      },
-      {
-        tag: "02 · BIOTECH",
-        title: "La demanda de la industria es real y crece",
-        body: "América Latina es la mayor fuente sin explotar de compuestos naturales novedosos — y los pipelines de I+D ya lo saben.",
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5L6 16a2 2 0 0 0 1.73 3h8.54A2 2 0 0 0 18 16l-4-8V3"/><line x1="6" y1="12" x2="18" y2="12"/></svg>`,
-        accent: false,
-      },
-      {
-        tag: "03 · REGULACIÓN",
-        title: "El marco legal acaba de cambiar",
-        body: "El Acta de Ginebra de la OMPI convierte la biodiversidad de LATAM de un bien común de libre acceso en un activo protegido y generador de valor.",
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg>`,
-        accent: true,
-      },
+      { tag: "01 · IA", title: "Predecir antes de experimentar", body: "Hoy ya es posible anticipar bioactividad antes de pisar el laboratorio." },
+      { tag: "02 · DEMANDA", title: "La industria busca activos nuevos", body: "Nutracéutica, dermocosmética, agro y pharma necesitan diferenciarse. La flora latinoamericana apenas se ha tocado." },
+      { tag: "03 · REGULACIÓN", title: "El origen ahora tiene valor", body: "Nagoya ya exige compartir beneficios; el tratado de la OMPI exigirá declarar el origen en las patentes. Lo trazable se vuelve valioso." },
     ],
-    treaty: {
-      eyebrow: "ACTA DE GINEBRA OMPI · 2024",
-      title: "Un tratado que cambia la economía de la naturaleza.",
-      body: "El derecho internacional ahora exige divulgar el origen de los recursos genéticos en solicitudes de patentes y obliga a compartir beneficios por su uso comercial. América Latina — con el 40% de la biodiversidad mundial — pasa de proveedor de recursos a titular de derechos.",
-    },
     closing: "Moka está construida para esta ventana de oportunidad.",
     flags: {
-      mexico: { name: "México", stat: "10%", desc: "de especies vegetales usadas en descubrimiento." },
-      argentina: { name: "Argentina", stat: "5%", desc: "mapeadas para su potencial molecular." },
-      brazil: { name: "Brasil", stat: "30%", desc: "de la biodiversidad de la región concentrada en sus biomas." },
-      peru: { name: "Perú", stat: "25,000+", desc: "especies vegetales documentadas entre ecosistemas andinos y amazónicos." },
-      venezuela: { name: "Venezuela", stat: "90%", desc: "de su biblioteca química sin explorar." },
+      mexico: { name: "México", stat: "10–12%", desc: "de las especies conocidas del mundo habitan en México (CONABIO)." },
+      argentina: { name: "Argentina", stat: "~10,000", desc: "especies de plantas vasculares nativas, unas 2,000 endémicas (CONICET)." },
+      brazil: { name: "Brasil", stat: "15–20%", desc: "de la diversidad biológica del planeta se encuentra en Brasil (PNUMA)." },
+      peru: { name: "Perú", stat: "25,000", desc: "especies de plantas, el 10% del total mundial; unas 1,400 de uso medicinal (MINAM)." },
+      venezuela: { name: "Venezuela", stat: "1 de 17", desc: "países megadiversos del planeta." },
     },
   },
   pt: {
     kicker: "POR QUE AGORA",
-    intro: "Acreditamos que as Américas abrigam a biblioteca molecular mais rica e menos compreendida da Terra. Pela primeira vez, três forças convergem para tornar o impossível não apenas alcançável — mas urgente.",
+    title: "A janela está aberta. Não por muito tempo.",
+    intro: "A IA, a demanda e a regulação empurram para o mesmo lado: as plantas que ninguém estudou.",
     forces: [
-      {
-        tag: "01 · IA",
-        title: "Inteligência de máquina em escala molecular",
-        body: "O que levava décadas no laboratório agora é um pipeline programável.",
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="5" height="5" rx="1"/><rect x="17" y="8" width="5" height="5" rx="1"/><rect x="9.5" y="3" width="5" height="5" rx="1"/><rect x="9.5" y="16" width="5" height="5" rx="1"/><line x1="7" y1="10.5" x2="9.5" y2="10.5"/><line x1="14.5" y1="10.5" x2="17" y2="10.5"/><line x1="12" y1="8" x2="12" y2="10.5"/><line x1="12" y1="13.5" x2="12" y2="16"/></svg>`,
-        accent: false,
-      },
-      {
-        tag: "02 · BIOTECH",
-        title: "A demanda da indústria é real e acelera",
-        body: "A América Latina é a maior fonte inexplorada de compostos naturais novos — e os pipelines de P&D já sabem disso.",
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5L6 16a2 2 0 0 0 1.73 3h8.54A2 2 0 0 0 18 16l-4-8V3"/><line x1="6" y1="12" x2="18" y2="12"/></svg>`,
-        accent: false,
-      },
-      {
-        tag: "03 · REGULAÇÃO",
-        title: "O quadro legal acabou de mudar",
-        body: "O Ato de Genebra da OMPI transforma a biodiversidade da LATAM de bem comum de acesso livre em ativo protegido e gerador de valor.",
-        icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg>`,
-        accent: true,
-      },
+      { tag: "01 · IA", title: "Prever antes de experimentar", body: "Hoje já é possível antecipar bioatividade antes de pisar no laboratório." },
+      { tag: "02 · DEMANDA", title: "A indústria busca novos ativos", body: "Nutracêutica, dermocosmética, agro e pharma precisam se diferenciar. A flora latino-americana mal foi tocada." },
+      { tag: "03 · REGULAÇÃO", title: "A origem agora tem valor", body: "Nagoya já exige repartir benefícios; o tratado da OMPI exigirá declarar a origem nas patentes. O rastreável passa a valer." },
     ],
-    treaty: {
-      eyebrow: "ATO DE GENEBRA OMPI · 2024",
-      title: "Um tratado que muda a economia da natureza.",
-      body: "O direito internacional agora exige divulgar a origem dos recursos genéticos em pedidos de patente e obriga o compartilhamento de benefícios pelo uso comercial. A América Latina — com 40% da biodiversidade mundial — passa de fornecedora de recursos a detentora de direitos.",
-    },
     closing: "A Moka foi construída para esta janela de oportunidade.",
     flags: {
-      mexico: { name: "México", stat: "10%", desc: "das espécies vegetais usadas na descoberta." },
-      argentina: { name: "Argentina", stat: "5%", desc: "mapeadas para seu potencial molecular." },
-      brazil: { name: "Brasil", stat: "30%", desc: "da biodiversidade da região concentrada em seus biomas." },
-      peru: { name: "Peru", stat: "25.000+", desc: "espécies vegetais documentadas entre ecossistemas andinos e amazônicos." },
-      venezuela: { name: "Venezuela", stat: "90%", desc: "de sua biblioteca química inexplorada." },
+      mexico: { name: "México", stat: "10–12%", desc: "das espécies conhecidas do mundo vivem no México (CONABIO)." },
+      argentina: { name: "Argentina", stat: "~10.000", desc: "espécies de plantas vasculares nativas, cerca de 2.000 endêmicas (CONICET)." },
+      brazil: { name: "Brasil", stat: "15–20%", desc: "da diversidade biológica do planeta está no Brasil (PNUMA)." },
+      peru: { name: "Peru", stat: "25.000", desc: "espécies de plantas, 10% do total mundial; cerca de 1.400 de uso medicinal (MINAM)." },
+      venezuela: { name: "Venezuela", stat: "1 de 17", desc: "países megadiversos do planeta." },
     },
   },
 };
@@ -146,6 +80,7 @@ const t = copy[locale as keyof typeof copy] ?? copy.en;
       <!-- Left: kicker + intro + flags -->
       <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
         <div class="why-kicker">{t.kicker}</div>
+        <h2 class="why-title mt-4">{t.title}</h2>
         <p class="why-intro mt-5">{t.intro}</p>
 
         <!-- Flags below the intro text -->
@@ -202,6 +137,19 @@ const t = copy[locale as keyof typeof copy] ?? copy.en;
       </div>
 
     </div>
+
+    <!-- Three forces -->
+    <div class="why-forces">
+      {t.forces.map((force, i) => (
+        <article class="why-force reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${0.1 + i * 0.1}s;`}>
+          <p class="why-force-tag">{force.tag}</p>
+          <h3 class="why-force-title">{force.title}</h3>
+          <p class="why-force-body">{force.body}</p>
+        </article>
+      ))}
+    </div>
+
+    <p class="why-closing reveal opacity-0" data-animation="slide-in">{t.closing}</p>
 
 
 
@@ -266,20 +214,28 @@ const t = copy[locale as keyof typeof copy] ?? copy.en;
   /* ── Kicker + intro ──────────────────────────── */
   .why-kicker {
     font-family: Roboto, sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.42em;
     color: var(--fresh-green-color);
     text-transform: uppercase;
   }
 
-  .why-intro {
+  .why-title {
     font-family: Inter, sans-serif;
-    font-size: clamp(2rem, 3.2vw, 2.44rem);
-    font-weight: 500;
-    line-height: 1.2;
+    font-size: clamp(1.9rem, 3.4vw, 3rem);
+    font-weight: 650;
+    line-height: 1.05;
     color: var(--pure-color);
     text-wrap: balance;
+  }
+
+  .why-intro {
+    max-width: 560px;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.18rem);
+    line-height: 1.7;
+    color: var(--moka-text-muted);
   }
 
   /* ── Country flags ───────────────────────────── */
@@ -332,7 +288,7 @@ const t = copy[locale as keyof typeof copy] ?? copy.en;
 
   .why-flag-name {
     font-family: Roboto, sans-serif;
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -342,7 +298,7 @@ const t = copy[locale as keyof typeof copy] ?? copy.en;
 
   .why-flag-stat {
     font-family: Inter, sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.5;
     color: rgba(222, 222, 222, 0.72);
   }
@@ -370,12 +326,9 @@ const t = copy[locale as keyof typeof copy] ?? copy.en;
   @media (max-width: 1023px) {
     .why-header-grid { grid-template-columns: 1fr; }
     .why-map-col { display: none; }
-    .why-grid { grid-template-columns: 1fr; }
-    .why-treaty-inner { grid-template-columns: 1fr; gap: 0.875rem; }
   }
 
   @media (min-width: 640px) and (max-width: 1023px) {
-    .why-grid { grid-template-columns: repeat(2, 1fr); }
     .why-map-col { display: flex; }
     .why-map-wrap {
       width: min(92vw, 720px);
@@ -393,7 +346,70 @@ const t = copy[locale as keyof typeof copy] ?? copy.en;
   @media (prefers-reduced-motion: reduce) {
     .animate-slide-in,
     .animate-pop-in { animation-duration: 1ms; }
-    .why-treaty-dot { animation: none; }
     .why-map-bg     { animation: none; }
+  }
+
+  /* ── Three forces ────────────────────────────── */
+  .why-forces {
+    margin-top: 3.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .why-force {
+    position: relative;
+    padding: 1.6rem 1.5rem 1.7rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(222, 222, 222, 0.1);
+    background: linear-gradient(160deg, rgba(19, 45, 37, 0.55) 0%, rgba(18, 18, 18, 0.9) 70%);
+  }
+
+  .why-force::before {
+    content: "";
+    position: absolute;
+    left: 1.5rem;
+    right: 1.5rem;
+    top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(110, 191, 126, 0.55), transparent);
+  }
+
+  .why-force-tag {
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--fresh-green-color);
+  }
+
+  .why-force-title {
+    margin-top: 0.9rem;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.2rem, 1.7vw, 1.45rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--pure-color);
+  }
+
+  .why-force-body {
+    margin-top: 0.7rem;
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(222, 222, 222, 0.74);
+  }
+
+  .why-closing {
+    margin-top: 2.5rem;
+    text-align: center;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    font-weight: 650;
+    color: var(--fresh-green-color);
+  }
+
+  @media (max-width: 900px) {
+    .why-forces { grid-template-columns: 1fr; }
   }
 </style>

@@ -1,0 +1,26 @@
+---
+// Static redirect for retired URLs. GitHub Pages cannot send 301s, so the page
+// points search engines to the new URL (canonical + noindex) and sends visitors there.
+interface Props {
+  to: string;
+  lang?: "en" | "es" | "pt";
+}
+
+const { to, lang = "en" } = Astro.props;
+const target = new URL(to, "https://moka.bio").href;
+const label = { en: "This page has moved to", es: "Esta página se movió a", pt: "Esta página foi movida para" }[lang];
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <title>{label} {to}</title>
+    <meta name="robots" content="noindex, follow" />
+    <link rel="canonical" href={target} />
+    <meta http-equiv="refresh" content={`0; url=${to}`} />
+  </head>
+  <body>
+    <p>{label} <a href={to}>{target}</a></p>
+  </body>
+</html>

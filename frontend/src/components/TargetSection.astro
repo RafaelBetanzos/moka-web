@@ -4,54 +4,49 @@ interface Props {
 }
 
 const { locale = "en" } = Astro.props;
+const contactBase = locale === "en" ? "/contact-us" : `/${locale}/contact-us`;
 const copy = {
   en: {
-    kicker: "Moka Targets",
+    kicker: "How we work with you",
+    ctaDemo: "Book a demo",
+    ctaService: "Request a service",
     titleA: "Same technology,",
-    titleB: "different products and business models",
-    bodyA: "Our primary focus is to refine MokaDex in less regulated and fast-commercializing environments. We are building the evidence needed for future expansions.",
-    today: "Today",
-    tomorrow: "Tomorrow",
-    bodyB: "we are targeting the nutraceutical industry.",
-    bodyC: "we will scale through cosmetics, functional ingredients, and beyond.",
-    now: "NOW",
-    next: "NEXT",
-    nowTitle: "Nutraceuticals & Cosmetics",
-    nextTitle: "Pharma & Drug Discovery",
-    nowItems: ["Discovery of novel bioactive molecules", "Direct formulation services & SaaS", "High-value Intellectual Property (IP) Assets"],
-    nextItems: ["R&D for novel drug candidates", "Licensing & Co-development contracts", "Complex molecular pattern analysis (AI)"],
+    titleB: "two starting points",
+    bodyA: "With the platform or with a service, it all starts in one of two ways.",
+    now: "PLANT PUSH",
+    next: "MARKET PULL",
+    nowTitle: "You have a plant. What is it hiding?",
+    nextTitle: "You have a need. Which plant solves it?",
+    nowItems: ["A native species, your own crop, a plant someone has always used.", "We find out what it can do.", "We take it to extract, fraction, or molecule."],
+    nextItems: ["Tell us which active or benefit you are looking for.", "We search Latin American flora until we find your candidates.", "We develop them to the level you need."],
   },
   es: {
-    kicker: "Objetivos de Moka",
+    kicker: "Cómo trabajamos contigo",
+    ctaDemo: "Agendar demo",
+    ctaService: "Solicitar servicio",
     titleA: "Misma tecnología,",
-    titleB: "diferentes productos y modelos de negocio",
-    bodyA: "Nuestro foco inicial es perfeccionar MokaDex en entornos menos regulados y de comercialización rápida. Estamos construyendo la evidencia necesaria para futuras expansiones.",
-    today: "Hoy",
-    tomorrow: "Mañana",
-    bodyB: "apuntamos a la industria nutracéutica.",
-    bodyC: "escalaremos hacia cosmética, ingredientes funcionales y más.",
-    now: "AHORA",
-    next: "SIGUE",
-    nowTitle: "Nutracéuticos y cosméticos",
-    nextTitle: "Pharma y descubrimiento de fármacos",
-    nowItems: ["Descubrimiento de moléculas bioactivas novedosas", "Servicios directos de formulación y SaaS", "Activos de propiedad intelectual (IP) de alto valor"],
-    nextItems: ["I+D para nuevos candidatos terapéuticos", "Contratos de licencia y co-desarrollo", "Análisis de patrones moleculares complejos (IA)"],
+    titleB: "dos puntos de partida",
+    bodyA: "Con la plataforma o con un servicio, todo empieza de una de dos formas.",
+    now: "PLANT PUSH",
+    next: "MARKET PULL",
+    nowTitle: "Tienes una planta. ¿Qué esconde?",
+    nextTitle: "Tienes una necesidad. ¿Qué planta la resuelve?",
+    nowItems: ["Una especie nativa, un cultivo propio, una planta que alguien siempre ha usado.", "Descubrimos de qué es capaz.", "La llevamos hasta extracto, fracción o molécula."],
+    nextItems: ["Dinos qué activo o beneficio buscas.", "Recorremos la flora latinoamericana hasta encontrar a tus candidatos.", "Los desarrollamos hasta el nivel que necesitas."],
   },
   pt: {
-    kicker: "Alvos da Moka",
+    kicker: "Como trabalhamos com você",
+    ctaDemo: "Agendar demonstração",
+    ctaService: "Solicitar serviço",
     titleA: "Mesma tecnologia,",
-    titleB: "diferentes produtos e modelos de negócio",
-    bodyA: "Nosso foco inicial é aperfeiçoar o MokaDex em ambientes menos regulados e de rápida comercialização. Estamos construindo a evidência necessária para futuras expansões.",
-    today: "Hoje",
-    tomorrow: "Amanhã",
-    bodyB: "miramos a indústria nutracêutica.",
-    bodyC: "vamos escalar para cosméticos, ingredientes funcionais e além.",
-    now: "AGORA",
-    next: "PRÓXIMO",
-    nowTitle: "Nutracêuticos e cosméticos",
-    nextTitle: "Pharma e descoberta de fármacos",
-    nowItems: ["Descoberta de moléculas bioativas novas", "Serviços diretos de formulação e SaaS", "Ativos de propriedade intelectual (IP) de alto valor"],
-    nextItems: ["P&D para novos candidatos a fármacos", "Contratos de licenciamento e co-desenvolvimento", "Análise de padrões moleculares complexos (IA)"],
+    titleB: "dois pontos de partida",
+    bodyA: "Com a plataforma ou com um serviço, tudo começa de uma de duas formas.",
+    now: "PLANT PUSH",
+    next: "MARKET PULL",
+    nowTitle: "Você tem uma planta. O que ela esconde?",
+    nextTitle: "Você tem uma necessidade. Qual planta a resolve?",
+    nowItems: ["Uma espécie nativa, um cultivo próprio, uma planta que alguém sempre usou.", "Descobrimos do que ela é capaz.", "Nós a levamos até extrato, fração ou molécula."],
+    nextItems: ["Diga qual ativo ou benefício você busca.", "Percorremos a flora latino-americana até encontrar seus candidatos.", "Nós os desenvolvemos até o nível que você precisa."],
   },
 }[locale];
 ---
@@ -61,7 +56,7 @@ const copy = {
     
     <div class="flex-1 flex flex-col justify-center">
       <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.1s;">
-        <p class="font-roboto font-bold text-xs leading-none tracking-[0.48em] text-freshgreen uppercase mb-6">
+        <p class="font-roboto font-bold text-[13px] leading-none tracking-[0.48em] text-freshgreen uppercase mb-6">
           {copy.kicker}
         </p>
       </div>
@@ -77,16 +72,16 @@ const copy = {
         <p class="text-birch/75 font-inter font-medium text-[18px] leading-relaxed xl:pr-10">
           {copy.bodyA}
         </p>
-        <p class="text-birch/75 font-inter font-medium text-[18px] leading-relaxed xl:pr-10">
-          <span class="text-freshgreen font-semibold">{copy.today}</span> {copy.bodyB}
-          <span class="text-birch/50 font-semibold"> {copy.tomorrow}</span> {copy.bodyC}
-        </p>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <a href={`${contactBase}?interest=demo`} class="moka-demo-cta" data-analytics-event="book_demo_click" data-analytics-category="cta" data-analytics-label="tech_target">{copy.ctaDemo} <span aria-hidden="true">→</span></a>
+          <a href={`${contactBase}?interest=service`} class="target-service-cta" data-analytics-event="request_service_click" data-analytics-category="cta" data-analytics-label="tech_target">{copy.ctaService} <span aria-hidden="true">→</span></a>
+        </div>
       </div>
     </div>
 
     <div class="flex flex-col gap-8 flex-1 w-full">
       
-      <!-- Card: Nutraceuticals & Cosmetics — NOW (verde) -->
+      <!-- Card: plant push -->
       <div
         class="reveal opacity-0 target-card target-card--now group cursor-default"
         data-animation="slide-up"
@@ -94,7 +89,7 @@ const copy = {
       >
         <div class="target-card-header">
           <div class="target-card-icon">
-            <!-- Leaf / plant icon -->
+            <!-- Plant icon -->
             <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
               <path d="M16 28 C16 16 6 10 4 4 C12 4 22 10 16 28Z"/>
               <path d="M16 28 C16 18 24 13 28 8 C22 8 14 14 16 28Z"/>
@@ -119,37 +114,33 @@ const copy = {
         </ul>
       </div>
 
-      <!-- Card: Pharma & Drug Discovery — NEXT (gris neutro) -->
+      <!-- Card: market pull -->
       <div
-        class="reveal opacity-0 target-card target-card--next group cursor-default"
+        class="reveal opacity-0 target-card target-card--now group cursor-default"
         data-animation="slide-up"
         style="transition-delay: 0.8s;"
       >
         <div class="target-card-header">
-          <div class="target-card-icon target-card-icon--next">
-            <!-- Molecule / graph icon -->
+          <div class="target-card-icon target-card-icon--now">
+            <!-- Target icon: starting from a need -->
             <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="8"  cy="16" r="3"/>
-              <circle cx="24" cy="8"  r="3"/>
-              <circle cx="24" cy="24" r="3"/>
-              <circle cx="16" cy="16" r="2.5"/>
-              <line x1="11" y1="16" x2="13.5" y2="16"/>
-              <line x1="18.5" y1="16" x2="21.5" y2="9.5"/>
-              <line x1="18.5" y1="16" x2="21.5" y2="22.5"/>
+              <circle cx="16" cy="16" r="11"/>
+              <circle cx="16" cy="16" r="6.5"/>
+              <circle cx="16" cy="16" r="2"/>
             </svg>
           </div>
           <div>
-            <p class="target-card-phase target-card-phase--next">{copy.next}</p>
+            <p class="target-card-phase target-card-phase--now">{copy.next}</p>
             <h3 class="target-card-title group-hover:text-pure transition-colors duration-300">
               {copy.nextTitle}
             </h3>
           </div>
         </div>
-        <div class="target-card-divider target-card-divider--next"></div>
+        <div class="target-card-divider target-card-divider--now"></div>
         <ul class="space-y-4 list-none text-birch/80 text-[17px]">
           {copy.nextItems.map((item) => (
             <li class="flex items-start gap-3 transition-transform duration-300 group-hover:translate-x-2">
-              <span class="target-bullet target-bullet--next">▸</span>
+              <span class="target-bullet target-bullet--now">▸</span>
               {item}
             </li>
           ))}
@@ -184,17 +175,6 @@ const copy = {
   }
 
   /* NEXT — gris neutro */
-  .target-card--next {
-    background: linear-gradient(145deg, rgba(28, 28, 28, 0.82), rgba(18, 18, 18, 0.62));
-    border: 1px solid rgba(222, 222, 222, 0.12);
-    box-shadow: 0 24px 80px rgba(0,0,0,0.22), 0 0 40px rgba(255,255,255,0.04);
-  }
-
-  .target-card--next:hover {
-    border-color: rgba(222, 222, 222, 0.22);
-    box-shadow: 0 28px 90px rgba(0,0,0,0.28), 0 0 60px rgba(255,255,255,0.06);
-  }
-
   /* ── Card header ─────────────────────────────── */
   .target-card-header {
     display: flex;
@@ -215,11 +195,6 @@ const copy = {
     color: var(--fresh-green-color);
   }
 
-  .target-card-icon--next {
-    background: rgba(222, 222, 222, 0.08);
-    color: rgba(222, 222, 222, 0.72);
-  }
-
   .target-card-icon svg {
     width: 26px;
     height: 26px;
@@ -227,7 +202,7 @@ const copy = {
 
   .target-card-phase {
     font-family: Roboto, sans-serif;
-    font-size: 9px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.44em;
     text-transform: uppercase;
@@ -235,8 +210,6 @@ const copy = {
   }
 
   .target-card-phase--now  { color: rgba(110, 191, 126, 0.75); }
-  .target-card-phase--next { color: rgba(222, 222, 222, 0.56); }
-
   .target-card-title {
     font-family: Inter, sans-serif;
     font-size: clamp(1.1rem, 1.8vw, 1.4rem);
@@ -253,18 +226,14 @@ const copy = {
   }
 
   .target-card-divider--now  { background: linear-gradient(90deg, rgba(110,191,126,0.35), transparent); }
-  .target-card-divider--next { background: linear-gradient(90deg, rgba(222,222,222,0.22), transparent); }
-
   /* ── Bullets ─────────────────────────────────── */
   .target-bullet {
     flex-shrink: 0;
-    font-size: 0.7rem;
+    font-size: 13px;
     margin-top: 0.25rem;
   }
 
   .target-bullet--now  { color: var(--fresh-green-color); }
-  .target-bullet--next { color: rgba(222, 222, 222, 0.68); }
-
   /* ── Entrance animations ─────────────────────── */
   .animate-slide-in { animation: slideIn 0.8s ease-out forwards; }
   .animate-slide-up { animation: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
@@ -277,5 +246,27 @@ const copy = {
     .animate-slide-up {
       animation-duration: 1ms;
     }
+  }
+
+  .target-service-cta {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    background: var(--pure-color);
+    color: var(--charcoal-color);
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 280ms ease, background 280ms ease;
+  }
+
+  .target-service-cta:hover,
+  .target-service-cta:focus-visible {
+    transform: translateY(-2px);
+    background: var(--fresh-green-color);
   }
 </style>

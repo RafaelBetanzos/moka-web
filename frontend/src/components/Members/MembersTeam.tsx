@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import LinkedInIcon from "@assets/LinkedIn.svg";
 import Mexico from "@assets/icons/Mexico.svg";
 import Argentina from "@assets/icons/Argentina.svg";
@@ -37,7 +37,7 @@ const teamData: TeamMember[] = [
     name: "Rafa",
     position: "CEO",
     linkedin: "https://www.linkedin.com/in/rafabetanzos/",
-    fileName: "Rafa.jpg",
+    fileName: "Rafa.webp",
     bio: {
       en: "Ms.C. & J.D. Deep-tech strategist integrating AI-driven molecular discovery with global IP leadership to digitize the plant kingdom’s chemical potential.",
       es: "Mtra. y abogada. Estratega deep-tech que integra descubrimiento molecular impulsado por IA con liderazgo global en propiedad intelectual para digitalizar el potencial químico del reino vegetal.",
@@ -49,7 +49,7 @@ const teamData: TeamMember[] = [
     name: "Facu",
     position: "CSO",
     linkedin: "https://www.linkedin.com/in/facugulias/",
-    fileName: "Facu.png",
+    fileName: "Facu.webp",
     bio: {
       en: "Ph.D. in Biological Chemistry specializing in plant cell engineering and metabolic signaling for high-precision bioactive validation.",
       es: "Doctor en Química Biológica, especializado en ingeniería celular vegetal y señalización metabólica para validación bioactiva de alta precisión.",

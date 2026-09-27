@@ -17,9 +17,9 @@ const localizedPath = (locale: "en" | "es" | "pt") => {
 const currentLocale = isSpanish ? "es" : isPortuguese ? "pt" : "en";
 const navHref = (href: string) => currentLocale === "en" ? href : href === "/" ? `/${currentLocale}` : `/${currentLocale}${href}`;
 const navCopy = {
-  en: { home: "Home", tech: "Tech", about: "About", insights: "Insights", bookDemo: "Book a Demo" },
-  es: { home: "Inicio", tech: "Tech", about: "Nosotros", insights: "Insights", bookDemo: "Agendar demo" },
-  pt: { home: "Início", tech: "Tech", about: "Sobre", insights: "Insights", bookDemo: "Agendar demo" },
+  en: { home: "Home", tech: "Tech", about: "About", insights: "Insights", bookDemo: "Book a demo", bookDemoShort: "Book a demo", openMenu: "Open navigation menu" },
+  es: { home: "Inicio", tech: "Tech", about: "Nosotros", insights: "Insights", bookDemo: "Agendar demo", bookDemoShort: "Agendar demo", openMenu: "Abrir menú" },
+  pt: { home: "Início", tech: "Tech", about: "Sobre", insights: "Insights", bookDemo: "Agendar demo", bookDemoShort: "Agendar demo", openMenu: "Abrir menu" },
 }[currentLocale];
 ---
 
@@ -63,7 +63,7 @@ const navCopy = {
       </a>
 
       <a
-        href={navHref("/contact-us")}
+        href={`${navHref("/contact-us")}?interest=demo`}
         class="bg-freshgreen text-charcoal rounded-full px-4 py-2 sm:px-6 sm:py-2.5 text-[16px] font-semibold whitespace-nowrap transition-all duration-200 hover:bg-pure hover:shadow-lg hover:shadow-freshgreen/20 no-underline"
       >
         {navCopy.bookDemo}
@@ -82,11 +82,21 @@ const navCopy = {
       </details>
     </div>
 
-    <!-- Mobile hamburger — flex on mobile, hidden md+ (Tailwind handles display so Astro scoping doesn't override) -->
+    <!-- Mobile: always-visible demo button + hamburger (hidden md+) -->
+    <div class="flex items-center gap-2 md:hidden">
+    <a
+      href={`${navHref("/contact-us")}?interest=demo`}
+      class="mobile-header-cta no-underline"
+      data-analytics-event="book_demo_click"
+      data-analytics-category="cta"
+      data-analytics-label="mobile_header"
+    >
+      {navCopy.bookDemoShort}
+    </a>
     <button
-      class="hamburger-btn flex items-center justify-center md:hidden"
+      class="hamburger-btn flex items-center justify-center"
       id="nav-hamburger"
-      aria-label="Open navigation menu"
+      aria-label={navCopy.openMenu}
       aria-expanded="false"
     >
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -95,6 +105,7 @@ const navCopy = {
         <line x1="3" y1="18" x2="21" y2="18"/>
       </svg>
     </button>
+    </div>
 
   </nav>
 </div>
@@ -123,7 +134,7 @@ const navCopy = {
     </nav>
 
     <div class="mobile-cta">
-      <a href={navHref("/contact-us")} class="mobile-cta-btn no-underline">{navCopy.bookDemo}</a>
+      <a href={`${navHref("/contact-us")}?interest=demo`} class="mobile-cta-btn no-underline">{navCopy.bookDemo}</a>
       <a href="https://www.linkedin.com/company/mokabio" target="_blank" rel="noopener noreferrer" class="mobile-linkedin no-underline">
         <Image src={LinkedIn} alt="LinkedIn" class="w-5 opacity-75" loading="lazy" />
         <span>LinkedIn</span>
@@ -452,4 +463,18 @@ const navCopy = {
   }
 
   .mobile-lang-btn:hover { color: var(--fresh-green-color); }
+
+  .mobile-header-cta {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    padding: 0 1rem;
+    border-radius: 999px;
+    background: var(--fresh-green-color);
+    color: var(--charcoal-color);
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
 </style>

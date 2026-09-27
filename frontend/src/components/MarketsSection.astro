@@ -1,0 +1,428 @@
+---
+interface Props {
+  locale?: "en" | "es" | "pt";
+}
+
+const { locale = "en" } = Astro.props;
+const contactHref = locale === "en" ? "/contact-us" : `/${locale}/contact-us`;
+const industrySlugByKey: Record<string, string> = { nutra: "nutraceuticals", dermo: "dermocosmetics", agro: "agro", pharma: "pharma" };
+const localePrefix = locale === "en" ? "" : "/" + locale;
+const industryHref = (key: string) => localePrefix + "/industries/" + industrySlugByKey[key] + "/";
+
+const botanicals = {
+  nutra: "/assets/about-botanicals/botanical-line-01.png",
+  dermo: "/assets/about-botanicals/botanical-line-04.png",
+  agro: "/assets/about-botanicals/botanical-line-02.png",
+  pharma: "/assets/about-botanicals/botanical-line-03.png",
+};
+
+const copy = {
+  en: {
+    kicker: "INDUSTRIES",
+    title: "Bioactivity for four industries.",
+    intro: "The same question, which plant?, in four markets.",
+    platform: "Platform",
+    service: "Service",
+    cta: "Book a demo or request a service",
+    more: "See how Moka helps",
+    pageLink: "Explore this industry",
+    markets: [
+      { key: "nutra", name: "Nutraceuticals", title: "Your next functional ingredient isn't in the usual catalog.", body: "Find species with potential for your line before investing in the lab.", platform: "Explore Icaros and prioritize candidates in Moka BDE.", service: "We develop the bioactive from your plant or your brief." },
+      { key: "dermo", name: "Dermocosmetics", title: "Botanical actives backed by evidence, not trends.", body: "Look for skin-relevant bioactivity in understudied flora and check the IP from the start.", platform: "Bioinformatics, IP, and formulation in Moka BDE.", service: "From extract to molecule, with traceable origin." },
+      { key: "agro", name: "Agro", title: "Protection for your crops could be in a native plant.", body: "Nature-based compounds to protect and nourish crops.", platform: "Search Icaros and prioritize by activity and origin.", service: "We develop the bioactive from the plant or from the crop problem." },
+      { key: "pharma", name: "Pharma", title: "Start with the plants no one has characterized.", body: "Prioritize species, compounds, and mechanisms before going to the lab.", platform: "Prediction and IP analysis in Moka BDE.", service: "Extract, fraction, or molecule, from your plant or your target." },
+    ],
+  },
+  es: {
+    kicker: "INDUSTRIAS",
+    title: "Bioactividad para cuatro industrias.",
+    intro: "La misma pregunta, ¿qué planta?, en cuatro mercados.",
+    platform: "Plataforma",
+    service: "Servicio",
+    cta: "Agendar demo o solicitar servicio",
+    more: "Ver cómo ayuda Moka",
+    pageLink: "Explorar esta industria",
+    markets: [
+      { key: "nutra", name: "Nutracéutica", title: "Tu próximo ingrediente funcional no está en el catálogo de siempre.", body: "Encuentra especies con potencial para tu línea antes de invertir en laboratorio.", platform: "Explora Icaros y prioriza candidatos en Moka BDE.", service: "Desarrollamos el bioactivo desde tu planta o tu brief." },
+      { key: "dermo", name: "Dermocosmética", title: "Activos botánicos con evidencia, no con tendencia.", body: "Busca bioactividad para piel en flora poco estudiada y revisa la PI desde el inicio.", platform: "Bioinformática, PI y formulación en Moka BDE.", service: "Del extracto a la molécula, con origen trazable." },
+      { key: "agro", name: "Agro", title: "La protección de tus cultivos puede estar en una planta nativa.", body: "Compuestos de origen natural para proteger y nutrir cultivos.", platform: "Busca en Icaros y prioriza por actividad y origen.", service: "Desarrollamos el bioactivo desde la planta o desde el problema del cultivo." },
+      { key: "pharma", name: "Pharma", title: "Empieza por las plantas que nadie ha caracterizado.", body: "Prioriza especies, compuestos y mecanismos antes de ir al laboratorio.", platform: "Predicción y análisis de PI en Moka BDE.", service: "Extracto, fracción o molécula, desde tu planta o tu diana." },
+    ],
+  },
+  pt: {
+    kicker: "INDÚSTRIAS",
+    title: "Bioatividade para quatro indústrias.",
+    intro: "A mesma pergunta, qual planta?, em quatro mercados.",
+    platform: "Plataforma",
+    service: "Serviço",
+    cta: "Agendar demonstração ou solicitar serviço",
+    more: "Ver como a Moka ajuda",
+    pageLink: "Explorar esta indústria",
+    markets: [
+      { key: "nutra", name: "Nutracêutica", title: "Seu próximo ingrediente funcional não está no catálogo de sempre.", body: "Encontre espécies com potencial para sua linha antes de investir em laboratório.", platform: "Explore o Icaros e priorize candidatos no Moka BDE.", service: "Desenvolvemos o bioativo a partir da sua planta ou do seu briefing." },
+      { key: "dermo", name: "Dermocosmética", title: "Ativos botânicos com evidência, não com tendência.", body: "Busque bioatividade para a pele em flora pouco estudada e avalie a PI desde o início.", platform: "Bioinformática, PI e formulação no Moka BDE.", service: "Do extrato à molécula, com origem rastreável." },
+      { key: "agro", name: "Agro", title: "A proteção das suas lavouras pode estar em uma planta nativa.", body: "Compostos de origem natural para proteger e nutrir lavouras.", platform: "Busque no Icaros e priorize por atividade e origem.", service: "Desenvolvemos o bioativo a partir da planta ou do problema da lavoura." },
+      { key: "pharma", name: "Pharma", title: "Comece pelas plantas que ninguém caracterizou.", body: "Priorize espécies, compostos e mecanismos antes de ir ao laboratório.", platform: "Predição e análise de PI no Moka BDE.", service: "Extrato, fração ou molécula, a partir da sua planta ou do seu alvo." },
+    ],
+  },
+}[locale];
+---
+
+<section class="markets relative" aria-labelledby="markets-title">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/18 to-transparent"></div>
+  <div class="markets-shell">
+    <div class="markets-head reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
+      <p class="markets-kicker">{copy.kicker}</p>
+      <h2 id="markets-title" class="markets-title">{copy.title}</h2>
+      <p class="markets-intro">{copy.intro}</p>
+    </div>
+
+    <div class="markets-grid">
+      {copy.markets.map((m, i) => (
+        <details
+          class="market-card reveal opacity-0"
+          name="markets"
+          data-animation="pop-in"
+          style={`transition-delay: ${0.12 + i * 0.1}s;`}
+        >
+          <summary
+            class="market-summary"
+            data-analytics-event="market_card_open"
+            data-analytics-category="markets"
+            data-analytics-label={m.key}
+          >
+            <img class="market-botanical" src={botanicals[m.key as keyof typeof botanicals]} alt="" width="1254" height="1254" loading="lazy" decoding="async" />
+            <span class="market-top">
+              <span class="market-index">0{i + 1}</span>
+              <span class="market-name">{m.name}</span>
+            </span>
+            <span class="market-title" role="heading" aria-level="3">{m.title}</span>
+            <span class="market-toggle">
+              <span class="market-toggle-label">{copy.more}</span>
+              <span class="market-toggle-icon" aria-hidden="true"></span>
+            </span>
+          </summary>
+          <div class="market-content">
+            <p class="market-body">{m.body}</p>
+            <dl class="market-offer">
+              <div>
+                <dt>{copy.platform}</dt>
+                <dd>{m.platform}</dd>
+              </div>
+              <div>
+                <dt>{copy.service}</dt>
+                <dd>{m.service}</dd>
+              </div>
+            </dl>
+            <a
+              href={contactHref}
+              class="market-cta"
+              data-analytics-event="market_card_click"
+              data-analytics-category="markets"
+              data-analytics-label={m.key}
+            >{copy.cta} <span aria-hidden="true">→</span></a>
+            <a href={industryHref(m.key)} class="market-page-link">{copy.pageLink} <span aria-hidden="true">→</span></a>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .markets {
+    z-index: 30;
+    padding: 5rem 1.25rem 4rem;
+  }
+
+  .markets-shell {
+    width: min(100%, 1180px);
+    margin: 0 auto;
+  }
+
+  .markets-head {
+    max-width: 760px;
+  }
+
+  .markets-kicker {
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.42em;
+    color: var(--fresh-green-color);
+  }
+
+  .markets-title {
+    margin-top: 1rem;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.9rem, 3.4vw, 3rem);
+    font-weight: 650;
+    line-height: 1.05;
+    color: var(--pure-color);
+    text-wrap: balance;
+  }
+
+  .markets-intro {
+    margin-top: 1.1rem;
+    max-width: 640px;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.18rem);
+    line-height: 1.7;
+    color: var(--moka-text-muted);
+  }
+
+  .markets-grid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-items: start;
+    gap: 1rem;
+  }
+
+  .market-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(222, 222, 222, 0.1);
+    background: linear-gradient(160deg, rgba(19, 45, 37, 0.72) 0%, rgba(18, 18, 18, 0.92) 62%);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: transform 320ms ease, border-color 320ms ease, box-shadow 320ms ease;
+  }
+
+  .market-card:hover,
+  .market-card[open] {
+    border-color: rgba(110, 191, 126, 0.35);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.32), 0 0 40px rgba(110, 191, 126, 0.08);
+  }
+
+  .market-card:not([open]):hover {
+    transform: translateY(-4px);
+  }
+
+  .market-summary {
+    position: relative;
+    display: flex;
+    min-height: 20rem;
+    flex-direction: column;
+    padding: 1.6rem 1.5rem 1.4rem;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .market-summary::-webkit-details-marker { display: none; }
+
+  .market-summary:focus-visible {
+    outline: 2px solid var(--fresh-green-color);
+    outline-offset: -4px;
+    border-radius: 1.5rem;
+  }
+
+  /* Large, faded crop of the site's botanical engravings — the card's only illustration */
+  .market-botanical {
+    position: absolute;
+    z-index: -1;
+    right: -30%;
+    bottom: -45%;
+    width: 100%;
+    height: auto;
+    max-width: none;
+    opacity: 0.3;
+    pointer-events: none;
+    -webkit-mask-image: linear-gradient(to top, #000 45%, transparent 95%);
+    mask-image: linear-gradient(to top, #000 45%, transparent 95%);
+    transition: opacity 500ms ease, transform 700ms ease;
+  }
+
+  .market-card:hover .market-botanical {
+    opacity: 0.5;
+    transform: scale(1.04) translateY(-4px);
+  }
+
+  .market-card[open] .market-botanical {
+    opacity: 0.12;
+  }
+
+  .market-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(110, 191, 126, 0.18);
+  }
+
+  .market-index {
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--fresh-green-color);
+  }
+
+  .market-name {
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(222, 222, 222, 0.78);
+    text-align: right;
+  }
+
+  .market-title {
+    display: block;
+    margin-top: 1.4rem;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+    font-weight: 700;
+    line-height: 1.22;
+    color: var(--pure-color);
+    text-wrap: balance;
+  }
+
+  .market-toggle {
+    margin-top: auto;
+    padding-top: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(222, 222, 222, 0.85);
+  }
+
+  .market-card[open] .market-toggle-label { visibility: hidden; }
+
+  .market-toggle-icon {
+    position: relative;
+    display: inline-flex;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex-shrink: 0;
+    border-radius: 999px;
+    border: 1px solid rgba(110, 191, 126, 0.45);
+    transition: background-color 250ms ease, transform 300ms ease;
+  }
+
+  .market-toggle-icon::before,
+  .market-toggle-icon::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 12px;
+    height: 1.5px;
+    background: var(--fresh-green-color);
+    transform: translate(-50%, -50%);
+  }
+
+  .market-toggle-icon::after { transform: translate(-50%, -50%) rotate(90deg); transition: opacity 250ms ease; }
+
+  .market-card:hover .market-toggle-icon { background: rgba(110, 191, 126, 0.12); }
+  .market-card[open] .market-toggle-icon { transform: rotate(180deg); }
+  .market-card[open] .market-toggle-icon::after { opacity: 0; }
+
+  .market-content {
+    padding: 0 1.5rem 1.5rem;
+    animation: market-reveal 360ms ease both;
+  }
+
+  @keyframes market-reveal {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .market-body {
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(222, 222, 222, 0.72);
+  }
+
+  .market-offer {
+    margin-top: 1.2rem;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .market-offer div {
+    padding: 0.85rem 1rem;
+    border-radius: 0.9rem;
+    border: 1px solid rgba(222, 222, 222, 0.08);
+    background: rgba(18, 18, 18, 0.55);
+  }
+
+  .market-offer dt {
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+  }
+
+  .market-offer dd {
+    margin-top: 0.35rem;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(222, 222, 222, 0.82);
+  }
+
+  .market-cta {
+    display: inline-flex;
+    margin-top: 1.25rem;
+    min-height: 44px;
+    align-items: center;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--pure-color);
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+
+  .market-cta:hover,
+  .market-cta:focus-visible { color: var(--fresh-green-color); }
+
+  @media (max-width: 1100px) {
+    .markets-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .market-summary { min-height: 17rem; }
+    .market-botanical { width: 80%; right: -18%; bottom: -35%; }
+  }
+
+  @media (max-width: 640px) {
+    .markets { padding: 3.5rem 1rem 3rem; }
+    .markets-grid { grid-template-columns: 1fr; }
+    .market-summary { min-height: 13rem; }
+    .market-botanical { width: 70%; right: -15%; bottom: -30%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .market-card, .market-botanical, .market-toggle-icon { transition: none; }
+    .market-card:not([open]):hover { transform: none; }
+    .market-content { animation: none; }
+  }
+
+  .market-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .market-page-link {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--fresh-green-color);
+    text-decoration: none;
+  }
+
+  .market-page-link:hover,
+  .market-page-link:focus-visible { color: var(--pure-color); }
+</style>

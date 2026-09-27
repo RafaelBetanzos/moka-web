@@ -7,187 +7,29 @@ import { ArticlesCarrousel } from "@components/Swiper/ArticlesCarrousel";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
 import Hero from "../../components/Hero.astro";
+import MarketsSection from "@components/MarketsSection.astro";
+import AudienceSection from "@components/AudienceSection.astro";
+import ValueSection from "@components/ValueSection.astro";
 import WhyWeDoIt from "@components/WhyWeDoIt.astro";
 
 const seo = {
-  title: "Moka Bio — Descubriendo el potencial bioactivo de las plantas latinoamericanas",
-  description: "Construyendo la mayor base de datos de bioactividad y compuestos naturales de LATAM.",
+  title: "Bioactividad en plantas latinoamericanas | Moka Bio",
+  description: "Encuentra y prioriza bioactividad en plantas latinoamericanas poco estudiadas con la plataforma Moka BDE o servicios de I+D, del extracto a la molécula.",
 };
 
-const industries = [
-  {
-    name: "Nutracéuticos",
-    market: "$620B",
-    growth: "+7.5% CAGR",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="4"/><line x1="12" y1="8" x2="12" y2="16"/></svg>`,
-  },
-  {
-    name: "Cosmética",
-    market: "$430B",
-    growth: "+5.3% CAGR",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C12 2 5 11 5 15a7 7 0 0 0 14 0c0-4-7-13-7-13z"/></svg>`,
-  },
-  {
-    name: "Farma",
-    market: "$1.6T",
-    growth: "+6.1% CAGR",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v5L6 16a2 2 0 0 0 1.73 3h8.54A2 2 0 0 0 18 16l-4-8V3"/></svg>`,
-  },
-  {
-    name: "Alimentos y bebidas",
-    market: "$8.9T",
-    growth: "+4.8% CAGR",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="22" x2="12" y2="8"/><path d="M8 11a4 4 0 0 1 8 0"/><path d="M8 15a4 4 0 0 1 8 0"/><path d="M8 19a4 4 0 0 1 8 0"/></svg>`,
-  },
-  {
-    name: "Agricultura",
-    market: "$2.7T",
-    growth: "+4.1% CAGR",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12C7 12 4 8 4 4c4 0 8 3 8 8z"/><path d="M12 12c5 0 8-4 8-8-4 0-8 3-8 8z"/></svg>`,
-  },
-];
 ---
 <BaseLayout lang="es" title={seo.title} description={seo.description}>
   <div class="home-color-system relative overflow-hidden">
     <Hero locale="es" />
-    <WhyWeDoIt locale="es" />
+
+    <AudienceSection locale="es" />
+
     <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-02.png" tone="strong" revealStart={0.92} revealRange={0.42} class="home-botanical" />
 
     <DataBioactivitySection locale="es" />
 
     <section class="home-what-section relative overflow-hidden">
-      <div class="home-flow-section px-5 py-8 sm:px-8 lg:py-10">
-        <div class="home-section-shell">
-          <div class="mx-auto max-w-4xl text-center">
-            <div class="home-section-kicker">QUÉ HACEMOS</div>
-            <h2 class="home-section-title mt-4">Construyendo la capa de inteligencia para la biodiversidad de América Latina.</h2>
-          </div>
-        </div>
-      </div>
-
-      <div class="px-5 sm:px-8 pt-8">
-        <div class="home-section-shell">
-          <div class="home-section-kicker">CÓMO LO HACEMOS</div>
-        </div>
-      </div>
-
-      <div class="home-layers-section relative overflow-hidden px-5 py-10 sm:px-8 lg:py-14">
-        <div class="absolute left-[-8%] top-8 h-[520px] w-[520px] rounded-full bg-freshgreen/6 blur-3xl"></div>
-        <div class="absolute right-[-10%] bottom-0 h-[560px] w-[560px] rounded-full bg-sage/10 blur-3xl"></div>
-        <div class="home-section-shell relative">
-        <div class="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div>
-            <div class="home-section-kicker">MOKADEX · BASE DE DATOS</div>
-            <h2 class="home-section-title mt-4">Indexa la biodiversidad de América Latina.</h2>
-            <p class="home-section-copy mt-5">
-              MokaDex aprende con cada planta nueva que indexamos — extrae patrones moleculares, cruza señales biológicas y hace visible lo que hace valiosa a cada especie. Cuanto más indexa, más preciso se vuelve.
-            </p>
-            <div class="mokadex-stat reveal opacity-0 mt-6" data-animation="pop-in" style="transition-delay: 0.2s;">
-              <p class="mokadex-stat-number">30<span class="mokadex-stat-sup">K+</span></p>
-              <p class="mokadex-stat-label">especies indexadas hoy</p>
-            </div>
-            <a href="/es/our-technology" class="learn-more-link mt-7 no-underline">Saber más</a>
-          </div>
-
-          <div class="arch-stack reveal opacity-0" data-animation="fade-up">
-
-            <!-- Layer 01 — raw -->
-            <div class="arch-layer arch-layer--04">
-              <div class="arch-layer-left">
-                <span class="arch-num">01</span>
-                <div class="arch-accent arch-accent--04"></div>
-              </div>
-              <div class="arch-layer-body">
-                <div class="arch-layer-head">
-                  <svg class="arch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/><circle cx="12" cy="12" r="3" stroke-width="1.2"/></svg>
-                  <p class="arch-name">Datos botánicos y científicos</p>
-                  <span class="arch-badge arch-badge--04">DATOS CRUDOS</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Connector 01→02 -->
-            <div class="arch-connector" aria-hidden="true">
-              <div class="arch-connector-line"></div>
-              <div class="arch-flow-dots">
-                <span class="arch-dot arch-dot--1"></span>
-                <span class="arch-dot arch-dot--2"></span>
-                <span class="arch-dot arch-dot--3"></span>
-              </div>
-              <div class="arch-connector-line"></div>
-            </div>
-
-            <!-- Layer 02 -->
-            <div class="arch-layer arch-layer--03">
-              <div class="arch-layer-left">
-                <span class="arch-num">02</span>
-                <div class="arch-accent arch-accent--03"></div>
-              </div>
-              <div class="arch-layer-body">
-                <div class="arch-layer-head">
-                  <svg class="arch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/><line x1="6" y1="7" x2="10" y2="10.5"/><line x1="18" y1="7" x2="14" y2="10.5"/><line x1="6" y1="17" x2="10" y2="13.5"/><line x1="18" y1="17" x2="14" y2="13.5"/></svg>
-                  <p class="arch-name">IA / grafo de conocimiento</p>
-                  <span class="arch-badge arch-badge--03">INTELIGENCIA</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Connector 02→03 -->
-            <div class="arch-connector" aria-hidden="true">
-              <div class="arch-connector-line"></div>
-              <div class="arch-flow-dots">
-                <span class="arch-dot arch-dot--1"></span>
-                <span class="arch-dot arch-dot--2"></span>
-                <span class="arch-dot arch-dot--3"></span>
-              </div>
-              <div class="arch-connector-line"></div>
-            </div>
-
-            <!-- Layer 03 -->
-            <div class="arch-layer arch-layer--02">
-              <div class="arch-layer-left">
-                <span class="arch-num">03</span>
-                <div class="arch-accent arch-accent--02"></div>
-              </div>
-              <div class="arch-layer-body">
-                <div class="arch-layer-head">
-                  <svg class="arch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="5" height="5" rx="1"/><rect x="17" y="8" width="5" height="5" rx="1"/><rect x="9.5" y="3" width="5" height="5" rx="1"/><rect x="9.5" y="16" width="5" height="5" rx="1"/><line x1="7" y1="10.5" x2="9.5" y2="10.5"/><line x1="14.5" y1="10.5" x2="17" y2="10.5"/><line x1="12" y1="8" x2="12" y2="10.5"/><line x1="12" y1="13.5" x2="12" y2="16"/></svg>
-                  <p class="arch-name">Inteligencia bioactiva</p>
-                  <span class="arch-badge arch-badge--02">VALIDADO</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Connector 03→04 -->
-            <div class="arch-connector" aria-hidden="true">
-              <div class="arch-connector-line"></div>
-              <div class="arch-flow-dots">
-                <span class="arch-dot arch-dot--1"></span>
-                <span class="arch-dot arch-dot--2"></span>
-                <span class="arch-dot arch-dot--3"></span>
-              </div>
-              <div class="arch-connector-line"></div>
-            </div>
-
-            <!-- Layer 04 — market-ready -->
-            <div class="arch-layer arch-layer--01">
-              <div class="arch-layer-left">
-                <span class="arch-num">04</span>
-                <div class="arch-accent arch-accent--01"></div>
-              </div>
-              <div class="arch-layer-body">
-                <div class="arch-layer-head">
-                  <svg class="arch-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22C12 12 5 8 4 4c4 0 8 4 8 8z"/><path d="M12 22C12 13 19 8 20 4c-4 0-8 4-8 8z"/><line x1="12" y1="12" x2="12" y2="22"/></svg>
-                  <p class="arch-name">Producto, PI y regulación</p>
-                  <span class="arch-badge arch-badge--01">LISTO PARA MERCADO</span>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-      </div>
+      <ValueSection locale="es" />
 
       <!-- ── Moka platform subsection ────────────── -->
       <div class="home-moka-section relative overflow-hidden px-5 py-12 sm:px-8 lg:py-16">
@@ -195,79 +37,57 @@ const industries = [
         <div class="home-section-shell">
           <div class="moka-showcase-layout">
             <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
-              <div class="home-section-kicker">MOKA · SSE</div>
-              <h2 class="home-section-title mt-4">Interpreta la bioactividad de las plantas latinoamericanas.</h2>
+              <div class="home-section-kicker">MOKA BDE · ICAROS</div>
+              <h2 class="home-section-title home-section-title--md mt-4">Todo tu descubrimiento, en un solo lugar.</h2>
               <p class="home-section-copy mt-5">
-                Moka es un entorno de software especializado que da a investigadores y empresas acceso directo a la inteligencia de MokaDex — para explorar, validar y descubrir a escala.
+                Moka BDE es donde trabajas. Icaros, todo lo que sabemos de la flora latinoamericana.
               </p>
+              <a href="/es/contact-us?interest=demo" class="moka-demo-cta mt-7" data-analytics-event="book_demo_click" data-analytics-category="cta" data-analytics-label="home_bde_showcase">Agendar demo <span aria-hidden="true">→</span></a>
             </div>
-            <div class="moka-carousel reveal opacity-0" id="moka-carousel" data-animation="pop-in" style="transition-delay: 0.15s;">
+            <div class="moka-carousel reveal opacity-0" id="moka-carousel" role="region" aria-roledescription="carousel" aria-label="Moka BDE" data-animation="pop-in" style="transition-delay: 0.15s;">
               <div class="moka-carousel-track" id="moka-carousel-track">
                 <div class="moka-slide">
-                  <img class="moka-slide-img" src="/mockups/PlatformMockup.svg" alt="" loading="lazy" />
+                  <img class="moka-slide-img" src="/mockups/PlatformMockup.svg" alt="" width="1440" height="810" loading="lazy" />
                   <div class="moka-slide-content">
                     <p class="moka-slide-label">Vista general</p>
-                    <p class="moka-slide-desc">Las herramientas fragmentadas ralentizan cada decisión de investigación. Un entorno configurable unifica todo tu flujo de descubrimiento — adaptado a tu industria, tus datos y el ritmo de tu equipo.</p>
+                    <p class="moka-slide-desc">Un solo entorno para todo tu flujo de descubrimiento, adaptado a tu industria.</p>
                   </div>
                 </div>
                 <div class="moka-slide">
-                  <img class="moka-slide-img" src="/mockups/Explore.svg" alt="" loading="lazy" />
+                  <img class="moka-slide-img" src="/mockups/Explore.svg" alt="" width="1440" height="810" loading="lazy" />
                   <div class="moka-slide-content">
-                    <p class="moka-slide-label">Explora MokaDex</p>
-                    <p class="moka-slide-desc">Recopilar datos de bioactividad vegetal de fuentes dispersas lleva meses y aún pierde señales críticas. Una sola consulta devuelve perfiles de especies, compuestos y evidencia validada — convirtiendo meses de investigación en minutos.</p>
+                    <p class="moka-slide-label">Explora Icaros</p>
+                    <p class="moka-slide-desc">Especies, compuestos y evidencia en una sola búsqueda.</p>
                   </div>
                 </div>
                 <div class="moka-slide">
-                  <img class="moka-slide-img" src="/mockups/VirtualLab.svg" alt="" loading="lazy" />
+                  <img class="moka-slide-img" src="/mockups/VirtualLab.svg" alt="" width="1440" height="810" loading="lazy" />
                   <div class="moka-slide-content">
                     <p class="moka-slide-label">Laboratorio Virtual</p>
-                    <p class="moka-slide-desc">El análisis bioinformático está bloqueado detrás de código que la mayoría de investigadores no domina. Predice mecanismos, modela bioactividad y ejecuta ensayos in silico — sin programación.</p>
+                    <p class="moka-slide-desc">Predice mecanismos y bioactividad sin escribir una línea de código.</p>
                   </div>
                 </div>
                 <div class="moka-slide">
-                  <img class="moka-slide-img" src="/mockups/WetLab.svg" alt="" loading="lazy" />
+                  <img class="moka-slide-img" src="/mockups/WetLab.svg" alt="" width="1440" height="810" loading="lazy" />
                   <div class="moka-slide-content">
                     <p class="moka-slide-label">Wet Lab</p>
-                    <p class="moka-slide-desc">Los datos experimentales en silos pierden contexto y valor rápidamente. Centraliza tus resultados, mantén cada dato consultable y conecta tus hallazgos con la inteligencia molecular de MokaDex.</p>
+                    <p class="moka-slide-desc">Tus resultados de laboratorio, conectados con todo lo demás.</p>
                   </div>
                 </div>
               </div>
               <div class="moka-progress-bar" aria-hidden="true">
                 <div class="moka-progress-fill" id="moka-progress-fill"></div>
               </div>
-              <div class="moka-dots" role="tablist">
-                <button class="moka-dot is-active" data-slide="0" aria-label="Vista general"></button>
-                <button class="moka-dot" data-slide="1" aria-label="Explora MokaDex"></button>
-                <button class="moka-dot" data-slide="2" aria-label="Laboratorio Virtual"></button>
-                <button class="moka-dot" data-slide="3" aria-label="Wet Lab"></button>
+              <div class="moka-dots">
+                <button type="button" class="moka-arrow" data-dir="-1" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+                <button type="button" aria-current="true" class="moka-dot is-active" data-slide="0" aria-label="Vista general"></button>
+                <button type="button" class="moka-dot" data-slide="1" aria-label="Explora Icaros"></button>
+                <button type="button" class="moka-dot" data-slide="2" aria-label="Laboratorio Virtual"></button>
+                <button type="button" class="moka-dot" data-slide="3" aria-label="Wet Lab"></button>
+                <button type="button" class="moka-arrow" data-dir="1" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="home-applications relative overflow-hidden px-5 py-8 sm:px-8 lg:py-10">
-      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/18 to-transparent"></div>
-      <div class="home-section-shell">
-        <div class="reveal opacity-0 mx-auto max-w-4xl text-center" data-animation="slide-in" style="transition-delay: 0.1s;">
-          <div class="home-section-kicker">PARA QUIÉN ES</div>
-          <h2 class="home-section-title mt-4">Para empresas innovadoras<br class="hidden sm:block"> que construyen con la naturaleza.</h2>
-          <p class="home-section-copy mt-4 mx-auto">Cinco sectores de alto valor donde la inteligencia bioactiva programable abre oportunidades medibles.</p>
-        </div>
-        <div class="app-grid mt-8">
-          {industries.map((ind, i) => (
-            <article class="app-card reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${0.2 + i * 0.12}s;`}>
-              <div class="app-icon-wrap">
-                <Fragment set:html={ind.icon} />
-              </div>
-              <p class="app-name">{ind.name}</p>
-              <div class="app-meta">
-                <span class="app-market">{ind.market}</span>
-                <span class="app-growth">{ind.growth}</span>
-              </div>
-            </article>
-          ))}
         </div>
       </div>
     </section>
@@ -278,7 +98,7 @@ const industries = [
       <div class="home-section-shell">
         <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
           <div class="home-section-kicker">TRACCIÓN</div>
-          <h2 class="home-section-title mt-4">Ciencia real.<br class="hidden sm:block"> Progreso real.</h2>
+          <h2 class="home-section-title home-section-title--md mt-4">Ciencia real.<br class="hidden sm:block"> Progreso real.</h2>
         </div>
         <div class="traction-grid mt-10">
 
@@ -287,31 +107,37 @@ const industries = [
               <p class="traction-number">30<span class="traction-unit">K+</span></p>
               <div class="traction-divider"></div>
               <p class="traction-label">Especies indexadas</p>
-              <p class="traction-desc">Especies indexadas en MokaDex: la base de datos de química natural más completa con foco latinoamericano.</p>
+              <p class="traction-desc">Especies indexadas en Icaros: la base de datos de química natural más completa con foco latinoamericano.</p>
             </div>
             <div class="traction-card-glow"></div>
           </article>
 
           <article class="traction-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.27s;">
             <div class="traction-card-inner">
-              <p class="traction-number">1<span class="traction-unit"> patent</span></p>
+              <p class="traction-number">1<span class="traction-unit"> patente</span></p>
               <div class="traction-divider"></div>
-              <p class="traction-label">Patente provisional presentada</p>
-              <p class="traction-desc">Patente provisional presentada: un candidato inmunomodulador identificado y protegido mediante el pipeline de descubrimiento de Moka.</p>
+              <p class="traction-label">Patente pendiente</p>
+              <p class="traction-desc">Solicitud de patente no provisional presentada para un candidato inmunomodulador identificado mediante el pipeline de descubrimiento de Moka.</p>
             </div>
             <div class="traction-card-glow"></div>
           </article>
 
-          <article class="traction-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.39s;">
-            <div class="traction-card-inner">
-              <p class="traction-number">3<span class="traction-unit"> active</span></p>
-              <div class="traction-divider"></div>
-              <p class="traction-label">Socios de investigación</p>
-              <p class="traction-desc">Socios de investigación activos: colaborando con instituciones e industria para validar inteligencia bioactiva a escala.</p>
-            </div>
-            <div class="traction-card-glow"></div>
-          </article>
 
+
+        </div>
+      </div>
+    </section>
+
+    <MarketsSection locale="es" />
+
+    <WhyWeDoIt locale="es" />
+
+    <section class="home-contact-section relative overflow-hidden px-5 py-10 sm:px-8 lg:py-14">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/28 to-transparent"></div>
+      <div class="home-section-shell grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
+        <ContactUsCard locale="es" />
+        <div class="contact-form-shell">
+          <ContactForm locale="es" client:only="react" />
         </div>
       </div>
     </section>
@@ -338,19 +164,9 @@ const industries = [
           </a>
         </div>
       </div>
-      <ArticlesCarrousel client:only="react" />
+      <ArticlesCarrousel locale="es" client:only="react" />
     </div>
 
-    <section class="home-contact-section relative overflow-hidden px-5 py-10 sm:px-8 lg:py-14">
-      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/28 to-transparent"></div>
-      <div class="home-section-shell grid gap-12 lg:grid-cols-[0.86fr_1.14fr] lg:items-center">
-        <ContactUsCard locale="es" />
-        <div class="contact-form-shell">
-          <ContactForm locale="es" client:only="react" />
-        </div>
-      </div>
-    </section>
-    
   </div>
 </BaseLayout>
 
@@ -377,17 +193,20 @@ const industries = [
     const carousel = document.getElementById('moka-carousel');
     if (!carousel) return;
 
-    const track = document.getElementById('moka-carousel-track');
+    const trackEl = document.getElementById('moka-carousel-track');
+    if (!trackEl) return;
+    const track: HTMLElement = trackEl;
     const fill  = document.getElementById('moka-progress-fill');
-    const slides = Array.from(track?.querySelectorAll('.moka-slide') ?? []);
+    const slides = Array.from(track.querySelectorAll('.moka-slide'));
     const dots   = Array.from(carousel.querySelectorAll('.moka-dot'));
 
-    const DURATION = 3800;
+    const DURATION = 7000;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let current = 0;
-    let timer = null;
-    let isPaused = false;
+    let timer: ReturnType<typeof setInterval> | null = null;
+    let manual = false; // once the visitor navigates, autoplay stops for good
 
-    function goTo(idx, snap = false) {
+    function goTo(idx: number, snap = false) {
       const next = ((idx % slides.length) + slides.length) % slides.length;
       if (snap) {
         track.style.transition = 'none';
@@ -398,8 +217,11 @@ const industries = [
         track.style.transform = `translateX(-${next * 100}%)`;
       }
       current = next;
-      dots.forEach((d, i) => d.classList.toggle('is-active', i === current));
-      resetProgress();
+      dots.forEach((d, i) => {
+        d.classList.toggle('is-active', i === current);
+        i === current ? d.setAttribute('aria-current', 'true') : d.removeAttribute('aria-current');
+      });
+      if (timer) resetProgress();
     }
 
     function resetProgress() {
@@ -412,9 +234,8 @@ const industries = [
     }
 
     function startAuto() {
-      if (timer) return;
+      if (timer || manual || reduceMotion) return;
       timer = setInterval(() => {
-        if (isPaused) return;
         const next = (current + 1) % slides.length;
         goTo(next, next === 0);
       }, DURATION);
@@ -422,30 +243,36 @@ const industries = [
     }
 
     function stopAuto() {
-      clearInterval(timer);
+      if (timer) clearInterval(timer);
       timer = null;
       if (fill) { fill.style.transition = 'none'; fill.style.width = '0%'; }
     }
 
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-        goTo(i);
-        isPaused = true;
-        setTimeout(() => { isPaused = false; }, 8000);
-      });
+    function takeControl(idx: number) {
+      manual = true;
+      stopAuto();
+      goTo(idx);
+    }
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => takeControl(i)));
+    carousel.querySelectorAll('.moka-arrow').forEach((btn) => {
+      btn.addEventListener('click', () => takeControl(current + Number(btn.getAttribute('data-dir'))));
+    });
+    carousel.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') takeControl(current + 1);
+      if (e.key === 'ArrowLeft') takeControl(current - 1);
     });
 
-    carousel.addEventListener('mouseenter', () => { isPaused = true; });
-    carousel.addEventListener('mouseleave', () => {
-      isPaused = false;
-      if (timer) resetProgress();
-    });
+    // Pause while the pointer or keyboard focus is inside; resume on leave
+    carousel.addEventListener('mouseenter', stopAuto);
+    carousel.addEventListener('mouseleave', startAuto);
+    carousel.addEventListener('focusin', stopAuto);
 
     let tx = 0;
     carousel.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
     carousel.addEventListener('touchend', e => {
       const dx = e.changedTouches[0].clientX - tx;
-      if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+      if (Math.abs(dx) > 40) takeControl(dx < 0 ? current + 1 : current - 1);
     });
 
     new IntersectionObserver(entries => {
@@ -471,7 +298,7 @@ const industries = [
     position: fixed;
     inset: 0;
     z-index: -1;
-    background-image: url("/hero.png");
+    background-image: url("/hero.webp");
     background-size: cover;
     background-position: center;
     filter: grayscale(1) contrast(1.24) brightness(0.38);
@@ -493,7 +320,7 @@ const industries = [
 
   .home-section-kicker {
     font-family: Roboto, sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.42em;
     color: var(--fresh-green-color);
@@ -510,58 +337,18 @@ const industries = [
     text-wrap: balance;
   }
 
+  /* Secondary sections: one giant title per screen, the rest medium */
+  .home-section-title--md {
+    font-size: clamp(1.9rem, 3.4vw, 3rem);
+    line-height: 1.05;
+  }
+
   .home-section-copy {
     max-width: 620px;
     font-family: Inter, sans-serif;
     font-size: clamp(1rem, 1.6vw, 1.22rem);
     line-height: 1.75;
     color: var(--moka-text-muted);
-  }
-
-  .learn-more-link {
-    display: inline-flex;
-    width: fit-content;
-    align-items: center;
-    justify-content: center;
-    border-radius: 999px;
-    border: 1px solid rgba(110, 191, 126, 0.28);
-    background: rgba(19, 45, 37, 0.36);
-    padding: 0.8rem 1.15rem;
-    font-family: Inter, sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--fresh-green-color);
-    transition: transform 260ms ease, background 260ms ease, color 260ms ease;
-  }
-
-  .learn-more-link:hover {
-    transform: translateY(-2px);
-    background: var(--fresh-green-color);
-    color: var(--charcoal-color);
-  }
-
-  .home-flow-section {
-    background: transparent;
-  }
-
-
-  .home-proof-motion {
-    background: transparent;
-  }
-
-  .flow-track {
-    position: relative;
-  }
-
-  .flow-track::before {
-    content: "";
-    position: absolute;
-    left: 8%;
-    right: 8%;
-    top: 50%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(110, 191, 126, 0.42), transparent);
-    opacity: 0.65;
   }
 
   .flow-step,
@@ -572,225 +359,6 @@ const industries = [
     box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(18px);
   }
-
-  .flow-step {
-    position: relative;
-    min-height: 260px;
-    border-radius: 1.5rem;
-    padding: 2rem;
-    transition: transform 700ms ease, border-color 700ms ease, background 700ms ease;
-  }
-
-  .flow-step:hover {
-    transform: translateY(-4px);
-    border-color: var(--moka-border-accent);
-    background: linear-gradient(145deg, rgba(19, 45, 37, 0.82), rgba(18, 18, 18, 0.58));
-  }
-
-  .flow-step span {
-    color: var(--fresh-green-color);
-    font-family: Roboto, sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.32em;
-  }
-
-  .flow-step h3 {
-    margin-top: 3rem;
-    font-family: Inter, sans-serif;
-    font-size: 1.45rem;
-    font-weight: 650;
-    line-height: 1.14;
-    color: var(--pure-color);
-  }
-
-  .flow-step p {
-    margin-top: 1rem;
-    color: rgba(222, 222, 222, 0.72);
-    line-height: 1.65;
-  }
-
-  .home-layers-section {
-    background: transparent;
-    z-index: 1;
-  }
-
-  /* ── Architecture Stack ──────────────────────── */
-  .arch-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  /* Individual layer card */
-  .arch-layer {
-    position: relative;
-    display: grid;
-    grid-template-columns: 3rem 1fr;
-    gap: 0;
-    border-radius: 1.5rem;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    background: rgba(18, 18, 18, 0.62);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.28);
-    backdrop-filter: blur(24px);
-    transition: transform 320ms ease, border-color 320ms ease, background 320ms ease;
-    cursor: default;
-  }
-
-  .arch-layer::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 24% 0%, rgba(110, 191, 126, 0.12), transparent 36%);
-    opacity: 0;
-    transition: opacity 320ms ease;
-    pointer-events: none;
-  }
-
-  .arch-layer:hover {
-    transform: translateY(-4px);
-    border-color: rgba(110, 191, 126, 0.34);
-  }
-
-  .arch-layer:hover::after {
-    opacity: 1;
-  }
-
-  /* Left rail with number + accent bar */
-  .arch-layer-left {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.5rem 0 1.5rem;
-    gap: 0.6rem;
-    background: rgba(255, 255, 255, 0.025);
-    border-right: 1px solid rgba(255, 255, 255, 0.12);
-  }
-
-  .arch-num {
-    font-family: Roboto, sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    color: rgba(110, 191, 126, 0.86);
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-  }
-
-  .arch-accent {
-    flex: 1;
-    width: 2px;
-    border-radius: 999px;
-    min-height: 20px;
-    background: rgba(110, 191, 126, 0.62);
-  }
-
-  /* Layer body */
-  .arch-layer-body {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    padding: 1.5rem;
-  }
-
-  .arch-layer-head {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    gap: 0;
-    flex-wrap: wrap;
-  }
-
-  .arch-icon {
-    display: none;
-  }
-
-  .arch-name {
-    font-family: Inter, sans-serif;
-    font-size: clamp(1rem, 1.35vw, 1.12rem);
-    font-weight: 650;
-    color: var(--pure-color);
-    flex: 1;
-  }
-
-  .arch-badge {
-    font-family: Roboto, sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 0.25rem 0.75rem;
-    border-radius: 999px;
-    border: 1px solid rgba(110, 191, 126, 0.3);
-    color: var(--fresh-green-color);
-  }
-
-  .arch-desc {
-    font-family: Inter, sans-serif;
-    font-size: 15px;
-    line-height: 1.625;
-    color: rgba(222, 222, 222, 0.74);
-    transition: color 280ms ease;
-  }
-
-  .arch-layer:hover .arch-desc {
-    color: rgba(222, 222, 222, 0.72);
-  }
-
-  .arch-accent--01,
-  .arch-accent--02,
-  .arch-accent--03,
-  .arch-accent--04 {
-    background: rgba(110, 191, 126, 0.62);
-  }
-
-  .arch-badge--01,
-  .arch-badge--02,
-  .arch-badge--03,
-  .arch-badge--04 {
-    background: rgba(110, 191, 126, 0.15);
-  }
-
-  /* ── Connectors between layers ───────────────── */
-  .arch-connector {
-    display: none;
-  }
-
-  .arch-connector-line {
-    width: 1px;
-    flex: 1;
-    background: linear-gradient(180deg, rgba(110, 191, 126, 0.12), rgba(110, 191, 126, 0.22));
-  }
-
-  .arch-connector-line:last-child {
-    background: linear-gradient(180deg, rgba(110, 191, 126, 0.22), rgba(110, 191, 126, 0.12));
-  }
-
-  .arch-flow-dots {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-    padding: 2px 0;
-  }
-
-  .arch-dot {
-    display: block;
-    width: 4px;
-    height: 4px;
-    border-radius: 999px;
-    background: var(--fresh-green-color);
-    opacity: 0;
-    animation: archFlow 1.8s ease-in-out infinite;
-  }
-
-  .arch-dot--1 { animation-delay: 0s; }
-  .arch-dot--2 { animation-delay: 0.3s; }
-  .arch-dot--3 { animation-delay: 0.6s; }
 
   @keyframes archFlow {
     0%   { opacity: 0;    transform: translateY(-4px); }
@@ -803,190 +371,10 @@ const industries = [
     from { opacity: 0; transform: translateY(28px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .animate-fade-up { animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-
-  .plant-to-bioactives {
-    background: transparent;
-  }
-
-  /* ── Discovery Pipeline ──────────────────────── */
-  .pipeline-flow {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr auto 1fr;
-    align-items: start;
-    gap: 0;
-  }
-
-  .pipeline-step {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 2rem 1.25rem;
-    border-radius: 1.75rem;
-    border: 1px solid rgba(110, 191, 126, 0.10);
-    background: linear-gradient(145deg, rgba(18, 18, 18, 0.72), rgba(19, 45, 37, 0.40));
-    backdrop-filter: blur(16px);
-    box-shadow: 0 20px 70px rgba(0, 0, 0, 0.22);
-    transition: transform 300ms ease, border-color 300ms ease;
-  }
-
-  .pipeline-step:hover {
-    transform: translateY(-6px);
-    border-color: rgba(110, 191, 126, 0.28);
-  }
-
-  .pipeline-step--center {
-    border-color: rgba(110, 191, 126, 0.22);
-    background: linear-gradient(145deg, rgba(19, 45, 37, 0.72), rgba(12, 28, 20, 0.68));
-  }
-
-  .pipeline-step-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 56px;
-    height: 56px;
-    border-radius: 1.1rem;
-    margin-bottom: 1.1rem;
-    flex-shrink: 0;
-  }
-
-  .pipeline-step-icon svg {
-    width: 28px;
-    height: 28px;
-  }
-
-  .pipeline-step-icon--01 {
-    background: rgba(19, 45, 37, 0.55);
-    color: rgba(110, 191, 126, 0.75);
-    border: 1px solid rgba(110, 191, 126, 0.14);
-  }
-
-  .pipeline-step-icon--02 {
-    background: rgba(19, 45, 37, 0.72);
-    color: var(--fresh-green-color);
-    border: 1px solid rgba(110, 191, 126, 0.28);
-    box-shadow: 0 0 28px rgba(110, 191, 126, 0.12);
-  }
-
-  .pipeline-step-icon--03 {
-    background: rgba(19, 45, 37, 0.55);
-    color: rgba(110, 191, 126, 0.75);
-    border: 1px solid rgba(110, 191, 126, 0.14);
-  }
-
-  .pipeline-step-num {
-    font-family: Roboto, sans-serif;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.38em;
-    color: rgba(110, 191, 126, 0.45);
-    margin-bottom: 0.35rem;
-  }
-
-  .pipeline-step-label {
-    font-family: Inter, sans-serif;
-    font-size: clamp(1rem, 1.4vw, 1.15rem);
-    font-weight: 700;
-    color: var(--pure-color);
-    margin-bottom: 0.4rem;
-  }
-
-  .pipeline-step-stat {
-    font-family: Roboto, sans-serif;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    color: var(--fresh-green-color);
-    padding: 0.2rem 0.65rem;
-    border-radius: 999px;
-    background: rgba(110, 191, 126, 0.10);
-    border: 1px solid rgba(110, 191, 126, 0.20);
-    margin-bottom: 0.85rem;
-  }
-
-  .pipeline-step-desc {
-    font-family: Inter, sans-serif;
-    font-size: 13px;
-    line-height: 1.65;
-    color: rgba(222, 222, 222, 0.52);
-  }
-
-  /* ── Pipeline arrows ─────────────────────────── */
-  .pipeline-arrow {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0 0.5rem;
-    margin-top: 4.2rem; /* align with icon center */
-    gap: 4px;
-  }
-
-  .pipeline-arrow-track {
-    position: relative;
-    width: 48px;
-    height: 2px;
-    background: linear-gradient(90deg, rgba(110, 191, 126, 0.15), rgba(110, 191, 126, 0.40));
-    border-radius: 999px;
-    overflow: hidden;
-  }
-
-  .pipeline-arrow-pulse {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(110, 191, 126, 0.9), transparent);
-    animation: pipelinePulse 2s ease-in-out infinite;
-  }
-
-  .pipeline-arrow-head {
-    width: 16px;
-    height: 16px;
-    color: rgba(110, 191, 126, 0.50);
-    margin-top: -4px;
-  }
 
   @keyframes pipelinePulse {
     0%   { left: -100%; }
     100% { left: 100%; }
-  }
-
-  /* ── Proof point ─────────────────────────────── */
-  .pipeline-proof {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    margin-top: 2.5rem;
-    padding: 1.1rem 1.6rem;
-    border-radius: 1rem;
-    border: 1px solid rgba(110, 191, 126, 0.14);
-    background: rgba(19, 45, 37, 0.28);
-    font-family: Inter, sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-    color: rgba(222, 222, 222, 0.55);
-    max-width: 620px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .pipeline-proof strong {
-    color: rgba(222, 222, 222, 0.85);
-    font-weight: 600;
-  }
-
-  .pipeline-proof-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 999px;
-    background: var(--fresh-green-color);
-    flex-shrink: 0;
-    box-shadow: 0 0 10px rgba(110, 191, 126, 0.55);
-    animation: proofPulse 2.4s ease-in-out infinite;
   }
 
   @keyframes proofPulse {
@@ -994,261 +382,13 @@ const industries = [
     50%       { opacity: 1;   transform: scale(1.4); }
   }
 
-  .home-applications {
-    background: transparent;
-    position: relative;
-    z-index: 40;
-    overflow: visible;
-    isolation: isolate;
-    padding-top: 4.5rem;
-  }
-
-  .bioactive-showcase {
-    position: relative;
-    z-index: 41;
-    overflow: visible;
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 1rem;
-  }
-
-  .bio-product-card {
-    position: relative;
-    z-index: 10;
-  }
-
-  .bio-product-card {
-    display: flex;
-    aspect-ratio: 1 / 1;
-    min-height: 0;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border-radius: 1.5rem;
-    border: 1px solid rgba(222, 222, 222, 0.10);
-    background: linear-gradient(135deg, rgba(19, 45, 37, 0.68), rgba(18, 18, 18, 0.88));
-    padding: 1.2rem;
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(18px);
-    transition: transform 320ms ease, border-color 320ms ease, background 320ms ease, box-shadow 320ms ease;
-  }
-
-  .bio-product-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 20% 0%, rgba(110, 191, 126, 0.1), transparent 42%);
-    opacity: 0;
-    transition: opacity 320ms ease;
-    pointer-events: none;
-  }
-
-  .bio-product-card:hover {
-    z-index: 50;
-    transform: translateY(-6px);
-    border-color: rgba(222, 222, 222, 0.20);
-    background: linear-gradient(135deg, rgba(19, 45, 37, 0.86), rgba(18, 18, 18, 0.76));
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3), 0 0 40px rgba(110, 191, 126, 0.07);
-  }
-
-  .bio-product-card:hover::after {
-    opacity: 1;
-  }
-
-  .bio-product-head,
-  .bio-product-visual,
-  .bio-product-name {
-    position: relative;
-    z-index: 1;
-  }
-
-  .bio-product-head {
-    position: absolute;
-    left: 1rem;
-    right: 1rem;
-    top: 1rem;
-    z-index: 2;
-    text-align: center;
-  }
-
-  .bio-product-sector {
-    font-family: Roboto, sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    line-height: 1.35;
-    text-transform: uppercase;
-    color: rgba(222, 222, 222, 0.72);
-    text-align: center;
-    width: 100%;
-  }
-
-  .bio-product-visual {
-    position: absolute;
-    top: 3.6rem;
-    right: 0.8rem;
-    bottom: 0.95rem;
-    left: 0.8rem;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    transition: opacity 260ms ease, transform 260ms ease;
-  }
-
-  .bio-product-line-icon {
-    display: flex;
-    width: 96%;
-    height: 96%;
-    align-items: center;
-    justify-content: center;
-    filter:
-      drop-shadow(0 0 18px rgba(255, 255, 255, 0.18))
-      drop-shadow(0 0 48px rgba(255, 255, 255, 0.10));
-  }
-
-  .bio-product-line-icon img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    opacity: 1;
-  }
-
-  .bio-product-name {
-    z-index: 2;
-    max-width: 90%;
-    font-family: Inter, sans-serif;
-    font-size: clamp(1.1rem, 1.45vw, 1.35rem);
-    font-weight: 800;
-    line-height: 1.2;
-    color: var(--pure-color);
-    text-align: center;
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 260ms ease, transform 260ms ease;
-  }
-
-  .bio-product-card:hover .bio-product-visual {
-    opacity: 0;
-    transform: scale(0.94);
-  }
-
-  .bio-product-card:hover .bio-product-name {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-
-  .app-grid {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 1rem;
-  }
-
-  .app-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 210px;
-    border-radius: 1.5rem;
-    padding: 1.5rem;
-    border: 1px solid rgba(222, 222, 222, 0.10);
-    background: linear-gradient(135deg, rgba(19, 45, 37, 0.68), rgba(18, 18, 18, 0.88));
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.04);
-    backdrop-filter: blur(18px);
-    transition: transform 320ms ease, border-color 320ms ease, background 320ms ease, box-shadow 320ms ease;
-    overflow: hidden;
-    text-align: center;
-  }
-
-  .app-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at 20% 0%, rgba(110, 191, 126, 0.1), transparent 42%);
-    opacity: 0;
-    transition: opacity 320ms ease;
-    pointer-events: none;
-  }
-
-  .app-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(222, 222, 222, 0.20);
-    background: linear-gradient(135deg, rgba(19, 45, 37, 0.86), rgba(18, 18, 18, 0.76));
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3), 0 0 40px rgba(110, 191, 126, 0.07);
-  }
-
-  .app-card:hover::after {
-    opacity: 1;
-  }
-
-  .app-icon-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    background: rgba(110, 191, 126, 0.12);
-    border: 1px solid rgba(110, 191, 126, 0.22);
-    color: var(--fresh-green-color);
-    flex-shrink: 0;
-  }
-
-  .app-name {
-    flex: 1;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    margin-top: 1rem;
-    font-family: Inter, sans-serif;
-    font-size: clamp(0.88rem, 1.1vw, 1rem);
-    font-weight: 650;
-    color: var(--pure-color);
-    line-height: 1.2;
-    padding-bottom: 0.2rem;
-    text-align: center;
-  }
-
-  .app-meta {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.2rem;
-    margin-top: 1rem;
-    padding-top: 0.875rem;
-    border-top: 1px solid rgba(110, 191, 126, 0.14);
-  }
-
-  .app-market {
-    font-family: Inter, sans-serif;
-    font-size: clamp(1.35rem, 1.8vw, 1.65rem);
-    font-weight: 700;
-    color: var(--fresh-green-color);
-    line-height: 1;
-  }
-
-  .app-growth {
-    font-family: Roboto, sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    color: rgba(222, 222, 222, 0.48);
-    text-transform: uppercase;
-    margin-top: 0.25rem;
-  }
-
-  /* ── Traction ────────────────────────────────── */
   .home-traction {
     background: transparent;
   }
 
   .traction-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
@@ -1330,145 +470,6 @@ const industries = [
     color: rgba(222, 222, 222, 0.62);
   }
 
-  /* ── Delta / What Changes section ───────────── */
-  .home-delta-section {
-    background: transparent;
-  }
-
-  .delta-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-    align-items: stretch;
-  }
-
-  .delta-card {
-    display: flex;
-    flex-direction: column;
-    border-radius: 1.75rem;
-    overflow: hidden;
-    border: 1px solid rgba(110, 191, 126, 0.14);
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.26);
-    transition: transform 320ms ease, border-color 320ms ease;
-  }
-
-  .delta-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(110, 191, 126, 0.32);
-  }
-
-  /* Before block */
-  .delta-before {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 1.75rem 1.75rem 1.5rem;
-    background: linear-gradient(145deg, rgba(22, 22, 22, 0.92), rgba(18, 18, 18, 0.72));
-    border-bottom: 1px solid rgba(222, 222, 222, 0.07);
-  }
-
-  /* Bridge / arrow */
-  .delta-bridge {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0 1.75rem;
-    background: rgba(12, 12, 12, 0.72);
-    backdrop-filter: blur(12px);
-  }
-
-  .delta-bridge-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(110, 191, 126, 0.22), transparent);
-  }
-
-  .delta-bridge-pill {
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.55rem 0.9rem;
-    border-radius: 999px;
-    border: 1px solid rgba(110, 191, 126, 0.22);
-    background: rgba(19, 45, 37, 0.5);
-    font-family: Roboto, sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--fresh-green-color);
-    white-space: nowrap;
-  }
-
-  /* After block */
-  .delta-after {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem 1.75rem 1.75rem;
-    background: linear-gradient(145deg, rgba(19, 45, 37, 0.78), rgba(12, 28, 20, 0.68));
-  }
-
-  /* Tags */
-  .delta-tag {
-    font-family: Roboto, sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.38em;
-    text-transform: uppercase;
-    margin-bottom: 0.875rem;
-    display: block;
-  }
-
-  .delta-tag--before {
-    color: rgba(222, 222, 222, 0.42);
-  }
-
-  .delta-tag--after {
-    color: rgba(110, 191, 126, 0.7);
-  }
-
-  /* Metrics */
-  .delta-metric {
-    font-family: Inter, sans-serif;
-    font-size: clamp(2.4rem, 4.5vw, 4rem);
-    font-weight: 750;
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-
-  .delta-metric--before {
-    color: rgba(222, 222, 222, 0.68);
-  }
-
-  .delta-metric--after {
-    color: var(--fresh-green-color);
-  }
-
-  .delta-metric-unit {
-    font-size: 0.5em;
-    font-weight: 600;
-    opacity: 0.75;
-    letter-spacing: 0;
-  }
-
-  /* Sub-labels */
-  .delta-sublabel {
-    margin-top: 0.625rem;
-    font-family: Inter, sans-serif;
-    font-size: 13px;
-    line-height: 1.5;
-    color: rgba(222, 222, 222, 0.38);
-  }
-
-  .delta-sublabel--after {
-    color: rgba(222, 222, 222, 0.58);
-  }
-
-  .home-problem-solution {
-    background: transparent;
-  }
-
   .home-contact-section {
     background: transparent;
   }
@@ -1505,56 +506,6 @@ const industries = [
 
   .articles-see-all:hover {
     opacity: 1;
-  }
-
-
-  /* ── MokaDex 30K stat ────────────────────────── */
-  .mokadex-stat {
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-  }
-
-  .mokadex-stat-number {
-    font-family: Inter, sans-serif;
-    font-size: clamp(2.4rem, 4vw, 3.6rem);
-    font-weight: 750;
-    line-height: 1;
-    color: var(--fresh-green-color);
-    letter-spacing: -0.02em;
-  }
-
-  .mokadex-stat-sup {
-    font-size: 0.45em;
-    font-weight: 600;
-    color: rgba(110, 191, 126, 0.72);
-    letter-spacing: 0.04em;
-  }
-
-  .mokadex-stat-label {
-    font-family: Roboto, sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: rgba(222, 222, 222, 0.48);
-    align-self: center;
-  }
-
-  /* ── HOW WE DO IT divider ────────────────────── */
-  .how-divider { padding: 2rem 0 0; }
-
-  .how-divider-inner {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-  }
-
-  .how-divider-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(222, 222, 222, 0.10), transparent);
   }
 
   /* ── Moka showcase section ─────────────────────── */
@@ -1614,13 +565,13 @@ const industries = [
     padding: 2rem 1.75rem 1.5rem;
   }
 
-  .moka-slide-img { display: block; width: 100%; pointer-events: none; }
+  .moka-slide-img { display: block; width: 100%; height: auto; pointer-events: none; }
 
   .moka-slide-content { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; text-align: center; }
 
   .moka-slide-label {
     font-family: Roboto, sans-serif;
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.30em;
     text-transform: uppercase;
@@ -1656,27 +607,74 @@ const industries = [
     position: relative;
     z-index: 1;
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    padding: 0.875rem 1.75rem 1.25rem;
+    gap: 0.25rem;
+    padding: 0.6rem 1rem 0.9rem;
   }
 
+  /* 32px hit area around a small visual dot */
   .moka-dot {
-    height: 6px;
-    width: 6px;
-    border-radius: 999px;
+    display: inline-flex;
+    height: 32px;
+    min-width: 32px;
+    align-items: center;
+    justify-content: center;
     border: none;
-    background: rgba(222, 222, 222, 0.20);
+    background: transparent;
     cursor: pointer;
     padding: 0;
+  }
+
+  .moka-dot::before {
+    content: "";
+    height: 7px;
+    width: 7px;
+    border-radius: 999px;
+    background: rgba(222, 222, 222, 0.28);
     transition: background 300ms ease, width 300ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .moka-dot.is-active {
-    background: var(--fresh-green-color);
+  .moka-dot:hover::before { background: rgba(222, 222, 222, 0.6); }
+
+  .moka-dot.is-active::before {
     width: 24px;
+    background: var(--fresh-green-color);
     box-shadow: 0 0 8px rgba(110, 191, 126, 0.45);
   }
+
+  .moka-dot:focus-visible,
+  .moka-arrow:focus-visible {
+    outline: 2px solid var(--fresh-green-color);
+    outline-offset: 2px;
+    border-radius: 999px;
+  }
+
+  .moka-arrow {
+    display: inline-flex;
+    height: 36px;
+    width: 36px;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid rgba(222, 222, 222, 0.22);
+    background: rgba(18, 18, 18, 0.5);
+    color: var(--birch-color);
+    cursor: pointer;
+    transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+  }
+
+  .moka-arrow:first-child { margin-right: 0.5rem; }
+  .moka-arrow:last-child { margin-left: 0.5rem; }
+
+  .moka-arrow:hover {
+    background: var(--fresh-green-color);
+    border-color: var(--fresh-green-color);
+    color: var(--charcoal-color);
+  }
+
+  .moka-arrow svg { width: 16px; height: 16px; }
 
   /* ── Mobile: fix fixed background ───────────────
      On mobile, position:fixed backdrops appear frozen
@@ -1687,32 +685,10 @@ const industries = [
       position: absolute;
     }
 
-    .bioactive-showcase {
-      grid-template-columns: 1fr;
-      max-width: 420px;
-      margin-left: auto;
-      margin-right: auto;
-    }
   }
 
   @media (max-width: 1023px) {
-    .flow-track::before { display: none; }
-    .app-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .bioactive-showcase {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .market-row {
-      grid-template-columns: 1fr;
-      gap: 0.65rem;
-      padding: 1rem 0;
-    }
-    .market-row-values {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 1rem;
-      text-align: left;
-    }
+
     .moka-showcase-layout { grid-template-columns: 1fr; gap: 2rem; }
     .traction-grid, .delta-grid {
       grid-template-columns: 1fr;
@@ -1720,42 +696,13 @@ const industries = [
       margin-left: auto;
       margin-right: auto;
     }
-    .how-divider-inner { gap: 0.75rem; }
+
   }
 
   @media (min-width: 640px) and (max-width: 1023px) {
     .traction-grid, .delta-grid {
       grid-template-columns: repeat(2, 1fr);
       max-width: 100%;
-    }
-  }
-
-  @media (max-width: 767px) {
-    .bioactive-showcase {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .app-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .pipeline-flow {
-      grid-template-columns: 1fr;
-      gap: 0.5rem;
-    }
-
-    .pipeline-arrow {
-      flex-direction: row;
-      margin-top: 0;
-      padding: 0.25rem 1rem;
-      justify-content: flex-start;
-    }
-
-    .pipeline-arrow-track {
-      width: 36px;
-      height: 2px;
     }
   }
 

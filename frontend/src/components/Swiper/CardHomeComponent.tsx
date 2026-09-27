@@ -3,12 +3,24 @@ import ArrowDiagonal from "@assets/icons/ArrowDiagonal.svg";
 interface Article {
   title: string;
   author: string;
+  journal: string;
+  date: string;
   image: string;
   alt: string;
   link?: string;
 }
 
-export const CardHomeComponent = ({ article }: { article: Article }) => {
+type Locale = "en" | "es" | "pt";
+
+const copy = {
+  en: { by: "By", cta: "Read article" },
+  es: { by: "Por", cta: "Leer artículo" },
+  pt: { by: "Por", cta: "Ler artigo" },
+};
+
+export const CardHomeComponent = ({ article, locale = "en" }: { article: Article; locale?: Locale }) => {
+  const t = copy[locale];
+  const year = article.date.split(" ").pop();
   return (
     <div className="group relative flex w-full max-w-6xl mx-auto px-4 py-6">
       <div className="relative overflow-hidden flex flex-col lg:flex-row items-center justify-between gap-8 w-full bg-charcoal/62 backdrop-blur-xl p-8 lg:p-16 rounded-[2rem] shadow-2xl shadow-black/28 transition-all duration-500 hover:border-freshgreen/32 border border-birch/10">
@@ -18,7 +30,7 @@ export const CardHomeComponent = ({ article }: { article: Article }) => {
         <div className="relative z-10 flex flex-col flex-1 text-left transition-transform duration-500 group-hover:translate-x-2">
           <div className="bg-charcoal/64 border border-freshgreen/18 backdrop-blur-md rounded-full w-fit py-1.5 px-5 mb-6 shadow-sm transition-all duration-300 group-hover:bg-freshgreen group-hover:scale-105">
             <p className="font-roboto text-xs lg:text-sm font-bold tracking-widest text-freshgreen group-hover:text-charcoal uppercase">
-              Articles
+              {article.journal} · {year}
             </p>
           </div>
           
@@ -27,7 +39,7 @@ export const CardHomeComponent = ({ article }: { article: Article }) => {
           </h2>
 
           <p className="font-inter mt-6 text-birch/70 text-sm lg:text-lg italic opacity-90 group-hover:opacity-100">
-            By {article?.author}
+            {t.by} {article?.author}
           </p>
         </div>
 
@@ -51,12 +63,12 @@ export const CardHomeComponent = ({ article }: { article: Article }) => {
                 rel="noopener noreferrer"
               >
                 <p className="text-charcoal text-sm lg:text-base font-roboto font-black tracking-tight uppercase">
-                  Learn more
+                  {t.cta}
                 </p>
                 <div className="transition-transform duration-300 group-hover:rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1">
                   <img
                     src={typeof ArrowDiagonal === 'string' ? ArrowDiagonal : ArrowDiagonal.src}
-                    alt="Arrow"
+                    alt=""
                     className="w-5 h-5"
                   />
                 </div>

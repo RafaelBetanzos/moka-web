@@ -1,3 +1,11 @@
+// Brand colors built from RGB channels so modifiers like bg-deepforest/75 generate CSS.
+const brand = (name) => `rgb(var(--${name}-rgb) / <alpha-value>)`;
+
+// The site uses opacity steps outside Tailwind's default scale (e.g. /7, /28, /74).
+const opacityScale = Object.fromEntries(
+  Array.from({ length: 101 }, (_, i) => [String(i), String(i / 100)]),
+);
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./src/**/*.{astro,html,js,jsx,ts,tsx}"],
@@ -8,23 +16,25 @@ export default {
         roboto: ["Roboto", "sans-serif"],
       },
       colors: {
-        pure: "var(--pure-color)",
-        birch: "var(--birch-color)",
-        sage: "var(--sage-color)",
-        deepforest: "var(--deep-forest-color)",
-        freshgreen: "var(--fresh-green-color)",
-        charcoal: "var(--charcoal-color)",
-        primary: "var(--primary-color)",
-        secondary: "var(--secondary-color)",
-        navbar: "var(--navbar-color)",
-        graycolor: "var(--gray-color)",
-        blackcolor: "var(--black-color)",
-        card: "var(--card-color)",
-        secondcard: "var(--second-card-color)",
-        whitecolor: "var(--white-color)",
-        secondgray: "var(--second-gray)",
-        pills: "var(--pills-color)",
+        pure: brand("pure"),
+        birch: brand("birch"),
+        sage: brand("sage"),
+        deepforest: brand("deep-forest"),
+        freshgreen: brand("fresh-green"),
+        charcoal: brand("charcoal"),
+        // Aliases, matching the var() aliases in global.css
+        primary: brand("deep-forest"),
+        secondary: brand("sage"),
+        navbar: brand("fresh-green"),
+        graycolor: brand("birch"),
+        blackcolor: brand("charcoal"),
+        card: brand("sage"),
+        secondcard: brand("deep-forest"),
+        whitecolor: brand("pure"),
+        secondgray: brand("birch"),
+        pills: brand("fresh-green"),
       },
+      opacity: opacityScale,
       screens: {
         xl: "1920px",
         lg: "1280px",
