@@ -25,3 +25,7 @@ pnpm-debug.log*
 
 # unused assets kept locally for reference
 old/
+
+# local brand reference manual
+/manualvisual_mokabio.pdf
+/brand.md
