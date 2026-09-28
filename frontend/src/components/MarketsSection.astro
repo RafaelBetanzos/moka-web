@@ -4,7 +4,6 @@ interface Props {
 }
 
 const { locale = "en" } = Astro.props;
-const contactHref = locale === "en" ? "/contact-us" : `/${locale}/contact-us`;
 const industrySlugByKey: Record<string, string> = { nutra: "nutraceuticals", dermo: "dermocosmetics", agro: "agro", pharma: "pharma" };
 const localePrefix = locale === "en" ? "" : "/" + locale;
 const industryHref = (key: string) => localePrefix + "/industries/" + industrySlugByKey[key] + "/";
@@ -23,7 +22,7 @@ const copy = {
     intro: "The same question, which plant?, in four markets.",
     platform: "Platform",
     service: "Service",
-    cta: "Book a demo or request a service",
+    cta: "See how Moka helps in this industry",
     more: "See how Moka helps",
     pageLink: "Explore this industry",
     markets: [
@@ -39,7 +38,7 @@ const copy = {
     intro: "La misma pregunta, ¿qué planta?, en cuatro mercados.",
     platform: "Plataforma",
     service: "Servicio",
-    cta: "Agendar demo o solicitar servicio",
+    cta: "Ver cómo ayuda Moka en esta industria",
     more: "Ver cómo ayuda Moka",
     pageLink: "Explorar esta industria",
     markets: [
@@ -55,7 +54,7 @@ const copy = {
     intro: "A mesma pergunta, qual planta?, em quatro mercados.",
     platform: "Plataforma",
     service: "Serviço",
-    cta: "Agendar demonstração ou solicitar serviço",
+    cta: "Ver como a Moka ajuda nesta indústria",
     more: "Ver como a Moka ajuda",
     pageLink: "Explorar esta indústria",
     markets: [
@@ -100,18 +99,8 @@ const copy = {
           </summary>
           <div class="market-content">
             <p class="market-body">{m.body}</p>
-            <dl class="market-offer">
-              <div>
-                <dt>{copy.platform}</dt>
-                <dd>{m.platform}</dd>
-              </div>
-              <div>
-                <dt>{copy.service}</dt>
-                <dd>{m.service}</dd>
-              </div>
-            </dl>
             <a
-              href={contactHref}
+              href={industryHref(m.key)}
               class="market-cta"
               data-analytics-event="market_card_click"
               data-analytics-category="markets"

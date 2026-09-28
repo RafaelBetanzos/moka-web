@@ -1,0 +1,20 @@
+---
+// Visible breadcrumb for the Platform, Services and journey pages
+// (the BreadcrumbList JSON-LD comes from BaseLayout's `breadcrumb` prop).
+interface Props {
+  locale: "en" | "es" | "pt";
+  label: string;
+}
+
+const { locale, label } = Astro.props;
+const home = { en: "Home", es: "Inicio", pt: "Início" }[locale];
+const nav = { en: "Breadcrumb", es: "Ruta de navegación", pt: "Trilha de navegação" }[locale];
+const homeHref = locale === "en" ? "/" : `/${locale}/`;
+---
+
+<nav class="page-breadcrumb" aria-label={nav}>
+  <ol>
+    <li><a href={homeHref}>{home}</a></li>
+    <li aria-current="page">{label}</li>
+  </ol>
+</nav>

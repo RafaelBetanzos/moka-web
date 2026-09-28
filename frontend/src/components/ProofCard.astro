@@ -1,0 +1,114 @@
+---
+// Proof points moved from the home "Traction" strip, with their exact wording.
+interface Props {
+  locale?: "en" | "es" | "pt";
+  kind: "species" | "patent";
+  delay?: number;
+}
+
+const { locale = "en", kind, delay = 0.15 } = Astro.props;
+const copy = {
+  en: {
+    species: { number: "30", unit: "K+", label: "Species Indexed", desc: "Species indexed in Icaros." },
+    patent: { number: "1", unit: " patent", label: "Patent Pending", desc: "Non-provisional patent application filed for an immunomodulator candidate identified through Moka's discovery pipeline." },
+  },
+  es: {
+    species: { number: "30", unit: "K+", label: "Especies indexadas", desc: "Especies indexadas en Icaros." },
+    patent: { number: "1", unit: " patente", label: "Patente pendiente", desc: "Solicitud de patente no provisional presentada para un candidato inmunomodulador identificado mediante el pipeline de descubrimiento de Moka." },
+  },
+  pt: {
+    species: { number: "30", unit: "K+", label: "Espécies indexadas", desc: "Espécies indexadas no Icaros." },
+    patent: { number: "1", unit: " patente", label: "Patente pendente", desc: "Pedido de patente não provisório depositado para um candidato imunomodulador identificado pelo pipeline de descoberta da Moka." },
+  },
+}[locale][kind];
+---
+
+<article class="traction-card reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${delay}s;`}>
+  <div class="traction-card-inner">
+    <p class="traction-number">{copy.number}<span class="traction-unit">{copy.unit}</span></p>
+    <div class="traction-divider"></div>
+    <p class="traction-label">{copy.label}</p>
+    <p class="traction-desc">{copy.desc}</p>
+  </div>
+  <div class="traction-card-glow"></div>
+</article>
+
+<style>
+  .traction-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(222, 222, 222, 0.10);
+    background: linear-gradient(135deg, rgba(19, 45, 37, 0.72), rgba(18, 18, 18, 0.88));
+    backdrop-filter: blur(18px);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition: transform 320ms ease, border-color 320ms ease;
+  }
+
+  .traction-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 24% 0%, rgba(255, 255, 255, 0.04), transparent 36%);
+    opacity: 0;
+    transition: opacity 320ms ease;
+    pointer-events: none;
+  }
+
+  .traction-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(222, 222, 222, 0.20);
+  }
+
+  .traction-card:hover::after { opacity: 1; }
+
+  .traction-card-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.75rem;
+    height: 100%;
+  }
+
+  .traction-card-glow { display: none; }
+
+  .traction-number {
+    font-family: Inter, sans-serif;
+    font-size: clamp(2.8rem, 5vw, 4.6rem);
+    font-weight: 750;
+    line-height: 1;
+    color: var(--fresh-green-color);
+    letter-spacing: -0.02em;
+  }
+
+  .traction-unit {
+    font-size: 0.42em;
+    font-weight: 600;
+    color: rgba(110, 191, 126, 0.7);
+    letter-spacing: 0.04em;
+  }
+
+  .traction-divider {
+    display: block;
+    height: 1px;
+    background: rgba(110, 191, 126, 0.14);
+    margin: 0.875rem 0;
+  }
+
+  .traction-label {
+    font-family: Inter, sans-serif;
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    font-weight: 700;
+    color: var(--pure-color);
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .traction-desc {
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(222, 222, 222, 0.62);
+  }
+</style>

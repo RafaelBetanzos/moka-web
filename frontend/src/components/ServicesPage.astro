@@ -1,0 +1,202 @@
+---
+// /services/ (EN, ES, PT): the R&D service, built from existing service copy only.
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
+import BrainSection from "@components/BrainSection.astro";
+import CtaBand from "@components/CtaBand.astro";
+import PageBreadcrumb from "@components/PageBreadcrumb.astro";
+import TargetSection from "@components/TargetSection.astro";
+import TrustSection from "@components/TrustSection.astro";
+import "../styles/seo-landing.css";
+import { industries, industrySlugs } from "../data/industries";
+import { hasPublicFile, ogImageOr } from "../utils/publicAsset";
+
+interface Props {
+  locale: "en" | "es" | "pt";
+}
+
+const { locale } = Astro.props;
+const prefix = locale === "en" ? "" : `/${locale}`;
+const contactBase = `${prefix}/contact-us`;
+const heroImage = "/services/services-lab-hero.webp";
+const hasHeroImage = hasPublicFile(heroImage);
+
+const copy = {
+  en: {
+    metaTitle: "Plant Bioactivity R&D Services | Moka Bio",
+    metaDescription: "Bring a plant or a need. Moka prioritizes candidates and develops them to extract, fraction or molecule, with results and an IP assessment.",
+    breadcrumb: "Services",
+    kicker: "R&D SERVICE",
+    title: "You bring the question. We bring the bioactive.",
+    lead: "Start with a plant or with a need.",
+    cta: "Request a service",
+    heroAlt: "Plant extract in a glass vial on a laboratory bench",
+    getTitle: "What you get",
+    get: ["Extract, fraction, or molecule.", "Results and an IP assessment."],
+    dontTitle: "What we don't do",
+    industriesTitle: "By industry",
+    ctaTitle: "Your next plant is waiting.",
+    toPlatform: "Want to explore it yourself?",
+    serviceName: "Plant bioactivity R&D service",
+    serviceDescription: "Development of bioactives from a plant of interest or a product need, delivered as extract, fraction, or molecule.",
+  },
+  es: {
+    metaTitle: "Servicios de I+D de bioactividad vegetal | Moka Bio",
+    metaDescription: "Trae una planta o una necesidad. Moka prioriza candidatos y los desarrolla hasta extracto, fracción o molécula, con resultados y evaluación de PI.",
+    breadcrumb: "Servicios",
+    kicker: "SERVICIO DE I+D",
+    title: "Tú traes la pregunta. Nosotros, el bioactivo.",
+    lead: "Empieza con una planta o con una necesidad.",
+    cta: "Solicitar servicio",
+    heroAlt: "Extracto vegetal en un vial de vidrio sobre una mesa de laboratorio",
+    getTitle: "Qué recibes",
+    get: ["Extracto, fracción o molécula.", "Resultados y evaluación de PI."],
+    dontTitle: "Lo que no hacemos",
+    industriesTitle: "Por industria",
+    ctaTitle: "Tu próxima planta te está esperando.",
+    toPlatform: "¿Quieres explorarlo por tu cuenta?",
+    serviceName: "Servicio de I+D de bioactividad vegetal",
+    serviceDescription: "Desarrollo de bioactivos a partir de una planta de interés o de una necesidad de producto, entregados como extracto, fracción o molécula.",
+  },
+  pt: {
+    metaTitle: "Serviços de P&D de bioatividade vegetal | Moka Bio",
+    metaDescription: "Traga uma planta ou uma necessidade. A Moka prioriza candidatos e os desenvolve até extrato, fração ou molécula, com resultados e avaliação de PI.",
+    breadcrumb: "Serviços",
+    kicker: "SERVIÇO DE P&D",
+    title: "Você traz a pergunta. Nós, o bioativo.",
+    lead: "Comece com uma planta ou com uma necessidade.",
+    cta: "Solicitar serviço",
+    heroAlt: "Extrato vegetal em um frasco de vidro sobre uma bancada de laboratório",
+    getTitle: "O que você recebe",
+    get: ["Extrato, fração ou molécula.", "Resultados e avaliação de PI."],
+    dontTitle: "O que não fazemos",
+    industriesTitle: "Por indústria",
+    ctaTitle: "Sua próxima planta está esperando.",
+    toPlatform: "Quer explorar por conta própria?",
+    serviceName: "Serviço de P&D de bioatividade vegetal",
+    serviceDescription: "Desenvolvimento de bioativos a partir de uma planta de interesse ou de uma necessidade de produto, entregues como extrato, fração ou molécula.",
+  },
+}[locale];
+
+// The existing industry FAQ answers, verbatim: formulations, catalog ingredients, clinical trials,
+// bioinput registration, product claims, predictions vs testing. No FAQPage schema here, so the
+// industry pages keep those entities.
+const faqSource: [keyof typeof industries, number][] = [
+  ["dermocosmetics", 0],
+  ["nutraceuticals", 0],
+  ["pharma", 0],
+  ["agro", 0],
+  ["nutraceuticals", 2],
+  ["dermocosmetics", 2],
+];
+const faq = faqSource.map(([slug, i]) => industries[slug][locale].faq[i]);
+
+// Same @id as the node that lived on the retired Tech page.
+const schema = [
+  {
+    "@type": "Service",
+    "@id": "https://moka.bio/#rd-service",
+    name: copy.serviceName,
+    serviceType: copy.serviceName,
+    description: copy.serviceDescription,
+    areaServed: "Latin America",
+    provider: { "@id": "https://moka.bio/#organization" },
+  },
+];
+---
+
+<BaseLayout
+  lang={locale}
+  breadcrumb={copy.breadcrumb}
+  schema={schema}
+  title={copy.metaTitle}
+  description={copy.metaDescription}
+  ogImage={ogImageOr("/og/og-services.jpg")}
+>
+  <div class="industry-page relative overflow-hidden">
+    <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-01.png" tone="strong" class="tech-botanical-focus" revealStart={-0.15} />
+    <PageBreadcrumb locale={locale} label={copy.breadcrumb} />
+
+    <div class:list={["landing-hero", hasHeroImage && "landing-hero--media"]}>
+      <header class="industry-hero">
+        <p class="industry-kicker reveal opacity-0" data-animation="slide-up">{copy.kicker}</p>
+        <h1 class="industry-title reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.1s;">{copy.title}</h1>
+        <p class="industry-lead reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.2s;">{copy.lead}</p>
+        <div class="industry-ctas reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.3s;">
+          <a href={`${contactBase}?interest=service`} class="moka-demo-cta" data-analytics-event="request_service_click" data-analytics-category="cta" data-analytics-label="services_hero">{copy.cta} <span aria-hidden="true">→</span></a>
+        </div>
+      </header>
+      {hasHeroImage && (
+        <div class="landing-hero-media">
+          <img src={heroImage} alt={copy.heroAlt} width="1200" height="900" fetchpriority="high" decoding="async" />
+        </div>
+      )}
+    </div>
+
+    <div class="relative z-10 w-full">
+      <TargetSection locale={locale} variant="links" heading="starting" />
+    </div>
+
+    <div class="relative z-10 w-full">
+      <BrainSection locale={locale} parts={["process"]} processHeading />
+    </div>
+
+    <section class="industry-section">
+      <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{copy.getTitle}</h2>
+      <div class="industry-grid industry-grid--2">
+        {copy.get.map((item, i) => (
+          <article class:list={["industry-card reveal opacity-0", i === 0 && "industry-card--accent"]} data-animation="pop-in" style={`transition-delay: ${0.1 + i * 0.1}s;`}>
+            <span class="industry-index">0{i + 1}</span>
+            <p class="industry-card-title">{item}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="industry-section">
+      <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{copy.dontTitle}</h2>
+      <div class="industry-faq">
+        {faq.map((item) => (
+          <details class="industry-faq-item" name="faq-services">
+            <summary>{item.q}</summary>
+            <p>{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    <nav class="industry-section" aria-label={copy.industriesTitle}>
+      <h2 class="industry-h2 industry-h2--sm">{copy.industriesTitle}</h2>
+      <div class="industry-grid country-grid--4">
+        {industrySlugs.map((s) => (
+          <a class="industry-other" href={`${prefix}/industries/${s}/`}>
+            <span>{industries[s][locale].name}</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    <TrustSection locale={locale} showCta={false} />
+
+    <CtaBand
+      title={copy.ctaTitle}
+      primary={{ label: copy.cta, href: `${contactBase}?interest=service`, event: "request_service_click" }}
+      secondary={{ label: copy.toPlatform, href: `${prefix}/platform/`, event: "click_view_platform" }}
+      analyticsLabel="services_final"
+    />
+  </div>
+</BaseLayout>
+
+<script>
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const type = entry.target.getAttribute("data-animation");
+      entry.target.classList.add(`animate-${type}`);
+      entry.target.classList.remove("opacity-0");
+      revealObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+  document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+</script>

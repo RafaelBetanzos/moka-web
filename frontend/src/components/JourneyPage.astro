@@ -1,0 +1,145 @@
+---
+// Journey pages (/plant-potential/, /find-your-plant/) in the three locales.
+// Copy lives in data/journeys.ts and is written in the visitor's first person.
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
+import CtaBand from "@components/CtaBand.astro";
+import PageBreadcrumb from "@components/PageBreadcrumb.astro";
+import TrustSection from "@components/TrustSection.astro";
+import "../styles/seo-landing.css";
+import { countries, countrySlugs } from "../data/countries";
+import { industries, industrySlugs } from "../data/industries";
+import { journeyImages, journeyOgImages, journeys, type JourneySlug } from "../data/journeys";
+import type { Locale } from "../data/sitePages";
+import { hasPublicFile, ogImageOr } from "../utils/publicAsset";
+
+interface Props {
+  slug: JourneySlug;
+  locale: Locale;
+}
+
+const { slug, locale } = Astro.props;
+const t = journeys[slug][locale];
+const prefix = locale === "en" ? "" : `/${locale}`;
+const contactBase = `${prefix}/contact-us`;
+const href = (path: string) => (path.startsWith("http") ? path : `${prefix}${path}`);
+const external = (path: string) => path.startsWith("http");
+const heroImage = journeyImages[slug];
+const hasHeroImage = hasPublicFile(heroImage);
+const botanical = slug === "plant-potential" ? "/assets/about-botanicals/botanical-line-05.png" : "/assets/about-botanicals/botanical-line-04.png";
+const chips = t.sections.filter((s) => s.chip);
+const primary = { label: t.primary, href: `${contactBase}?interest=service`, event: "request_service_click" };
+const secondary = { label: t.secondary, href: `${contactBase}?interest=demo`, event: "book_demo_click" };
+---
+
+<BaseLayout lang={locale} title={t.metaTitle} description={t.metaDescription} breadcrumb={t.breadcrumb} ogImage={ogImageOr(journeyOgImages[slug])}>
+  <div class="industry-page relative overflow-hidden">
+    <BotanicalScrollReveal src={botanical} tone="strong" class="tech-botanical-focus" revealStart={-0.15} />
+    <PageBreadcrumb locale={locale} label={t.breadcrumb} />
+
+    <div class:list={["landing-hero", hasHeroImage && "landing-hero--media"]}>
+      <header class="industry-hero">
+        <p class="industry-kicker reveal opacity-0" data-animation="slide-up">{t.kicker}</p>
+        <h1 class="industry-title reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.1s;">{t.title}</h1>
+        <p class="industry-lead reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.2s;">{t.lead}</p>
+        <div class="industry-ctas reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.3s;">
+          <a href={primary.href} class="moka-demo-cta" data-analytics-event={primary.event} data-analytics-category="cta" data-analytics-label={`${slug}_hero`}>{primary.label} <span aria-hidden="true">→</span></a>
+          <a href={secondary.href} class="industry-secondary" data-analytics-event={secondary.event} data-analytics-category="cta" data-analytics-label={`${slug}_hero`}>{secondary.label} <span aria-hidden="true">→</span></a>
+        </div>
+      </header>
+      {hasHeroImage && (
+        <div class="landing-hero-media">
+          <img src={heroImage} alt={t.heroAlt} width="1200" height="900" fetchpriority="high" decoding="async" />
+        </div>
+      )}
+    </div>
+
+    <nav class="industry-section" aria-label={t.chipsLabel}>
+      <ul class="journey-chips">
+        {chips.map((s) => (
+          <li><a href={`#${s.id}`}>{s.chip}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    {t.sections.map((s) => (
+      <section id={s.id} class="industry-section journey-section">
+        {s.thought && <p class="journey-thought reveal opacity-0" data-animation="slide-up">“{s.thought}”</p>}
+        <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{s.title}</h2>
+        <div class="journey-answer">
+          {s.body.map((p) => <p class="industry-intro reveal opacity-0" data-animation="slide-up">{p}</p>)}
+          {s.cited?.map((c) => (
+            <p class="industry-intro reveal opacity-0" data-animation="slide-up">
+              {c.text}
+              <span class="journey-cite"> (<a href={c.href} target="_blank" rel="noopener">{c.source}</a>)</span>
+            </p>
+          ))}
+        </div>
+        {s.industries && (
+          <div class="industry-grid country-grid--4">
+            {industrySlugs.map((i) => (
+              <a class="industry-other" href={`${prefix}/industries/${i}/`}>
+                <span>{industries[i][locale].name}</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+        )}
+        {s.countries && (
+          <div class="industry-grid country-grid--4">
+            {countrySlugs.map((c) => (
+              <a class="industry-other" href={`${prefix}/countries/${c}/#access`}>
+                <span>{countries[c][locale].name}</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            ))}
+          </div>
+        )}
+        {s.links && (
+          <div class="journey-links">
+            {s.links.map((l) => (
+              <a class="industry-link" href={href(l.href)} target={external(l.href) ? "_blank" : undefined} rel={external(l.href) ? "noopener" : undefined}>{l.label} <span aria-hidden="true">{external(l.href) ? "↗" : "→"}</span></a>
+            ))}
+          </div>
+        )}
+        {s.note && <p class="journey-note">{s.note}</p>}
+      </section>
+    ))}
+
+    <section id="how" class="industry-section journey-section">
+      <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{t.stepsTitle}</h2>
+      <ol class="journey-steps">
+        {t.steps.map((step, i) => (
+          <li class="reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${0.1 + i * 0.1}s;`}>{step}</li>
+        ))}
+      </ol>
+      <div class="journey-links">
+        <a class="industry-link" href={href(t.stepsLink.href)}>{t.stepsLink.label} <span aria-hidden="true">→</span></a>
+        {t.aside && <a class="industry-link" href={href(t.aside.href)}>{t.aside.label} <span aria-hidden="true">→</span></a>}
+      </div>
+    </section>
+
+    <TrustSection locale={locale} showCta={false} />
+
+    <CtaBand
+      title={t.finalTitle}
+      primary={primary}
+      secondary={secondary}
+      aside={{ label: t.other.label, href: href(t.other.href) }}
+      analyticsLabel={`${slug}_final`}
+    />
+  </div>
+</BaseLayout>
+
+<script>
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const type = entry.target.getAttribute("data-animation");
+      entry.target.classList.add(`animate-${type}`);
+      entry.target.classList.remove("opacity-0");
+      revealObserver.unobserve(entry.target);
+    });
+  }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+  document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+</script>

@@ -3,7 +3,8 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
 import TrustSection from "@components/TrustSection.astro";
 import "../styles/seo-landing.css";
-import { industries, industryBotanical, industryLabels, industrySlugs, type IndustrySlug } from "../data/industries";
+import { industries, industryBotanical, industryLabels, industrySlugs, journeyBullet, type IndustrySlug } from "../data/industries";
+import { countries, countrySlugs } from "../data/countries";
 import type { Locale } from "../data/sitePages";
 
 interface Props {
@@ -76,14 +77,23 @@ const schema = [
           <ul class="industry-list">
             {t.platform.map((item) => <li>{item}</li>)}
           </ul>
-          <a href={`${contactBase}?interest=demo`} class="industry-link">{l.demo} <span aria-hidden="true">→</span></a>
+          <div class="industry-card-links">
+            <a href={`${contactBase}?interest=demo`} class="industry-link">{l.demo} <span aria-hidden="true">→</span></a>
+            <a href={`${prefix}/platform/`} class="industry-link">{l.platformLink} <span aria-hidden="true">→</span></a>
+          </div>
         </article>
         <article class="industry-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.1s;">
           <p class="industry-tag">{l.serviceTitle}</p>
           <ul class="industry-list">
-            {t.service.map((item) => <li>{item}</li>)}
+            {t.service.map((item) => {
+              const j = journeyBullet(item, locale);
+              return <li>{j ? <><a class="industry-inline-link" href={j.href}>{j.label}</a>: {j.rest}</> : item}</li>;
+            })}
           </ul>
-          <a href={`${contactBase}?interest=service`} class="industry-link">{l.service} <span aria-hidden="true">→</span></a>
+          <div class="industry-card-links">
+            <a href={`${contactBase}?interest=service`} class="industry-link">{l.service} <span aria-hidden="true">→</span></a>
+            <a href={`${prefix}/services/`} class="industry-link">{l.servicesLink} <span aria-hidden="true">→</span></a>
+          </div>
         </article>
       </div>
     </section>
@@ -125,6 +135,19 @@ const schema = [
         {others.map((s) => (
           <a class="industry-other" href={`${prefix}/industries/${s}/`}>
             <span>{industries[s][locale].name}</span>
+            <span aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    <!-- By country -->
+    <nav class="industry-section" aria-label={l.countriesTitle}>
+      <h2 class="industry-h2 industry-h2--sm">{l.countriesTitle}</h2>
+      <div class="industry-grid country-grid--4">
+        {countrySlugs.map((c) => (
+          <a class="industry-other" href={`${prefix}/countries/${c}/`}>
+            <span>{countries[c][locale].name}</span>
             <span aria-hidden="true">→</span>
           </a>
         ))}

@@ -5,10 +5,15 @@ import Mexico from "@assets/icons/Mexico.svg";
 import Brazil from "@assets/icons/Brazil.svg";
 import Peru from "@assets/icons/Peru.svg";
 import { Image } from "astro:assets";
-import { existsSync } from "node:fs";
-import { join } from "node:path";
+import { hasPublicFile } from "../utils/publicAsset";
 
-const { locale = "en" } = Astro.props;
+interface Props {
+  locale?: "en" | "es" | "pt";
+  /** The three "why now" forces, their intro line and the closing line. The home hides them. */
+  showForces?: boolean;
+}
+
+const { locale = "en", showForces = true } = Astro.props;
 
 const copy = {
   en: {
@@ -69,7 +74,7 @@ const copy = {
 
 const t = copy[locale as keyof typeof copy] ?? copy.en;
 // The Colombia flag is supplied separately; the entry only renders once the file exists.
-const hasColombiaFlag = existsSync(join(process.cwd(), "public/flags/colombia.svg"));
+const hasColombiaFlag = hasPublicFile("/flags/colombia.svg");
 const countryHref = (slug: string) => (locale === "en" ? "" : "/" + locale) + "/countries/" + slug + "/";
 ---
 
@@ -85,7 +90,7 @@ const countryHref = (slug: string) => (locale === "en" ? "" : "/" + locale) + "/
       <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
         <div class="why-kicker">{t.kicker}</div>
         <h2 class="why-intro mt-5">{t.intro}</h2>
-        <p class="why-sub mt-5">{t.sub}</p>
+        {showForces && <p class="why-sub mt-5">{t.sub}</p>}
 
         <!-- Flags below the intro text -->
         <div class="why-flags mt-8">
@@ -142,6 +147,7 @@ const countryHref = (slug: string) => (locale === "en" ? "" : "/" + locale) + "/
 
     </div>
 
+    {showForces && (<>
     <!-- Three forces -->
     <div class="why-forces">
       {t.forces.map((force, i) => (
@@ -154,6 +160,7 @@ const countryHref = (slug: string) => (locale === "en" ? "" : "/" + locale) + "/
     </div>
 
     <p class="why-closing reveal opacity-0" data-animation="slide-in">{t.closing}</p>
+    </>)}
 
 
 

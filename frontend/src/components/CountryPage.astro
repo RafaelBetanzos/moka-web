@@ -3,7 +3,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
 import TrustSection from "@components/TrustSection.astro";
 import { countries, countryBotanical, countryLabels, countrySlugs, type CountrySlug } from "../data/countries";
-import { industries, industrySlugs } from "../data/industries";
+import { industries, industryLabels, industrySlugs, journeyBullet } from "../data/industries";
 import type { Locale } from "../data/sitePages";
 import "../styles/seo-landing.css";
 
@@ -67,17 +67,28 @@ const schema = [
         <article class="industry-card industry-card--accent reveal opacity-0" data-animation="pop-in">
           <p class="industry-tag">{l.platformTitle} · Moka BDE</p>
           <ul class="industry-list">{t.platform.map((item) => <li>{item}</li>)}</ul>
-          <a href={contactBase + "?interest=demo"} class="industry-link">{l.demo} <span aria-hidden="true">→</span></a>
+          <div class="industry-card-links">
+            <a href={contactBase + "?interest=demo"} class="industry-link">{l.demo} <span aria-hidden="true">→</span></a>
+            <a href={prefix + "/platform/"} class="industry-link">{industryLabels[locale].platformLink} <span aria-hidden="true">→</span></a>
+          </div>
         </article>
         <article class="industry-card reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.1s;">
           <p class="industry-tag">{l.serviceTitle}</p>
-          <ul class="industry-list">{t.service.map((item) => <li>{item}</li>)}</ul>
-          <a href={contactBase + "?interest=service"} class="industry-link">{l.service} <span aria-hidden="true">→</span></a>
+          <ul class="industry-list">
+            {t.service.map((item) => {
+              const j = journeyBullet(item, locale);
+              return <li>{j ? <><a class="industry-inline-link" href={j.href}>{j.label}</a>: {j.rest}</> : item}</li>;
+            })}
+          </ul>
+          <div class="industry-card-links">
+            <a href={contactBase + "?interest=service"} class="industry-link">{l.service} <span aria-hidden="true">→</span></a>
+            <a href={prefix + "/services/"} class="industry-link">{industryLabels[locale].servicesLink} <span aria-hidden="true">→</span></a>
+          </div>
         </article>
       </div>
     </section>
 
-    <section class="industry-section">
+    <section id="access" class="industry-section journey-section">
       <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{l.accessTitle}</h2>
       <p class="industry-intro country-access reveal opacity-0" data-animation="slide-up">{t.access}</p>
       <p class="industry-intro reveal opacity-0" data-animation="slide-up">{l.accessNote}</p>

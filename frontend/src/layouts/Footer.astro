@@ -3,6 +3,8 @@ import LinkedIn from "@assets/LinkedIn.svg";
 import Instagram from "@assets/Instagram.svg";
 import LogoNegative from "@assets/icons/Logo_Moka_White.png";
 import { Image } from "astro:assets";
+import { countries, countrySlugs } from "../data/countries";
+import { industries, industrySlugs } from "../data/industries";
 
 const year = new Date().getFullYear();
 const path = Astro.url.pathname;
@@ -13,7 +15,14 @@ const localizedHref = (href: string) => currentLocale === "en" ? href : href ===
 const copy = {
   en: {
     home: "Home",
-    tech: "Our Technology",
+    platform: "Platform",
+    services: "Services",
+    company: "Company",
+    startHere: "Start here",
+    havePlant: "I have a plant",
+    knowNeed: "I know what I need",
+    industries: "Industries",
+    countries: "Countries",
     about: "About Us",
     insights: "Insights",
     contact: "Contact",
@@ -27,7 +36,14 @@ const copy = {
   },
   es: {
     home: "Inicio",
-    tech: "Nuestra tecnología",
+    platform: "Plataforma",
+    services: "Servicios",
+    company: "Empresa",
+    startHere: "Empieza aquí",
+    havePlant: "Tengo una planta",
+    knowNeed: "Sé lo que necesito",
+    industries: "Industrias",
+    countries: "Países",
     about: "Sobre nosotros",
     insights: "Insights",
     contact: "Contacto",
@@ -41,7 +57,14 @@ const copy = {
   },
   pt: {
     home: "Início",
-    tech: "Nossa tecnologia",
+    platform: "Plataforma",
+    services: "Serviços",
+    company: "Empresa",
+    startHere: "Comece aqui",
+    havePlant: "Tenho uma planta",
+    knowNeed: "Sei do que preciso",
+    industries: "Indústrias",
+    countries: "Países",
     about: "Sobre nós",
     insights: "Insights",
     contact: "Contato",
@@ -64,16 +87,35 @@ const copy = {
   <div class="relative flex flex-col md:flex-row justify-between items-start w-full px-4 sm:px-8 py-12 sm:py-16 gap-10">
 
     <!-- Brand + nav -->
-    <div class="flex items-start gap-10 sm:gap-14">
+    <div class="flex flex-col sm:flex-row items-start gap-8 sm:gap-14">
       <a href={localizedHref("/")} aria-label={copy.homeLabel}>
         <Image src={LogoNegative} alt="Moka Bio" class="w-10 sm:w-14 mt-1" loading="lazy" />
       </a>
-      <nav class="flex flex-col gap-4" aria-label={copy.navLabel}>
-        <a class="footer-link" href={localizedHref("/")}>{copy.home}</a>
-        <a class="footer-link" href={localizedHref("/our-technology")}>{copy.tech}</a>
-        <a class="footer-link" href={localizedHref("/about-us")}>{copy.about}</a>
-        <a class="footer-link" href={localizedHref("/insights")}>{copy.insights}</a>
-        <a class="footer-link" href={localizedHref("/contact-us")}>{copy.contact}</a>
+      <nav class="footer-columns" aria-label={copy.navLabel}>
+        <div class="footer-col">
+          <p class="footer-label">{copy.company}</p>
+          <a class="footer-link" href={localizedHref("/")}>{copy.home}</a>
+          <a class="footer-link" href={localizedHref("/platform")}>{copy.platform}</a>
+          <a class="footer-link" href={localizedHref("/services")}>{copy.services}</a>
+          <a class="footer-link" href={localizedHref("/about-us")}>{copy.about}</a>
+          <a class="footer-link" href={localizedHref("/insights")}>{copy.insights}</a>
+          <a class="footer-link" href={localizedHref("/contact-us")}>{copy.contact}</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-label">{copy.startHere}</p>
+          <a class="footer-link" href={localizedHref("/plant-potential")}>{copy.havePlant}</a>
+          <a class="footer-link" href={localizedHref("/find-your-plant")}>{copy.knowNeed}</a>
+        </div>
+        <div class="footer-col">
+          <p class="footer-label">{copy.industries}</p>
+          {industrySlugs.map((slug) => (
+            <a class="footer-link" href={localizedHref(`/industries/${slug}/`)}>{industries[slug][currentLocale].name}</a>
+          ))}
+          <p class="footer-label footer-label--spaced">{copy.countries}</p>
+          {countrySlugs.map((slug) => (
+            <a class="footer-link" href={localizedHref(`/countries/${slug}/`)}>{countries[slug][currentLocale].name}</a>
+          ))}
+        </div>
       </nav>
     </div>
 
@@ -119,6 +161,26 @@ const copy = {
 </footer>
 
 <style>
+  .footer-columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, auto));
+    gap: 2.5rem 3.5rem;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .footer-label--spaced {
+    margin-top: 1.25rem;
+  }
+
+  @media (max-width: 640px) {
+    .footer-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+  }
+
   .footer-link {
     font-family: Inter, sans-serif;
     font-size: 15px;

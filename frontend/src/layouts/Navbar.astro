@@ -17,9 +17,9 @@ const localizedPath = (locale: "en" | "es" | "pt") => {
 const currentLocale = isSpanish ? "es" : isPortuguese ? "pt" : "en";
 const navHref = (href: string) => currentLocale === "en" ? href : href === "/" ? `/${currentLocale}` : `/${currentLocale}${href}`;
 const navCopy = {
-  en: { home: "Home", tech: "Tech", about: "About", insights: "Insights", bookDemo: "Book a demo", bookDemoShort: "Book a demo", openMenu: "Open navigation menu" },
-  es: { home: "Inicio", tech: "Tech", about: "Nosotros", insights: "Insights", bookDemo: "Agendar demo", bookDemoShort: "Agendar demo", openMenu: "Abrir menú" },
-  pt: { home: "Início", tech: "Tech", about: "Sobre", insights: "Insights", bookDemo: "Agendar demo", bookDemoShort: "Agendar demo", openMenu: "Abrir menu" },
+  en: { home: "Home", platform: "Platform", services: "Services", about: "About", insights: "Insights", bookDemo: "Book a demo", bookDemoShort: "Book a demo", openMenu: "Open navigation menu" },
+  es: { home: "Inicio", platform: "Plataforma", services: "Servicios", about: "Nosotros", insights: "Insights", bookDemo: "Agendar demo", bookDemoShort: "Agendar demo", openMenu: "Abrir menú" },
+  pt: { home: "Início", platform: "Plataforma", services: "Serviços", about: "Sobre", insights: "Insights", bookDemo: "Agendar demo", bookDemoShort: "Agendar demo", openMenu: "Abrir menu" },
 }[currentLocale];
 ---
 
@@ -38,12 +38,13 @@ const navCopy = {
       <a href={navHref("/")} class="nav-link hover:text-freshgreen transition-colors text-pure text-[16px] font-semibold whitespace-nowrap">{navCopy.home}</a>
     </div>
 
-    <!-- Desktop right side — hidden on mobile, shown on md+ -->
-    <div class="hidden md:flex flex-row gap-4 sm:gap-8 items-center justify-end shrink-0">
+    <!-- Desktop right side — hidden below 900px -->
+    <div class="hidden min-[900px]:flex flex-row gap-4 sm:gap-8 items-center justify-end shrink-0">
       <div
         class="flex flex-row gap-4 sm:gap-8 text-pure text-[16px] font-semibold items-center whitespace-nowrap"
       >
-        <a href={navHref("/our-technology")} class="nav-link hover:text-freshgreen transition-colors">{navCopy.tech}</a>
+        <a href={navHref("/platform")} class="nav-link hover:text-freshgreen transition-colors">{navCopy.platform}</a>
+        <a href={navHref("/services")} class="nav-link hover:text-freshgreen transition-colors">{navCopy.services}</a>
         <a href={navHref("/about-us")} class="nav-link hover:text-freshgreen transition-colors">{navCopy.about}</a>
         <a href={navHref("/insights")} class="nav-link hover:text-freshgreen transition-colors">{navCopy.insights}</a>
       </div>
@@ -82,8 +83,8 @@ const navCopy = {
       </details>
     </div>
 
-    <!-- Mobile: always-visible demo button + hamburger (hidden md+) -->
-    <div class="flex items-center gap-2 md:hidden">
+    <!-- Mobile: always-visible demo button + hamburger (hidden from 900px) -->
+    <div class="flex items-center gap-2 min-[900px]:hidden">
     <a
       href={`${navHref("/contact-us")}?interest=demo`}
       class="mobile-header-cta no-underline"
@@ -110,7 +111,7 @@ const navCopy = {
   </nav>
 </div>
 
-<!-- Mobile full-screen overlay (only used on mobile, md:hidden equivalent via JS) -->
+<!-- Mobile full-screen overlay (only used on mobile, below 900px; the five-item row needs that width in Spanish) -->
 <div id="mobile-menu" class="mobile-menu" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="mobile-menu-inner">
 
@@ -128,7 +129,8 @@ const navCopy = {
 
     <nav class="mobile-nav" aria-label="Mobile navigation">
       <a href={navHref("/")} class="mobile-nav-link">{navCopy.home}</a>
-      <a href={navHref("/our-technology")} class="mobile-nav-link">{navCopy.tech}</a>
+      <a href={navHref("/platform")} class="mobile-nav-link">{navCopy.platform}</a>
+      <a href={navHref("/services")} class="mobile-nav-link">{navCopy.services}</a>
       <a href={navHref("/about-us")} class="mobile-nav-link">{navCopy.about}</a>
       <a href={navHref("/insights")} class="mobile-nav-link">{navCopy.insights}</a>
     </nav>

@@ -2,11 +2,18 @@
 import Brain from "@assets/Brain.svg";
 import { Image } from "astro:assets";
 
+type Part = "brain" | "capabilities" | "process";
+
 interface Props {
   locale?: "en" | "es" | "pt";
+  /** Which blocks to render: the Icaros brain, the Moka BDE capabilities, the project steps. */
+  parts?: Part[];
+  /** Render the project-steps label as the section's H2 (when the steps stand alone). */
+  processHeading?: boolean;
 }
 
-const { locale = "en" } = Astro.props;
+const { locale = "en", parts = ["brain", "capabilities", "process"], processHeading = false } = Astro.props;
+const show = (part: Part) => parts.includes(part);
 const process = {
   en: [
     { step: "01", kicker: "YOUR GOAL",       title: "Tell us what you need",        body: "A plant, or a need." },
@@ -94,11 +101,24 @@ const copy = {
 
 <div class="flex flex-col justify-center items-center w-full max-w-7xl mx-auto px-6 py-16 overflow-hidden bg-transparent">
   
-  <div class="w-full">
+  {show("brain") && (
+  <div class="w-full" id="icaros">
     {/* Versión Mobile */}
     <div class="reveal opacity-0 sm:hidden mb-12 text-center" data-animation="pop-in">
       <Image src={Brain} alt="" class="w-56 h-auto mx-auto" loading="lazy" />
       <p class="brain-name mt-4">Icaros</p>
+      <div class="brain-mobile-pair">
+        <div>
+          <h3 class="brain-side-title">{copy.analytical}</h3>
+          <p class="text-birch font-semibold text-lg">{copy.experimental}</p>
+          <p class="text-birch/75 text-sm leading-relaxed">{copy.experimentalText}</p>
+        </div>
+        <div>
+          <h3 class="brain-side-title">{copy.creative}</h3>
+          <p class="text-birch font-semibold text-lg">{copy.silico}</p>
+          <p class="text-birch/75 text-sm leading-relaxed">{copy.silicoText}</p>
+        </div>
+      </div>
     </div>
 
     {/* Desktop Grid */}
@@ -153,9 +173,11 @@ const copy = {
       </div>
     </div>
   </div>
+  )}
 
   {/* Capabilities */}
-  <div class="flex flex-col w-full gap-6 text-center items-center py-4 mt-12">
+  {show("capabilities") && (
+  <div id="capabilities" class="flex flex-col w-full gap-6 text-center items-center py-4 mt-12">
     <div class="reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.1s;">
       <p class="font-roboto font-medium text-[13px] leading-none tracking-[0.48em] uppercase text-freshgreen">
         {copy.kicker}
@@ -182,12 +204,14 @@ const copy = {
       ))}
     </div>
   </div>
+  )}
 
+  {show("process") && (<>
   {/* Connector → project steps */}
-  <div class="brain-connector" aria-hidden="true">
-    <div class="brain-connector-line"></div>
-    <div class="brain-connector-dot"></div>
-    <p class="brain-connector-label">{copy.connector}</p>
+  <div class="brain-connector" aria-hidden={processHeading ? undefined : "true"}>
+    <div class="brain-connector-line" aria-hidden="true"></div>
+    <div class="brain-connector-dot" aria-hidden="true"></div>
+    {processHeading ? <h2 class="brain-connector-label">{copy.connector}</h2> : <p class="brain-connector-label">{copy.connector}</p>}
   </div>
 
   {/* Diagrama de proceso */}
@@ -210,6 +234,7 @@ const copy = {
       </>
     ))}
   </div>
+  </>)}
 </div>
 
 <script>
@@ -228,6 +253,23 @@ const copy = {
 </script>
 
 <style>
+  .brain-mobile-pair {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    text-align: left;
+  }
+
+  .brain-mobile-pair > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem;
+    border-radius: 1.25rem;
+    border: 1px solid var(--moka-border-muted);
+    background: linear-gradient(145deg, rgba(19, 45, 37, 0.5), rgba(18, 18, 18, 0.4));
+  }
+
   /* ── Brain desktop grid ───────────────────────── */
   .brain-grid {
     grid-template-columns: minmax(0, 0.72fr) minmax(360px, 1.56fr) minmax(0, 0.72fr);

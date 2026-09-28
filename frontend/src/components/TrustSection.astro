@@ -1,9 +1,11 @@
 ---
 interface Props {
   locale?: "en" | "es" | "pt";
+  /** Pages with their own closing CTA (or first-person copy) hide the built-in one. */
+  showCta?: boolean;
 }
 
-const { locale = "en" } = Astro.props;
+const { locale = "en", showCta = true } = Astro.props;
 const contactBase = locale === "en" ? "/contact-us" : `/${locale}/contact-us`;
 
 const copy = {
@@ -61,13 +63,15 @@ const copy = {
       ))}
     </div>
 
+    {showCta && (
     <div class="trust-cta reveal opacity-0" data-animation="slide-up">
       <p class="trust-cta-title">{copy.ctaTitle}</p>
       <div class="trust-cta-actions">
-        <a href={`${contactBase}?interest=demo`} class="moka-demo-cta" data-analytics-event="book_demo_click" data-analytics-category="cta" data-analytics-label="tech_final">{copy.cta} <span aria-hidden="true">→</span></a>
-        <a href={`${contactBase}?interest=service`} class="trust-secondary" data-analytics-event="request_service_click" data-analytics-category="cta" data-analytics-label="tech_final">{copy.secondary} <span aria-hidden="true">→</span></a>
+        <a href={`${contactBase}?interest=demo`} class="moka-demo-cta" data-analytics-event="book_demo_click" data-analytics-category="cta" data-analytics-label="trust_final">{copy.cta} <span aria-hidden="true">→</span></a>
+        <a href={`${contactBase}?interest=service`} class="trust-secondary" data-analytics-event="request_service_click" data-analytics-category="cta" data-analytics-label="trust_final">{copy.secondary} <span aria-hidden="true">→</span></a>
       </div>
     </div>
+    )}
   </div>
 </section>
 

@@ -1,0 +1,677 @@
+---
+// /platform/ (EN, ES, PT): Moka BDE and Icaros. Built from the retired Tech page blocks
+// plus the product content that left the home.
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
+import BrainSection from "@components/BrainSection.astro";
+import CtaBand from "@components/CtaBand.astro";
+import PageBreadcrumb from "@components/PageBreadcrumb.astro";
+import ProductScreens from "@components/ProductScreens.astro";
+import ProofCard from "@components/ProofCard.astro";
+import TargetSection from "@components/TargetSection.astro";
+import TrustSection from "@components/TrustSection.astro";
+import "../styles/seo-landing.css";
+import { ogImageOr } from "../utils/publicAsset";
+
+interface Props {
+  locale: "en" | "es" | "pt";
+}
+
+const { locale } = Astro.props;
+const prefix = locale === "en" ? "" : `/${locale}`;
+const contactBase = `${prefix}/contact-us`;
+
+const copy = {
+  en: {
+    metaTitle: "Moka BDE and Icaros: Plant Bioactivity Platform | Moka Bio",
+    metaDescription: "Explore Icaros, predict bioactivity in plants with no prior studies, and assess IP and formulation in Moka BDE, the plant bioactivity platform.",
+    breadcrumb: "Platform",
+    kicker: "MOKA BDE · ICAROS",
+    title: "Bioactivity in plants no one has studied. Even without prior data.",
+    tagline: "Moka BDE is where you work. Icaros is everything we know about Latin American flora.",
+    demo: "Book a demo",
+    toServices: "Prefer we do it for you?",
+    predictTitle: "Why predict first",
+    predict: [
+      { title: "Predict before you experiment", body: "Bioactivity can now be anticipated before you set foot in the lab." },
+      { title: "Stop testing blind", body: "Before you spend on the lab, you already know which plants are worth it." },
+    ],
+    screensKicker: "MOKA BDE",
+    screensTitle: "All your discovery, in one place.",
+    researchKicker: "FOR RESEARCH TEAMS",
+    researchTitle: "Many candidate plants, a limited lab budget.",
+    researchBody: "You know how to research. We help you choose what to research first.",
+    researchIcaros: "Explore Icaros",
+    researchCapabilities: "See what Moka BDE can do",
+    researchAlt: "Scientist pipetting samples in a laboratory",
+    proofKicker: "TRACTION",
+    proofTitle: "Real science. Real progress.",
+    ctaTitle: "Your next plant is waiting.",
+    ctaService: "Request a service",
+    schemaDescription: "Bioactive discovery environment to explore Icaros, predict bioactivity in understudied plants, and assess IP and formulation.",
+    features: ["Icaros plant database", "Bioactivity prediction", "Mechanisms and targets", "Intellectual property analysis", "Formulation"],
+  },
+  es: {
+    metaTitle: "Plataforma de bioactividad Moka BDE e Icaros | Moka Bio",
+    metaDescription: "Explora Icaros, predice bioactividad en plantas sin estudios previos y evalúa PI y formulación en Moka BDE, la plataforma de bioactividad vegetal.",
+    breadcrumb: "Plataforma",
+    kicker: "MOKA BDE · ICAROS",
+    title: "Bioactividad en plantas que nadie ha estudiado. Incluso sin datos previos.",
+    tagline: "Moka BDE es donde trabajas. Icaros, todo lo que sabemos de la flora latinoamericana.",
+    demo: "Agendar demo",
+    toServices: "¿Prefieres que lo hagamos por ti?",
+    predictTitle: "Por qué predecir primero",
+    predict: [
+      { title: "Predecir antes de experimentar", body: "Hoy ya es posible anticipar bioactividad antes de pisar el laboratorio." },
+      { title: "Deja de ensayar a ciegas", body: "Antes de gastar en laboratorio, ya sabes qué plantas valen la pena." },
+    ],
+    screensKicker: "MOKA BDE",
+    screensTitle: "Todo tu descubrimiento, en un solo lugar.",
+    researchKicker: "PARA EQUIPOS DE INVESTIGACIÓN",
+    researchTitle: "Muchas plantas candidatas, un presupuesto de laboratorio limitado.",
+    researchBody: "Saben investigar. Les ayudamos a elegir qué investigar primero.",
+    researchIcaros: "Explorar Icaros",
+    researchCapabilities: "Ver qué se puede hacer con Moka BDE",
+    researchAlt: "Científica pipeteando muestras en un laboratorio",
+    proofKicker: "TRACCIÓN",
+    proofTitle: "Ciencia real. Progreso real.",
+    ctaTitle: "Tu próxima planta te está esperando.",
+    ctaService: "Solicitar servicio",
+    schemaDescription: "Entorno de descubrimiento de bioactivos para explorar Icaros, predecir bioactividad en plantas poco estudiadas y evaluar PI y formulación.",
+    features: ["Base de plantas Icaros", "Predicción de bioactividad", "Mecanismos y dianas", "Análisis de propiedad intelectual", "Formulación"],
+  },
+  pt: {
+    metaTitle: "Plataforma de bioatividade Moka BDE e Icaros | Moka Bio",
+    metaDescription: "Explore o Icaros, preveja bioatividade em plantas sem estudos anteriores e avalie PI e formulação no Moka BDE, a plataforma de bioatividade vegetal.",
+    breadcrumb: "Plataforma",
+    kicker: "MOKA BDE · ICAROS",
+    title: "Bioatividade em plantas que ninguém estudou. Mesmo sem dados prévios.",
+    tagline: "O Moka BDE é onde você trabalha. O Icaros, tudo o que sabemos sobre a flora latino-americana.",
+    demo: "Agendar demonstração",
+    toServices: "Prefere que façamos por você?",
+    predictTitle: "Por que prever primeiro",
+    predict: [
+      { title: "Prever antes de experimentar", body: "Hoje já é possível antecipar bioatividade antes de pisar no laboratório." },
+      { title: "Pare de testar às cegas", body: "Antes de gastar em laboratório, você já sabe quais plantas valem a pena." },
+    ],
+    screensKicker: "MOKA BDE",
+    screensTitle: "Toda a sua descoberta, em um só lugar.",
+    researchKicker: "PARA EQUIPES DE PESQUISA",
+    researchTitle: "Muitas plantas candidatas, um orçamento de laboratório limitado.",
+    researchBody: "Vocês sabem pesquisar. Ajudamos a escolher o que pesquisar primeiro.",
+    researchIcaros: "Explorar o Icaros",
+    researchCapabilities: "Ver o que o Moka BDE pode fazer",
+    researchAlt: "Cientista pipetando amostras em um laboratório",
+    proofKicker: "TRAÇÃO",
+    proofTitle: "Ciência real. Progresso real.",
+    ctaTitle: "Sua próxima planta está esperando.",
+    ctaService: "Solicitar serviço",
+    schemaDescription: "Ambiente de descoberta de bioativos para explorar o Icaros, prever bioatividade em plantas pouco estudadas e avaliar PI e formulação.",
+    features: ["Base de plantas Icaros", "Predição de bioatividade", "Mecanismos e alvos", "Análise de propriedade intelectual", "Formulação"],
+  },
+}[locale];
+
+// Same @id as the node that lived on the retired Tech page.
+const schema = [
+  {
+    "@type": "SoftwareApplication",
+    "@id": "https://moka.bio/#moka-bde",
+    name: "Moka BDE",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    description: copy.schemaDescription,
+    featureList: copy.features,
+    provider: { "@id": "https://moka.bio/#organization" },
+  },
+];
+---
+
+<BaseLayout
+  lang={locale}
+  breadcrumb={copy.breadcrumb}
+  schema={schema}
+  title={copy.metaTitle}
+  description={copy.metaDescription}
+  ogImage={ogImageOr("/og/og-platform.jpg")}
+>
+  <div class="tech-page relative flex flex-col items-center justify-between w-full bg-charcoal overflow-hidden">
+    <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-03.png" tone="strong" class="tech-botanical-focus" revealStart={-0.15} />
+    <PageBreadcrumb locale={locale} label={copy.breadcrumb} />
+    <div class="tech-biofield pointer-events-none fixed inset-0 z-0" aria-hidden="true">
+      <svg class="h-full w-full" viewBox="0 0 1440 2200" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <filter id="softGlow">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+          <symbol id="plant-node" viewBox="-18 -18 36 36">
+            <path d="M0 13 C-12 6 -13 -8 0 -15 C13 -8 12 6 0 13Z" />
+            <path d="M0 12 C0 4 0 -5 0 -14" />
+            <path d="M0 2 C-5 -2 -9 -4 -13 -5" />
+            <path d="M0 4 C5 0 9 -2 13 -3" />
+          </symbol>
+        </defs>
+        <g class="tech-graph">
+          <path class="tech-path trunk" pathLength="1" d="M720 120 C650 265 790 350 720 500 C650 650 790 785 718 945 C642 1128 800 1270 708 1460 C640 1605 770 1760 690 1910 C640 2025 625 2110 580 2240" />
+          <g class="generation generation-1">
+            <path class="tech-path branch" pathLength="1" d="M720 120 C575 130 450 175 330 270 M720 120 C890 130 1015 178 1140 285 M720 500 C545 485 410 560 255 690 M720 500 C910 475 1065 580 1220 710" />
+          </g>
+          <g class="generation generation-2">
+            <path class="tech-path branch" pathLength="1" d="M330 270 C260 250 200 285 145 355 M330 270 C420 235 500 260 575 330 M1140 285 C1220 250 1290 285 1345 365 M1140 285 C1050 245 970 270 890 345 M255 690 C170 670 110 725 70 810 M255 690 C345 640 430 660 520 745 M1220 710 C1310 690 1370 745 1415 830 M1220 710 C1135 650 1048 665 955 748" />
+          </g>
+          <g class="generation generation-3">
+            <path class="tech-path branch" pathLength="1" d="M718 945 C565 890 405 970 255 1090 M718 945 C875 880 1055 980 1210 1110 M708 1460 C520 1420 390 1535 230 1640 M708 1460 C875 1412 1060 1535 1240 1665" />
+            <path class="tech-path twig" pathLength="1" d="M255 1090 C165 1055 110 1125 75 1210 M255 1090 C350 1040 430 1070 505 1155 M1210 1110 C1305 1080 1370 1145 1415 1228 M1210 1110 C1115 1050 1035 1080 950 1160 M230 1640 C145 1610 95 1685 55 1775 M230 1640 C335 1590 420 1628 505 1710 M1240 1665 C1330 1635 1390 1700 1430 1785 M1240 1665 C1145 1610 1060 1640 970 1725" />
+          </g>
+          <g class="generation generation-4">
+            <path class="tech-path branch" pathLength="1" d="M690 1910 C540 1865 410 1950 315 2070 M690 1910 C860 1860 1010 1970 1135 2110 M580 2240 C490 2160 390 2180 300 2260 M580 2240 C690 2168 790 2195 900 2265" />
+            <path class="tech-path twig" pathLength="1" d="M315 2070 C240 2035 180 2075 130 2145 M315 2070 C400 2035 470 2072 540 2140 M1135 2110 C1225 2075 1290 2125 1360 2190 M1135 2110 C1045 2060 980 2105 910 2175" />
+          </g>
+        </g>
+        <g class="tech-leaf-nodes generation-0" filter="url(#softGlow)">
+          <use href="#plant-node" x="720" y="120" width="34" height="34" />
+        </g>
+        <g class="tech-leaf-nodes generation-1" filter="url(#softGlow)">
+          <use href="#plant-node" x="330" y="270" width="24" height="24" />
+          <use href="#plant-node" x="1140" y="285" width="24" height="24" />
+          <use href="#plant-node" x="720" y="500" width="30" height="30" />
+          <use href="#plant-node" x="255" y="690" width="24" height="24" />
+          <use href="#plant-node" x="1220" y="710" width="24" height="24" />
+        </g>
+        <g class="tech-leaf-nodes generation-2" filter="url(#softGlow)">
+          <use href="#plant-node" x="145" y="355" width="18" height="18" />
+          <use href="#plant-node" x="575" y="330" width="18" height="18" />
+          <use href="#plant-node" x="1345" y="365" width="18" height="18" />
+          <use href="#plant-node" x="890" y="345" width="18" height="18" />
+          <use href="#plant-node" x="70" y="810" width="18" height="18" />
+          <use href="#plant-node" x="520" y="745" width="18" height="18" />
+          <use href="#plant-node" x="1415" y="830" width="18" height="18" />
+          <use href="#plant-node" x="955" y="748" width="18" height="18" />
+          <use href="#plant-node" x="718" y="945" width="32" height="32" />
+        </g>
+        <g class="tech-leaf-nodes generation-3" filter="url(#softGlow)">
+          <use href="#plant-node" x="255" y="1090" width="22" height="22" />
+          <use href="#plant-node" x="1210" y="1110" width="22" height="22" />
+          <use href="#plant-node" x="708" y="1460" width="32" height="32" />
+          <use href="#plant-node" x="230" y="1640" width="22" height="22" />
+          <use href="#plant-node" x="1240" y="1665" width="22" height="22" />
+          <use href="#plant-node" x="75" y="1210" width="16" height="16" />
+          <use href="#plant-node" x="505" y="1155" width="16" height="16" />
+          <use href="#plant-node" x="1415" y="1228" width="16" height="16" />
+          <use href="#plant-node" x="950" y="1160" width="16" height="16" />
+        </g>
+        <g class="tech-leaf-nodes generation-4" filter="url(#softGlow)">
+          <use href="#plant-node" x="690" y="1910" width="30" height="30" />
+          <use href="#plant-node" x="315" y="2070" width="22" height="22" />
+          <use href="#plant-node" x="1135" y="2110" width="22" height="22" />
+          <use href="#plant-node" x="300" y="2260" width="18" height="18" />
+          <use href="#plant-node" x="900" y="2265" width="18" height="18" />
+          <use href="#plant-node" x="130" y="2145" width="16" height="16" />
+          <use href="#plant-node" x="540" y="2140" width="16" height="16" />
+          <use href="#plant-node" x="1360" y="2190" width="16" height="16" />
+          <use href="#plant-node" x="910" y="2175" width="16" height="16" />
+        </g>
+      </svg>
+    </div>
+    <div
+      class="relative z-10 overflow-hidden bg-transparent flex flex-col items-center justify-center py-20 w-full"
+    >
+      <div class="tech-silhouette-layer pointer-events-none absolute inset-0 z-[5] overflow-hidden" aria-hidden="true">
+        <div class="absolute left-3 top-24 hidden h-[78%] w-[30%] md:block">
+          <svg class="tech-silhouette float-a absolute left-[8%] top-[4%] w-20 lg:w-24" viewBox="0 0 80 80">
+            <path d="M34 10h12M38 10v18L22 56c-4 7 1 14 9 14h18c8 0 13-7 9-14L42 28V10" />
+            <path d="M29 50h22M31 58h18" />
+          </svg>
+          <svg class="tech-silhouette float-b absolute left-[44%] top-[22%] w-16 lg:w-20" viewBox="0 0 80 80">
+            <path d="M20 66h42M28 66V54h26v12M32 54l8-18 8 18" />
+            <path d="M28 24h24M34 24v12M46 24v12M25 18h30" />
+            <circle cx="40" cy="18" r="5" />
+          </svg>
+          <svg class="tech-silhouette float-c absolute left-[16%] top-[48%] w-16 lg:w-20" viewBox="0 0 80 80">
+            <path d="M28 14h24M34 14v18L22 58c-3 7 2 12 9 12h18c7 0 12-5 9-12L46 32V14" />
+            <path d="M30 50c7-4 13 4 20 0" />
+          </svg>
+          <svg class="tech-silhouette float-d absolute left-[58%] top-[68%] w-14 lg:w-16" viewBox="0 0 80 80">
+            <path d="M26 12h28M32 12v42a14 14 0 0 0 28 0V12" />
+            <path d="M32 44h28M32 54h28" />
+          </svg>
+        </div>
+
+        <div class="absolute right-3 top-24 hidden h-[78%] w-[30%] md:block">
+          <svg class="tech-silhouette float-c absolute right-[10%] top-[6%] w-20 lg:w-24" viewBox="0 0 80 80">
+            <rect x="22" y="22" width="36" height="36" rx="6" />
+            <path d="M30 12v10M40 12v10M50 12v10M30 58v10M40 58v10M50 58v10M12 30h10M12 40h10M12 50h10M58 30h10M58 40h10M58 50h10" />
+            <path d="M32 48V33l8 15 8-15v15" />
+          </svg>
+          <svg class="tech-silhouette float-a absolute right-[48%] top-[28%] w-16 lg:w-20" viewBox="0 0 80 80">
+            <circle cx="20" cy="40" r="5" />
+            <circle cx="40" cy="22" r="5" />
+            <circle cx="40" cy="58" r="5" />
+            <circle cx="60" cy="40" r="5" />
+            <path d="M25 38l10-12M25 42l10 12M45 24l10 12M45 56l10-12M40 27v26" />
+          </svg>
+          <svg class="tech-silhouette float-d absolute right-[18%] top-[52%] w-16 lg:w-20" viewBox="0 0 80 80">
+            <path d="M16 58h48M22 58V24h36v34" />
+            <path d="M30 48V36M40 48V28M50 48V40" />
+            <path d="M28 24l8-10h8l8 10" />
+          </svg>
+          <svg class="tech-silhouette float-b absolute right-[60%] top-[72%] w-14 lg:w-16" viewBox="0 0 80 80">
+            <path d="M18 54c14-22 30-22 44 0" />
+            <path d="M22 46c8-10 16-16 28-16M30 58c8-9 18-13 30-10" />
+            <circle cx="24" cy="46" r="4" />
+            <circle cx="50" cy="30" r="4" />
+            <circle cx="60" cy="48" r="4" />
+          </svg>
+        </div>
+      </div>
+      <div class="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 gap-5">
+        <p class="tech-page-kicker">{copy.kicker}</p>
+        <h1 class="tech-page-title">{copy.title}</h1>
+        <p class="tech-page-tagline">{copy.tagline}</p>
+        <div class="tech-page-ctas">
+          <a href={`${contactBase}?interest=demo`} class="moka-demo-cta" data-analytics-event="book_demo_click" data-analytics-category="cta" data-analytics-label="platform_hero">{copy.demo} <span aria-hidden="true">→</span></a>
+          <a href={`${prefix}/services/`} class="industry-secondary" data-analytics-event="click_view_services" data-analytics-category="cta" data-analytics-label="platform_hero">{copy.toServices} <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="tech-page-rule" aria-hidden="true"></div>
+      </div>
+      <BrainSection locale={locale} parts={["brain"]} />
+      <div class="platform-proof-species">
+        <ProofCard locale={locale} kind="species" />
+      </div>
+    </div>
+
+    <section class="industry-section relative z-10">
+      <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{copy.predictTitle}</h2>
+      <div class="industry-grid industry-grid--2">
+        {copy.predict.map((item, i) => (
+          <article class="industry-card reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${0.1 + i * 0.1}s;`}>
+            <span class="industry-index">0{i + 1}</span>
+            <h3 class="industry-card-title">{item.title}</h3>
+            <p class="industry-card-body">{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <div class="relative z-10 w-full">
+      <BrainSection locale={locale} parts={["capabilities"]} />
+    </div>
+
+    <section class="industry-section relative z-10">
+      <p class="industry-kicker reveal opacity-0" data-animation="slide-up">{copy.screensKicker}</p>
+      <h2 class="industry-h2 mt-4 reveal opacity-0" data-animation="slide-up">{copy.screensTitle}</h2>
+      <div class="platform-screens">
+        <ProductScreens locale={locale} />
+      </div>
+    </section>
+
+    <div class="relative z-10 w-full">
+      <TargetSection locale={locale} variant="links" heading="starting" />
+    </div>
+
+    <section id="research-teams" class="industry-section relative z-10 journey-section">
+      <div class="landing-split">
+        <div>
+          <p class="industry-kicker reveal opacity-0" data-animation="slide-up">{copy.researchKicker}</p>
+          <h2 class="industry-h2 mt-4 reveal opacity-0" data-animation="slide-up">{copy.researchTitle}</h2>
+          <p class="industry-intro journey-answer reveal opacity-0" data-animation="slide-up">{copy.researchBody}</p>
+          <div class="journey-links">
+            <a class="industry-link" href="#icaros">{copy.researchIcaros} <span aria-hidden="true">→</span></a>
+            <a class="industry-link" href="#capabilities">{copy.researchCapabilities} <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div class="landing-split-media reveal opacity-0" data-animation="pop-in">
+          <img src="/audience/academic.webp" alt={copy.researchAlt} width="800" height="800" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </section>
+
+    <div class="relative z-10 w-full">
+      <TrustSection locale={locale} showCta={false} />
+    </div>
+
+    <section class="industry-section relative z-10">
+      <p class="industry-kicker reveal opacity-0" data-animation="slide-up">{copy.proofKicker}</p>
+      <h2 class="industry-h2 mt-4 reveal opacity-0" data-animation="slide-up">{copy.proofTitle}</h2>
+      <div class="platform-proof">
+        <ProofCard locale={locale} kind="patent" />
+      </div>
+    </section>
+
+    <div class="relative z-10 w-full">
+      <CtaBand
+        title={copy.ctaTitle}
+        primary={{ label: copy.demo, href: `${contactBase}?interest=demo`, event: "book_demo_click" }}
+        secondary={{ label: copy.ctaService, href: `${prefix}/services/`, event: "click_view_services" }}
+        analyticsLabel="platform_final"
+      />
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const techPage = document.querySelector('.tech-page') as HTMLElement | null;
+
+  const updateTechProgress = () => {
+    if (!techPage) return;
+    const rect = techPage.getBoundingClientRect();
+    const scrollable = rect.height - window.innerHeight;
+    const progress = scrollable <= 0 ? 1 : Math.min(1, Math.max(0, -rect.top / scrollable));
+    techPage.style.setProperty('--tech-progress', progress.toString());
+    techPage.style.setProperty('--branch-1', Math.min(1, progress / 0.18).toString());
+    techPage.style.setProperty('--branch-2', Math.min(1, Math.max(0, (progress - 0.14) / 0.22)).toString());
+    techPage.style.setProperty('--branch-3', Math.min(1, Math.max(0, (progress - 0.34) / 0.28)).toString());
+    techPage.style.setProperty('--branch-4', Math.min(1, Math.max(0, (progress - 0.58) / 0.34)).toString());
+  };
+
+  updateTechProgress();
+  window.addEventListener('scroll', updateTechProgress, { passive: true });
+  window.addEventListener('resize', updateTechProgress);
+
+  // ── Consolidated IntersectionObserver for all .reveal elements ──
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const animation = entry.target.getAttribute('data-animation');
+          if (animation) entry.target.classList.add(`animate-${animation}`);
+          entry.target.classList.remove('opacity-0');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+  );
+
+  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+</script>
+
+<style>
+  .tech-biofield,
+  .tech-silhouette-layer {
+    display: none;
+  }
+
+  /* ── Page Header ─────────────────────────────── */
+  .tech-page-kicker {
+    font-family: Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.48em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+    animation: mokaReveal 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .tech-page-title {
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.9rem, 3.4vw, 3rem);
+    font-weight: 650;
+    line-height: 1;
+    color: var(--pure-color);
+    text-wrap: balance;
+    animation: mokaReveal 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+  }
+
+  .tech-page-tagline {
+    max-width: 540px;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    line-height: 1.7;
+    color: rgba(222, 222, 222, 0.62);
+    text-wrap: balance;
+    animation: mokaReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+  }
+
+  .tech-page-rule {
+    width: min(280px, 60%);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(110, 191, 126, 0.38), transparent);
+    margin-top: 0.5rem;
+    animation: mokaReveal 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.34s both;
+  }
+
+  @keyframes mokaReveal {
+    from { opacity: 0; transform: translateY(18px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tech-page-kicker,
+    .tech-page-title,
+    .tech-page-tagline,
+    .tech-page-rule {
+      animation-duration: 1ms;
+    }
+  }
+
+  /* ── Problem → Solution bridge ──────────────── */
+  .answer-bridge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 2rem;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .answer-bridge-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(110, 191, 126, 0.30));
+  }
+
+  .answer-bridge-line:last-child {
+    background: linear-gradient(90deg, rgba(110, 191, 126, 0.30), transparent);
+  }
+
+  .answer-bridge-pill {
+    flex-shrink: 0;
+    padding: 0.35rem 1.1rem;
+    border: 1px solid rgba(110, 191, 126, 0.30);
+    border-radius: 999px;
+    font-family: Roboto, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: rgba(110, 191, 126, 0.70);
+    background: rgba(19, 45, 37, 0.40);
+    backdrop-filter: blur(8px);
+  }
+
+  /* ── Existing styles ─────────────────────────── */
+  .tech-biofield {
+    opacity: 0.42;
+  }
+
+  .tech-page {
+    isolation: isolate;
+    background: var(--charcoal-color);
+  }
+
+  .tech-page::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(222, 222, 222, 0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(222, 222, 222, 0.014) 1px, transparent 1px);
+    background-size: 88px 88px;
+    mask-image: radial-gradient(circle at 62% 28%, black, transparent 68%);
+    opacity: 0.26;
+    pointer-events: none;
+  }
+
+  .tech-page::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(180deg, rgba(18, 18, 18, 0.18), rgba(18, 18, 18, 0.72) 100%);
+    pointer-events: none;
+  }
+
+  .tech-path {
+    fill: none;
+    stroke-dasharray: 1;
+    transition: stroke-dashoffset 80ms linear;
+  }
+
+  .tech-path.trunk {
+    stroke: rgba(110, 191, 126, 0.5);
+    stroke-width: 3;
+    stroke-dashoffset: calc(1 - var(--tech-progress, 0));
+    filter: drop-shadow(0 0 12px rgba(110, 191, 126, 0.22));
+  }
+
+  .tech-path.primary,
+  .tech-path.branch {
+    stroke: rgba(110, 191, 126, 0.46);
+    stroke-width: 3;
+    filter: drop-shadow(0 0 12px rgba(110, 191, 126, 0.22));
+  }
+
+  .tech-path.secondary {
+    stroke: rgba(86, 114, 99, 0.42);
+    stroke-width: 2;
+  }
+
+  .tech-path.tertiary {
+    stroke: rgba(222, 222, 222, 0.13);
+    stroke-width: 1.2;
+  }
+
+  .tech-path.twig {
+    stroke: rgba(86, 114, 99, 0.34);
+    stroke-width: 1.4;
+  }
+
+  .generation-1 .tech-path,
+  .tech-path.generation-1,
+  .generation-1.tech-leaf-nodes {
+    stroke-dashoffset: calc(1 - var(--branch-1, 0));
+    opacity: calc(0.08 + var(--branch-1, 0) * 0.84);
+  }
+
+  .generation-2 .tech-path,
+  .tech-path.generation-2,
+  .generation-2.tech-leaf-nodes {
+    stroke-dashoffset: calc(1 - var(--branch-2, 0));
+    opacity: calc(0.04 + var(--branch-2, 0) * 0.78);
+  }
+
+  .generation-3 .tech-path,
+  .tech-path.generation-3,
+  .generation-3.tech-leaf-nodes {
+    stroke-dashoffset: calc(1 - var(--branch-3, 0));
+    opacity: calc(0.03 + var(--branch-3, 0) * 0.72);
+  }
+
+  .generation-4 .tech-path,
+  .tech-path.generation-4,
+  .generation-4.tech-leaf-nodes {
+    stroke-dashoffset: calc(1 - var(--branch-4, 0));
+    opacity: calc(0.02 + var(--branch-4, 0) * 0.68);
+  }
+
+  .generation-0.tech-leaf-nodes {
+    opacity: 0.95;
+  }
+
+  .tech-leaf-nodes use {
+    fill: rgba(19, 45, 37, 0.58);
+    stroke: rgba(110, 191, 126, 0.48);
+    stroke-width: 1.6;
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: leafPulse 4.8s ease-in-out infinite;
+  }
+
+  .tech-leaf-nodes use:nth-child(3n) {
+    animation-delay: 0.8s;
+  }
+
+  .tech-leaf-nodes use:nth-child(4n) {
+    animation-delay: 1.6s;
+  }
+
+  #plant-node path:nth-child(n + 2) {
+    fill: none;
+    stroke: rgba(222, 222, 222, 0.22);
+    stroke-width: 1.2;
+  }
+
+  @keyframes leafPulse {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.08); }
+  }
+
+  .tech-silhouette {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.9);
+    stroke-width: 2.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.18;
+    mix-blend-mode: screen;
+    transform-origin: center;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.12));
+  }
+
+  .float-a { animation: techFloatA 8s ease-in-out infinite; }
+  .float-b { animation: techFloatB 10s ease-in-out infinite; }
+  .float-c { animation: techFloatC 9s ease-in-out infinite; }
+  .float-d { animation: techFloatD 11s ease-in-out infinite; }
+
+  @keyframes techFloatA {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(-4deg); opacity: 0.1; }
+    50% { transform: translate3d(12px, -18px, 0) rotate(5deg); opacity: 0.2; }
+  }
+
+  @keyframes techFloatB {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(6deg); opacity: 0.12; }
+    50% { transform: translate3d(-16px, 16px, 0) rotate(-6deg); opacity: 0.22; }
+  }
+
+  @keyframes techFloatC {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.1; }
+    50% { transform: translate3d(10px, 20px, 0) scale(1.08); opacity: 0.18; }
+  }
+
+  @keyframes techFloatD {
+    0%, 100% { transform: translate3d(0, 0, 0) rotate(-8deg) scale(0.96); opacity: 0.09; }
+    50% { transform: translate3d(-10px, -14px, 0) rotate(7deg) scale(1.06); opacity: 0.18; }
+  }
+
+  .tech-page-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    animation: mokaReveal 1.25s cubic-bezier(0.16, 1, 0.3, 1) 0.28s both;
+  }
+
+  .tech-page-title {
+    max-width: 900px;
+  }
+
+  .platform-proof-species,
+  .platform-proof {
+    width: min(100% - 2.5rem, 420px);
+    margin: 0 auto;
+  }
+
+  .platform-proof {
+    margin: 2rem 0 0;
+  }
+
+  .platform-screens {
+    margin-top: 2.5rem;
+  }
+</style>

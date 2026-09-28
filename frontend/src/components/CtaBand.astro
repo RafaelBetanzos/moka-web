@@ -1,0 +1,116 @@
+---
+// Closing call to action for the new pages. Same look as the TrustSection CTA.
+interface Link {
+  label: string;
+  href: string;
+  event?: string;
+}
+
+interface Props {
+  title: string;
+  primary: Link;
+  secondary?: Link;
+  /** Optional line under the buttons, e.g. a link to the other journey. */
+  aside?: Link;
+  analyticsLabel: string;
+}
+
+const { title, primary, secondary, aside, analyticsLabel } = Astro.props;
+---
+
+<section class="cta-band">
+  <div class="cta-band-inner reveal opacity-0" data-animation="slide-up">
+    <h2 class="cta-band-title">{title}</h2>
+    <div class="cta-band-actions">
+      <a href={primary.href} class="moka-demo-cta" data-analytics-event={primary.event ?? "cta_click"} data-analytics-category="cta" data-analytics-label={analyticsLabel}>{primary.label} <span aria-hidden="true">→</span></a>
+      {secondary && (
+        <a href={secondary.href} class="cta-band-secondary" data-analytics-event={secondary.event ?? "cta_click"} data-analytics-category="cta" data-analytics-label={analyticsLabel}>{secondary.label} <span aria-hidden="true">→</span></a>
+      )}
+    </div>
+    {aside && (
+      <a href={aside.href} class="cta-band-aside" data-analytics-event={aside.event ?? "journey_click"} data-analytics-category="cta" data-analytics-label={analyticsLabel}>{aside.label} <span aria-hidden="true">→</span></a>
+    )}
+  </div>
+</section>
+
+<style>
+  .cta-band {
+    position: relative;
+    z-index: 10;
+    width: min(100% - 2.5rem, 1180px);
+    margin: 0 auto;
+    padding: 1rem 0 5rem;
+  }
+
+  .cta-band-inner {
+    padding: 2.5rem 2rem;
+    border-radius: 2rem;
+    border: 1px solid rgba(110, 191, 126, 0.3);
+    background: radial-gradient(circle at 50% 0%, rgba(110, 191, 126, 0.16), transparent 60%), rgba(19, 45, 37, 0.6);
+    text-align: center;
+  }
+
+  .cta-band-title {
+    max-width: 680px;
+    margin: 0 auto;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.4rem, 2.4vw, 2rem);
+    font-weight: 650;
+    line-height: 1.2;
+    color: var(--pure-color);
+    text-wrap: balance;
+  }
+
+  .cta-band-actions {
+    margin-top: 1.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .cta-band-secondary {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    border: 1px solid rgba(222, 222, 222, 0.3);
+    color: var(--pure-color);
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: border-color 200ms ease, background 200ms ease;
+  }
+
+  .cta-band-secondary:hover,
+  .cta-band-secondary:focus-visible {
+    border-color: var(--fresh-green-color);
+    background: rgba(110, 191, 126, 0.12);
+  }
+
+  .cta-band-aside {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-family: Inter, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--fresh-green-color);
+    text-decoration: none;
+  }
+
+  .cta-band-aside:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  @media (min-width: 640px) {
+    .cta-band { padding-bottom: 6rem; }
+  }
+
+  @media (max-width: 640px) {
+    .cta-band-inner { padding: 2rem 1.25rem; }
+  }
+</style>

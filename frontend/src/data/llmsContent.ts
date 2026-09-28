@@ -8,7 +8,10 @@ export const summary =
 
 const pageNames: Record<string, string> = {
   "/": "Home: what Moka does, who it is for, and how to work with Moka",
-  "/our-technology/": "Technology: Icaros, Moka BDE capabilities, plant push and market pull projects",
+  "/platform/": "Platform: Moka BDE and the Icaros plant database, capabilities and product screens",
+  "/services/": "Services: plant bioactivity R&D, from a plant or a need to extract, fraction, or molecule",
+  "/plant-potential/": "Start with a plant: what a plant with little or no science behind it could be worth",
+  "/find-your-plant/": "Start with a need: finding the plant behind a new active",
   "/contact-us/": "Contact: book a Moka BDE demo or request an R&D service",
   "/industries/nutraceuticals/": "Nutraceuticals: new functional ingredients from understudied plants",
   "/industries/dermocosmetics/": "Dermocosmetics: botanical actives with evidence and traceable origin",

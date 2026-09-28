@@ -31,10 +31,11 @@ export const industryBotanical: Record<IndustrySlug, string> = {
 export const industryLabels: Record<Locale, {
   kicker: string; demo: string; service: string; platformTitle: string; serviceTitle: string; doTitle: string;
   questionsTitle: string; questionsIntro: string; researchTitle: string; faqTitle: string; othersTitle: string; seeMore: string;
+  countriesTitle: string; platformLink: string; servicesLink: string; plantPush: string; marketPull: string;
 }> = {
-  en: { kicker: "INDUSTRIES", demo: "Book a demo", service: "Request a service", platformTitle: "With the platform", serviceTitle: "With a service", doTitle: "What you can do with Moka", questionsTitle: "Questions you can bring us", questionsIntro: "Every project starts with a question. These are the kind we hear.", researchTitle: "Related research", faqTitle: "Frequently asked questions", othersTitle: "Other industries", seeMore: "See more" },
-  es: { kicker: "INDUSTRIAS", demo: "Agendar demo", service: "Solicitar servicio", platformTitle: "Con la plataforma", serviceTitle: "Con un servicio", doTitle: "Qué puedes hacer con Moka", questionsTitle: "Preguntas que puedes traernos", questionsIntro: "Todo proyecto empieza con una pregunta. Estas son del tipo que escuchamos.", researchTitle: "Investigación relacionada", faqTitle: "Preguntas frecuentes", othersTitle: "Otras industrias", seeMore: "Ver más" },
-  pt: { kicker: "INDÚSTRIAS", demo: "Agendar demonstração", service: "Solicitar serviço", platformTitle: "Com a plataforma", serviceTitle: "Com um serviço", doTitle: "O que você pode fazer com a Moka", questionsTitle: "Perguntas que você pode nos trazer", questionsIntro: "Todo projeto começa com uma pergunta. Estas são do tipo que ouvimos.", researchTitle: "Pesquisa relacionada", faqTitle: "Perguntas frequentes", othersTitle: "Outras indústrias", seeMore: "Ver mais" },
+  en: { kicker: "INDUSTRIES", demo: "Book a demo", service: "Request a service", platformTitle: "With the platform", serviceTitle: "With a service", doTitle: "What you can do with Moka", questionsTitle: "Questions you can bring us", questionsIntro: "Every project starts with a question. These are the kind we hear.", researchTitle: "Related research", faqTitle: "Frequently asked questions", othersTitle: "Other industries", seeMore: "See more", countriesTitle: "By country", platformLink: "See the platform", servicesLink: "How a project works", plantPush: "I have a plant", marketPull: "I know what I need" },
+  es: { kicker: "INDUSTRIAS", demo: "Agendar demo", service: "Solicitar servicio", platformTitle: "Con la plataforma", serviceTitle: "Con un servicio", doTitle: "Qué puedes hacer con Moka", questionsTitle: "Preguntas que puedes traernos", questionsIntro: "Todo proyecto empieza con una pregunta. Estas son del tipo que escuchamos.", researchTitle: "Investigación relacionada", faqTitle: "Preguntas frecuentes", othersTitle: "Otras industrias", seeMore: "Ver más", countriesTitle: "Por país", platformLink: "Ver la plataforma", servicesLink: "Cómo funciona un proyecto", plantPush: "Tengo una planta", marketPull: "Sé lo que necesito" },
+  pt: { kicker: "INDÚSTRIAS", demo: "Agendar demonstração", service: "Solicitar serviço", platformTitle: "Com a plataforma", serviceTitle: "Com um serviço", doTitle: "O que você pode fazer com a Moka", questionsTitle: "Perguntas que você pode nos trazer", questionsIntro: "Todo projeto começa com uma pergunta. Estas são do tipo que ouvimos.", researchTitle: "Pesquisa relacionada", faqTitle: "Perguntas frequentes", othersTitle: "Outras indústrias", seeMore: "Ver mais", countriesTitle: "Por país", platformLink: "Ver a plataforma", servicesLink: "Como funciona um projeto", plantPush: "Tenho uma planta", marketPull: "Sei do que preciso" },
 };
 
 export const industries: Record<IndustrySlug, Record<Locale, IndustryCopy>> = {
@@ -304,4 +305,18 @@ export const industries: Record<IndustrySlug, Record<Locale, IndustryCopy>> = {
       ],
     },
   },
+};
+
+// Service bullets start with "Plant push:" or "Market pull:". Industry and country pages show that
+// prefix as a link to the matching journey page, with its visible label.
+export const journeyBullet = (item: string, locale: Locale) => {
+  const match = item.match(/^(Plant push|Market pull):\s*(.*)$/);
+  if (!match) return null;
+  const prefix = locale === "en" ? "" : `/${locale}`;
+  const push = match[1] === "Plant push";
+  return {
+    label: push ? industryLabels[locale].plantPush : industryLabels[locale].marketPull,
+    href: `${prefix}${push ? "/plant-potential/" : "/find-your-plant/"}`,
+    rest: match[2],
+  };
 };
