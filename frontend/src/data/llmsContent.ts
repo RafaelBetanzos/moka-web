@@ -63,14 +63,14 @@ export const audience = `- Entrepreneurs and innovators with a plant or a produc
 export const proof = `- 30,000+ species indexed in Icaros.
 - Patent pending: a non-provisional patent application has been filed for an immunomodulator candidate identified through Moka's discovery pipeline.`;
 
-export const context = `- Only about 6% of described plant species have been studied pharmacologically, and about 15% phytochemically (Atanasov et al., Biotechnology Advances, 2015).
-- The Americas hold 33% of the world's known vascular plant species: 124,993 species (Ulloa Ulloa et al., Science, 2017).
-- South America alone holds more than 40% of Earth's biodiversity (UNDP, Latin America and the Caribbean: A Biodiversity Superpower, 2010).
-- Mexico hosts 10–12% of the world's known species (CONABIO); Brazil 15–20% of the planet's biological diversity (UNEP); Peru about 25,000 plant species, 10% of the world total (MINAM); Argentina about 10,000 native vascular plant species (CONICET).
-- The Nagoya Protocol requires sharing the benefits of genetic resources; the 2024 WIPO treaty on genetic resources will require disclosing their origin in patent applications once 15 countries ratify it.`;
+export const context = `- An estimated ~6% of plant species have been systematically investigated pharmacologically and ~15% phytochemically; a global estimate (Atanasov et al., Biotechnology Advances, 2015, https://doi.org/10.1016/j.biotechadv.2015.08.001).
+- About 1 in 3 of the world's known vascular plant species are native to the Americas (Ulloa Ulloa et al., Science, 2017, https://doi.org/10.1126/science.aao0398).
+- About 45% of flowering plant species may be threatened with extinction, according to a global model estimate (Bachman et al., New Phytologist, 2024, https://doi.org/10.1111/nph.19592).
+- Mexico hosts 10–12% of the world's known species (CONABIO); Brazil about 15% of the world's species (MMA); about 10,000 vascular plant species grow in Argentina, about 2,000 of them endemic (CONICET, 2013).
+- Under the Nagoya Protocol, benefits from using genetic resources must be shared fairly with the providing country, on mutually agreed terms.
+- A WIPO treaty adopted in 2024 would require patent applicants to disclose the origin of genetic resources, once it enters into force.`;
 
-export const trust = `- Clients' data, plants, and project results are confidential.
-- Conditions on data, results, and intellectual property are agreed with each client by contract.
+export const trust = `- Data, results and IP are governed by a written agreement for each project.
 - Every plant's origin is documented and traceable together with the communities.`;
 
 export const terms = `Spanish: bioactividad en plantas latinoamericanas, descubrimiento de bioactivos, ingredientes botánicos, I+D de bioactivos, plantas poco estudiadas.

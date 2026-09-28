@@ -9,10 +9,9 @@ const contactBase = locale === "en" ? "/contact-us" : `/${locale}/contact-us`;
 const copy = {
   en: {
     kicker: "TRUST",
-    title: "What you tell us stays between us.",
+    title: "Clear terms, in writing.",
     items: [
-      { title: "Confidential", body: "Your data, your plants, and your results stay within your project." },
-      { title: "By contract", body: "Data, results, and IP are agreed with you, in writing." },
+      { title: "By contract", body: "Data, results and IP are governed by a written agreement for each project." },
       { title: "Traceable origin", body: "Every plant traceable together with the communities." },
     ],
     ctaTitle: "Your next plant is waiting.",
@@ -21,10 +20,9 @@ const copy = {
   },
   es: {
     kicker: "CONFIANZA",
-    title: "Lo que nos cuentas, queda entre nosotros.",
+    title: "Condiciones claras, por escrito.",
     items: [
-      { title: "Confidencial", body: "Tus datos, tus plantas y tus resultados no salen de tu proyecto." },
-      { title: "Por contrato", body: "Datos, resultados y PI se acuerdan contigo, por escrito." },
+      { title: "Por contrato", body: "Los datos, los resultados y la PI se rigen por un acuerdo escrito para cada proyecto." },
       { title: "Origen trazable", body: "Cada planta trazable junto con las comunidades." },
     ],
     ctaTitle: "Tu próxima planta te está esperando.",
@@ -33,10 +31,9 @@ const copy = {
   },
   pt: {
     kicker: "CONFIANÇA",
-    title: "O que você nos conta fica entre nós.",
+    title: "Condições claras, por escrito.",
     items: [
-      { title: "Confidencial", body: "Seus dados, suas plantas e seus resultados não saem do seu projeto." },
-      { title: "Por contrato", body: "Dados, resultados e PI são acordados com você, por escrito." },
+      { title: "Por contrato", body: "Dados, resultados e PI são regidos por um acordo escrito para cada projeto." },
       { title: "Origem rastreável", body: "Cada planta rastreável junto com as comunidades." },
     ],
     ctaTitle: "Sua próxima planta está esperando.",
@@ -112,7 +109,7 @@ const copy = {
   .trust-grid {
     margin-top: 2.75rem;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
   }
 

@@ -5,81 +5,42 @@ import { Image } from "astro:assets";
 const dataCopy = {
   en: {
     kicker: "THE PROBLEM",
-    subheadline: "Most Latin American plants have never been studied.",
-    hook: "That is where your next ingredient is.",
-    intro: "While the industry recycles the same extracts, one of the most biodiverse regions on Earth remains almost unexplored.",
+    subheadline: "What is not known is not valued. And what is not valued is lost.",
+    intro: "Only a small share of the world's plant species has ever been systematically studied for its chemistry or pharmacology. Without that knowledge, a plant has no recognized value, and it can disappear before anyone learns what it could do.",
+    hook: "Moka exists to change that, starting with Latin American plants.",
     pills: ["Bioactivity prioritization", "Molecular indexing", "IP intelligence"],
     cta: "Our Technology",
-    global: "Flora of the Americas",
-    globalStat: "33%",
-    globalBadge: "124,993 SPECIES",
-    globalDesc: "Of the world's known vascular plant species grow in the Americas.",
-    globalNote: "Plant library",
-    globalSource: "Source: Ulloa Ulloa et al., Science (2017)",
-    natural: "Studied Plants",
-    naturalStat: "6%",
-    naturalBadge: "UNEXPLORED",
-    naturalDesc: "Of described plants have been studied pharmacologically, and only 15% chemically. The rest are still waiting.",
-    naturalNote: "Understudied opportunity",
-    naturalSource: "Source: Atanasov et al., Biotechnology Advances (2015)",
-    unexplored: "Latin American Biodiversity",
-    unexploredStat: "40%+",
-    unexploredBadge: "GLOBAL BIODIVERSITY",
-    unexploredDesc: "Of Earth's biodiversity is found in South America alone.",
-    unexploredNote: "Biodiversity hotspot",
-    unexploredSource: "Source: UNDP, Latin America and the Caribbean: A Biodiversity Superpower (2010)",
+    stats: [
+      { label: "Studied plants", value: "~6% · ~15%", desc: "of plant species estimated to have been systematically investigated pharmacologically (~6%) and phytochemically (~15%). A global estimate.", source: "Source: Atanasov et al., Biotechnology Advances (2015)", href: "https://doi.org/10.1016/j.biotechadv.2015.08.001" },
+      { label: "Flora of the Americas", prefix: "About", value: "1 in 3", desc: "of the world's known vascular plant species are native to the Americas.", source: "Source: Ulloa Ulloa et al., Science (2017)", href: "https://doi.org/10.1126/science.aao0398" },
+      { label: "Extinction risk", value: "~45%", desc: "of flowering plant species may be threatened with extinction, according to a global model estimate.", source: "Source: Bachman et al., New Phytologist (2024)", href: "https://doi.org/10.1111/nph.19592" },
+    ],
   },
   es: {
     kicker: "EL PROBLEMA",
-    subheadline: "La mayoría de las plantas latinoamericanas nunca se ha estudiado.",
-    hook: "Ahí está tu próximo ingrediente.",
-    intro: "Mientras la industria recicla los mismos extractos, una de las regiones más biodiversas del planeta sigue casi sin explorar.",
+    subheadline: "Lo que no se conoce no se valora. Y lo que no se valora se pierde.",
+    intro: "Solo una pequeña parte de las especies de plantas del mundo se ha estudiado de forma sistemática por su química o su farmacología. Sin ese conocimiento, una planta no tiene un valor reconocido, y puede desaparecer antes de que alguien sepa lo que podría hacer.",
+    hook: "Moka existe para cambiar eso, empezando por las plantas latinoamericanas.",
     pills: ["Priorización de bioactividad", "Indexación molecular", "Inteligencia de PI"],
     cta: "Nuestra tecnología",
-    global: "Flora de las Américas",
-    globalStat: "33%",
-    globalBadge: "124,993 ESPECIES",
-    globalDesc: "De las especies de plantas vasculares conocidas en el mundo crecen en las Américas.",
-    globalNote: "Biblioteca vegetal",
-    globalSource: "Fuente: Ulloa Ulloa et al., Science (2017)",
-    natural: "Plantas estudiadas",
-    naturalStat: "6%",
-    naturalBadge: "SIN EXPLORAR",
-    naturalDesc: "De las plantas descritas se ha estudiado farmacológicamente, y solo el 15% químicamente. El resto sigue esperando.",
-    naturalNote: "Oportunidad poco estudiada",
-    naturalSource: "Fuente: Atanasov et al., Biotechnology Advances (2015)",
-    unexplored: "Biodiversidad latinoamericana",
-    unexploredStat: "40%+",
-    unexploredBadge: "BIODIVERSIDAD GLOBAL",
-    unexploredDesc: "De la biodiversidad del planeta se encuentra solo en Sudamérica.",
-    unexploredNote: "Hotspot de biodiversidad",
-    unexploredSource: "Fuente: PNUD, América Latina y el Caribe: una superpotencia de biodiversidad (2010)",
+    stats: [
+      { label: "Plantas estudiadas", value: "~6% · ~15%", desc: "de las especies de plantas, según estimaciones, se han investigado de forma sistemática en lo farmacológico (~6%) y en lo fitoquímico (~15%). Una estimación global.", source: "Fuente: Atanasov et al., Biotechnology Advances (2015)", href: "https://doi.org/10.1016/j.biotechadv.2015.08.001" },
+      { label: "Flora de las Américas", prefix: "Cerca de", value: "1 de cada 3", desc: "especies de plantas vasculares conocidas en el mundo es nativa de las Américas.", source: "Fuente: Ulloa Ulloa et al., Science (2017)", href: "https://doi.org/10.1126/science.aao0398" },
+      { label: "Riesgo de extinción", value: "~45%", desc: "de las especies de plantas con flor podrían estar amenazadas de extinción, según una estimación global basada en modelos.", source: "Fuente: Bachman et al., New Phytologist (2024)", href: "https://doi.org/10.1111/nph.19592" },
+    ],
   },
   pt: {
     kicker: "O PROBLEMA",
-    subheadline: "A maioria das plantas latino-americanas nunca foi estudada.",
-    hook: "É ali que está seu próximo ingrediente.",
-    intro: "Enquanto a indústria recicla os mesmos extratos, uma das regiões mais biodiversas do planeta segue quase inexplorada.",
+    subheadline: "O que não se conhece não se valoriza. E o que não se valoriza se perde.",
+    intro: "Só uma pequena parte das espécies de plantas do mundo foi estudada de forma sistemática quanto à sua química ou farmacologia. Sem esse conhecimento, uma planta não tem valor reconhecido, e pode desaparecer antes que alguém descubra o que ela poderia fazer.",
+    hook: "A Moka existe para mudar isso, começando pelas plantas da América Latina.",
     pills: ["Priorização de bioatividade", "Indexação molecular", "Inteligência de PI"],
     cta: "Nossa tecnologia",
-    global: "Flora das Américas",
-    globalStat: "33%",
-    globalBadge: "124.993 ESPÉCIES",
-    globalDesc: "Das espécies de plantas vasculares conhecidas no mundo crescem nas Américas.",
-    globalNote: "Biblioteca vegetal",
-    globalSource: "Fonte: Ulloa Ulloa et al., Science (2017)",
-    natural: "Plantas estudadas",
-    naturalStat: "6%",
-    naturalBadge: "INEXPLORADO",
-    naturalDesc: "Das plantas descritas foram estudadas farmacologicamente, e só 15% quimicamente. O restante segue esperando.",
-    naturalNote: "Oportunidade pouco estudada",
-    naturalSource: "Fonte: Atanasov et al., Biotechnology Advances (2015)",
-    unexplored: "Biodiversidade latino-americana",
-    unexploredStat: "40%+",
-    unexploredBadge: "BIODIVERSIDADE GLOBAL",
-    unexploredDesc: "Da biodiversidade do planeta está só na América do Sul.",
-    unexploredNote: "Hotspot de biodiversidade",
-    unexploredSource: "Fonte: PNUD, América Latina e Caribe: uma superpotência de biodiversidade (2010)",
+    stats: [
+      { label: "Plantas estudadas", value: "~6% · ~15%", desc: "das espécies de plantas, segundo estimativas, foram investigadas de forma sistemática do ponto de vista farmacológico (~6%) e fitoquímico (~15%). Uma estimativa global.", source: "Fonte: Atanasov et al., Biotechnology Advances (2015)", href: "https://doi.org/10.1016/j.biotechadv.2015.08.001" },
+      { label: "Flora das Américas", prefix: "Cerca de", value: "1 em cada 3", desc: "espécies de plantas vasculares conhecidas no mundo é nativa das Américas.", source: "Fonte: Ulloa Ulloa et al., Science (2017)", href: "https://doi.org/10.1126/science.aao0398" },
+      { label: "Risco de extinção", value: "~45%", desc: "das espécies de plantas com flor podem estar ameaçadas de extinção, segundo uma estimativa global baseada em modelos.", source: "Fonte: Bachman et al., New Phytologist (2024)", href: "https://doi.org/10.1111/nph.19592" },
+    ],
   },
 };
 
@@ -105,7 +66,6 @@ const localePrefix = locale === "en" ? "" : `/${locale}`;
         </p>
         <div class="mt-5">
           <h2 class="font-inter text-[clamp(1.9rem,3.4vw,3rem)] font-semibold leading-[1.05] text-pure">{t.subheadline}</h2>
-          <p class="mt-4 font-inter text-[22px] font-semibold leading-snug text-freshgreen sm:text-[28px]">{t.hook}</p>
         </div>
       </div>
 
@@ -113,6 +73,7 @@ const localePrefix = locale === "en" ? "" : `/${locale}`;
         <p class="max-w-xl text-[18px] leading-relaxed text-birch/72 sm:text-[20px]">
           {t.intro}
         </p>
+        <p class="mt-5 max-w-xl font-inter text-[20px] font-semibold leading-snug text-freshgreen sm:text-[24px]">{t.hook}</p>
       </div>
 
       <div class="reveal opacity-0 mt-8 flex flex-wrap gap-3" data-animation="slide-in" style="transition-delay: 0.45s;">
@@ -139,44 +100,24 @@ const localePrefix = locale === "en" ? "" : `/${locale}`;
 
     <div class="grid gap-4 font-inter">
       <div class="grid gap-4 sm:grid-cols-2">
-        <article class="data-card reveal opacity-0 rounded-[1.5rem] border border-freshgreen/24 bg-gradient-to-br from-deepforest/88 via-charcoal/72 to-charcoal/88 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl sm:col-span-2" data-animation="pop-in" style="transition-delay: 0.18s;">
-          <p class="text-[13px] font-semibold uppercase tracking-[0.32em] text-birch/70">{t.natural}</p>
-          <div class="mt-6 flex flex-wrap items-end gap-3">
-            <p class="text-[72px] font-semibold leading-none text-freshgreen sm:text-[96px]">{t.naturalStat}</p>
-            <span class="mb-2 rounded-full border border-freshgreen/30 px-3 py-1 text-[13px] font-semibold text-freshgreen">{t.naturalBadge}</span>
-          </div>
-          <p class="mt-5 text-[15px] leading-relaxed text-birch/74">
-            {t.naturalDesc}
-          </p>
-          <p class="mt-6 text-[13px] font-semibold uppercase tracking-[0.28em] text-sage/90">{t.naturalNote}</p>
-          <p class="data-card-source mt-3 text-[13px] leading-snug text-birch/50">{t.naturalSource}</p>
-        </article>
-
-        <article class="data-card reveal opacity-0 rounded-[1.5rem] border border-birch/10 bg-charcoal/52 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl" data-animation="pop-in" style="transition-delay: 0.25s;">
-          <p class="text-[13px] font-semibold uppercase tracking-[0.32em] text-birch/70">{t.global}</p>
-          <div class="mt-6 flex flex-wrap items-end gap-3">
-            <p class="text-[56px] font-semibold leading-none text-freshgreen sm:text-[64px]">{t.globalStat}</p>
-            <span class="mb-2 rounded-full border border-freshgreen/30 px-3 py-1 text-[13px] font-semibold text-freshgreen">{t.globalBadge}</span>
-          </div>
-          <p class="mt-5 text-[15px] leading-relaxed text-birch/74">
-            {t.globalDesc}
-          </p>
-          <p class="mt-6 text-[13px] font-semibold uppercase tracking-[0.28em] text-sage/90">{t.globalNote}</p>
-          <p class="data-card-source mt-3 text-[13px] leading-snug text-birch/50">{t.globalSource}</p>
-        </article>
-
-        <article class="data-card reveal opacity-0 rounded-[1.5rem] border border-freshgreen/18 bg-deepforest/62 p-6 shadow-2xl shadow-black/25 backdrop-blur-xl" data-animation="pop-in" style="transition-delay: 0.4s;">
-          <p class="text-[13px] font-semibold uppercase tracking-[0.32em] text-birch/70">{t.unexplored}</p>
-          <div class="mt-6 flex flex-wrap items-end gap-3">
-            <p class="text-[56px] font-semibold leading-none text-freshgreen sm:text-[64px]">{t.unexploredStat}</p>
-            <span class="mb-2 rounded-full border border-freshgreen/30 px-3 py-1 text-[13px] font-semibold text-freshgreen">{t.unexploredBadge}</span>
-          </div>
-          <p class="mt-5 text-[15px] leading-relaxed text-birch/74">
-            {t.unexploredDesc}
-          </p>
-          <p class="mt-6 text-[13px] font-semibold uppercase tracking-[0.28em] text-sage/90">{t.unexploredNote}</p>
-          <p class="data-card-source mt-3 text-[13px] leading-snug text-birch/50">{t.unexploredSource}</p>
-        </article>
+        {t.stats.map((stat, i) => (
+          <article
+            class:list={[
+              "data-card reveal opacity-0 rounded-[1.5rem] p-6 shadow-2xl shadow-black/25 backdrop-blur-xl",
+              i === 0 ? "border border-freshgreen/24 bg-gradient-to-br from-deepforest/88 via-charcoal/72 to-charcoal/88 sm:col-span-2" : i === 1 ? "border border-birch/10 bg-charcoal/52" : "border border-freshgreen/18 bg-deepforest/62",
+            ]}
+            data-animation="pop-in"
+            style={`transition-delay: ${[0.18, 0.25, 0.4][i]}s;`}
+          >
+            <p class="text-[13px] font-semibold uppercase tracking-[0.32em] text-birch/70">{stat.label}</p>
+            <div class="mt-6 flex flex-wrap items-end gap-x-3 gap-y-1">
+              {stat.prefix && <span class="mb-1 text-[20px] font-semibold leading-none text-freshgreen/80">{stat.prefix}</span>}
+              <p class:list={["font-semibold leading-none text-freshgreen", i === 0 ? "text-[44px] sm:text-[80px]" : stat.value.length > 6 ? "text-[40px] sm:text-[44px]" : "text-[56px] sm:text-[64px]"]}>{stat.value}</p>
+            </div>
+            <p class="mt-5 text-[15px] leading-relaxed text-birch/74">{stat.desc}</p>
+            <a class="data-card-source mt-6 inline-block text-[13px] leading-snug text-birch/60 underline decoration-birch/25 underline-offset-4 transition-colors hover:text-freshgreen" href={stat.href} target="_blank" rel="noopener">{stat.source} <span aria-hidden="true">↗</span></a>
+          </article>
+        ))}
       </div>
     </div>
   </div>

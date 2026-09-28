@@ -4,8 +4,9 @@ import Argentina from "@assets/icons/Argentina.svg";
 import Mexico from "@assets/icons/Mexico.svg";
 import Brazil from "@assets/icons/Brazil.svg";
 import Peru from "@assets/icons/Peru.svg";
-import Venezuela from "@assets/icons/Venezuela.svg";
 import { Image } from "astro:assets";
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 
 const { locale = "en" } = Astro.props;
 
@@ -16,16 +17,16 @@ const copy = {
     sub: "For the first time, three forces are converging to make what was once impossible not just achievable — but urgent.",
     forces: [
       { tag: "01 · AI", title: "Predict before you experiment", body: "Bioactivity can now be anticipated before you set foot in the lab." },
-      { tag: "02 · DEMAND", title: "Industry is looking for new actives", body: "Nutraceuticals, dermocosmetics, agro, and pharma need to stand out. Latin American flora has barely been touched." },
-      { tag: "03 · REGULATION", title: "Origin now has value", body: "Nagoya already requires sharing benefits; the WIPO treaty will require declaring origin in patents. Traceable becomes valuable." },
+      { tag: "02 · DEMAND", title: "Industry is looking for new actives", body: "Nutraceuticals, dermocosmetics, agro, and pharma need to stand out." },
+      { tag: "03 · REGULATION", title: "Origin now has value", body: "Under the Nagoya Protocol, benefits from using genetic resources must be shared fairly with the providing country, on mutually agreed terms. A WIPO treaty adopted in 2024 would require patent applicants to disclose the origin of genetic resources, once it enters into force." },
     ],
     closing: "Moka is built for this window.",
     flags: {
       mexico: { name: "Mexico", stat: "10–12%", desc: "of the world's known species live in Mexico (CONABIO)." },
-      argentina: { name: "Argentina", stat: "~10,000", desc: "native vascular plant species, about 2,000 of them endemic (CONICET)." },
-      brazil: { name: "Brazil", stat: "15–20%", desc: "of the planet's biological diversity is found in Brazil (UNEP)." },
-      peru: { name: "Peru", stat: "25,000", desc: "plant species, 10% of the world total; about 1,400 have medicinal uses (MINAM)." },
-      venezuela: { name: "Venezuela", stat: "1 of 17", desc: "megadiverse countries on Earth." },
+      argentina: { name: "Argentina", stat: "~10,000", desc: "vascular plant species grow in Argentina, about 2,000 of them endemic (CONICET, 2013)." },
+      brazil: { name: "Brazil", stat: "~15%", desc: "of the world's species (MMA)." },
+      peru: { name: "Peru" },
+      colombia: { name: "Colombia" },
     },
   },
   es: {
@@ -34,16 +35,16 @@ const copy = {
     sub: "Por primera vez, tres fuerzas convergen para hacer lo imposible no solo alcanzable — sino urgente.",
     forces: [
       { tag: "01 · IA", title: "Predecir antes de experimentar", body: "Hoy ya es posible anticipar bioactividad antes de pisar el laboratorio." },
-      { tag: "02 · DEMANDA", title: "La industria busca activos nuevos", body: "Nutracéutica, dermocosmética, agro y pharma necesitan diferenciarse. La flora latinoamericana apenas se ha tocado." },
-      { tag: "03 · REGULACIÓN", title: "El origen ahora tiene valor", body: "Nagoya ya exige compartir beneficios; el tratado de la OMPI exigirá declarar el origen en las patentes. Lo trazable se vuelve valioso." },
+      { tag: "02 · DEMANDA", title: "La industria busca activos nuevos", body: "Nutracéutica, dermocosmética, agro y pharma necesitan diferenciarse." },
+      { tag: "03 · REGULACIÓN", title: "El origen ahora tiene valor", body: "Según el Protocolo de Nagoya, los beneficios derivados de la utilización de recursos genéticos deben compartirse de forma justa con el país que los aporta, en condiciones mutuamente acordadas. Un tratado de la OMPI adoptado en 2024 exigiría a quienes solicitan patentes divulgar el origen de los recursos genéticos, una vez que entre en vigor." },
     ],
     closing: "Moka está construida para esta ventana de oportunidad.",
     flags: {
       mexico: { name: "México", stat: "10–12%", desc: "de las especies conocidas del mundo habitan en México (CONABIO)." },
-      argentina: { name: "Argentina", stat: "~10,000", desc: "especies de plantas vasculares nativas, unas 2,000 endémicas (CONICET)." },
-      brazil: { name: "Brasil", stat: "15–20%", desc: "de la diversidad biológica del planeta se encuentra en Brasil (PNUMA)." },
-      peru: { name: "Perú", stat: "25,000", desc: "especies de plantas, el 10% del total mundial; unas 1,400 de uso medicinal (MINAM)." },
-      venezuela: { name: "Venezuela", stat: "1 de 17", desc: "países megadiversos del planeta." },
+      argentina: { name: "Argentina", stat: "~10,000", desc: "especies de plantas vasculares crecen en Argentina, unas 2,000 de ellas endémicas (CONICET, 2013)." },
+      brazil: { name: "Brasil", stat: "~15%", desc: "de las especies del mundo (MMA)." },
+      peru: { name: "Perú" },
+      colombia: { name: "Colombia" },
     },
   },
   pt: {
@@ -52,21 +53,23 @@ const copy = {
     sub: "Pela primeira vez, três forças convergem para tornar o impossível não apenas alcançável — mas urgente.",
     forces: [
       { tag: "01 · IA", title: "Prever antes de experimentar", body: "Hoje já é possível antecipar bioatividade antes de pisar no laboratório." },
-      { tag: "02 · DEMANDA", title: "A indústria busca novos ativos", body: "Nutracêutica, dermocosmética, agro e pharma precisam se diferenciar. A flora latino-americana mal foi tocada." },
-      { tag: "03 · REGULAÇÃO", title: "A origem agora tem valor", body: "Nagoya já exige repartir benefícios; o tratado da OMPI exigirá declarar a origem nas patentes. O rastreável passa a valer." },
+      { tag: "02 · DEMANDA", title: "A indústria busca novos ativos", body: "Nutracêutica, dermocosmética, agro e pharma precisam se diferenciar." },
+      { tag: "03 · REGULAÇÃO", title: "A origem agora tem valor", body: "Pelo Protocolo de Nagoya, os benefícios da utilização de recursos genéticos devem ser repartidos de forma justa com o país provedor, em termos mutuamente acordados. Um tratado da OMPI adotado em 2024 exigiria que os depositantes de patentes divulgassem a origem dos recursos genéticos, quando entrar em vigor." },
     ],
     closing: "A Moka foi construída para esta janela de oportunidade.",
     flags: {
       mexico: { name: "México", stat: "10–12%", desc: "das espécies conhecidas do mundo vivem no México (CONABIO)." },
-      argentina: { name: "Argentina", stat: "~10.000", desc: "espécies de plantas vasculares nativas, cerca de 2.000 endêmicas (CONICET)." },
-      brazil: { name: "Brasil", stat: "15–20%", desc: "da diversidade biológica do planeta está no Brasil (PNUMA)." },
-      peru: { name: "Peru", stat: "25.000", desc: "espécies de plantas, 10% do total mundial; cerca de 1.400 de uso medicinal (MINAM)." },
-      venezuela: { name: "Venezuela", stat: "1 de 17", desc: "países megadiversos do planeta." },
+      argentina: { name: "Argentina", stat: "~10.000", desc: "espécies de plantas vasculares crescem na Argentina, cerca de 2.000 delas endêmicas (CONICET, 2013)." },
+      brazil: { name: "Brasil", stat: "~15%", desc: "das espécies do mundo (MMA)." },
+      peru: { name: "Peru" },
+      colombia: { name: "Colômbia" },
     },
   },
 };
 
 const t = copy[locale as keyof typeof copy] ?? copy.en;
+// The Colombia flag is supplied separately; the entry only renders once the file exists.
+const hasColombiaFlag = existsSync(join(process.cwd(), "public/flags/colombia.svg"));
 const countryHref = (slug: string) => (locale === "en" ? "" : "/" + locale) + "/countries/" + slug + "/";
 ---
 
@@ -115,17 +118,17 @@ const countryHref = (slug: string) => (locale === "en" ? "" : "/" + locale) + "/
             <Image src={Peru} alt="Peru" class="why-flag-icon" />
             <div class="why-flag-tooltip">
               <p class="why-flag-name">{t.flags.peru.name}</p>
-              <p class="why-flag-stat"><span class="why-flag-stat-num">{t.flags.peru.stat}</span> {t.flags.peru.desc}</p>
             </div>
           </a>
 
-          <div class="why-flag-item">
-            <Image src={Venezuela} alt="Venezuela" class="why-flag-icon" />
-            <div class="why-flag-tooltip">
-              <p class="why-flag-name">{t.flags.venezuela.name}</p>
-              <p class="why-flag-stat"><span class="why-flag-stat-num">{t.flags.venezuela.stat}</span> {t.flags.venezuela.desc}</p>
-            </div>
-          </div>
+          {hasColombiaFlag && (
+            <a class="why-flag-item" href={countryHref("colombia")}>
+              <img src="/flags/colombia.svg" alt="Colombia" class="why-flag-icon" width="52" height="52" loading="lazy" decoding="async" />
+              <div class="why-flag-tooltip">
+                <p class="why-flag-name">{t.flags.colombia.name}</p>
+              </div>
+            </a>
+          )}
 
         </div>
       </div>
