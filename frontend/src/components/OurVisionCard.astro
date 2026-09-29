@@ -2,29 +2,24 @@
 import ArrowRight from "@assets/icons/ArrowRight.svg";
 import { Image } from "astro:assets";
 
+// Home card: Moka's mission (the component keeps its old name).
 const visionCopy = {
   en: {
-    kicker: "OUR VISION",
-    before: "Moka Bio envisions a future where Latin America's biodiversity has economic value,",
-    highlight: "is protected",
-    after: "and the communities that have always known it are part of the model",
-    end: "not a footnote.",
+    kicker: "OUR MISSION",
+    before: "Conserve Latin America's biodiversity",
+    highlight: "by revealing its value",
     cta: "About us",
   },
   es: {
-    kicker: "NUESTRA VISIÓN",
-    before: "Moka Bio imagina un futuro donde la biodiversidad de América Latina tenga valor económico,",
-    highlight: "esté protegida",
-    after: "y las comunidades que siempre la han conocido sean parte del modelo",
-    end: "no una nota al pie.",
+    kicker: "NUESTRA MISIÓN",
+    before: "Conservar la biodiversidad de América Latina",
+    highlight: "revelando su valor",
     cta: "Sobre nosotros",
   },
   pt: {
-    kicker: "NOSSA VISÃO",
-    before: "A Moka Bio imagina um futuro em que a biodiversidade da América Latina tenha valor econômico,",
-    highlight: "seja protegida",
-    after: "e as comunidades que sempre a conheceram façam parte do modelo",
-    end: "não uma nota de rodapé.",
+    kicker: "NOSSA MISSÃO",
+    before: "Conservar a biodiversidade da América Latina",
+    highlight: "revelando seu valor",
     cta: "Sobre nós",
   },
 };
@@ -50,9 +45,7 @@ const localePrefix = locale === "en" ? "" : `/${locale}`;
 
   <div class="relative z-10 flex flex-col items-center">
     <p class="reveal opacity-0 text-xl sm:text-4xl font-inter text-center sm:leading-[46px] text-pure" data-animation="slide-up" style="transition-delay: 0.2s;">
-      {t.before} <strong class="text-freshgreen">{t.highlight}</strong>,
-      {t.after}
-      <span class="text-birch">{t.end}</span>
+      {t.before} <strong class="text-freshgreen">{t.highlight}</strong>.
     </p>
 
     {

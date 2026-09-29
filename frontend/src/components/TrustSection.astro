@@ -3,10 +3,73 @@ interface Props {
   locale?: "en" | "es" | "pt";
   /** Pages with their own closing CTA (or first-person copy) hide the built-in one. */
   showCta?: boolean;
+  /** "service": terms of an R&D project (by contract). "platform": questions about Moka BDE, answered by its terms of use. */
+  variant?: "service" | "platform" | "project";
 }
 
-const { locale = "en", showCta = true } = Astro.props;
+const { locale = "en", showCta = true, variant = "service" } = Astro.props;
 const contactBase = locale === "en" ? "/contact-us" : `/${locale}/contact-us`;
+const termsHref = locale === "en" ? "/terms/" : `/${locale}/terms/`;
+
+// Moka BDE: first-person questions (as people search them); the IP and data answers come
+// from the platform's terms of use.
+const platform = {
+  en: {
+    title: "Clear terms, in writing.",
+    terms: "Read the terms of use",
+    items: [
+      { id: "platform-ip", title: "What happens to my IP if I use Moka BDE?", body: "It stays private. Your work in Moka BDE is covered by the platform's terms of use.", terms: true },
+      { id: "platform-data", title: "Is my data private?", body: "Your data is yours, and it stays private, as set out in the terms of use.", terms: true },
+      { id: "traceable-origin", title: "How do I avoid legal problems when I use native plants?", body: "If a native plant is in Icaros, it's tracked: you'll know its origin and its conditions of use.", terms: false },
+    ],
+  },
+  es: {
+    title: "Condiciones claras, por escrito.",
+    terms: "Leer los términos de uso",
+    items: [
+      { id: "platform-ip", title: "¿Qué pasa con mi PI si uso Moka BDE?", body: "Se mantiene privada. Tu trabajo en Moka BDE está cubierto por los términos de uso de la plataforma.", terms: true },
+      { id: "platform-data", title: "¿Mis datos son privados?", body: "Tus datos son tuyos y se mantienen privados, como lo establecen los términos de uso.", terms: true },
+      { id: "traceable-origin", title: "¿Cómo evito problemas legales al usar plantas nativas?", body: "Si una planta nativa está en Icaros, está rastreada: sabrás su origen y sus condiciones de uso.", terms: false },
+    ],
+  },
+  pt: {
+    title: "Condições claras, por escrito.",
+    terms: "Ler os termos de uso",
+    items: [
+      { id: "platform-ip", title: "O que acontece com a minha PI se eu usar o Moka BDE?", body: "Ela continua privada. Seu trabalho no Moka BDE está coberto pelos termos de uso da plataforma.", terms: true },
+      { id: "platform-data", title: "Meus dados são privados?", body: "Seus dados são seus e continuam privados, conforme os termos de uso.", terms: true },
+      { id: "traceable-origin", title: "Como evito problemas legais ao usar plantas nativas?", body: "Se uma planta nativa está no Icaros, ela é rastreada: você saberá sua origem e suas condições de uso.", terms: false },
+    ],
+  },
+}[locale];
+// Services page: the same two terms as "service", asked as first-person questions.
+const project = {
+  en: {
+    title: "How does Moka manage IP?",
+    terms: "",
+    items: [
+      { id: "by-contract", title: "What happens to my IP in a project with Moka?", body: "Data, results and IP are governed by a written agreement for each project.", terms: false },
+      { id: "traceable-origin", title: "Where does the plant come from?", body: "Every plant is traceable, together with the communities.", terms: false },
+    ],
+  },
+  es: {
+    title: "¿Cómo maneja Moka la PI?",
+    terms: "",
+    items: [
+      { id: "by-contract", title: "¿Qué pasa con mi PI en un proyecto con Moka?", body: "Los datos, los resultados y la PI se rigen por un acuerdo escrito para cada proyecto.", terms: false },
+      { id: "traceable-origin", title: "¿De dónde viene la planta?", body: "Cada planta es trazable, junto con las comunidades.", terms: false },
+    ],
+  },
+  pt: {
+    title: "Como a Moka gerencia a PI?",
+    terms: "",
+    items: [
+      { id: "by-contract", title: "O que acontece com a minha PI em um projeto com a Moka?", body: "Dados, resultados e PI são regidos por um acordo escrito para cada projeto.", terms: false },
+      { id: "traceable-origin", title: "De onde vem a planta?", body: "Cada planta é rastreável, junto com as comunidades.", terms: false },
+    ],
+  },
+}[locale];
+const questions = variant === "platform" ? platform : variant === "project" ? project : null;
 
 const copy = {
   en: {
@@ -49,10 +112,21 @@ const copy = {
   <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/18 to-transparent"></div>
   <div class="trust-shell">
     <div class="trust-head reveal opacity-0" data-animation="slide-up">
-      <p class="trust-kicker">{copy.kicker}</p>
-      <h2 id="trust-title" class="trust-title">{copy.title}</h2>
+      <h2 id="trust-title" class="trust-title">{questions ? questions.title : copy.title}</h2>
     </div>
 
+    {questions ? (
+    <div class:list={["trust-grid", questions.items.length === 3 && "trust-grid--3"]}>
+      {questions.items.map((item, i) => (
+        <article id={item.id} class="trust-card reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${0.1 + i * 0.1}s;`}>
+          <span class="trust-dot" aria-hidden="true"></span>
+          <h3 class="trust-card-title">{item.title}</h3>
+          <p class="trust-card-body">{item.body}</p>
+          {item.terms && <a class="trust-terms" href={termsHref}>{questions.terms} <span aria-hidden="true">→</span></a>}
+        </article>
+      ))}
+    </div>
+    ) : (
     <div class="trust-grid">
       {copy.items.map((item, i) => (
         <article id={["by-contract", "traceable-origin"][i]} class="trust-card reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${0.1 + i * 0.1}s;`}>
@@ -62,6 +136,7 @@ const copy = {
         </article>
       ))}
     </div>
+    )}
 
     {showCta && (
     <div class="trust-cta reveal opacity-0" data-animation="slide-up">
@@ -203,6 +278,24 @@ const copy = {
 
   @media (max-width: 900px) {
     .trust-grid { grid-template-columns: 1fr; }
+  }
+
+  .trust-grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  .trust-terms {
+    display: inline-block;
+    margin-top: 0.9rem;
+    font-family: Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--fresh-green-color);
+    text-decoration: none;
+  }
+
+  .trust-terms:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+  @media (max-width: 900px) {
+    .trust-grid--3 { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 640px) {

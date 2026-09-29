@@ -14,26 +14,32 @@ const localePrefix = locale === "en" ? "" : `/${locale}`;
 const pathways = {
   en: {
     title: "There are two ways to get there.",
+    startTitle: "I want to develop a new natural product.",
+    startIntro: "Where do I start?",
     intro: "",
     cards: [
-      { key: "plant", strategy: "PLANT PUSH", title: "I have a plant", body: "Find out what it could become.", link: "Start with a plant", path: "/plant-potential/" },
-      { key: "need", strategy: "MARKET PULL", title: "I know what I need", body: "Find the plant that could deliver it.", link: "Start with a need", path: "/find-your-plant/" },
+      { key: "plant", strategy: "PLANT PUSH", title: "I have a plant, but I don't know where to start.", body: "Find out what it could become.", link: "Start with a plant", path: "/plant-potential/" },
+      { key: "need", strategy: "MARKET PULL", title: "I know what I need, but not how to develop the bioactive.", body: "Find the plant that could deliver it.", link: "Start with a need", path: "/find-your-plant/" },
     ],
   },
   es: {
     title: "Hay dos formas de hacerlo.",
+    startTitle: "Quiero desarrollar un nuevo producto natural.",
+    startIntro: "¿Por dónde empiezo?",
     intro: "",
     cards: [
-      { key: "plant", strategy: "PLANT PUSH", title: "Tengo una planta", body: "Descubre en qué podría convertirse.", link: "Empieza con una planta", path: "/plant-potential/" },
-      { key: "need", strategy: "MARKET PULL", title: "Sé lo que necesito", body: "Encuentra la planta que podría lograrlo.", link: "Empieza con una necesidad", path: "/find-your-plant/" },
+      { key: "plant", strategy: "PLANT PUSH", title: "Tengo una planta, pero no sé por dónde empezar.", body: "Descubre en qué podría convertirse.", link: "Empieza con una planta", path: "/plant-potential/" },
+      { key: "need", strategy: "MARKET PULL", title: "Sé lo que necesito, pero no cómo desarrollar el bioactivo.", body: "Encuentra la planta que podría lograrlo.", link: "Empieza con una necesidad", path: "/find-your-plant/" },
     ],
   },
   pt: {
     title: "Há duas formas de fazer isso.",
+    startTitle: "Quero desenvolver um novo produto natural.",
+    startIntro: "Por onde começo?",
     intro: "",
     cards: [
-      { key: "plant", strategy: "PLANT PUSH", title: "Tenho uma planta", body: "Descubra no que ela pode se transformar.", link: "Comece com uma planta", path: "/plant-potential/" },
-      { key: "need", strategy: "MARKET PULL", title: "Sei do que preciso", body: "Encontre a planta que pode entregar isso.", link: "Comece com uma necessidade", path: "/find-your-plant/" },
+      { key: "plant", strategy: "PLANT PUSH", title: "Tenho uma planta, mas não sei por onde começar.", body: "Descubra no que ela pode se transformar.", link: "Comece com uma planta", path: "/plant-potential/" },
+      { key: "need", strategy: "MARKET PULL", title: "Sei do que preciso, mas não como desenvolver o bioativo.", body: "Encontre a planta que pode entregar isso.", link: "Comece com uma necessidade", path: "/find-your-plant/" },
     ],
   },
 }[locale];
@@ -87,23 +93,9 @@ const copy = {
 <section id={id} class="target-links relative z-10 w-full bg-transparent">
   <div class="max-w-7xl mx-auto px-6 md:px-12 py-20 lg:py-24">
     <div class="target-links-head reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.1s;">
-      {heading !== "pathways" && (
-        <p class="font-roboto font-bold text-[13px] leading-none tracking-[0.48em] text-freshgreen uppercase mb-6">
-          {copy.kicker}
-        </p>
-      )}
-      {heading === "pathways" ? (
-        <h2 class="text-[clamp(1.9rem,3.4vw,3rem)] leading-[1.05] font-semibold font-inter text-pure">{pathways.title}</h2>
-      ) : (
-        <h2 class="text-[clamp(1.9rem,3.4vw,3rem)] leading-[1.05] font-semibold font-inter">
-          <span class="text-freshgreen">{copy.titleA}</span><br/>
-          <span class="text-pure">{copy.titleB}</span>
-        </h2>
-      )}
-      {(heading === "pathways" ? pathways.intro : copy.bodyA) && (
-        <p class="mt-6 max-w-2xl text-birch/75 font-inter font-medium text-[18px] leading-relaxed">
-          {heading === "pathways" ? pathways.intro : copy.bodyA}
-        </p>
+      <h2 class="text-[clamp(1.9rem,3.4vw,3rem)] leading-[1.05] font-semibold font-inter text-pure">{heading === "pathways" ? pathways.title : pathways.startTitle}</h2>
+      {(heading === "pathways" ? pathways.intro : pathways.startIntro) && (
+        <p class="mt-4 max-w-2xl text-birch/75 font-inter font-medium text-[20px] leading-relaxed">{heading === "pathways" ? pathways.intro : pathways.startIntro}</p>
       )}
     </div>
 

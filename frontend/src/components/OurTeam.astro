@@ -9,24 +9,24 @@ interface Props {
 const { locale = "en" } = Astro.props;
 const copy = {
   en: {
-    kicker: "MEET OUR TEAM",
-    titleA: "We combine scientific excellence",
-    titleB: " with international experience",
+    kicker: "A TEAM",
+    titleA: "Passionate about",
+    titleB: " what Latin America's biodiversity can become.",
   },
   es: {
-    kicker: "CONOCE AL EQUIPO",
-    titleA: "Combinamos excelencia científica",
-    titleB: " con experiencia internacional",
+    kicker: "UN EQUIPO",
+    titleA: "Nos apasiona",
+    titleB: " lo que la biodiversidad de América Latina puede llegar a ser.",
   },
   pt: {
-    kicker: "CONHEÇA A EQUIPE",
-    titleA: "Combinamos excelência científica",
-    titleB: " com experiência internacional",
+    kicker: "UMA EQUIPE",
+    titleA: "Somos apaixonados",
+    titleB: " pelo que a biodiversidade da América Latina pode se tornar.",
   },
 }[locale];
 ---
 
-<div class="flex flex-col items-center justify-center py-20 px-8 bg-charcoal text-[28px]">
+<div id="team" class="flex flex-col items-center justify-center py-20 px-8 bg-charcoal text-[28px] scroll-mt-16">
   
   <div class="mb-8"> <p class="font-roboto font-medium text-birch leading-4 tracking-[0.4em] text-center">
       {copy.kicker}

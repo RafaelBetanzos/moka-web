@@ -1,0 +1,224 @@
+---
+// About page: hero (full-bleed greyscale photo, the goal as subtitle), then the mission and the
+// vision as one large statement each. Their words light up one by one as you scroll (and dim
+// again if you scroll back); key words light up in green.
+interface Props {
+  locale?: "en" | "es" | "pt";
+}
+
+const { locale = "en" } = Astro.props;
+
+// Words wrapped in *asterisks* light up in green.
+const copy = {
+  en: {
+    title: "Every plant has a value.",
+    sub: "We're here to find it.",
+    goal: "In plants no one has studied yet.",
+    team: "Meet the team",
+    heroAlt: "Scientist examining leaves next to a chromatography plate and plant extracts",
+    missionLabel: "Our mission",
+    mission: "Conserve Latin America's biodiversity *by revealing its value.*",
+    visionLabel: "Our vision",
+    vision: "To become the *research layer* of Latin American biodiversity, and a driver of *regional growth.*",
+  },
+  es: {
+    title: "Cada planta tiene un valor.",
+    sub: "Estamos aquí para encontrarlo.",
+    goal: "En plantas que nadie ha estudiado.",
+    team: "Conoce al equipo",
+    heroAlt: "Científico examinando hojas junto a una placa de cromatografía y extractos vegetales",
+    missionLabel: "Nuestra misión",
+    mission: "Conservar la biodiversidad de América Latina *revelando su valor.*",
+    visionLabel: "Nuestra visión",
+    vision: "Ser la *capa de investigación* de la biodiversidad latinoamericana y un motor de *crecimiento regional.*",
+  },
+  pt: {
+    title: "Cada planta tem um valor.",
+    sub: "Estamos aqui para encontrá-lo.",
+    goal: "Em plantas que ninguém estudou.",
+    team: "Conheça a equipe",
+    heroAlt: "Cientista examinando folhas ao lado de uma placa de cromatografia e extratos vegetais",
+    missionLabel: "Nossa missão",
+    mission: "Conservar a biodiversidade da América Latina *revelando seu valor.*",
+    visionLabel: "Nossa visão",
+    vision: "Ser a *camada de pesquisa* da biodiversidade latino-americana e um motor de *crescimento regional.*",
+  },
+}[locale];
+
+// "a *b c* d" → [{w:"a"}, {w:"b", hi}, {w:"c", hi}, {w:"d"}]
+const words = (text: string) =>
+  text.split(/(\*[^*]+\*)/).filter(Boolean).flatMap((part) => {
+    const hi = part.startsWith("*");
+    return part.replace(/\*/g, "").trim().split(/\s+/).map((w) => ({ w, hi }));
+  });
+
+const statements = [
+  { label: copy.missionLabel, words: words(copy.mission) },
+  { label: copy.visionLabel, words: words(copy.vision) },
+];
+---
+
+<div class="ap-hero">
+  <img class="ap-hero-bg" src="/webpics/about-hero.webp" alt={copy.heroAlt} width="1920" height="1080" fetchpriority="high" decoding="async" />
+  <div class="ap-hero-text">
+    <h1 class="ap-title">{copy.title} <span class="ap-sub">{copy.sub}</span></h1>
+    <p class="ap-goal">{copy.goal}</p>
+    <a href="#team" class="moka-demo-cta ap-cta" data-analytics-event="click_view_team" data-analytics-category="cta" data-analytics-label="about_hero">{copy.team} <span aria-hidden="true">→</span></a>
+  </div>
+</div>
+
+{statements.map((st) => (
+  <section class="ap-statement" data-ap>
+    <h2 class="ap-label">{st.label}</h2>
+    <p class="ap-words">
+      {st.words.map(({ w, hi }) => <span class:list={["ap-word", hi && "ap-word--hi"]}>{w} </span>)}
+    </p>
+  </section>
+))}
+
+<script>
+  // Each statement lights up word by word as it crosses the middle of the screen.
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const blocks = [...document.querySelectorAll<HTMLElement>("[data-ap]")];
+  if (!reduce) {
+    blocks.forEach((b) => b.classList.add("ap--live"));
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const vh = window.innerHeight;
+      blocks.forEach((b) => {
+        const r = b.getBoundingClientRect();
+        // Starts as the block enters the screen; fully lit while it is still around the middle.
+        const p = Math.min(1, Math.max(0, (vh * 0.95 - r.top) / (r.height * 0.6 + vh * 0.3)));
+        const ws = b.querySelectorAll<HTMLElement>(".ap-word");
+        const lit = Math.round(p * ws.length);
+        ws.forEach((w, i) => w.classList.toggle("is-lit", i < lit));
+      });
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+  }
+</script>
+
+<style>
+  /* ── Hero: same treatment as the home and services heroes ── */
+  .ap-hero {
+    position: relative;
+    z-index: 10;
+    min-height: min(78vh, 720px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 5rem 1.25rem;
+  }
+
+  .ap-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.15) brightness(0.42);
+    -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+  }
+
+  .ap-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 55% at 50% 50%, rgba(18, 18, 18, 0.55), transparent 75%);
+  }
+
+  /* Column: title, grey line, green line, button, each on its own row. */
+  .ap-hero-text {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Same sizes as the Services hero (.industry-title / .industry-lead / .industry-ctas). */
+  .ap-title {
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.9rem, 3.4vw, 3rem);
+    font-weight: 650;
+    line-height: 1.03;
+    color: var(--pure-color);
+    text-wrap: balance;
+  }
+
+  /* Second half of the H1: grey, lead size, on its own line. */
+  .ap-sub {
+    display: block;
+    margin-top: 1.4rem;
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--moka-text-muted);
+  }
+
+  .ap-goal {
+    margin-top: 0.25rem;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    font-weight: 600;
+    line-height: 1.65;
+    color: var(--fresh-green-color);
+  }
+
+  .ap-cta {
+    position: relative;
+    margin-top: 2rem;
+    align-self: center;
+  }
+
+  /* ── Statements ── */
+  .ap-statement {
+    position: relative;
+    z-index: 10;
+    width: min(100% - 2.5rem, 1100px);
+    margin: 0 auto;
+    padding: 6rem 0;
+  }
+
+  .ap-label {
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+  }
+
+  .ap-words {
+    margin-top: 1.5rem;
+    font-family: Inter, sans-serif;
+    font-size: clamp(2rem, 4.6vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--pure-color);
+    text-wrap: balance;
+  }
+
+  .ap-word--hi { color: var(--fresh-green-color); }
+
+  .ap--live .ap-word {
+    color: rgba(222, 222, 222, 0.16);
+    transition: color 350ms ease;
+  }
+
+  .ap--live .ap-word.is-lit { color: var(--pure-color); }
+  .ap--live .ap-word--hi.is-lit { color: var(--fresh-green-color); }
+
+  @media (max-width: 640px) {
+    .ap-statement { padding: 4rem 0; }
+    .ap-hero { min-height: 70vh; }
+  }
+</style>

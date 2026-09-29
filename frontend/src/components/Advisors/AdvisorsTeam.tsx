@@ -77,9 +77,9 @@ export const AdvisorsTeam = ({ locale = "en" }: AdvisorsTeamProps) => {
 
       <div className="flex justify-center gap-16 mx-auto flex-wrap max-w-6xl px-8">
         {advisors.map((advisor) => (
-          <div className="group flex flex-col items-center w-48" key={advisor.id}>
+          <div className="group flex flex-col items-center w-52" key={advisor.id}>
             <div className="relative mb-4">
-              <div className="overflow-hidden rounded-full bg-charcoal aspect-square w-32 shadow-md border-2 border-sage/30 group-hover:border-freshgreen transition-all duration-500">
+              <div className="overflow-hidden rounded-full bg-charcoal aspect-square w-44 shadow-md border-2 border-sage/30 group-hover:border-freshgreen transition-all duration-500">
                 <img
                   src={advisor.localImg}
                   alt={advisor.name}
@@ -105,11 +105,11 @@ export const AdvisorsTeam = ({ locale = "en" }: AdvisorsTeamProps) => {
                   <img
                     src={typeof LinkedInIcon === 'string' ? LinkedInIcon : LinkedInIcon.src}
                     alt="Linkedin"
-                    className="w-6 h-6 opacity-70 group-hover:opacity-100"
+                    className="w-9 h-9 opacity-70 group-hover:opacity-100"
                   />
 
                   {advisor.flag && (
-                    <div className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full border border-white shadow-sm overflow-hidden bg-white">
+                    <div className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full border border-white shadow-sm overflow-hidden bg-white">
                       <img
                         src={advisor.flag}
                         alt="Country Flag"
@@ -122,10 +122,13 @@ export const AdvisorsTeam = ({ locale = "en" }: AdvisorsTeamProps) => {
             </div>
 
             <div className="flex flex-col items-center text-center">
-              <p className="text-freshgreen font-bold text-lg leading-tight">
-                {advisor.name}
+              <p className="text-freshgreen font-bold text-2xl leading-tight">
+                {/* First name and surname on two lines */}
+                {advisor.name.split(" ")[0]}
+                <br />
+                {advisor.name.split(" ").slice(1).join(" ")}
               </p>
-              <p className="text-birch text-sm opacity-80 mt-1">
+              <p className="text-birch text-base opacity-80 mt-1.5">
                 {advisor.title[locale]}
               </p>
             </div>

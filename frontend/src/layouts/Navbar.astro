@@ -17,9 +17,9 @@ const localizedPath = (locale: "en" | "es" | "pt") => {
 const currentLocale = isSpanish ? "es" : isPortuguese ? "pt" : "en";
 const navHref = (href: string) => currentLocale === "en" ? href : href === "/" ? `/${currentLocale}` : `/${currentLocale}${href}`;
 const navCopy = {
-  en: { home: "Home", technology: "Our Technology", services: "Services", about: "About", insights: "Insights", bookDemo: "Book a demo", bookDemoShort: "Book a demo", openMenu: "Open navigation menu" },
-  es: { home: "Inicio", technology: "Nuestra tecnología", services: "Servicios", about: "Nosotros", insights: "Insights", bookDemo: "Agendar demo", bookDemoShort: "Agendar demo", openMenu: "Abrir menú" },
-  pt: { home: "Início", technology: "Nossa tecnologia", services: "Serviços", about: "Sobre", insights: "Insights", bookDemo: "Agendar demo", bookDemoShort: "Agendar demo", openMenu: "Abrir menu" },
+  en: { home: "Home", technology: "Our Technology", services: "Services", about: "About", bookDemo: "Book a demo", bookDemoShort: "Book a demo", openMenu: "Open navigation menu" },
+  es: { home: "Inicio", technology: "Nuestra tecnología", services: "Servicios", about: "Nosotros", bookDemo: "Agendar demo", bookDemoShort: "Agendar demo", openMenu: "Abrir menú" },
+  pt: { home: "Início", technology: "Nossa tecnologia", services: "Serviços", about: "Sobre", bookDemo: "Agendar demo", bookDemoShort: "Agendar demo", openMenu: "Abrir menu" },
 }[currentLocale];
 ---
 
@@ -46,7 +46,6 @@ const navCopy = {
         <a href={navHref("/our-technology")} class="nav-link hover:text-freshgreen transition-colors">{navCopy.technology}</a>
         <a href={navHref("/services")} class="nav-link hover:text-freshgreen transition-colors">{navCopy.services}</a>
         <a href={navHref("/about-us")} class="nav-link hover:text-freshgreen transition-colors">{navCopy.about}</a>
-        <a href={navHref("/insights")} class="nav-link hover:text-freshgreen transition-colors">{navCopy.insights}</a>
       </div>
 
       <a
@@ -132,7 +131,6 @@ const navCopy = {
       <a href={navHref("/our-technology")} class="mobile-nav-link">{navCopy.technology}</a>
       <a href={navHref("/services")} class="mobile-nav-link">{navCopy.services}</a>
       <a href={navHref("/about-us")} class="mobile-nav-link">{navCopy.about}</a>
-      <a href={navHref("/insights")} class="mobile-nav-link">{navCopy.insights}</a>
     </nav>
 
     <div class="mobile-cta">
@@ -165,7 +163,8 @@ const navCopy = {
   const links = document.querySelectorAll('.nav-link');
   const path  = window.location.pathname.replace(/\/$/, '') || '/';
   links.forEach((link) => {
-    const href = link.getAttribute('href')?.replace(/\/$/, '') || '';
+    // "/" normalises to "/" (not ""), otherwise Home would match every English page.
+    const href = link.getAttribute('href')?.replace(/\/$/, '') || '/';
     const isLocalizedHome = href === '/' || href === '/es' || href === '/pt';
     const isActive = isLocalizedHome ? path === href : path.startsWith(href);
     if (isActive) link.classList.add('nav-link--active');

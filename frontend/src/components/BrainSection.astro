@@ -1,5 +1,5 @@
 ---
-import Brain from "@assets/Brain.svg";
+import Brain from "@assets/BrainOutline.svg";
 import { Image } from "astro:assets";
 
 type Part = "brain" | "capabilities" | "process";
@@ -10,9 +10,11 @@ interface Props {
   parts?: Part[];
   /** Render the project-steps label as the section's H2 (when the steps stand alone). */
   processHeading?: boolean;
+  /** Show the "Icaros" label under the brain (off when the page places it above). */
+  showName?: boolean;
 }
 
-const { locale = "en", parts = ["brain", "capabilities", "process"], processHeading = false } = Astro.props;
+const { locale = "en", parts = ["brain", "capabilities", "process"], processHeading = false, showName = true } = Astro.props;
 const show = (part: Part) => parts.includes(part);
 // Anchors for the capability cards (the home links to #predict-bioactivity).
 const capabilityIds = ["explore-icaros", "predict-bioactivity", "mechanisms-and-targets", "intellectual-property", "formulation", "lab-results"];
@@ -101,14 +103,14 @@ const copy = {
 }[locale];
 ---
 
-<div class="flex flex-col justify-center items-center w-full max-w-7xl mx-auto px-6 py-16 overflow-hidden bg-transparent">
+<div class:list={["flex flex-col justify-center items-center w-full max-w-7xl mx-auto px-6 overflow-hidden bg-transparent", showName ? "py-16" : "pt-8 pb-6"]}>
   
   {show("brain") && (
   <div class="w-full" id="icaros">
     {/* Versión Mobile */}
     <div class="reveal opacity-0 sm:hidden mb-12 text-center" data-animation="pop-in">
       <Image src={Brain} alt="" class="w-56 h-auto mx-auto" loading="lazy" />
-      <p class="brain-name mt-4">Icaros</p>
+      {showName && <p class="brain-name mt-4">Icaros</p>}
       <div class="brain-mobile-pair">
         <div>
           <h3 class="brain-side-title">{copy.analytical}</h3>
@@ -124,7 +126,7 @@ const copy = {
     </div>
 
     {/* Desktop Grid */}
-    <div class="brain-grid hidden sm:grid w-full mb-24">
+    <div class:list={["brain-grid hidden sm:grid w-full", showName ? "mb-24" : "mb-4"]}>
 
       {/* 1. Lado Izquierdo: Analytical Thinking */}
       <div
@@ -154,7 +156,7 @@ const copy = {
             alt=""
             class="w-full max-w-sm lg:max-w-md h-auto object-contain transition-transform duration-1000 hover:scale-110"
           />
-          <p class="brain-name mt-6">Icaros</p>
+          {showName && <p class="brain-name mt-6">Icaros</p>}
         </div>
       </div>
 

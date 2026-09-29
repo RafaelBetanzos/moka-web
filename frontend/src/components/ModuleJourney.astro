@@ -1,0 +1,257 @@
+---
+// Our Technology: the questions an R&D team asks before the lab, each answered by a part of
+// Moka BDE, with its screen. A vertical line fills as you scroll and each module lights up
+// when the line reaches it; text and screen alternate sides. Screens are optional: a module
+// shows its image only once the file exists in public/ (same names as /mockups/).
+import { hasPublicFile } from "../utils/publicAsset";
+
+interface Module {
+  id: string;
+  /** Module name shown in green at the start of the answer, e.g. "Explore · Icaros". */
+  name: string;
+  /** First-person question (white). */
+  question: string;
+  /** Answer (grey), after the module name. */
+  answer: string;
+  /** Screen path without extension, e.g. "/mockups/Explore"; .svg, .webp, .png or .jpg. */
+  screen?: string;
+  screenAlt?: string;
+}
+
+interface Props {
+  id?: string;
+  title: string;
+  intro: string;
+  modules: Module[];
+}
+
+const { id, title, intro, modules } = Astro.props;
+const screenFor = (base?: string) => base && [".svg", ".webp", ".png", ".jpg"].map((ext) => base + ext).find(hasPublicFile);
+---
+
+<section id={id} class="mj">
+  <div class="mj-head reveal opacity-0" data-animation="slide-up">
+    <h2 class="mj-title">{title}</h2>
+    <p class="mj-intro">{intro}</p>
+  </div>
+
+  <div class="mj-track" data-mj>
+    <div class="mj-line" aria-hidden="true"><span class="mj-line-fill"></span></div>
+
+    {modules.map((m, i) => {
+      const screen = screenFor(m.screen);
+      return (
+        <article id={m.id} class:list={["mj-row", i % 2 ? "mj-row--right" : "mj-row--left", !screen && "mj-row--text"]} data-mj-row>
+          <span class="mj-node" aria-hidden="true"></span>
+          <div class="mj-text">
+            <h3 class="mj-question">{m.question}</h3>
+            <p class="mj-answer"><strong class="mj-name">{m.name}:</strong> {m.answer}</p>
+          </div>
+          {screen && (
+            <div class="mj-screen">
+              <img src={screen} alt={m.screenAlt ?? ""} width="1440" height="810" loading="lazy" decoding="async" />
+            </div>
+          )}
+        </article>
+      );
+    })}
+  </div>
+</section>
+
+<script>
+  // The line follows the scroll (it also empties when scrolling back up); a module lights up
+  // once the line has reached it. With reduced motion everything is shown lit.
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.querySelectorAll<HTMLElement>("[data-mj]").forEach((track) => {
+    const rows = [...track.querySelectorAll<HTMLElement>("[data-mj-row]")];
+    if (reduce) {
+      track.style.setProperty("--mj-progress", "1");
+      rows.forEach((r) => r.classList.add("is-on"));
+      return;
+    }
+    track.classList.add("mj--live");
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const rect = track.getBoundingClientRect();
+      const reach = window.innerHeight * 0.6 - rect.top;
+      const progress = Math.min(1, Math.max(0, reach / rect.height));
+      track.style.setProperty("--mj-progress", progress.toFixed(4));
+      rows.forEach((r) => {
+        const node = r.offsetTop + r.offsetHeight / 2;
+        r.classList.toggle("is-on", reach >= node);
+      });
+    };
+    const onScroll = () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+  });
+</script>
+
+<style>
+  .mj {
+    position: relative;
+    z-index: 10;
+    width: min(100%, 1180px);
+    margin: 0 auto;
+    padding: 5rem 1.25rem 3rem;
+    scroll-margin-top: 5rem;
+  }
+
+  .mj-head {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .mj-title {
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.9rem, 3.4vw, 3rem);
+    font-weight: 650;
+    line-height: 1.05;
+    color: var(--pure-color);
+    text-wrap: balance;
+  }
+
+  .mj-intro {
+    margin-top: 1.1rem;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1rem, 1.5vw, 1.18rem);
+    line-height: 1.7;
+    color: var(--moka-text-muted);
+  }
+
+  /* ── Track: centre line that fills with the scroll ── */
+  .mj-track {
+    --mj-progress: 1;
+    position: relative;
+    margin-top: 4rem;
+    display: grid;
+    gap: 6rem;
+  }
+
+  .mj-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    transform: translateX(-50%);
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.18);
+    overflow: hidden;
+  }
+
+  .mj-line-fill {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(110, 191, 126, 0.35), var(--fresh-green-color));
+    transform-origin: top center;
+    transform: scaleY(var(--mj-progress));
+  }
+
+  /* ── Rows: text on one side, screen on the other ── */
+  .mj-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 6rem;
+    align-items: center;
+    scroll-margin-top: 7rem;
+  }
+
+  .mj-row--right .mj-text { grid-column: 2; grid-row: 1; }
+  .mj-row--right .mj-screen { grid-column: 1; grid-row: 1; }
+
+  .mj-node {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    transform: translate(-50%, -50%);
+    background: var(--fresh-green-color);
+    box-shadow: 0 0 0 7px rgba(18, 18, 18, 1);
+    transition: background 400ms ease, transform 400ms ease;
+  }
+
+  .mj-question {
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+    font-weight: 650;
+    line-height: 1.2;
+    color: var(--pure-color);
+    text-wrap: balance;
+  }
+
+  .mj-answer {
+    margin-top: 0.9rem;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1rem, 1.4vw, 1.12rem);
+    line-height: 1.7;
+    color: var(--moka-text-muted);
+  }
+
+  .mj-name {
+    font-weight: 600;
+    color: var(--fresh-green-color);
+  }
+
+  .mj-row--left .mj-text { text-align: right; }
+
+  .mj-screen img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.45));
+  }
+
+  /* Without a screen yet, the text sits next to the line on its own side. */
+  .mj-row--text.mj-row--left .mj-text { grid-column: 1; }
+  .mj-row--text.mj-row--right .mj-text { grid-column: 2; }
+
+  /* ── Scroll states ── */
+  .mj--live .mj-row:not(.is-on) .mj-node { background: rgba(222, 222, 222, 0.35); transform: translate(-50%, -50%) scale(0.8); }
+
+  .mj--live .mj-text,
+  .mj--live .mj-screen {
+    transition: opacity 700ms ease, transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mj--live .mj-row:not(.is-on) .mj-text,
+  .mj--live .mj-row:not(.is-on) .mj-screen { opacity: 0.15; }
+
+  .mj--live .mj-row--left:not(.is-on) .mj-text,
+  .mj--live .mj-row--right:not(.is-on) .mj-screen { transform: translateX(-2rem); }
+
+  .mj--live .mj-row--right:not(.is-on) .mj-text,
+  .mj--live .mj-row--left:not(.is-on) .mj-screen { transform: translateX(2rem); }
+
+  /* ── Phones: line on the left, text then screen ── */
+  @media (max-width: 767px) {
+    .mj-track { gap: 3.5rem; padding-left: 2.25rem; }
+
+    .mj-line { left: 7px; transform: none; }
+
+    .mj-row,
+    .mj-row--right {
+      grid-template-columns: 1fr;
+      row-gap: 1.5rem;
+    }
+
+    .mj-row--right .mj-text,
+    .mj-row--right .mj-screen,
+    .mj-row--text .mj-text { grid-column: 1; grid-row: auto; }
+
+    .mj-row--left .mj-text { text-align: left; }
+
+    .mj-node { top: 0.55rem; left: calc(-2.25rem + 8px); }
+
+    .mj--live .mj-row:not(.is-on) .mj-text,
+    .mj--live .mj-row:not(.is-on) .mj-screen { transform: translateY(1.5rem); }
+  }
+</style>

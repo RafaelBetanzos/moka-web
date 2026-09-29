@@ -5,9 +5,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
 import BrainSection from "@components/BrainSection.astro";
 import CtaBand from "@components/CtaBand.astro";
-import PageBreadcrumb from "@components/PageBreadcrumb.astro";
-import ProductScreens from "@components/ProductScreens.astro";
-import ProofCard from "@components/ProofCard.astro";
+import ModuleJourney from "@components/ModuleJourney.astro";
 import TargetSection from "@components/TargetSection.astro";
 import TrustSection from "@components/TrustSection.astro";
 import "../styles/seo-landing.css";
@@ -26,88 +24,82 @@ const copy = {
     metaTitle: "Moka BDE and Icaros: Plant Bioactivity Platform | Moka Bio",
     metaDescription: "Explore Icaros, predict bioactivity in plants with no prior studies, and assess IP and formulation in Moka BDE, the plant bioactivity platform.",
     breadcrumb: "Our Technology",
-    kicker: "MOKA BDE · ICAROS",
     title: "Bioactivity in plants no one has studied. Even without prior data.",
     tagline: "Moka BDE is where you work. Icaros is everything we know about Latin American flora.",
     demo: "Book a demo",
     toServices: "Prefer we do it for you?",
-    predictTitle: "Why predict first",
-    predict: [
-      { title: "Predict before you experiment", body: "Bioactivity can now be anticipated before you set foot in the lab." },
-      { title: "Stop testing blind", body: "Before you spend on the lab, you already know which plants are worth it." },
+    modulesTitle: "Before the lab, the same questions always come up.",
+    modulesIntro: "Moka BDE answers them in one place. Each lab works with modules, and we keep adding new ones.",
+    modules: [
+      { id: "explore-icaros", name: "Explore · Icaros", question: "Which plants could have the activity I'm looking for?", answer: "30K+ indexed species, with their compounds and the evidence behind them, in one search.", screen: "/mockups/Explore", screenAlt: "Moka BDE: Explore Icaros" },
+      { id: "predict-bioactivity", name: "Virtual Lab", question: "Is this plant worth testing before I spend on the lab?", answer: "bioinformatics modules to predict bioactivity, mechanisms and targets, and to plan the formulation.", screen: "/mockups/VirtualLab", screenAlt: "Moka BDE: Virtual Lab" },
+      { id: "lab-results", name: "Wet Lab", question: "My lab results are scattered across files and formats.", answer: "your lab data, standardized and connected to what is known about each plant.", screen: "/mockups/WetLab", screenAlt: "Moka BDE: Wet Lab" },
+      { id: "intellectual-property", name: "Commercial Lab", question: "Can I protect it before I invest?", answer: "check the intellectual property landscape from the start.", screen: "/mockups/CommercialLab", screenAlt: "Moka BDE: Commercial Lab" },
+      { id: "log", name: "Log", question: "Why did we choose this candidate, and where did we leave off?", answer: "a chat that answers about everything in your session or project.", screen: "/mockups/Log", screenAlt: "Moka BDE: Log" },
     ],
-    screensKicker: "MOKA BDE",
-    screensTitle: "All your discovery, in one place.",
-    researchKicker: "FOR RESEARCH TEAMS",
-    researchTitle: "Many candidate plants, a limited lab budget.",
-    researchBody: "You know how to research. We help you choose what to research first.",
+    researchTitle: "I lead the technical work. I need everything in one place.",
+    researchBody: "Researcher, innovator or founder, in any industry: when your project runs across several people and labs, Moka BDE keeps it together.",
     researchIcaros: "Explore Icaros",
-    researchCapabilities: "See what Moka BDE can do",
-    researchAlt: "Scientist pipetting samples in a laboratory",
-    proofKicker: "TRACTION",
-    proofTitle: "Real science. Real progress.",
+    researchCapabilities: "See how Moka BDE works",
+    researchAlt: "Scientist examining a plant extract in a flask",
     ctaTitle: "Your next plant is waiting.",
     ctaService: "Request a service",
     schemaDescription: "Bioactive discovery environment to explore Icaros, predict bioactivity in understudied plants, and assess IP and formulation.",
-    features: ["Icaros plant database", "Bioactivity prediction", "Mechanisms and targets", "Intellectual property analysis", "Formulation"],
+    features: ["Explore Icaros, the Latin American plant database", "Virtual Lab: bioactivity, mechanisms, targets and formulation", "Wet Lab: standardized lab data", "Commercial Lab: intellectual property analysis", "Log: project chat"],
   },
   es: {
     metaTitle: "Plataforma de bioactividad Moka BDE e Icaros | Moka Bio",
     metaDescription: "Explora Icaros, predice bioactividad en plantas sin estudios previos y evalúa PI y formulación en Moka BDE, la plataforma de bioactividad vegetal.",
     breadcrumb: "Nuestra tecnología",
-    kicker: "MOKA BDE · ICAROS",
     title: "Bioactividad en plantas que nadie ha estudiado. Incluso sin datos previos.",
     tagline: "Moka BDE es donde trabajas. Icaros, todo lo que sabemos de la flora latinoamericana.",
     demo: "Agendar demo",
     toServices: "¿Prefieres que lo hagamos por ti?",
-    predictTitle: "Por qué predecir primero",
-    predict: [
-      { title: "Predecir antes de experimentar", body: "Hoy ya es posible anticipar bioactividad antes de pisar el laboratorio." },
-      { title: "Deja de ensayar a ciegas", body: "Antes de gastar en laboratorio, ya sabes qué plantas valen la pena." },
+    modulesTitle: "Antes del laboratorio, siempre surgen las mismas preguntas.",
+    modulesIntro: "Moka BDE las responde en un solo lugar. Cada laboratorio funciona con módulos, y seguimos sumando más.",
+    modules: [
+      { id: "explore-icaros", name: "Explore · Icaros", question: "¿Qué plantas podrían tener la actividad que busco?", answer: "más de 30 mil especies indexadas, con sus compuestos y la evidencia que las respalda, en una sola búsqueda.", screen: "/mockups/Explore", screenAlt: "Moka BDE: Explore Icaros" },
+      { id: "predict-bioactivity", name: "Virtual Lab", question: "¿Vale la pena ensayar esta planta antes de gastar en laboratorio?", answer: "módulos de bioinformática para predecir bioactividad, mecanismos y dianas, y para planear la formulación.", screen: "/mockups/VirtualLab", screenAlt: "Moka BDE: Virtual Lab" },
+      { id: "lab-results", name: "Wet Lab", question: "Mis resultados de laboratorio están dispersos en archivos y formatos distintos.", answer: "tus datos de laboratorio, homogeneizados y conectados con lo que se sabe de cada planta.", screen: "/mockups/WetLab", screenAlt: "Moka BDE: Wet Lab" },
+      { id: "intellectual-property", name: "Commercial Lab", question: "¿Puedo protegerlo antes de invertir?", answer: "revisa el panorama de propiedad intelectual desde el inicio.", screen: "/mockups/CommercialLab", screenAlt: "Moka BDE: Commercial Lab" },
+      { id: "log", name: "Log", question: "¿Por qué elegimos este candidato y en qué nos quedamos?", answer: "un chat que responde sobre todo lo que hay en tu sesión o proyecto.", screen: "/mockups/Log", screenAlt: "Moka BDE: Log" },
     ],
-    screensKicker: "MOKA BDE",
-    screensTitle: "Todo tu descubrimiento, en un solo lugar.",
-    researchKicker: "PARA EQUIPOS DE INVESTIGACIÓN",
-    researchTitle: "Muchas plantas candidatas, un presupuesto de laboratorio limitado.",
-    researchBody: "Saben investigar. Les ayudamos a elegir qué investigar primero.",
+    researchTitle: "Llevo la parte técnica. Necesito todo en un solo lugar.",
+    researchBody: "Investigador, innovador o emprendedor, en cualquier industria: cuando tu proyecto pasa por varias personas y laboratorios, Moka BDE lo mantiene unido.",
     researchIcaros: "Explorar Icaros",
-    researchCapabilities: "Ver qué se puede hacer con Moka BDE",
-    researchAlt: "Científica pipeteando muestras en un laboratorio",
-    proofKicker: "TRACCIÓN",
-    proofTitle: "Ciencia real. Progreso real.",
+    researchCapabilities: "Ver cómo funciona Moka BDE",
+    researchAlt: "Científico examinando un extracto vegetal en un matraz",
     ctaTitle: "Tu próxima planta te está esperando.",
     ctaService: "Solicitar servicio",
     schemaDescription: "Entorno de descubrimiento de bioactivos para explorar Icaros, predecir bioactividad en plantas poco estudiadas y evaluar PI y formulación.",
-    features: ["Base de plantas Icaros", "Predicción de bioactividad", "Mecanismos y dianas", "Análisis de propiedad intelectual", "Formulación"],
+    features: ["Explore Icaros, la base de plantas latinoamericanas", "Virtual Lab: bioactividad, mecanismos, dianas y formulación", "Wet Lab: datos de laboratorio homogeneizados", "Commercial Lab: análisis de propiedad intelectual", "Log: chat del proyecto"],
   },
   pt: {
     metaTitle: "Plataforma de bioatividade Moka BDE e Icaros | Moka Bio",
     metaDescription: "Explore o Icaros, preveja bioatividade em plantas sem estudos anteriores e avalie PI e formulação no Moka BDE, a plataforma de bioatividade vegetal.",
     breadcrumb: "Nossa tecnologia",
-    kicker: "MOKA BDE · ICAROS",
     title: "Bioatividade em plantas que ninguém estudou. Mesmo sem dados prévios.",
     tagline: "O Moka BDE é onde você trabalha. O Icaros, tudo o que sabemos sobre a flora latino-americana.",
     demo: "Agendar demonstração",
     toServices: "Prefere que façamos por você?",
-    predictTitle: "Por que prever primeiro",
-    predict: [
-      { title: "Prever antes de experimentar", body: "Hoje já é possível antecipar bioatividade antes de pisar no laboratório." },
-      { title: "Pare de testar às cegas", body: "Antes de gastar em laboratório, você já sabe quais plantas valem a pena." },
+    modulesTitle: "Antes do laboratório, sempre surgem as mesmas perguntas.",
+    modulesIntro: "O Moka BDE responde a elas em um só lugar. Cada laboratório funciona com módulos, e seguimos adicionando mais.",
+    modules: [
+      { id: "explore-icaros", name: "Explore · Icaros", question: "Quais plantas poderiam ter a atividade que procuro?", answer: "mais de 30 mil espécies indexadas, com seus compostos e as evidências por trás delas, em uma só busca.", screen: "/mockups/Explore", screenAlt: "Moka BDE: Explore Icaros" },
+      { id: "predict-bioactivity", name: "Virtual Lab", question: "Vale a pena testar esta planta antes de gastar em laboratório?", answer: "módulos de bioinformática para prever bioatividade, mecanismos e alvos, e para planejar a formulação.", screen: "/mockups/VirtualLab", screenAlt: "Moka BDE: Virtual Lab" },
+      { id: "lab-results", name: "Wet Lab", question: "Meus resultados de laboratório estão espalhados em arquivos e formatos diferentes.", answer: "seus dados de laboratório, padronizados e conectados ao que se sabe sobre cada planta.", screen: "/mockups/WetLab", screenAlt: "Moka BDE: Wet Lab" },
+      { id: "intellectual-property", name: "Commercial Lab", question: "Posso protegê-lo antes de investir?", answer: "avalie o panorama de propriedade intelectual desde o início.", screen: "/mockups/CommercialLab", screenAlt: "Moka BDE: Commercial Lab" },
+      { id: "log", name: "Log", question: "Por que escolhemos este candidato e onde paramos?", answer: "um chat que responde sobre tudo o que há na sua sessão ou projeto.", screen: "/mockups/Log", screenAlt: "Moka BDE: Log" },
     ],
-    screensKicker: "MOKA BDE",
-    screensTitle: "Toda a sua descoberta, em um só lugar.",
-    researchKicker: "PARA EQUIPES DE PESQUISA",
-    researchTitle: "Muitas plantas candidatas, um orçamento de laboratório limitado.",
-    researchBody: "Vocês sabem pesquisar. Ajudamos a escolher o que pesquisar primeiro.",
+    researchTitle: "Cuido da parte técnica. Preciso de tudo em um só lugar.",
+    researchBody: "Pesquisador, inovador ou empreendedor, em qualquer indústria: quando seu projeto passa por várias pessoas e laboratórios, o Moka BDE o mantém reunido.",
     researchIcaros: "Explorar o Icaros",
-    researchCapabilities: "Ver o que o Moka BDE pode fazer",
-    researchAlt: "Cientista pipetando amostras em um laboratório",
-    proofKicker: "TRAÇÃO",
-    proofTitle: "Ciência real. Progresso real.",
+    researchCapabilities: "Ver como o Moka BDE funciona",
+    researchAlt: "Cientista examinando um extrato vegetal em um balão",
     ctaTitle: "Sua próxima planta está esperando.",
     ctaService: "Solicitar serviço",
     schemaDescription: "Ambiente de descoberta de bioativos para explorar o Icaros, prever bioatividade em plantas pouco estudadas e avaliar PI e formulação.",
-    features: ["Base de plantas Icaros", "Predição de bioatividade", "Mecanismos e alvos", "Análise de propriedade intelectual", "Formulação"],
+    features: ["Explore Icaros, a base de plantas latino-americanas", "Virtual Lab: bioatividade, mecanismos, alvos e formulação", "Wet Lab: dados de laboratório padronizados", "Commercial Lab: análise de propriedade intelectual", "Log: chat do projeto"],
   },
 }[locale];
 
@@ -136,7 +128,6 @@ const schema = [
 >
   <div class="tech-page relative flex flex-col items-center justify-between w-full bg-charcoal overflow-hidden">
     <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-03.png" tone="strong" class="tech-botanical-focus" revealStart={-0.15} />
-    <PageBreadcrumb locale={locale} label={copy.breadcrumb} />
     <div class="tech-biofield pointer-events-none fixed inset-0 z-0" aria-hidden="true">
       <svg class="h-full w-full" viewBox="0 0 1440 2200" preserveAspectRatio="xMidYMid slice">
         <defs>
@@ -217,7 +208,7 @@ const schema = [
       </svg>
     </div>
     <div
-      class="relative z-10 overflow-hidden bg-transparent flex flex-col items-center justify-center py-20 w-full"
+      class="relative z-10 overflow-hidden bg-transparent flex flex-col items-center justify-center pt-8 pb-16 sm:pt-10 w-full"
     >
       <div class="tech-silhouette-layer pointer-events-none absolute inset-0 z-[5] overflow-hidden" aria-hidden="true">
         <div class="absolute left-3 top-24 hidden h-[78%] w-[30%] md:block">
@@ -268,8 +259,11 @@ const schema = [
         </div>
       </div>
       <div class="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 gap-5">
-        <p class="tech-page-kicker">{copy.kicker}</p>
         <h1 class="tech-page-title">{copy.title}</h1>
+        <a class="tech-icaros-pill" href="#explore-icaros" data-analytics-event="click_view_technology" data-analytics-category="cta" data-analytics-label="platform_icaros_pill">Icaros</a>
+      </div>
+      <BrainSection locale={locale} parts={["brain"]} showName={false} />
+      <div class="relative z-10 flex flex-col items-center text-center px-6 sm:px-8 gap-5">
         <p class="tech-page-tagline">{copy.tagline}</p>
         <div class="tech-page-ctas">
           <a href={`${contactBase}?interest=demo`} class="moka-demo-cta" data-analytics-event="book_demo_click" data-analytics-category="cta" data-analytics-label="platform_hero">{copy.demo} <span aria-hidden="true">→</span></a>
@@ -277,36 +271,11 @@ const schema = [
         </div>
         <div class="tech-page-rule" aria-hidden="true"></div>
       </div>
-      <BrainSection locale={locale} parts={["brain"]} />
-      <div class="platform-proof-species">
-        <ProofCard locale={locale} kind="species" />
-      </div>
     </div>
-
-    <section class="industry-section relative z-10">
-      <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{copy.predictTitle}</h2>
-      <div class="industry-grid industry-grid--2">
-        {copy.predict.map((item, i) => (
-          <article class="industry-card reveal opacity-0" data-animation="pop-in" style={`transition-delay: ${0.1 + i * 0.1}s;`}>
-            <span class="industry-index">0{i + 1}</span>
-            <h3 class="industry-card-title">{item.title}</h3>
-            <p class="industry-card-body">{item.body}</p>
-          </article>
-        ))}
-      </div>
-    </section>
 
     <div class="relative z-10 w-full">
-      <BrainSection locale={locale} parts={["capabilities"]} />
+      <ModuleJourney id="capabilities" title={copy.modulesTitle} intro={copy.modulesIntro} modules={copy.modules} />
     </div>
-
-    <section class="industry-section relative z-10">
-      <p class="industry-kicker reveal opacity-0" data-animation="slide-up">{copy.screensKicker}</p>
-      <h2 class="industry-h2 mt-4 reveal opacity-0" data-animation="slide-up">{copy.screensTitle}</h2>
-      <div class="platform-screens">
-        <ProductScreens locale={locale} />
-      </div>
-    </section>
 
     <div class="relative z-10 w-full">
       <TargetSection locale={locale} variant="links" heading="starting" id="starting-points" />
@@ -315,31 +284,22 @@ const schema = [
     <section id="research-teams" class="industry-section relative z-10 journey-section">
       <div class="landing-split">
         <div>
-          <p class="industry-kicker reveal opacity-0" data-animation="slide-up">{copy.researchKicker}</p>
-          <h2 class="industry-h2 mt-4 reveal opacity-0" data-animation="slide-up">{copy.researchTitle}</h2>
+          <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{copy.researchTitle}</h2>
           <p class="industry-intro journey-answer reveal opacity-0" data-animation="slide-up">{copy.researchBody}</p>
           <div class="journey-links">
-            <a class="industry-link" href="#icaros">{copy.researchIcaros} <span aria-hidden="true">→</span></a>
+            <a class="industry-link" href="#explore-icaros">{copy.researchIcaros} <span aria-hidden="true">→</span></a>
             <a class="industry-link" href="#capabilities">{copy.researchCapabilities} <span aria-hidden="true">→</span></a>
           </div>
         </div>
         <div class="landing-split-media reveal opacity-0" data-animation="pop-in">
-          <img src="/audience/academic.webp" alt={copy.researchAlt} width="800" height="800" loading="lazy" decoding="async" />
+          <img src="/webpics/technitianextractinplants.png" alt={copy.researchAlt} width="672" height="672" loading="lazy" decoding="async" />
         </div>
       </div>
     </section>
 
     <div class="relative z-10 w-full">
-      <TrustSection locale={locale} showCta={false} />
+      <TrustSection locale={locale} showCta={false} variant="platform" />
     </div>
-
-    <section class="industry-section relative z-10">
-      <p class="industry-kicker reveal opacity-0" data-animation="slide-up">{copy.proofKicker}</p>
-      <h2 class="industry-h2 mt-4 reveal opacity-0" data-animation="slide-up">{copy.proofTitle}</h2>
-      <div class="platform-proof">
-        <ProofCard locale={locale} kind="patent" />
-      </div>
-    </section>
 
     <div class="relative z-10 w-full">
       <CtaBand
@@ -424,6 +384,30 @@ const schema = [
     color: rgba(222, 222, 222, 0.62);
     text-wrap: balance;
     animation: mokaReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.22s both;
+  }
+
+  /* "Icaros" label between the title and the brain; jumps to the Explore · Icaros module. */
+  .tech-icaros-pill {
+    display: inline-flex;
+    margin-top: 0.5rem;
+    padding: 0.45rem 1.4rem;
+    border-radius: 999px;
+    border: 1px solid rgba(110, 191, 126, 0.45);
+    background: rgba(19, 45, 37, 0.6);
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--fresh-green-color);
+    text-decoration: none;
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  .tech-icaros-pill:hover,
+  .tech-icaros-pill:focus-visible {
+    background: var(--fresh-green-color);
+    color: var(--charcoal-color);
   }
 
   .tech-page-rule {

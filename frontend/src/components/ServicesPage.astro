@@ -2,14 +2,13 @@
 // /services/ (EN, ES, PT): the R&D service, built from existing service copy only.
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
-import BrainSection from "@components/BrainSection.astro";
 import CtaBand from "@components/CtaBand.astro";
-import PageBreadcrumb from "@components/PageBreadcrumb.astro";
+import DepthProcess from "@components/DepthProcess.astro";
 import TargetSection from "@components/TargetSection.astro";
 import TrustSection from "@components/TrustSection.astro";
 import "../styles/seo-landing.css";
 import { industries, industrySlugs } from "../data/industries";
-import { hasPublicFile, ogImageOr } from "../utils/publicAsset";
+import { ogImageOr } from "../utils/publicAsset";
 
 interface Props {
   locale: "en" | "es" | "pt";
@@ -18,23 +17,29 @@ interface Props {
 const { locale } = Astro.props;
 const prefix = locale === "en" ? "" : `/${locale}`;
 const contactBase = `${prefix}/contact-us`;
-const heroImage = "/services/services-lab-hero.webp";
-const hasHeroImage = hasPublicFile(heroImage);
+const heroImage = "/webpics/services-hero.webp";
 
 const copy = {
   en: {
     metaTitle: "Plant Bioactivity R&D Services | Moka Bio",
     metaDescription: "Bring a plant or a need. Moka prioritizes candidates and develops them to extract, fraction or molecule, with results and an IP assessment.",
     breadcrumb: "Services",
-    kicker: "R&D SERVICE",
-    title: "You bring the question. We bring the bioactive.",
-    lead: "Start with a plant or with a need.",
+    title: "I want to develop a bioactive, but I don't have a lab.",
+    lead: "Bring us a plant or a need. We develop it with you, from extract to molecule.",
     cta: "Request a service",
-    heroAlt: "Plant extract in a glass vial on a laboratory bench",
-    getTitle: "What you get",
-    get: ["Extract, fraction, or molecule.", "Results and an IP assessment."],
-    dontTitle: "What we don't do",
-    industriesTitle: "By industry",
+    heroAlt: "Scientist transferring a plant extract into a vial in the lab",
+    depthTitle: "How deep do I need to go?",
+    depthIntro: "Multi-omics and machine learning to identify, validate and standardize bioactive ingredients. Each level is delivered with its validations.",
+    depth: [
+      { depth: "Prediction with Icaros", title: "Prioritization", body: "We choose the leads: the plants and compounds with the most potential.", image: "/webpics/s1.webp", imageAlt: "Leaves, bark and seeds of candidate plants" },
+      { depth: "Extract", title: "Full-spectrum extract", body: "All of the plant's chemistry, ready to test.", image: "/webpics/s2.webp", imageAlt: "Amber bottle with a full-spectrum plant extract" },
+      { depth: "Fraction", title: "Fractions", body: "We separate the extract to find where the activity is.", image: "/webpics/s3.webp", imageAlt: "Row of vials with fractions of a plant extract", fill: true },
+      { depth: "Molecule", title: "Deconvolution", body: "We identify the molecule behind the activity.", image: "/webpics/s4.webp", imageAlt: "Vial with an isolated compound next to its spectrum", fill: true },
+      { depth: "Delivery", title: "Your bioactive", body: "Safe, effective and standardized, with its validations, results and an IP assessment.", image: "/webpics/greenvial-shaded.webp", imageAlt: "Vial with a green bioactive powder" },
+    ],
+    dontTitle: "What doesn't Moka do?",
+    dontQuestions: ["Can Moka formulate my product?", "Can I buy ready-made ingredients from Moka?", "Can Moka run my clinical trials?", "Can Moka register my bioinput?", "Can Moka define the claims on my product?", "Do predictions replace my safety or efficacy tests?"],
+    industriesTitle: "What does Moka offer in each industry?",
     ctaTitle: "Your next plant is waiting.",
     toPlatform: "Want to explore it yourself?",
     serviceName: "Plant bioactivity R&D service",
@@ -44,15 +49,22 @@ const copy = {
     metaTitle: "Servicios de I+D de bioactividad vegetal | Moka Bio",
     metaDescription: "Trae una planta o una necesidad. Moka prioriza candidatos y los desarrolla hasta extracto, fracción o molécula, con resultados y evaluación de PI.",
     breadcrumb: "Servicios",
-    kicker: "SERVICIO DE I+D",
-    title: "Tú traes la pregunta. Nosotros, el bioactivo.",
-    lead: "Empieza con una planta o con una necesidad.",
+    title: "Quiero desarrollar un bioactivo, pero no tengo laboratorio.",
+    lead: "Tráenos una planta o una necesidad. Lo desarrollamos contigo, del extracto a la molécula.",
     cta: "Solicitar servicio",
-    heroAlt: "Extracto vegetal en un vial de vidrio sobre una mesa de laboratorio",
-    getTitle: "Qué recibes",
-    get: ["Extracto, fracción o molécula.", "Resultados y evaluación de PI."],
-    dontTitle: "Lo que no hacemos",
-    industriesTitle: "Por industria",
+    heroAlt: "Científico transfiriendo un extracto vegetal a un vial en el laboratorio",
+    depthTitle: "¿Qué tan profundo necesito llegar?",
+    depthIntro: "Multiómica y machine learning para identificar, validar y estandarizar ingredientes bioactivos. Cada nivel se entrega con sus validaciones.",
+    depth: [
+      { depth: "Predicción con Icaros", title: "Priorización", body: "Elegimos los leads: las plantas y los compuestos con más potencial.", image: "/webpics/s1.webp", imageAlt: "Hojas, corteza y semillas de plantas candidatas" },
+      { depth: "Extracto", title: "Extracto de espectro completo", body: "Toda la química de la planta, lista para ensayar.", image: "/webpics/s2.webp", imageAlt: "Frasco ámbar con un extracto vegetal de espectro completo" },
+      { depth: "Fracción", title: "Fracciones", body: "Separamos el extracto para encontrar dónde está la actividad.", image: "/webpics/s3.webp", imageAlt: "Fila de viales con fracciones de un extracto vegetal", fill: true },
+      { depth: "Molécula", title: "Deconvolución", body: "Identificamos la molécula detrás de la actividad.", image: "/webpics/s4.webp", imageAlt: "Vial con un compuesto aislado junto a su espectro", fill: true },
+      { depth: "Entrega", title: "Tu bioactivo", body: "Seguro, eficaz y estandarizado, con sus validaciones, resultados y evaluación de PI.", image: "/webpics/greenvial-shaded.webp", imageAlt: "Vial con un bioactivo en polvo verde" },
+    ],
+    dontTitle: "¿Qué no hace Moka?",
+    dontQuestions: ["¿Moka puede formular mi producto?", "¿Puedo comprarle a Moka ingredientes ya hechos?", "¿Moka puede hacer mis ensayos clínicos?", "¿Moka puede registrar mi bioinsumo?", "¿Moka puede definir las declaraciones de mi producto?", "¿Las predicciones sustituyen mis pruebas de seguridad o eficacia?"],
+    industriesTitle: "¿Qué ofrece Moka en cada industria?",
     ctaTitle: "Tu próxima planta te está esperando.",
     toPlatform: "¿Quieres explorarlo por tu cuenta?",
     serviceName: "Servicio de I+D de bioactividad vegetal",
@@ -62,15 +74,22 @@ const copy = {
     metaTitle: "Serviços de P&D de bioatividade vegetal | Moka Bio",
     metaDescription: "Traga uma planta ou uma necessidade. A Moka prioriza candidatos e os desenvolve até extrato, fração ou molécula, com resultados e avaliação de PI.",
     breadcrumb: "Serviços",
-    kicker: "SERVIÇO DE P&D",
-    title: "Você traz a pergunta. Nós, o bioativo.",
-    lead: "Comece com uma planta ou com uma necessidade.",
+    title: "Quero desenvolver um bioativo, mas não tenho laboratório.",
+    lead: "Traga uma planta ou uma necessidade. Desenvolvemos com você, do extrato à molécula.",
     cta: "Solicitar serviço",
-    heroAlt: "Extrato vegetal em um frasco de vidro sobre uma bancada de laboratório",
-    getTitle: "O que você recebe",
-    get: ["Extrato, fração ou molécula.", "Resultados e avaliação de PI."],
-    dontTitle: "O que não fazemos",
-    industriesTitle: "Por indústria",
+    heroAlt: "Cientista transferindo um extrato vegetal para um frasco no laboratório",
+    depthTitle: "Até onde preciso chegar?",
+    depthIntro: "Multiômica e machine learning para identificar, validar e padronizar ingredientes bioativos. Cada nível é entregue com suas validações.",
+    depth: [
+      { depth: "Predição com o Icaros", title: "Priorização", body: "Escolhemos os leads: as plantas e os compostos com mais potencial.", image: "/webpics/s1.webp", imageAlt: "Folhas, casca e sementes de plantas candidatas" },
+      { depth: "Extrato", title: "Extrato de espectro completo", body: "Toda a química da planta, pronta para testar.", image: "/webpics/s2.webp", imageAlt: "Frasco âmbar com um extrato vegetal de espectro completo" },
+      { depth: "Fração", title: "Frações", body: "Separamos o extrato para encontrar onde está a atividade.", image: "/webpics/s3.webp", imageAlt: "Fileira de frascos com frações de um extrato vegetal", fill: true },
+      { depth: "Molécula", title: "Deconvolução", body: "Identificamos a molécula por trás da atividade.", image: "/webpics/s4.webp", imageAlt: "Frasco com um composto isolado ao lado do seu espectro", fill: true },
+      { depth: "Entrega", title: "Seu bioativo", body: "Seguro, eficaz e padronizado, com suas validações, resultados e avaliação de PI.", image: "/webpics/greenvial-shaded.webp", imageAlt: "Frasco com um bioativo em pó verde" },
+    ],
+    dontTitle: "O que a Moka não faz?",
+    dontQuestions: ["A Moka pode formular meu produto?", "Posso comprar ingredientes prontos da Moka?", "A Moka pode fazer meus ensaios clínicos?", "A Moka pode registrar meu bioinsumo?", "A Moka pode definir as alegações do meu produto?", "As predições substituem meus testes de segurança ou eficácia?"],
+    industriesTitle: "O que a Moka oferece em cada indústria?",
     ctaTitle: "Sua próxima planta está esperando.",
     toPlatform: "Quer explorar por conta própria?",
     serviceName: "Serviço de P&D de bioatividade vegetal",
@@ -89,7 +108,8 @@ const faqSource: [keyof typeof industries, number][] = [
   ["nutraceuticals", 2],
   ["dermocosmetics", 2],
 ];
-const faq = faqSource.map(([slug, i]) => industries[slug][locale].faq[i]);
+// Answers from the industry FAQ; the questions are asked in the first person here.
+const faq = faqSource.map(([slug, i], n) => ({ q: copy.dontQuestions[n], a: industries[slug][locale].faq[i].a }));
 
 // Same @id as the node that lived on the retired Tech page.
 const schema = [
@@ -113,45 +133,30 @@ const schema = [
   description={copy.metaDescription}
   ogImage={ogImageOr("/og/og-services.jpg")}
 >
-  <div class="industry-page relative overflow-hidden">
+  <div class="industry-page relative services-page">
     <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-01.png" tone="strong" class="tech-botanical-focus" revealStart={-0.15} />
-    <PageBreadcrumb locale={locale} label={copy.breadcrumb} />
 
-    <div class:list={["landing-hero", hasHeroImage && "landing-hero--media"]}>
-      <header class="industry-hero">
-        <p class="industry-kicker reveal opacity-0" data-animation="slide-up">{copy.kicker}</p>
+    <!-- Full-bleed hero like the home: the lab photo in greyscale behind centred text. -->
+    <div class="services-hero">
+      <img class="services-hero-bg" src={heroImage} alt={copy.heroAlt} width="1920" height="1080" fetchpriority="high" decoding="async" />
+      <header class="industry-hero services-hero-text">
         <h1 class="industry-title reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.1s;">{copy.title}</h1>
         <p class="industry-lead reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.2s;">{copy.lead}</p>
         <div class="industry-ctas reveal opacity-0" data-animation="slide-up" style="transition-delay: 0.3s;">
           <a href={`${contactBase}?interest=service`} class="moka-demo-cta" data-analytics-event="request_service_click" data-analytics-category="cta" data-analytics-label="services_hero">{copy.cta} <span aria-hidden="true">→</span></a>
         </div>
       </header>
-      {hasHeroImage && (
-        <div class="landing-hero-media">
-          <img src={heroImage} alt={copy.heroAlt} width="1200" height="900" fetchpriority="high" decoding="async" />
-        </div>
-      )}
     </div>
 
     <div class="relative z-10 w-full">
       <TargetSection locale={locale} variant="links" heading="starting" />
     </div>
 
-    <div class="relative z-10 w-full">
-      <BrainSection locale={locale} parts={["process"]} processHeading />
-    </div>
+    <DepthProcess id="process" title={copy.depthTitle} intro={copy.depthIntro} steps={copy.depth} />
 
-    <section class="industry-section">
-      <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{copy.getTitle}</h2>
-      <div class="industry-grid industry-grid--2">
-        {copy.get.map((item, i) => (
-          <article class:list={["industry-card reveal opacity-0", i === 0 && "industry-card--accent"]} data-animation="pop-in" style={`transition-delay: ${0.1 + i * 0.1}s;`}>
-            <span class="industry-index">0{i + 1}</span>
-            <p class="industry-card-title">{item}</p>
-          </article>
-        ))}
-      </div>
-    </section>
+    <div class="services-after-depth reveal opacity-0" data-animation="slide-up">
+      <a href={`${contactBase}?interest=service`} class="moka-demo-cta" data-analytics-event="request_service_click" data-analytics-category="cta" data-analytics-label="services_depth">{copy.cta} <span aria-hidden="true">→</span></a>
+    </div>
 
     <section class="industry-section">
       <h2 class="industry-h2 reveal opacity-0" data-animation="slide-up">{copy.dontTitle}</h2>
@@ -177,7 +182,7 @@ const schema = [
       </div>
     </nav>
 
-    <TrustSection locale={locale} showCta={false} />
+    <TrustSection locale={locale} showCta={false} variant="project" />
 
     <CtaBand
       title={copy.ctaTitle}
@@ -200,3 +205,71 @@ const schema = [
   }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
   document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
 </script>
+
+<style>
+  /* Clip sideways overflow without creating a scroll container, so the depth section can stick. */
+  .services-page { overflow-x: clip; }
+
+  /* Hero: full-bleed greyscale photo (same treatment as the home hero), text centred on top. */
+  .services-hero {
+    position: relative;
+    z-index: 10;
+    min-height: min(78vh, 720px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 5rem 1.25rem;
+  }
+
+  .services-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1) contrast(1.2) brightness(0.55);
+    /* The photo itself fades out at the bottom, so the page (and its drawing) shows through. */
+    -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+  }
+
+  .services-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 55% at 50% 50%, rgba(18, 18, 18, 0.55), transparent 75%),
+      linear-gradient(180deg, rgba(18, 18, 18, 0.35) 0%, transparent 30%);
+  }
+
+  .services-hero-text {
+    position: relative;
+    z-index: 1;
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .services-hero-text :global(.industry-lead) { margin-left: auto; margin-right: auto; }
+
+  /* The next block rises over the faded bottom of the hero. */
+  .services-page :global(.target-links) { margin-top: -9rem; }
+  .services-page :global(.target-links > div) { padding-top: 1.5rem; }
+
+  @media (max-width: 767px) {
+    .services-page :global(.target-links) { margin-top: -5rem; }
+  }
+
+  /* Request a service, right after the depth levels. */
+  .services-after-depth {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    padding: 1rem 1.25rem 2rem;
+  }
+</style>
