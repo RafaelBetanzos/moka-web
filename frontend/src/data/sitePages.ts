@@ -17,7 +17,7 @@ export interface SitePage {
 
 export const sitePages: SitePage[] = [
   { path: "/", source: "index.astro", priority: 1.0 },
-  { path: "/platform/", source: "platform.astro", priority: 0.9, extraSources: ["src/components/PlatformPage.astro", "src/components/BrainSection.astro", "src/components/ProductScreens.astro"] },
+  { path: "/our-technology/", source: "our-technology.astro", priority: 0.9, extraSources: ["src/components/PlatformPage.astro", "src/components/BrainSection.astro", "src/components/ProductScreens.astro"] },
   { path: "/services/", source: "services.astro", priority: 0.9, extraSources: ["src/components/ServicesPage.astro", "src/components/BrainSection.astro"] },
   ...["plant-potential", "find-your-plant"].map((slug) => ({
     path: `/${slug}/`,

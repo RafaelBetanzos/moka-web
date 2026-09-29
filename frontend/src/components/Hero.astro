@@ -6,7 +6,7 @@ const copy = {
     titleBefore: "Discovering the bioactive potential of Latin American",
     titleHighlight: "plants",
     titleAfter: "",
-    description: "Moka finds value in plants with little or no scientific information, starting with the flora of Latin America.",
+    description: "Moka finds value in plants with little or no scientific information.",
     primaryCta: "See how we do it",
     demoCta: "Book a demo",
     analyticsLabel: "Hero Book a Demo",
@@ -16,7 +16,7 @@ const copy = {
     titleBefore: "Descubriendo el potencial bioactivo de las plantas",
     titleHighlight: "latinoamericanas",
     titleAfter: "",
-    description: "Moka encuentra valor en plantas con poca o ninguna información científica, empezando por la flora de América Latina.",
+    description: "Moka encuentra valor en plantas con poca o ninguna información científica.",
     primaryCta: "Ver cómo lo hacemos",
     demoCta: "Agendar demo",
     analyticsLabel: "Hero Agendar Demo",
@@ -26,7 +26,7 @@ const copy = {
     titleBefore: "Descobrindo o potencial bioativo das plantas",
     titleHighlight: "latino-americanas",
     titleAfter: "",
-    description: "A Moka encontra valor em plantas com pouca ou nenhuma informação científica, começando pela flora da América Latina.",
+    description: "A Moka encontra valor em plantas com pouca ou nenhuma informação científica.",
     primaryCta: "Ver como fazemos",
     demoCta: "Agendar demo",
     analyticsLabel: "Hero Agendar Demo PT",
@@ -75,9 +75,9 @@ const localePrefix = locale === "en" ? "" : `/${locale}`;
         </p>
         <div class="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
           <a
-            href="#pathways"
+            href={`${localePrefix}/our-technology/`}
             class="hero-primary-cta no-underline"
-            data-analytics-event="click_view_pathways"
+            data-analytics-event="click_view_technology"
             data-analytics-category="cta"
             data-analytics-label="hero_primary_cta"
           >{t.primaryCta}</a>
@@ -94,7 +94,7 @@ const localePrefix = locale === "en" ? "" : `/${locale}`;
       </div>
 
       <!-- Marquee justo debajo de los botones -->
-      <div class="mt-14 sm:mt-16">
+      <div class="mt-20 sm:mt-24">
         <div class="flex items-center gap-6 mb-5">
           <span class="hero-partners-label">{t.backedBy}</span>
           <div class="flex-1 h-px bg-gradient-to-r from-birch/15 to-transparent"></div>
@@ -110,7 +110,8 @@ const localePrefix = locale === "en" ? "" : `/${locale}`;
 
 <style>
   .hero-xray {
-    isolation: isolate;
+    /* No isolation: on the home, the Latin America block overlaps the bottom of the hero,
+       above its image and fade (z 0–4) but below the content and marquee (z 10). */
     background: var(--charcoal-color);
   }
 

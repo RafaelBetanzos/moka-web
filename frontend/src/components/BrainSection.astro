@@ -14,6 +14,8 @@ interface Props {
 
 const { locale = "en", parts = ["brain", "capabilities", "process"], processHeading = false } = Astro.props;
 const show = (part: Part) => parts.includes(part);
+// Anchors for the capability cards (the home links to #predict-bioactivity).
+const capabilityIds = ["explore-icaros", "predict-bioactivity", "mechanisms-and-targets", "intellectual-property", "formulation", "lab-results"];
 const process = {
   en: [
     { step: "01", kicker: "YOUR GOAL",       title: "Tell us what you need",        body: "A plant, or a need." },
@@ -196,7 +198,7 @@ const copy = {
 
     <div class="capability-grid">
       {copy.capabilities.map((cap, i) => (
-        <article class="reveal opacity-0 brain-thinking-card capability-card" data-animation="pop-in" style={`transition-delay: ${0.1 + i * 0.08}s;`}>
+        <article id={capabilityIds[i]} class="reveal opacity-0 brain-thinking-card capability-card" data-animation="pop-in" style={`transition-delay: ${0.1 + i * 0.08}s;`}>
           <p class="capability-index">0{i + 1}</p>
           <h3 class="brain-thinking-title">{cap.title}</h3>
           <p class="brain-thinking-body">{cap.body}</p>
@@ -208,7 +210,7 @@ const copy = {
 
   {show("process") && (<>
   {/* Connector → project steps */}
-  <div class="brain-connector" aria-hidden={processHeading ? undefined : "true"}>
+  <div id="process" class="brain-connector" aria-hidden={processHeading ? undefined : "true"}>
     <div class="brain-connector-line" aria-hidden="true"></div>
     <div class="brain-connector-dot" aria-hidden="true"></div>
     {processHeading ? <h2 class="brain-connector-label">{copy.connector}</h2> : <p class="brain-connector-label">{copy.connector}</p>}
@@ -366,6 +368,12 @@ const copy = {
   }
 
   /* ── Brain → Problem connector ───────────────── */
+  /* Anchor targets clear the sticky navbar */
+  .capability-card,
+  #process {
+    scroll-margin-top: 7rem;
+  }
+
   .brain-connector {
     display: flex;
     flex-direction: column;

@@ -1,4 +1,5 @@
 ---
+import AudienceSection from "@components/AudienceSection.astro";
 import ContactUsCard from "@components/ContactUsCard.astro";
 import DataBioactivitySection from "@components/DataBioactivitySection.astro";
 import OurVisionSection from "@components/OurVisionSection.astro";
@@ -6,9 +7,13 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import BotanicalScrollReveal from "@components/BotanicalScrollReveal.astro";
 import Hero from "../../components/Hero.astro";
 import MarketsSection from "@components/MarketsSection.astro";
-import ProductScreens from "@components/ProductScreens.astro";
-import TargetSection from "@components/TargetSection.astro";
+import PlantToProduct from "@components/PlantToProduct.astro";
 import WhyWeDoIt from "@components/WhyWeDoIt.astro";
+import { hasPublicFile } from "../../utils/publicAsset";
+
+// Opportunity block photo, supplied later; the block is text-only until the file exists.
+const opportunityImage = "/webpics/home-opportunity.jpeg";
+const hasOpportunityImage = hasPublicFile(opportunityImage);
 
 const seo = {
   title: "Bioatividade em plantas latino-americanas | Moka Bio",
@@ -22,32 +27,60 @@ const seo = {
 
     <BotanicalScrollReveal src="/assets/about-botanicals/botanical-line-02.png" tone="strong" revealStart={0.92} revealRange={0.42} class="home-botanical" />
 
-    <DataBioactivitySection locale="pt" />
-
     <WhyWeDoIt locale="pt" showForces={false} />
 
-    <TargetSection locale="pt" variant="links" heading="pathways" id="pathways" />
+    <DataBioactivitySection locale="pt" />
 
-    <!-- ── Moka platform preview ────────────── -->
+    <!-- ── The opportunity: answers the question that closes the previous block ────────────── -->
     <section class="home-moka-section relative overflow-hidden px-5 py-12 sm:px-8 lg:py-16">
       <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-birch/8 to-transparent"></div>
       <div class="home-section-shell">
-
-        <div class="moka-showcase-layout">
-          <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
-            <div class="home-section-kicker">MOKA BDE · ICAROS</div>
-            <h2 class="home-section-title home-section-title--md mt-4">Toda a sua descoberta, em um só lugar.</h2>
-            <p class="home-section-copy mt-5">
-              O Moka BDE é onde você trabalha. O Icaros, tudo o que sabemos sobre a flora latino-americana.
-            </p>
-            <a href="/pt/platform/" class="moka-demo-cta mt-7" data-analytics-event="click_view_platform" data-analytics-category="cta" data-analytics-label="home_platform_preview">Ver a plataforma <span aria-hidden="true">→</span></a>
+        <div class:list={["home-opportunity", hasOpportunityImage && "moka-showcase-layout home-opportunity--media"]}>
+          {hasOpportunityImage && (
+            <div class="home-opportunity-media reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.05s;">
+              <img src={opportunityImage} alt="Planta nativa ao lado de um frasco com seu extrato" width="2400" height="1792" loading="lazy" decoding="async" />
+            </div>
+          )}
+          <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.15s;">
+            <h2 class="home-section-title home-section-title--md">O próximo bioativo talvez não precise ser inventado.</h2>
+            <p class="home-opportunity-sub mt-4">Pode ser que já esteja crescendo na América Latina.</p>
+            <p class="home-section-copy mt-5">O mercado busca ingredientes naturais com evidência por trás, e as regras de acesso e origem já premiam as plantas obtidas de forma legítima.</p>
+            <a href="#pathways" class="moka-demo-cta mt-7" data-analytics-event="click_view_pathways" data-analytics-category="cta" data-analytics-label="home_opportunity">Encontre o seu <span aria-hidden="true">→</span></a>
           </div>
-
-          <ProductScreens locale="pt" variant="preview" />
         </div>
-
       </div>
     </section>
+
+    <!-- ── A novel natural product needs three elements ────────────── -->
+    <section id="pathways" class="home-moka-section relative overflow-hidden px-5 py-12 sm:px-8 lg:py-16">
+      <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-birch/8 to-transparent"></div>
+      <div class="home-section-shell">
+        <div class="home-system">
+          <div class="home-system-head reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
+            <h2 class="home-section-title home-section-title--md">Um produto natural inovador precisa de três elementos.</h2>
+            <a href="/pt/our-technology/" class="moka-demo-cta mt-7" data-analytics-event="click_view_technology" data-analytics-category="cta" data-analytics-label="home_system">Descubra como fazemos <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="home-system-path reveal opacity-0" data-animation="pop-in" style="transition-delay: 0.15s;">
+            <PlantToProduct
+              fork={[
+                { label: "Planta", href: "/pt/our-technology/#plant-push", event: "click_view_technology" },
+                { label: "Produto", href: "/pt/our-technology/#market-pull", event: "click_view_technology" },
+              ]}
+              steps={[
+                { label: "O que ela é", hint: "Mesmo em plantas sem nenhum estudo anterior.", href: "/pt/our-technology/#predict-bioactivity", event: "click_view_technology" },
+                { label: "A prova de que funciona", hint: "Validado em laboratório.", href: "/pt/services/#process", event: "click_view_services" },
+                { label: "De onde ela vem", hint: "Rastreável desde a origem.", href: "/pt/our-technology/#traceable-origin", event: "click_view_technology" },
+              ]}
+              vial="/webpics/greenvial.png"
+              analyticsLabel="home_path"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <AudienceSection locale="pt" variant="profiles" />
 
     <MarketsSection locale="pt" />
 
@@ -97,6 +130,12 @@ const seo = {
   .home-color-system > :not(.botanical-scroll-reveal) {
     position: relative;
     z-index: 1;
+  }
+
+  /* The hero doesn't form its own layer, so the Latin America block can overlap its
+     image while staying below the marquee (see WhyWeDoIt .why-section--rooted). */
+  .home-color-system > :global(.hero-xray) {
+    z-index: auto;
   }
 
   .home-color-system::before {
@@ -196,6 +235,55 @@ const seo = {
     background: transparent;
     position: relative;
     z-index: 1;
+  }
+
+  .home-system-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .home-system-head :global(.home-section-title) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Centred under the title; on wide screens nudged left so the vial stays clear of the
+     botanical drawing on the right edge (the fork on the left is visually lighter). */
+  .home-system-path {
+    max-width: 900px;
+    margin: 3.5rem auto 0;
+  }
+
+  @media (min-width: 1280px) {
+    /* `left`, not transform: the reveal animation owns the transform. */
+    .home-system-path { position: relative; left: -4rem; }
+  }
+
+  .home-opportunity-sub {
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.25rem, 2vw, 1.6rem);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--fresh-green-color);
+  }
+
+  .home-opportunity--media {
+    align-items: center;
+  }
+
+  .home-opportunity-media {
+    overflow: hidden;
+    border-radius: 1.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.28);
+  }
+
+  .home-opportunity-media img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
   .moka-showcase-layout {

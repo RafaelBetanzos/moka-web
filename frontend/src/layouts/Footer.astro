@@ -15,7 +15,7 @@ const localizedHref = (href: string) => currentLocale === "en" ? href : href ===
 const copy = {
   en: {
     home: "Home",
-    platform: "Platform",
+    technology: "Our Technology",
     services: "Services",
     company: "Company",
     startHere: "Start here",
@@ -36,7 +36,7 @@ const copy = {
   },
   es: {
     home: "Inicio",
-    platform: "Plataforma",
+    technology: "Nuestra tecnología",
     services: "Servicios",
     company: "Empresa",
     startHere: "Empieza aquí",
@@ -57,7 +57,7 @@ const copy = {
   },
   pt: {
     home: "Início",
-    platform: "Plataforma",
+    technology: "Nossa tecnologia",
     services: "Serviços",
     company: "Empresa",
     startHere: "Comece aqui",
@@ -95,7 +95,7 @@ const copy = {
         <div class="footer-col">
           <p class="footer-label">{copy.company}</p>
           <a class="footer-link" href={localizedHref("/")}>{copy.home}</a>
-          <a class="footer-link" href={localizedHref("/platform")}>{copy.platform}</a>
+          <a class="footer-link" href={localizedHref("/our-technology")}>{copy.technology}</a>
           <a class="footer-link" href={localizedHref("/services")}>{copy.services}</a>
           <a class="footer-link" href={localizedHref("/about-us")}>{copy.about}</a>
           <a class="footer-link" href={localizedHref("/insights")}>{copy.insights}</a>

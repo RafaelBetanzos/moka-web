@@ -13,30 +13,27 @@ const contactBase = locale === "en" ? "/contact-us" : `/${locale}/contact-us`;
 const localePrefix = locale === "en" ? "" : `/${locale}`;
 const pathways = {
   en: {
-    kicker: "HOW WE CREATE VALUE",
-    title: "Two ways to find what a plant is worth.",
-    intro: "Some start with a plant. Others start with a need. Moka works from both ends.",
+    title: "There are two ways to get there.",
+    intro: "",
     cards: [
-      { key: "plant", title: "I have a plant", body: "For those who have a plant and want to know what value it may hold.", link: "Start with a plant", path: "/plant-potential/" },
-      { key: "need", title: "I know what I need", body: "For those with a need, a product idea or a target, looking for the plant that could solve it.", link: "Start with a need", path: "/find-your-plant/" },
+      { key: "plant", strategy: "PLANT PUSH", title: "I have a plant", body: "Find out what it could become.", link: "Start with a plant", path: "/plant-potential/" },
+      { key: "need", strategy: "MARKET PULL", title: "I know what I need", body: "Find the plant that could deliver it.", link: "Start with a need", path: "/find-your-plant/" },
     ],
   },
   es: {
-    kicker: "CÓMO CREAMOS VALOR",
-    title: "Dos formas de descubrir cuánto vale una planta.",
-    intro: "Algunos empiezan con una planta. Otros, con una necesidad. Moka trabaja desde ambos extremos.",
+    title: "Hay dos formas de hacerlo.",
+    intro: "",
     cards: [
-      { key: "plant", title: "Tengo una planta", body: "Para quienes tienen una planta y quieren saber qué valor puede tener.", link: "Empieza con una planta", path: "/plant-potential/" },
-      { key: "need", title: "Sé lo que necesito", body: "Para quienes tienen una necesidad, una idea de producto o una diana, y buscan la planta que podría resolverla.", link: "Empieza con una necesidad", path: "/find-your-plant/" },
+      { key: "plant", strategy: "PLANT PUSH", title: "Tengo una planta", body: "Descubre en qué podría convertirse.", link: "Empieza con una planta", path: "/plant-potential/" },
+      { key: "need", strategy: "MARKET PULL", title: "Sé lo que necesito", body: "Encuentra la planta que podría lograrlo.", link: "Empieza con una necesidad", path: "/find-your-plant/" },
     ],
   },
   pt: {
-    kicker: "COMO CRIAMOS VALOR",
-    title: "Duas formas de descobrir quanto vale uma planta.",
-    intro: "Alguns começam com uma planta. Outros, com uma necessidade. A Moka trabalha a partir das duas pontas.",
+    title: "Há duas formas de fazer isso.",
+    intro: "",
     cards: [
-      { key: "plant", title: "Tenho uma planta", body: "Para quem tem uma planta e quer saber que valor ela pode ter.", link: "Comece com uma planta", path: "/plant-potential/" },
-      { key: "need", title: "Sei do que preciso", body: "Para quem tem uma necessidade, uma ideia de produto ou um alvo, e busca a planta que poderia resolvê-la.", link: "Comece com uma necessidade", path: "/find-your-plant/" },
+      { key: "plant", strategy: "PLANT PUSH", title: "Tenho uma planta", body: "Descubra no que ela pode se transformar.", link: "Comece com uma planta", path: "/plant-potential/" },
+      { key: "need", strategy: "MARKET PULL", title: "Sei do que preciso", body: "Encontre a planta que pode entregar isso.", link: "Comece com uma necessidade", path: "/find-your-plant/" },
     ],
   },
 }[locale];
@@ -90,9 +87,11 @@ const copy = {
 <section id={id} class="target-links relative z-10 w-full bg-transparent">
   <div class="max-w-7xl mx-auto px-6 md:px-12 py-20 lg:py-24">
     <div class="target-links-head reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.1s;">
-      <p class="font-roboto font-bold text-[13px] leading-none tracking-[0.48em] text-freshgreen uppercase mb-6">
-        {heading === "pathways" ? pathways.kicker : copy.kicker}
-      </p>
+      {heading !== "pathways" && (
+        <p class="font-roboto font-bold text-[13px] leading-none tracking-[0.48em] text-freshgreen uppercase mb-6">
+          {copy.kicker}
+        </p>
+      )}
       {heading === "pathways" ? (
         <h2 class="text-[clamp(1.9rem,3.4vw,3rem)] leading-[1.05] font-semibold font-inter text-pure">{pathways.title}</h2>
       ) : (
@@ -101,14 +100,17 @@ const copy = {
           <span class="text-pure">{copy.titleB}</span>
         </h2>
       )}
-      <p class="mt-6 max-w-2xl text-birch/75 font-inter font-medium text-[18px] leading-relaxed">
-        {heading === "pathways" ? pathways.intro : copy.bodyA}
-      </p>
+      {(heading === "pathways" ? pathways.intro : copy.bodyA) && (
+        <p class="mt-6 max-w-2xl text-birch/75 font-inter font-medium text-[18px] leading-relaxed">
+          {heading === "pathways" ? pathways.intro : copy.bodyA}
+        </p>
+      )}
     </div>
 
     <div class="target-links-grid">
       {pathways.cards.map((card, i) => (
         <a
+          id={card.key === "plant" ? "plant-push" : "market-pull"}
           href={`${localePrefix}${card.path}`}
           class="target-link-card target-card target-card--now group reveal opacity-0 no-underline"
           data-animation="slide-up"
@@ -133,7 +135,10 @@ const copy = {
                 </svg>
               )}
             </div>
-            <h3 class="target-card-title group-hover:text-pure transition-colors duration-300">{card.title}</h3>
+            <div>
+              <p class="target-card-phase target-card-phase--now">{card.strategy}</p>
+              <h3 class="target-card-title group-hover:text-pure transition-colors duration-300">{card.title}</h3>
+            </div>
           </div>
           <div class="target-card-divider target-card-divider--now"></div>
           <p class="text-birch/80 text-[17px] leading-relaxed">{card.body}</p>
@@ -141,6 +146,7 @@ const copy = {
         </a>
       ))}
     </div>
+
   </div>
 </section>
 ) : (
@@ -246,6 +252,10 @@ const copy = {
 )}
 
 <style>
+  /* Reached from the home path (#plant-push / #market-pull): clear the fixed navbar. */
+  .target-link-card { scroll-margin-top: 7rem; }
+  .target-links { scroll-margin-top: 5rem; }
+
   .target-links-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));

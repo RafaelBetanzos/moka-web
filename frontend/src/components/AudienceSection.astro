@@ -1,16 +1,35 @@
 ---
 interface Props {
   locale?: "en" | "es" | "pt";
+  /** "full" renders profiles + offers; "profiles" renders only the head (no kicker) and the profile cards. */
+  variant?: "full" | "profiles";
 }
 
-const { locale = "en" } = Astro.props;
+const { locale = "en", variant = "full" } = Astro.props;
+const isProfiles = variant === "profiles";
 const contactBase = locale === "en" ? "/contact-us" : `/${locale}/contact-us`;
+const localePrefix = locale === "en" ? "" : `/${locale}`;
+const NameTag = isProfiles ? "h3" : "h4";
+
+// One link per profile on the home: where each kind of innovator should go next.
+const profileTargets = {
+  services: { path: "/services/", label: "services", event: "click_view_services" },
+  technology: { path: "/our-technology/", label: "technology", event: "click_view_technology" },
+  starting: { path: "/our-technology/#starting-points", label: "technology", event: "click_view_technology" },
+} as const;
+type ProfileTarget = keyof typeof profileTargets;
+
+const profileLinks = {
+  en: { technology: "Our technology", services: "Our services" },
+  es: { technology: "Nuestra tecnología", services: "Nuestros servicios" },
+  pt: { technology: "Nossa tecnologia", services: "Nossos serviços" },
+}[locale];
 
 const copy = {
   en:{
     kicker: "WHO IT'S FOR",
-    title: "Built for those who create with plants.",
-    intro: "Entrepreneurs, companies, and universities who want to reach the next plant first.",
+    title: "If you're looking to innovate, start here.",
+    intro: "Whether you start with a plant or with a product in mind, we help you bring the three elements together.",
     offersKicker: "WHAT YOU HIRE",
     confidential: "Data, results and IP are governed by a written agreement for each project.",
     offersTitle: "Two ways to work with Moka.",
@@ -24,15 +43,15 @@ const copy = {
     platform: "Platform",
     service: "Service",
     profiles: [
-      { image: "/audience/startups.webp", name: "Entrepreneurs and innovators", body: "You have a plant or an idea. We help you turn it into a product." },
-      { image: "/audience/inventor.webp", name: "Companies and startups", body: "Your portfolio needs something no one else has." },
-      { image: "/audience/academic.webp", name: "Universities and research centers", body: "You know how to research. We help you choose what to research first." },
+      { image: "/audience/startups.webp", name: "Entrepreneurs", body: "I'm interested in a plant or a product, and I want to take it to market.", link: "services" },
+      { image: "/audience/inventor.webp", name: "Companies and startups", body: "I want to develop a unique product, one my competitors don't have.", link: "technology" },
+      { image: "/audience/academic.webp", name: "Universities and research centers", body: "We want our research to reach the market.", link: "starting" },
     ],
   },
   es:{
     kicker: "PARA QUIÉN ES",
-    title: "Para quienes crean con plantas.",
-    intro: "Emprendedores, empresas y universidades que quieren llegar primero a la próxima planta.",
+    title: "Si buscas innovar, comienza aquí.",
+    intro: "Ya sea que empieces con una planta o con un producto en mente, te ayudamos a reunir los tres elementos.",
     offersKicker: "QUÉ CONTRATAS",
     confidential: "Los datos, los resultados y la PI se rigen por un acuerdo escrito para cada proyecto.",
     offersTitle: "Dos formas de trabajar con Moka.",
@@ -46,15 +65,15 @@ const copy = {
     platform: "Plataforma",
     service: "Servicio",
     profiles: [
-      { image: "/audience/startups.webp", name: "Emprendedores e innovadores", body: "Tienes una planta o una idea. Te ayudamos a convertirla en producto." },
-      { image: "/audience/inventor.webp", name: "Empresas y startups", body: "Tu portafolio necesita algo que nadie más tenga." },
-      { image: "/audience/academic.webp", name: "Universidades y centros de investigación", body: "Saben investigar. Les ayudamos a elegir qué investigar primero." },
+      { image: "/audience/startups.webp", name: "Emprendedores", body: "Me interesa una planta o un producto, y quiero llevarlo al mercado.", link: "services" },
+      { image: "/audience/inventor.webp", name: "Empresas y startups", body: "Quiero desarrollar un producto único, que no tenga la competencia.", link: "technology" },
+      { image: "/audience/academic.webp", name: "Universidades y centros de investigación", body: "Queremos que nuestra investigación llegue al mercado.", link: "starting" },
     ],
   },
   pt:{
     kicker: "PARA QUEM É",
-    title: "Para quem cria com plantas.",
-    intro: "Empreendedores, empresas e universidades que querem chegar primeiro à próxima planta.",
+    title: "Se você busca inovar, comece aqui.",
+    intro: "Seja começando com uma planta ou com um produto em mente, ajudamos você a reunir os três elementos.",
     offersKicker: "O QUE VOCÊ CONTRATA",
     confidential: "Dados, resultados e PI são regidos por um acordo escrito para cada projeto.",
     offersTitle: "Duas formas de trabalhar com a Moka.",
@@ -68,19 +87,19 @@ const copy = {
     platform: "Plataforma",
     service: "Serviço",
     profiles: [
-      { image: "/audience/startups.webp", name: "Empreendedores e inovadores", body: "Você tem uma planta ou uma ideia. Ajudamos a transformá-la em produto." },
-      { image: "/audience/inventor.webp", name: "Empresas e startups", body: "Seu portfólio precisa de algo que ninguém mais tenha." },
-      { image: "/audience/academic.webp", name: "Universidades e centros de pesquisa", body: "Vocês sabem pesquisar. Ajudamos a escolher o que pesquisar primeiro." },
+      { image: "/audience/startups.webp", name: "Empreendedores", body: "Tenho interesse em uma planta ou em um produto, e quero levá-lo ao mercado.", link: "services" },
+      { image: "/audience/inventor.webp", name: "Empresas e startups", body: "Quero desenvolver um produto único, que a concorrência não tenha.", link: "technology" },
+      { image: "/audience/academic.webp", name: "Universidades e centros de pesquisa", body: "Queremos que nossa pesquisa chegue ao mercado.", link: "starting" },
     ],
   },
 }[locale];
 ---
 
-<section class="audience relative" aria-labelledby="audience-title">
+<section class:list={["audience relative", isProfiles && "audience--profiles"]} aria-labelledby="audience-title">
   <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-freshgreen/18 to-transparent"></div>
   <div class="audience-shell">
     <div class="audience-head reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.05s;">
-      <p class="audience-kicker">{copy.kicker}</p>
+      {!isProfiles && <p class="audience-kicker">{copy.kicker}</p>}
       <h2 id="audience-title" class="audience-title">{copy.title}</h2>
       <p class="audience-intro">{copy.intro}</p>
     </div>
@@ -92,17 +111,31 @@ const copy = {
             <img src={p.image} alt="" width="800" height="800" loading="lazy" decoding="async" />
           </div>
           <div class="profile-text">
-            <h4 class="profile-name">{p.name}</h4>
+            <NameTag class="profile-name">{p.name}</NameTag>
             <p class="profile-body">{p.body}</p>
             <div class="profile-uses">
-              <a class="profile-use profile-use--demo" href="#offer-demo">{copy.platform} <span aria-hidden="true">↓</span></a>
-              <a class="profile-use profile-use--service" href="#offer-service">{copy.service} <span aria-hidden="true">↓</span></a>
+              {isProfiles ? (
+                <a
+                  class="profile-use profile-use--demo"
+                  href={`${localePrefix}${profileTargets[p.link as ProfileTarget].path}`}
+                  data-analytics-event={profileTargets[p.link as ProfileTarget].event}
+                  data-analytics-category="cta"
+                  data-analytics-label={`home_audience_${i + 1}`}
+                >{profileLinks[profileTargets[p.link as ProfileTarget].label]} <span aria-hidden="true">→</span></a>
+              ) : (
+                <>
+                  <a class="profile-use profile-use--demo" href="#offer-demo">{copy.platform} <span aria-hidden="true">↓</span></a>
+                  <a class="profile-use profile-use--service" href="#offer-service">{copy.service} <span aria-hidden="true">↓</span></a>
+                </>
+              )}
             </div>
           </div>
         </article>
       ))}
     </div>
 
+    {!isProfiles && (
+    <>
     <div class="offers-head reveal opacity-0" data-animation="slide-in">
       <p class="audience-kicker">{copy.offersKicker}</p>
       <h3 class="offers-title">{copy.offersTitle}</h3>
@@ -141,6 +174,8 @@ const copy = {
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
       {copy.confidential}
     </p>
+    </>
+    )}
 
   </div>
 </section>
@@ -444,6 +479,44 @@ const copy = {
     .audience { padding: 3.5rem 1rem 3.5rem; }
     .offer-card { padding: 1.5rem; }
     .profile-grid { grid-template-columns: 1fr; margin-top: 5.5rem; row-gap: 5rem; }
+  }
+
+  /* ── Profiles-only variant (home): smaller, centered cards with more air ── */
+  .audience--profiles .audience-head {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .audience--profiles .audience-intro { margin-inline: auto; }
+
+  .audience--profiles .profile-grid {
+    grid-template-columns: repeat(3, minmax(0, 310px));
+    justify-content: center;
+    column-gap: 2.5rem;
+  }
+
+  /* Opaque cards: the fixed botanical drawing passes behind them, never over the text. */
+  .audience--profiles .profile-card { background: rgba(18, 18, 18, 0.97); }
+
+  /* The link sits at the bottom of every card, so the three line up. */
+  .audience--profiles .profile-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .audience--profiles .profile-uses { margin-top: auto; padding-top: 1rem; }
+
+  @media (max-width: 1100px) {
+    .audience--profiles .profile-grid { column-gap: 2rem; }
+  }
+
+  @media (max-width: 900px) {
+    .audience--profiles .profile-grid { grid-template-columns: repeat(2, minmax(0, 310px)); }
+  }
+
+  @media (max-width: 640px) {
+    .audience--profiles .profile-grid { grid-template-columns: minmax(0, 320px); }
   }
 
   @media (prefers-reduced-motion: reduce) {

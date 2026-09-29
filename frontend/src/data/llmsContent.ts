@@ -8,7 +8,7 @@ export const summary =
 
 const pageNames: Record<string, string> = {
   "/": "Home: what Moka does, who it is for, and how to work with Moka",
-  "/platform/": "Platform: Moka BDE and the Icaros plant database, capabilities and product screens",
+  "/our-technology/": "Our Technology: Moka BDE and the Icaros plant database, capabilities and product screens",
   "/services/": "Services: plant bioactivity R&D, from a plant or a need to extract, fraction, or molecule",
   "/plant-potential/": "Start with a plant: what a plant with little or no science behind it could be worth",
   "/find-your-plant/": "Start with a need: finding the plant behind a new active",

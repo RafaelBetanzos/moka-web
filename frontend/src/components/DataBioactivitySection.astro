@@ -2,41 +2,37 @@
 import ArrowRight from "@assets/icons/ArrowRight.svg";
 import { Image } from "astro:assets";
 
-const dataCopy = {
+type Stat = { label: string; value: string; desc: string; source: string; href: string; badge?: string; note?: string };
+
+const dataCopy: Record<"en" | "es" | "pt", { subheadline: string; intro: string; hook: string; cta: string; stats: Stat[] }> = {
   en: {
-    kicker: "THE PROBLEM",
     subheadline: "What is not known is not valued. And what is not valued is lost.",
-    intro: "Only a small share of the world's plant species has ever been systematically studied for its chemistry or pharmacology. Without that knowledge, a plant has no recognized value, and it can disappear before anyone learns what it could do.",
-    hook: "Moka exists to change that, starting with Latin American plants.",
+    intro: "Valuable bioactives, ingredients and discoveries can vanish before we ever understand what they could do.",
+    hook: "Where is the next bioactive breakthrough?",
     cta: "See how we do it",
     stats: [
-      { label: "Studied plants", value: "~6% · ~15%", desc: "of plant species estimated to have been systematically investigated pharmacologically (~6%) and phytochemically (~15%). A global estimate.", source: "Source: Atanasov et al., Biotechnology Advances (2015)", href: "https://doi.org/10.1016/j.biotechadv.2015.08.001" },
-      { label: "Flora of the Americas", prefix: "About", value: "1 in 3", desc: "of the world's known vascular plant species are native to the Americas.", source: "Source: Ulloa Ulloa et al., Science (2017)", href: "https://doi.org/10.1126/science.aao0398" },
-      { label: "Extinction risk", value: "~45%", desc: "of flowering plant species may be threatened with extinction, according to a global model estimate.", source: "Source: Bachman et al., New Phytologist (2024)", href: "https://doi.org/10.1111/nph.19592" },
+      { label: "Unstudied plants", value: "~85%", desc: "of plant species have never been systematically investigated phytochemically.", source: "Atanasov et al., 2015", href: "https://doi.org/10.1016/j.biotechadv.2015.08.001" },
+      { label: "Forest loss", value: "4.1M+", desc: "hectares of forest are lost every year in Latin America.", source: "FAO, 2025", href: "https://openknowledge.fao.org/server/api/core/bitstreams/2dee6e93-1988-4659-aa89-30dd20b43b15/content/FRA-2025/forest-extent-and-change.html" },
     ],
   },
   es: {
-    kicker: "EL PROBLEMA",
     subheadline: "Lo que no se conoce no se valora. Y lo que no se valora se pierde.",
-    intro: "Solo una pequeña parte de las especies de plantas del mundo se ha estudiado de forma sistemática por su química o su farmacología. Sin ese conocimiento, una planta no tiene un valor reconocido, y puede desaparecer antes de que alguien sepa lo que podría hacer.",
-    hook: "Moka existe para cambiar eso, empezando por las plantas latinoamericanas.",
+    intro: "Bioactivos, ingredientes y descubrimientos valiosos pueden desaparecer antes de que lleguemos a entender lo que podrían hacer.",
+    hook: "¿Dónde está el próximo gran bioactivo?",
     cta: "Ver cómo lo hacemos",
     stats: [
-      { label: "Plantas estudiadas", value: "~6% · ~15%", desc: "de las especies de plantas, según estimaciones, se han investigado de forma sistemática en lo farmacológico (~6%) y en lo fitoquímico (~15%). Una estimación global.", source: "Fuente: Atanasov et al., Biotechnology Advances (2015)", href: "https://doi.org/10.1016/j.biotechadv.2015.08.001" },
-      { label: "Flora de las Américas", prefix: "Cerca de", value: "1 de cada 3", desc: "especies de plantas vasculares conocidas en el mundo es nativa de las Américas.", source: "Fuente: Ulloa Ulloa et al., Science (2017)", href: "https://doi.org/10.1126/science.aao0398" },
-      { label: "Riesgo de extinción", value: "~45%", desc: "de las especies de plantas con flor podrían estar amenazadas de extinción, según una estimación global basada en modelos.", source: "Fuente: Bachman et al., New Phytologist (2024)", href: "https://doi.org/10.1111/nph.19592" },
+      { label: "Plantas sin estudiar", value: "~85%", desc: "de las especies de plantas nunca se han investigado de forma sistemática en lo fitoquímico.", source: "Atanasov et al., 2015", href: "https://doi.org/10.1016/j.biotechadv.2015.08.001" },
+      { label: "Pérdida de bosque", value: "4.1M+", desc: "hectáreas de bosque se pierden cada año en América Latina.", source: "FAO, 2025", href: "https://openknowledge.fao.org/server/api/core/bitstreams/2dee6e93-1988-4659-aa89-30dd20b43b15/content/FRA-2025/forest-extent-and-change.html" },
     ],
   },
   pt: {
-    kicker: "O PROBLEMA",
     subheadline: "O que não se conhece não se valoriza. E o que não se valoriza se perde.",
-    intro: "Só uma pequena parte das espécies de plantas do mundo foi estudada de forma sistemática quanto à sua química ou farmacologia. Sem esse conhecimento, uma planta não tem valor reconhecido, e pode desaparecer antes que alguém descubra o que ela poderia fazer.",
-    hook: "A Moka existe para mudar isso, começando pelas plantas da América Latina.",
+    intro: "Bioativos, ingredientes e descobertas valiosos podem desaparecer antes que entendamos o que poderiam fazer.",
+    hook: "Onde está o próximo grande bioativo?",
     cta: "Ver como fazemos",
     stats: [
-      { label: "Plantas estudadas", value: "~6% · ~15%", desc: "das espécies de plantas, segundo estimativas, foram investigadas de forma sistemática do ponto de vista farmacológico (~6%) e fitoquímico (~15%). Uma estimativa global.", source: "Fonte: Atanasov et al., Biotechnology Advances (2015)", href: "https://doi.org/10.1016/j.biotechadv.2015.08.001" },
-      { label: "Flora das Américas", prefix: "Cerca de", value: "1 em cada 3", desc: "espécies de plantas vasculares conhecidas no mundo é nativa das Américas.", source: "Fonte: Ulloa Ulloa et al., Science (2017)", href: "https://doi.org/10.1126/science.aao0398" },
-      { label: "Risco de extinção", value: "~45%", desc: "das espécies de plantas com flor podem estar ameaçadas de extinção, segundo uma estimativa global baseada em modelos.", source: "Fonte: Bachman et al., New Phytologist (2024)", href: "https://doi.org/10.1111/nph.19592" },
+      { label: "Plantas não estudadas", value: "~85%", desc: "das espécies de plantas nunca foram investigadas de forma sistemática do ponto de vista fitoquímico.", source: "Atanasov et al., 2015", href: "https://doi.org/10.1016/j.biotechadv.2015.08.001" },
+      { label: "Perda de floresta", value: "4.1M+", desc: "hectares de floresta são perdidos a cada ano na América Latina.", source: "FAO, 2025", href: "https://openknowledge.fao.org/server/api/core/bitstreams/2dee6e93-1988-4659-aa89-30dd20b43b15/content/FRA-2025/forest-extent-and-change.html" },
     ],
   },
 };
@@ -46,6 +42,7 @@ interface Props {
 }
 
 const { locale = "en" } = Astro.props;
+const localePrefix = locale === "en" ? "" : `/${locale}`;
 const t = dataCopy[locale] ?? dataCopy.en;
 ---
 
@@ -57,10 +54,7 @@ const t = dataCopy[locale] ?? dataCopy.en;
   <div class="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-16">
     <div class="flex flex-col">
       <div class="reveal opacity-0" data-animation="slide-in" style="transition-delay: 0.1s;">
-        <p class="font-roboto text-[13px] font-medium leading-none tracking-[0.45em] text-freshgreen uppercase">
-          {t.kicker}
-        </p>
-        <div class="mt-5">
+        <div>
           <h2 class="font-inter text-[clamp(1.9rem,3.4vw,3rem)] font-semibold leading-[1.05] text-pure">{t.subheadline}</h2>
         </div>
       </div>
@@ -73,9 +67,9 @@ const t = dataCopy[locale] ?? dataCopy.en;
       </div>
 
       <a 
-        href="#pathways" 
+        href={`${localePrefix}/our-technology/`}
         class="reveal opacity-0 mt-10 flex w-fit items-center gap-3 rounded-full bg-pure py-2 pl-6 pr-2 font-inter text-[16px] font-semibold text-charcoal shadow-lg shadow-black/20 ring-1 ring-pure/10 transition-all duration-300 hover:bg-freshgreen hover:shadow-freshgreen/20 active:scale-95 no-underline"
-        data-analytics-event="click_view_pathways"
+        data-analytics-event="click_view_technology"
         data-analytics-category="cta"
         data-analytics-label="data_bioactivity_cta"
         data-animation="bounce-in"
@@ -89,22 +83,23 @@ const t = dataCopy[locale] ?? dataCopy.en;
     </div>
 
     <div class="grid gap-4 font-inter">
-      <div class="grid gap-4 sm:grid-cols-2">
+      <div class="grid gap-4">
         {t.stats.map((stat, i) => (
           <article
             class:list={[
               "data-card reveal opacity-0 rounded-[1.5rem] p-6 shadow-2xl shadow-black/25 backdrop-blur-xl",
-              i === 0 ? "border border-freshgreen/24 bg-gradient-to-br from-deepforest/88 via-charcoal/72 to-charcoal/88 sm:col-span-2" : i === 1 ? "border border-birch/10 bg-charcoal/52" : "border border-freshgreen/18 bg-deepforest/62",
+              i === 0 ? "border border-freshgreen/24 bg-gradient-to-br from-deepforest/88 via-charcoal/72 to-charcoal/88" : "border border-freshgreen/18 bg-deepforest/62",
             ]}
             data-animation="pop-in"
-            style={`transition-delay: ${[0.18, 0.25, 0.4][i]}s;`}
+            style={`transition-delay: ${[0.18, 0.3][i]}s;`}
           >
             <p class="text-[13px] font-semibold uppercase tracking-[0.32em] text-birch/70">{stat.label}</p>
             <div class="mt-6 flex flex-wrap items-end gap-x-3 gap-y-1">
-              {stat.prefix && <span class="mb-1 text-[20px] font-semibold leading-none text-freshgreen/80">{stat.prefix}</span>}
               <p class:list={["font-semibold leading-none text-freshgreen", i === 0 ? "text-[44px] sm:text-[80px]" : stat.value.length > 6 ? "text-[40px] sm:text-[44px]" : "text-[56px] sm:text-[64px]"]}>{stat.value}</p>
+              {stat.badge && <span class="mb-2 rounded-full border border-freshgreen/30 px-3 py-1 text-[13px] font-semibold text-freshgreen">{stat.badge}</span>}
             </div>
             <p class="mt-5 text-[15px] leading-relaxed text-birch/74">{stat.desc}</p>
+            {stat.note && <p class="mt-6 text-[13px] font-semibold uppercase tracking-[0.28em] text-sage/90">{stat.note}</p>}
             <a class="data-card-source mt-6 inline-block text-[13px] leading-snug text-birch/60 underline decoration-birch/25 underline-offset-4 transition-colors hover:text-freshgreen" href={stat.href} target="_blank" rel="noopener">{stat.source} <span aria-hidden="true">↗</span></a>
           </article>
         ))}

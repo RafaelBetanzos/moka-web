@@ -1,0 +1,480 @@
+---
+// "Three elements" path for the home. Two starting points (a plant, or a product need) join
+// into one line that runs through three numbered answers into the product (vial). Each answer
+// links to where it is explained.
+// When the block scrolls into view the path plays once: the fork lights up, then each answer,
+// and the vial fills up a level with each one. After that it follows the pointer: hovering the
+// fork or an answer fills the path up to that point, and leaving the block completes it again.
+// Labels are real HTML (translated and indexable); only lines and dots are drawn.
+interface Step {
+  label: string;
+  /** One line shown on hover (desktop). */
+  hint: string;
+  href: string;
+  event: string;
+}
+
+interface Start {
+  label: string;
+  href: string;
+  event: string;
+}
+
+interface Props {
+  /** The two starting points that join into the path (a plant, or a product need). */
+  fork: [Start, Start];
+  steps: [Step, Step, Step];
+  vial: string;
+  analyticsLabel: string;
+}
+
+const { fork, steps, vial, analyticsLabel } = Astro.props;
+
+// Top edge of the powder inside the vial image (x, y in px of the 336×848 image), measured
+// from the picture so the fill follows its curved, slanted surface instead of a flat line.
+const POWDER_TOP: [number, number][] = [
+  [28, 505], [36, 495], [60, 479], [84, 468], [108, 459], [132, 451], [156, 443], [180, 436],
+  [204, 430], [228, 425], [252, 418], [276, 418], [300, 418], [312, 421], [322, 426],
+];
+const pct = (v: number, of: number) => `${((v / of) * 100).toFixed(2)}%`;
+// The powder area, its top moved down by `drop` (0% = full, ~50% = empty).
+const powderClip = (drop: string) => `clip-path: polygon(${[
+  ...POWDER_TOP.map(([x, y]) => `${pct(x, 336)} calc(${pct(y - 4, 848)} + ${drop})`),
+  "96% 100%",
+  "8% 100%",
+].join(", ")});`;
+---
+
+<div class="p2p" data-p2p>
+  <div class="p2p-track">
+    <div class="p2p-fork" data-level="1">
+      <svg class="p2p-fork-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <path class="p2p-fork-base" d="M0 0 C 55 0, 45 50, 100 50" />
+        <path class="p2p-fork-base" d="M0 100 C 55 100, 45 50, 100 50" />
+        <path class="p2p-fork-fill" d="M0 0 C 55 0, 45 50, 100 50" />
+        <path class="p2p-fork-fill" d="M0 100 C 55 100, 45 50, 100 50" />
+      </svg>
+      {fork.map((start, i) => (
+        <a
+          class:list={["p2p-fork-label", i === 0 ? "p2p-fork-label--top" : "p2p-fork-label--bottom"]}
+          href={start.href}
+          data-analytics-event={start.event}
+          data-analytics-category="cta"
+          data-analytics-label={`${analyticsLabel}_start_${i === 0 ? "plant" : "product"}`}
+        >{start.label} <span aria-hidden="true">→</span></a>
+      ))}
+    </div>
+
+    <ol class="p2p-steps">
+      {steps.map((step, i) => (
+        <li class="p2p-step" data-level={i + 2}>
+          <a
+            class="p2p-link"
+            href={step.href}
+            data-analytics-event={step.event}
+            data-analytics-category="cta"
+            data-analytics-label={`${analyticsLabel}_0${i + 1}`}
+          >
+            <span class="p2p-dot" aria-hidden="true"></span>
+            <span class="p2p-num">0{i + 1}</span>
+            <span class="p2p-label">{step.label}</span>
+            <span class="p2p-hint">{step.hint}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+
+  <!-- Same image three times: the vial (glass and cap always as they are), its interior in
+       shadow, and the coloured powder rising inside following the powder's own surface. -->
+  <div class="p2p-vial" data-level="5" aria-hidden="true">
+    <img src={vial} alt="" width="336" height="848" loading="lazy" decoding="async" />
+    <span class="p2p-vial-inside"></span>
+    <img class="p2p-vial-fill" style={powderClip("var(--p2p-vial-d, 0%)")} src={vial} alt="" width="336" height="848" loading="lazy" decoding="async" />
+  </div>
+</div>
+
+<script>
+  // Levels: 0 nothing, 1 fork, 2–4 answers 01–03, 5 vial complete.
+  // Without JS, or with reduced motion, the complete path is shown.
+  const VIAL_D = ["52%", "52%", "34%", "20%", "8%", "0%"];
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  document.querySelectorAll<HTMLElement>("[data-p2p]").forEach((el) => {
+    if (reduce) return;
+    const track = el.querySelector<HTMLElement>(".p2p-track")!;
+    const fork = el.querySelector<HTMLElement>(".p2p-fork")!;
+    const steps = [...el.querySelectorAll<HTMLElement>(".p2p-step")];
+    const dots = steps.map((s) => s.querySelector<HTMLElement>(".p2p-dot")!);
+    const vertical = () => window.matchMedia("(max-width: 767px)").matches;
+    let level = 0;
+    let intro = true;
+
+    // Length of the green line for a level, measured from where the fork joins the line.
+    const fillFor = (lvl: number) => {
+      if (lvl >= 5) return "100%";
+      if (lvl < 2) return "0px";
+      const t = track.getBoundingClientRect();
+      const d = dots[lvl - 2].getBoundingClientRect();
+      if (vertical()) return `${d.top + d.height / 2 - t.top}px`;
+      const start = fork.getBoundingClientRect().right;
+      return `${d.left + d.width / 2 - start}px`;
+    };
+
+    const set = (lvl: number) => {
+      level = lvl;
+      el.style.setProperty("--p2p-fill", fillFor(lvl));
+      el.style.setProperty("--p2p-vial-d", VIAL_D[lvl]);
+      el.querySelectorAll<HTMLElement>("[data-level]").forEach((n) => {
+        n.classList.toggle("is-lit", Number(n.dataset.level) <= lvl);
+      });
+    };
+
+    el.classList.add("p2p--live");
+    set(0);
+
+    const play = () => {
+      [1, 2, 3, 4, 5].forEach((lvl, i) => setTimeout(() => {
+        set(lvl);
+        if (lvl === 5) intro = false;
+      }, 250 + i * 650));
+    };
+
+    const io = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return;
+      io.disconnect();
+      play();
+    }, { threshold: 0.45 });
+    io.observe(el);
+
+    // Follow the pointer (and keyboard focus) once the intro has played.
+    el.querySelectorAll<HTMLElement>("[data-level]").forEach((n) => {
+      const go = () => { if (!intro) set(Number(n.dataset.level)); };
+      n.addEventListener("pointerenter", go);
+      n.addEventListener("focusin", go);
+    });
+    el.addEventListener("pointerleave", () => { if (!intro) set(5); });
+    el.addEventListener("focusout", (e) => {
+      if (!intro && !el.contains(e.relatedTarget as Node)) set(5);
+    });
+    window.addEventListener("resize", () => set(level));
+  });
+</script>
+
+<style>
+  /* The answers take three equal columns and the vial a fourth, after the fork. */
+  .p2p {
+    --vial-h: clamp(190px, 19vw, 250px);
+    --vial-w: calc(var(--vial-h) * 0.396);
+    --vial-col: 9rem;
+    /* Fork: the two buttons, then the branches that leave from their right edge. */
+    --fork-btn: 9rem;
+    --fork-branch: 6.5rem;
+    --fork-spread: 3.25rem;
+    --fork-w: calc(var(--fork-btn) + var(--fork-branch));
+    --line: 3px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) var(--vial-col);
+    align-items: center;
+  }
+
+  /* ── Track: fork + answers ─────────────────── */
+  .p2p-track {
+    position: relative;
+    display: grid;
+    grid-template-columns: var(--fork-w) minmax(0, 1fr);
+  }
+
+  /* Base line and the green fill: from where the fork joins, through the answers, into the vial. */
+  .p2p-track::before,
+  .p2p-track::after {
+    content: "";
+    position: absolute;
+    top: calc(7px - var(--line) / 2);
+    left: var(--fork-w);
+    height: var(--line);
+    border-radius: 2px;
+  }
+
+  .p2p-track::before {
+    right: calc(var(--vial-col) / -2 + var(--vial-w) / 2 + 0.75rem);
+    background: rgba(255, 255, 255, 0.28);
+  }
+
+  .p2p-track::after {
+    width: calc(100% - var(--fork-w) + var(--vial-col) / 2 - var(--vial-w) / 2 - 0.75rem);
+    max-width: var(--p2p-fill, 100%);
+    background: linear-gradient(90deg, rgba(110, 191, 126, 0.35), var(--fresh-green-color));
+    transition: max-width 600ms cubic-bezier(0.45, 0, 0.25, 1);
+  }
+
+  /* ── Fork: two starting points joining the line ── */
+  .p2p-fork {
+    position: relative;
+    height: 14px;
+  }
+
+  .p2p-fork-lines {
+    position: absolute;
+    top: calc(7px - var(--fork-spread));
+    left: var(--fork-btn);
+    width: var(--fork-branch);
+    height: calc(var(--fork-spread) * 2);
+    overflow: visible;
+  }
+
+  .p2p-fork-lines path {
+    fill: none;
+    stroke-width: var(--line);
+    vector-effect: non-scaling-stroke;
+  }
+
+  .p2p-fork-base { stroke: rgba(255, 255, 255, 0.28); }
+
+  .p2p-fork-fill {
+    stroke: var(--fresh-green-color);
+    transition: opacity 600ms ease;
+  }
+
+  .p2p--live .p2p-fork:not(.is-lit) .p2p-fork-fill { opacity: 0; }
+
+  /* The two starting points are buttons: a plant → Plant Push, a product need → Market Pull. */
+  .p2p-fork-label {
+    position: absolute;
+    left: 0;
+    width: var(--fork-btn);
+    justify-content: center;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 36px;
+    padding: 0 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: rgba(18, 18, 18, 0.85);
+    font-family: Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--pure-color);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+  }
+
+  .p2p-fork-label:hover,
+  .p2p-fork-label:focus-visible {
+    background: var(--fresh-green-color);
+    border-color: var(--fresh-green-color);
+    color: var(--charcoal-color);
+  }
+
+  /* Each button sits centred on the start of its branch. */
+  .p2p-fork-label--top { top: calc(7px - var(--fork-spread)); }
+  .p2p-fork-label--bottom { top: calc(7px + var(--fork-spread)); }
+
+  /* ── Answers ───────────────────────────────── */
+  .p2p-steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .p2p-step {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+  }
+
+  .p2p-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  .p2p-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 999px;
+    background: var(--fresh-green-color);
+    box-shadow: 0 0 0 6px rgba(18, 18, 18, 1);
+    transition: background 400ms ease, transform 400ms ease;
+  }
+
+  .p2p--live .p2p-step:not(.is-lit) .p2p-dot { background: rgba(222, 222, 222, 0.35); }
+
+  .p2p-num {
+    margin-top: 0.6rem;
+    font-family: Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: var(--fresh-green-color);
+    transition: color 400ms ease;
+  }
+
+  .p2p--live .p2p-step:not(.is-lit) .p2p-num { color: rgba(222, 222, 222, 0.45); }
+
+  .p2p-label {
+    max-width: 15rem;
+    font-family: Inter, sans-serif;
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    font-weight: 600;
+    line-height: 1.35;
+    color: var(--moka-text-muted);
+    transition: color 200ms ease;
+  }
+
+  .p2p-hint {
+    max-width: 14rem;
+    font-family: Inter, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(222, 222, 222, 0.6);
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 250ms ease, transform 250ms ease;
+  }
+
+  .p2p-link:hover .p2p-label,
+  .p2p-link:focus-visible .p2p-label { color: var(--pure-color); }
+
+  .p2p-link:hover .p2p-dot,
+  .p2p-link:focus-visible .p2p-dot { transform: scale(1.25); }
+
+  .p2p-link:hover .p2p-hint,
+  .p2p-link:focus-visible .p2p-hint { opacity: 1; transform: translateY(0); }
+
+  .p2p-link:focus-visible {
+    outline: 2px solid var(--fresh-green-color);
+    outline-offset: 6px;
+    border-radius: 0.75rem;
+  }
+
+  /* ── Vial (product) ─────────────────────────── */
+  .p2p-vial {
+    position: relative;
+    justify-self: center;
+    width: var(--vial-w);
+    height: var(--vial-h);
+    filter: drop-shadow(0 18px 36px rgba(0, 0, 0, 0.55));
+  }
+
+  .p2p-vial img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* The inside of the glass is evenly shaded (the cap and shoulder never are) and the powder
+     rises through it; the empty part above the powder stays shaded. */
+  .p2p-vial-inside {
+    position: absolute;
+    top: 23%;
+    right: 5.5%;
+    bottom: 2%;
+    left: 6.5%;
+    border-radius: 22% 22% 16% 16% / 7% 7% 4% 4%;
+    background: rgba(14, 18, 16, 0.92);
+  }
+
+  /* The powder rises one level with each answer, keeping the curve of its surface. */
+  .p2p-vial-fill {
+    transition: clip-path 600ms ease;
+  }
+
+  /* ── Phones: fork labels on top, the three answers top to bottom, then the vial ── */
+  @media (max-width: 767px) {
+    .p2p {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+
+    .p2p-track {
+      grid-template-columns: 1fr;
+      row-gap: 1.75rem;
+      padding-left: 2rem;
+    }
+
+    .p2p-track::before,
+    .p2p-track::after {
+      top: 0.4rem;
+      left: calc(7px - var(--line) / 2);
+      width: var(--line);
+      height: auto;
+    }
+
+    .p2p-track::before { bottom: 0; right: auto; }
+
+    .p2p-track::after {
+      height: calc(100% - 0.4rem);
+      max-width: none;
+      max-height: var(--p2p-fill, 100%);
+      background: linear-gradient(180deg, rgba(110, 191, 126, 0.35), var(--fresh-green-color));
+      transition: max-height 600ms cubic-bezier(0.45, 0, 0.25, 1);
+    }
+
+    .p2p-fork {
+      height: auto;
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .p2p-fork-lines { display: none; }
+
+    .p2p-fork-label { position: static; width: auto; transform: none; }
+
+    .p2p-fork::before {
+      content: "";
+      position: absolute;
+      left: -2rem;
+      top: 0.2rem;
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: var(--fresh-green-color);
+      box-shadow: 0 0 0 6px rgba(18, 18, 18, 1);
+      z-index: 1;
+      transition: background 400ms ease;
+    }
+
+    .p2p--live .p2p-fork:not(.is-lit)::before { background: rgba(222, 222, 222, 0.35); }
+
+    .p2p-steps {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+
+    .p2p-step { justify-content: flex-start; }
+
+    .p2p-link {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: baseline;
+      column-gap: 0.75rem;
+      row-gap: 0.25rem;
+      text-align: left;
+    }
+
+    .p2p-dot {
+      position: absolute;
+      left: -2rem;
+      top: 0.3rem;
+    }
+
+    .p2p-num { margin-top: 0; }
+
+    .p2p-label { max-width: none; }
+
+    .p2p-hint { display: none; }
+  }
+</style>
